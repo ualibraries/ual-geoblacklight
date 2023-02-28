@@ -13,5 +13,7 @@ DISABLE_SPRING=1
 
 cd /geoblacklight
 rails new ual_geoblacklight -m https://raw.githubusercontent.com/geoblacklight/geoblacklight/main/template.rb
+
 cd ual_geoblacklight
+echo 'gem "devise"' >> Gemfile
 rake geoblacklight:server["-p 3000 -b 0.0.0.0"]

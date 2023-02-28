@@ -18,6 +18,8 @@ Start the Docker network:
 $ docker compose up -d
 ```
 
+Startup can take a while. The container has to deploy a new RoR GOB app and install Solr. This can be sped up by making an image distro. For now, just wait a while before hitting the `destroy` button.
+
 To remove old builds (warning! removes all unused images/containers/networks/volumes on the system):
 
 ```shell
