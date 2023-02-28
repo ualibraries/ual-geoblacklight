@@ -25,7 +25,7 @@ $ docker system prune
 
 ## Notes
 
-https://geoblacklight.org/tutorial/2015/02/09/create-your-application.html#install-geoblacklight
-https://github.com/geoblacklight/geoblacklight
-https://github.com/geobtaa/geoportal-solr-config
+* https://geoblacklight.org/tutorial/2015/02/09/create-your-application.html#install-geoblacklight
+* https://github.com/geoblacklight/geoblacklight
+* https://github.com/geobtaa/geoportal-solr-config
 
