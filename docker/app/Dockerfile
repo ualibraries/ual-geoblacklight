@@ -18,7 +18,7 @@ ARG USER_GID=$USER_UID
 # Image install and update packages, and cleaning too!
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update -q \
-	&& apt-get upgrade -qy
+    && apt-get upgrade -qy
 
 RUN apt-get install -qy \
     build-essential \
@@ -33,9 +33,9 @@ RUN apt-get install -qy \
     sudo
     
 RUN apt-get autoremove -y \
-	&& apt-get --fix-broken install \
-	&& apt-get clean \
-	&& rm -rf /var/lib/apt/lists/*
+    && apt-get --fix-broken install \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # create a newer, shinier sleeve
 RUN groupadd --gid ${USER_GID} ${USER} \

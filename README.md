@@ -2,6 +2,7 @@
 
 ## Overview
 
+Something to help me learn something about [GeoBlacklight](https://geoblacklight.org/)
 
 ## Setup
 
@@ -28,4 +29,3 @@ $ docker system prune
 * https://geoblacklight.org/tutorial/2015/02/09/create-your-application.html#install-geoblacklight
 * https://github.com/geoblacklight/geoblacklight
 * https://github.com/geobtaa/geoportal-solr-config
-
