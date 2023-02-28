@@ -20,11 +20,7 @@ $ docker compose up -d
 
 Startup can take a while. The container has to deploy a new RoR GOB app and install Solr. This can be sped up by making an image distro. For now, just wait a while before hitting the `destroy` button.
 
-To remove old builds (warning! removes all unused images/containers/networks/volumes on the system):
-
-```shell
-$ docker system prune
-```
+If the container is rebuilt and it is desired to restart the whole stack, remember to delete the `app/ual_geoblacklight` directory that was generated in the container, lest this cause distress later on.
 
 ## Notes
 
