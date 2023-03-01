@@ -6,7 +6,7 @@ FROM eclipse-temurin:latest
 ENV DISABLE_SPRING=1
 
 # args can be set from the Docker run or Compose file
-ARG SOLR_VER=9.1.1
+ARG SOLR_VER=latest
 ARG RUBY_VER=latest
 
 # user and perm args
@@ -43,8 +43,6 @@ RUN groupadd --gid ${USER_GID} ${USER} \
     && echo ${USER} ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/${USER} \
     && chmod 0440 /etc/sudoers.d/${USER}
 
-COPY serve.sh /home/${USER}/serve.sh
-
 RUN mkdir /geoblacklight
 RUN chown ${USER}:${USER} /geoblacklight
 
@@ -55,9 +53,5 @@ WORKDIR /home/${USER}
 RUN gpg --keyserver keyserver.ubuntu.com --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
 RUN curl -sSL https://get.rvm.io | bash -s
 
-ENTRYPOINT [ "./serve.sh" ]
-
 EXPOSE 3000
 EXPOSE 8983
-
-CMD [ "tail", "-f", "/dev/null" ]
