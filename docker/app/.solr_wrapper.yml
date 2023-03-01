@@ -1,0 +1,7 @@
+# Place any default configuration for solr_wrapper here
+port: 8983
+host: 0.0.0.0
+instance_dir: /geoblacklight/solr_data/
+collection:
+  dir: solr/conf/
+  name: blacklight-core

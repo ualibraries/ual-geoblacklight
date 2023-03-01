@@ -7,13 +7,9 @@ services:
     ports:
      - "127.0.0.1:3000:3000"
      - "127.0.0.1:8983:8983"
-    environment:
-      - "SOLR_URL=http://0.0.0.0:8983/solr/blacklight-core"
-      - "SOLR_VER=9.1.1"
-      - "VIEW_COMPONENT_VERSION=2.6.6"
-      - "RAILS_VERSION=6.1.4.6"
-      - "RUBY_VER=3.2.1"
+    env_file:
+      - .env
     volumes:
       - ./app/:/geoblacklight
-      - ./docker/app/serve.sh:/home/geoblacklight/serve.sh
-    entrypoint: sh -c "/home/geoblacklight/serve.sh"
+      - ./docker/:/home/geoblacklight/docker
+    entrypoint: sh -c "/home/geoblacklight/docker/app/serve.sh"

@@ -26,6 +26,7 @@ RUN apt-get install -qy \
     git \
     ca-certificates \
     gnupg2 \
+    lsof \
     openssl \
     nodejs \
     npm \
