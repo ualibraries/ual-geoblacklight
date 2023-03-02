@@ -6,6 +6,7 @@ FROM eclipse-temurin:latest
 ENV DISABLE_SPRING=1
 
 # args can be set from the Docker run or Compose file
+ARG SOLR_URL=http://0.0.0.0:8983/solr/blacklight-core
 ARG SOLR_VER=latest
 ARG RUBY_VER=latest
 
@@ -44,8 +45,8 @@ RUN groupadd --gid ${USER_GID} ${USER} \
     && echo ${USER} ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/${USER} \
     && chmod 0440 /etc/sudoers.d/${USER}
 
-RUN mkdir /geoblacklight
-RUN chown ${USER}:${USER} /geoblacklight
+RUN mkdir /geoblacklight \
+    && chown ${USER}:${USER} /geoblacklight
 
 USER geoblacklight
 WORKDIR /home/${USER}

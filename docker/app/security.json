@@ -1,0 +1,14 @@
+{
+    "authentication":{
+      "class":"solr.BasicAuthPlugin",
+      "credentials":{"solr":"silly-wabbit-tokens-R4-kidz 166theyasdfkeu"},
+      "forwardCredentials": false
+    },
+    "authorization":{
+      "class":"solr.RuleBasedAuthorizationPlugin",
+      "permissions":[
+        {"name": "core-admin-edit", "role": "admin"}
+      ],
+      "user-role":{"solr":"admin"}
+    }
+  }

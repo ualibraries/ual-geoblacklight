@@ -6,13 +6,13 @@ Something to help me learn something about [GeoBlacklight](https://geoblacklight
 
 ## Setup
 
-Build the Docker container:
+**Build the Docker container:**
 
 ```shell
 $ ./dbuild.sh
 ```
 
-Start the Docker network:
+**Start the Docker network:**
 
 ```shell
 $ docker compose up -d
@@ -20,7 +20,25 @@ $ docker compose up -d
 
 Startup can take a while. The container has to deploy a new RoR GOB app and install Solr. This can be sped up by making an image distro. For now, just wait a while before hitting the `destroy` button.
 
-If the container is rebuilt and it is desired to restart the whole stack, remember to delete the `app/ual_geoblacklight` directory that was generated in the container, lest this cause distress later on. Solr will be reinstalled, too.
+If the container needs to be rebuilt to restart the whole stack, remember to delete the `app/ual_geoblacklight` and `solr` directories generated in the container, lest this cause distress later on.
+
+**Run Rake commands in the containerized application directory:**
+
+```shell
+$ docker exec -it gob-test bash -c 'cd docker/app && ./rake_command.sh "<command-to-run>"'
+
+# Example - populate Solr test fixtures:
+$ docker exec -it gob-test bash -c 'cd docker/app && ./rake_command.sh "geoblacklight:index:seed[:remote]"'
+```
+
+**Run Solr commands in the container:**
+
+```shell
+$ docker exec -it gob-test bash -c 'cd docker/app && ./solr_command.sh "<command-to-run>"'
+
+# Example - healthcheck on the GeoBlacklight collection:
+$ docker exec -it gob-test bash -c 'cd docker/app && ./solr_command.sh "healthcheck -c blacklight-core"'
+```
 
 ## Notes
 

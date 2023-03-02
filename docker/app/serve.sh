@@ -6,31 +6,29 @@ set -em
 
 source ~/.profile
 
-rvm install ${RUBY_VER}
-gem install bundler rails
-
 DISABLE_SPRING=1
-APP_DIR="/geoblacklight/ual_geoblacklight"
-SOLR_DIR="/tmp/solr-${SOLR_VER}"
+ROOT_DIR="/geoblacklight"
+APP_DIR="${ROOT_DIR}/ual_geoblacklight"
+SOLR_DIR="${ROOT_DIR}/solr"
+SOLR_URL=http://0.0.0.0:8983/solr/blacklight-core
 
 if [[ ! -d "${APP_DIR}" ]]; then
-    # create a new instance of Rails app and Solr server
-    if [[ -d "${SOLR_DIR}" ]]; then
-        rm -rf $SOLR_DIR
-    fi
-    if [[ -d "${SOLR_DIR}" ]]; then
-        rm -rf $SOLR_DIR
-    fi
-    cd /geoblacklight
+    rvm install $RUBY_VER
+    gem install bundler rails
+
+    cd $ROOT_DIR
     rails new ual_geoblacklight -m https://raw.githubusercontent.com/geoblacklight/geoblacklight/main/template.rb
+
     cd $APP_DIR
     rm .solr_wrapper.yml && cp /home/geoblacklight/docker/app/.solr_wrapper.yml ./.solr_wrapper.yml
-    rake geoblacklight:server["-p 3000 -b 0.0.0.0"] && ln -s "${SOLR_DIR}/server/solr/blacklight-core/data" "/geoblacklight/solr-data"
+    rake geoblacklight:server["-p 3000 -b 0.0.0.0"]
 else
     # restart both servers since we have apparently done this before
     # GOB server is too dumb to start with the same command as above
     cd $SOLR_DIR
     bin/solr start -h "0.0.0.0" -p 8983 -V
+
     cd $APP_DIR
+    rm -rf tmp
     rails s -b "0.0.0.0" -p 3000
 fi
