@@ -16,6 +16,8 @@ if [[ ! -d "${APP_DIR}" ]]; then
     rvm install $RUBY_VER
     gem install bundler rails
 
+    sudo chown geoblacklight:geoblacklight /home/geoblacklight/docker
+
     cd $ROOT_DIR
     rails new ual_geoblacklight -m https://raw.githubusercontent.com/geoblacklight/geoblacklight/main/template.rb
 

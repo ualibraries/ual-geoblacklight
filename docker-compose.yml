@@ -14,4 +14,3 @@ services:
       - ./docker/:/home/geoblacklight/docker
     working_dir: /home/geoblacklight
     entrypoint: sh -c "/home/geoblacklight/docker/app/serve.sh"
-    command: sh -c "cd docker/app && ./secure_solr.sh"
