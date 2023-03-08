@@ -24,8 +24,10 @@ Startup can take a while. The container has to deploy a new RoR GOB app and inst
 
 ```shell
 # Start Solr security auth:
-$ docker exec -it gob-test bash -c 'cd docker/app && ./secure_solr.sh'
+$ docker exec -it gob-test bash -c 'cd docker/app && ./solr_command.sh auth enable -type basicAuth -prompt true -z zoo1:2181'
 ```
+
+The CLI will prompt for a user and password. Remember to note them somewhere!
 
 **Change the Compose file configuration:**
 
