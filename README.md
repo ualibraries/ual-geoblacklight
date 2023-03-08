@@ -20,13 +20,22 @@ $ ./start-me-up.sh
 
 Startup can take a while. The container has to deploy a new RoR GOB app and install Solr. This can be sped up by making an image distro. For now, just wait a while before hitting the `destroy` button.
 
+**Secure the cluster and admin:**
+
+```shell
+# Start Solr security auth:
+$ docker exec -it gob-test bash -c 'cd docker/app && ./secure_solr.sh'
+```
+
+**Change the Compose file configuration:**
+
 To make changes to the docker-compose file, make changes, then:
 
 ```shell
 $ docker compose restart
 ```
 
-If the container needs to be rebuilt to restart the whole stack, remember to delete the `app/ual_geoblacklight` and `solr` directories generated in the container, lest this cause distress later on. Then restart the network with the start-me-up script.
+If the container needs to be rebuilt to restart the whole stack, remember to delete the `app/ual_geoblacklight` and `solr` directories generated in the container, lest this cause distress later on. Then restart the network with the start-me-up script from above.
 
 **Run Rake commands in the containerized application directory:**
 
@@ -44,9 +53,6 @@ $ docker exec -it gob-test bash -c 'cd docker/app && ./solr_command.sh "<command
 
 # Example - healthcheck on the GeoBlacklight collection:
 $ docker exec -it gob-test bash -c 'cd docker/app && ./solr_command.sh "healthcheck -c blacklight-core"'
-
-# Start Solr security auth:
-$ docker exec -it gob-test bash -c 'cd docker/app && ./secure_solr.sh'
 ```
 
 ## Notes

@@ -6,18 +6,15 @@ services:
     image: ual-goblight:latest
     container_name: gob-test
     ports:
-     - "127.0.0.1:3000:3000"
-     - "127.0.0.1:8983:8983"
+      - "127.0.0.1:3000:3000"
+      - "127.0.0.1:8983:8983"
+    environment:
+      - "ZK_HOST=zoo1:2181"
     volumes:
       - ./app/:/geoblacklight
       - ./docker/:/home/geoblacklight/docker
     working_dir: /home/geoblacklight
     entrypoint: sh -c "/home/geoblacklight/docker/app/serve.sh"
-    environment:
-      - "ZK_HOST=zoo1:2181"
-      - "SOLR_HOST=0.0.0.0"
-      - "SOLR_PORT=8983"
-      - "SOLR_JETTY_HOST=0.0.0.0"
     networks:
       - solr
     depends_on:
@@ -30,6 +27,8 @@ services:
       - "8982:8983"
     environment:
       - "ZK_HOST=zoo1:2181"
+    volumes:
+      - ./docker/app/security.json:/var/security.json
     networks:
       - solr
     depends_on:

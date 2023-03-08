@@ -6,15 +6,17 @@ set -em
 
 source ~/.profile
 
-DISABLE_SPRING=1
-ROOT_DIR="/geoblacklight"
-APP_DIR="${ROOT_DIR}/ual_geoblacklight"
-SOLR_DIR="${ROOT_DIR}/solr"
 SOLR_VER=9.1.1
-SOLR_HOME="/geoblacklight/solr/server/solr"
 VIEW_COMPONENT_VERSION=2.6.6
 RAILS_VERSION=6.1.4.6
 RUBY_VER=3.2.1
+
+ROOT_DIR="/geoblacklight"
+APP_DIR="${ROOT_DIR}/ual_geoblacklight"
+SOLR_DIR="${ROOT_DIR}/solr"
+SOLR_HOME="${SOLR_DIR}/server/solr"
+USER_HOME="/home/geoblacklight"
+SCRIPTS_DIR="${USER_HOME}/docker/app"
 
 if [[ ! -d "${APP_DIR}" ]]; then
     rvm install $RUBY_VER

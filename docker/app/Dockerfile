@@ -5,6 +5,10 @@ FROM eclipse-temurin:latest
 
 ENV DISABLE_SPRING=1
 
+ENV SOLR_HOST="0.0.0.0"
+ENV SOLR_PORT="8983"
+ENV SOLR_JETTY_HOST="0.0.0.0"
+
 # user and perm args
 # ARGS can be overwritten in docker run or docker-compose
 ARG USER=geoblacklight

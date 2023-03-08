@@ -1,6 +1,6 @@
 {
     "authentication":{
-      "class":"solr.BasicAuthPlugin",
+      "class":"solr.KerberosPlugin",
       "credentials":{"solr":"silly-wabbit-tokens-R4-kidz 166theyasdfkeu"},
       "forwardCredentials": false
     },
