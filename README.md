@@ -15,12 +15,18 @@ $ ./dbuild.sh
 **Start the Docker network:**
 
 ```shell
-$ docker compose up -d
+$ ./start-me-up.sh
 ```
 
 Startup can take a while. The container has to deploy a new RoR GOB app and install Solr. This can be sped up by making an image distro. For now, just wait a while before hitting the `destroy` button.
 
-If the container needs to be rebuilt to restart the whole stack, remember to delete the `app/ual_geoblacklight` and `solr` directories generated in the container, lest this cause distress later on.
+To make changes to the docker-compose file, make changes, then:
+
+```shell
+$ docker compose restart
+```
+
+If the container needs to be rebuilt to restart the whole stack, remember to delete the `app/ual_geoblacklight` and `solr` directories generated in the container, lest this cause distress later on. Then restart the network with the start-me-up script.
 
 **Run Rake commands in the containerized application directory:**
 
@@ -48,3 +54,15 @@ $ docker exec -it gob-test bash -c 'cd docker/app && ./secure_solr.sh'
 * https://geoblacklight.org/tutorial/2015/02/09/create-your-application.html#install-geoblacklight
 * https://github.com/geoblacklight/geoblacklight
 * https://github.com/geobtaa/geoportal-solr-config
+
+## Helpful hints
+
+Troubleshooting the Solr server is pretty easy with the logs mounted in `app/solr/server/logs`.
+
+ATM, software versions are controlled in one of three places:
+
+* `docker/app/Dockerfile`
+* `docker/app/serve.sh`
+* `docker-compose.yml`
+
+TODO: consolidate these into one env, if possible.
