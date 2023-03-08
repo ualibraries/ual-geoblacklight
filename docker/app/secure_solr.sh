@@ -13,7 +13,7 @@ HOME_DIR="/home/geoblacklight"
 cp "${HOME_DIR}/docker/app/security.json" "${SOLR_DIR}/server/solr/security.json"
 
 cd $SOLR_DIR
-echo -e "Uploading security file to Zookeeper...\n\n"
+echo -e "\n\nUploading security file to Zookeeper...\n\n"
 bin/solr zk cp "${HOME_DIR}/docker/app/security.json" zk:security.json -z zoo1:2181
-echo -e "Restarting the Solr cluster...\n\n"
+echo -e "\n\nRestarting the Solr cluster...\n\n"
 bin/solr restart
