@@ -10,7 +10,11 @@ DISABLE_SPRING=1
 ROOT_DIR="/geoblacklight"
 APP_DIR="${ROOT_DIR}/ual_geoblacklight"
 SOLR_DIR="${ROOT_DIR}/solr"
-SOLR_URL=http://0.0.0.0:8983/solr/blacklight-core
+SOLR_VER=9.1.1
+SOLR_HOME=/geoblacklight/solr/server/solr
+VIEW_COMPONENT_VERSION=2.6.6
+RAILS_VERSION=6.1.4.6
+RUBY_VER=3.2.1
 
 if [[ ! -d "${APP_DIR}" ]]; then
     rvm install $RUBY_VER

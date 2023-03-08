@@ -38,6 +38,9 @@ $ docker exec -it gob-test bash -c 'cd docker/app && ./solr_command.sh "<command
 
 # Example - healthcheck on the GeoBlacklight collection:
 $ docker exec -it gob-test bash -c 'cd docker/app && ./solr_command.sh "healthcheck -c blacklight-core"'
+
+# Start Solr security auth:
+$ docker exec -it gob-test bash -c 'cd docker/app && ./secure_solr.sh'
 ```
 
 ## Notes

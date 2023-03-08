@@ -5,12 +5,8 @@ FROM eclipse-temurin:latest
 
 ENV DISABLE_SPRING=1
 
-# args can be set from the Docker run or Compose file
-ARG SOLR_URL=http://0.0.0.0:8983/solr/blacklight-core
-ARG SOLR_VER=latest
-ARG RUBY_VER=latest
-
 # user and perm args
+# ARGS can be overwritten in docker run or docker-compose
 ARG USER=geoblacklight
 ARG PASS=gobb13
 ARG USER_UID=1000
