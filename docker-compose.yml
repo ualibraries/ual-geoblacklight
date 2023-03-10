@@ -13,6 +13,7 @@ services:
       - "SOLR_PORT=8983"
       - "SOLR_JETTY_HOST=0.0.0.0"
       - "ZK_HOST=zoo1:2181"
+      - "SOLR_URL=http://solr:silly-wabbit-tokens-R4-kidz@localhost:8983/solr"
     volumes:
       - ./app/:/geoblacklight
       - ./docker/:/home/geoblacklight/docker
@@ -30,8 +31,6 @@ services:
       - "8982:8983"
     environment:
       - "ZK_HOST=zoo1:2181"
-    volumes:
-      - ./docker/app/security.json:/var/security.json
     networks:
       - solr
     depends_on:

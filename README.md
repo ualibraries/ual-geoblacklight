@@ -4,6 +4,18 @@
 
 Something to help me learn something about [GeoBlacklight](https://geoblacklight.org/)
 
+**What is this?**
+
+Here's a little diagram:
+
+```mermaid
+  graph TD;
+      A-->B;
+      A-->C;
+      B-->D;
+      C-->D;
+```
+
 ## Setup
 
 **Build the Docker container:**
@@ -23,11 +35,13 @@ Startup can take a while. The container has to deploy a new RoR GOB app and inst
 **Secure the cluster and admin:**
 
 ```shell
-# Start Solr security auth:
-$ docker exec -it gob-test bash -c 'cd docker/app && ./solr_command.sh auth enable -type basicAuth -prompt true -z zoo1:2181'
+# Start Zookeeper security auth:
+$ docker exec -it gob-test bash -c 'cd docker/app && ./secure_zk.sh'
 ```
 
 The CLI will prompt for a user and password. Remember to note them somewhere!
+
+_NOTE:_ This should only be done after adding data. Or turn off security to import data.
 
 **Change the Compose file configuration:**
 
