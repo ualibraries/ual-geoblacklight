@@ -36,7 +36,7 @@ Startup can take a while. The container has to deploy a new RoR GOB app and inst
 
 ```shell
 # Start Zookeeper security auth:
-$ docker exec -it gob-test bash -c 'cd docker/app && ./secure_zk.sh'
+$ docker exec -it gob-test bash -c './secure_zk.sh'
 ```
 
 The CLI will prompt for a user and password. Remember to note them somewhere!
@@ -56,19 +56,19 @@ If the container needs to be rebuilt to restart the whole stack, remember to del
 **Run Rake commands in the containerized application directory:**
 
 ```shell
-$ docker exec -it gob-test bash -c 'cd docker/app && ./rake_command.sh "<command-to-run>"'
+$ docker exec -it gob-test bash -c './rake_command.sh "<command-to-run>"'
 
 # Example - populate Solr test fixtures:
-$ docker exec -it gob-test bash -c 'cd docker/app && ./rake_command.sh "geoblacklight:index:seed[:remote]"'
+$ docker exec -it gob-test bash -c './rake_command.sh "geoblacklight:index:seed[:remote]"'
 ```
 
 **Run Solr commands in the container:**
 
 ```shell
-$ docker exec -it gob-test bash -c 'cd docker/app && ./solr_command.sh "<command-to-run>"'
+$ docker exec -it gob-test bash -c './solr_command.sh "<command-to-run>"'
 
 # Example - healthcheck on the GeoBlacklight collection:
-$ docker exec -it gob-test bash -c 'cd docker/app && ./solr_command.sh "healthcheck -c blacklight-core"'
+$ docker exec -it gob-test bash -c './solr_command.sh "healthcheck -c blacklight-core"'
 ```
 
 ## Notes

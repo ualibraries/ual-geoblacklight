@@ -2,7 +2,8 @@
 port: 8983
 host: http://0.0.0.0
 # solr directory includes the solr server, config, and data
-instance_dir: /geoblacklight/solr/
+instance_dir: docker/solr
+download_dir: docker/solr
 # GOB config metadata dir: /geoblacklight/solr/server/solr/blacklight-core
 # also where the GOB Solr data will be located
 collection:

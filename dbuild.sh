@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cd docker/app
+cd docker
 docker build --rm=true -t ual-goblight:latest -f Dockerfile . || exit 1

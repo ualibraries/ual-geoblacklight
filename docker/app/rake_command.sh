@@ -6,5 +6,5 @@ set -e
 
 source ~/.profile
 
-cd /geoblacklight/ual_geoblacklight
+cd /geoblacklight/app
 rake "$@"

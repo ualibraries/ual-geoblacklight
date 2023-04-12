@@ -1,8 +1,8 @@
 {
     "authentication":{
       "class":"solr.BasicAuthPlugin",
-      "credentials":{"solr":"silly-wabbit-tokens-R4-kidz 166theyasdfkeu"},
-      "forwardCredentials": false
+      "credentials":{"solr":"IV0EHq1OnNrj6gvRCwvFwTrZ1+z1oBbnQdiVC3otuq0= Ndd7LKvVBAaZIF0QAVi1ekCfAJXr1GGfLtRUXhgrF8c="},
+      "forwardCredentials": true
     },
     "authorization":{
       "class":"solr.RuleBasedAuthorizationPlugin",
