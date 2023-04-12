@@ -14,11 +14,12 @@ services:
     environment:
       - SOLR_JETTY_HOST=0.0.0.0
       - ZK_HOST=zoo1:2181
-      - SOLR_URL
-      - SOLR_VER
+      - SOLR_URL=http://solr:SolrRocks@0.0.0.0:8983/solr/blacklight-core/
+      - SOLR_VER=9.1.1
+      - USER_UID
+      - USER_GID
     # volumes:
-    #   - geo_data:/geoblacklight
-      # - solr_data:/geoblacklight/solr
+    #   - geo_data:/geoblacklight/app
     networks:
       - solr
     depends_on:
@@ -28,11 +29,13 @@ services:
 
   solr2:
     image: "solr:${SOLR_VER}"
-    container_name: solr1
+    container_name: solr2
     ports:
       - 8982:8983
     environment:
       - ZK_HOST=zoo1:2181
+    volumes:
+      - solr2_data:/opt/persist
     networks:
       - solr
     depends_on:
@@ -60,6 +63,6 @@ networks:
   solr:
 
 volumes:
-  geo_data:
-  # solr_data:
+  # geo_data:
+  solr2_data:
   zoo1_data:
