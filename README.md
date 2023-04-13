@@ -39,9 +39,7 @@ Startup can take a while. The container has to deploy a new RoR GOB app and inst
 $ docker exec -it gob-test bash -c './secure_zk.sh'
 ```
 
-The CLI will prompt for a user and password. Remember to note them somewhere!
-
-_NOTE:_ This should only be done after adding data. Or turn off security to import data.
+User and pass are in the security.json file, as well as in the url in the blacklight.yml and .env and docker-compose.yml.
 
 **Change the Compose file configuration:**
 
