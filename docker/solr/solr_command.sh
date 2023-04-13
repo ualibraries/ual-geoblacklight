@@ -6,5 +6,5 @@ set -e
 
 source ~/.profile
 
-cd "/geoblacklight/solr/"
+cd "/geoblacklight/app/docker/solr"
 bin/solr "$@"

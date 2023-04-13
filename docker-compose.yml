@@ -18,13 +18,11 @@ services:
       - SOLR_VER=9.1.1
       - USER_UID
       - USER_GID
-    # volumes:
-    #   - geo_data:/geoblacklight/app
     networks:
       - solr
     depends_on:
       - zoo1
-    # entrypoint: [ "/geoblacklight/serve.sh" ]
+    entrypoint: [ "/geoblacklight/serve.sh" ]
     tty: true
 
   solr2:
