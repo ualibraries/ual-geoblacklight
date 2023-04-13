@@ -1,6 +1,5 @@
 version: '3.8'
 
-# see 'docker/app/serve.sh' for software versions used in the app container
 services:
   ual_gob_app:
     image: ual-goblight:latest
