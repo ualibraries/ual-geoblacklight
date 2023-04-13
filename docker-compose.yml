@@ -9,15 +9,17 @@ services:
     ports:
       - "127.0.0.1:3000:3000"
       - "127.0.0.1:8983:8983"
-    env_file:
-      - .env
     environment:
-      - SOLR_JETTY_HOST=0.0.0.0
-      - ZK_HOST=zoo1:2181
-      - SOLR_URL=http://solr:SolrRocks@0.0.0.0:8983/solr/blacklight-core/
-      - SOLR_VER=9.1.1
       - USER_UID
       - USER_GID
+      - SOLR_VER=9.1.1
+      - SOLR_URL=http://solr:SolrRocks@0.0.0.0:8983/solr/blacklight-core/
+      - SOLR_JETTY_HOST=0.0.0.0
+      - ZOOKEEPER_VER=3.8.1
+      - ZK_HOST=zoo1:2181
+    # TODO: debug data volume mount issue with Geo deployment
+    # volumes:
+    #   - geo_data:/geoblacklight/app/docker
     networks:
       - solr
     depends_on:

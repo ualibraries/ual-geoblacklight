@@ -1,11 +1,11 @@
 load_defaults: 7.33.1
 development:
   adapter: solr
-  url: <%= ENV['SOLR_URL'] || "http://solr:SolrRocks@0.0.0.0:8983/solr/blacklight-core" %>
+  url: <%= ENV['SOLR_URL'] || "http://0.0.0.0:8983/solr/blacklight-core" %>
   solr_home: solr
 test: &test
   adapter: solr
-  url: <%= ENV['SOLR_URL'] || "http://solr:SolrRocks@0.0.0.0:8983/solr/blacklight-core" %>
+  url: <%= ENV['SOLR_URL'] || "http://0.0.0.0:8983/solr/blacklight-core" %>
   solr_home: solr
 production:
   adapter: solr

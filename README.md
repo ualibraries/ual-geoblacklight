@@ -6,14 +6,14 @@ Something to help me learn something about [GeoBlacklight](https://geoblacklight
 
 **What is this?**
 
-Here's a little diagram:
+Here's a little diagram of GOB and Solr Cloud (WIP learning Mermaid syntax):
 
 ```mermaid
   graph TD;
-      A-->B;
-      A-->C;
-      B-->D;
-      C-->D;
+      App-->Local_Solr;
+      Local_Solr-->Zookeeper;
+      Zookeeper-->Local_Solr;
+      Zookeeper-->Cloud_Solr;
 ```
 
 ## Setup
@@ -39,7 +39,9 @@ Startup can take a while. The container has to deploy a new RoR GOB app and inst
 $ docker exec -it gob-test bash -c './secure_zk.sh'
 ```
 
-User and pass are in the security.json file, as well as in the url in the blacklight.yml and .env and docker-compose.yml.
+User and pass are in the `docker/solr/security.json` file, as well as in the url in the `docker/app/blacklight.yml` and `.env` and `docker-compose.yml`.
+
+The script will send the security credentials to ZooKeeper, then restart the local Solr server to propegate the changes. Application configuration 
 
 **Change the Compose file configuration:**
 
@@ -48,8 +50,6 @@ To make changes to the docker-compose file, make changes, then:
 ```shell
 $ docker compose restart
 ```
-
-If the container needs to be rebuilt to restart the whole stack, remember to delete the `app/ual_geoblacklight` and `solr` directories generated in the container, lest this cause distress later on. Then restart the network with the start-me-up script from above.
 
 **Run Rake commands in the containerized application directory:**
 
