@@ -1,6 +1,7 @@
 # Place any default configuration for solr_wrapper here
 port: 8983
 host: http://0.0.0.0
+version: 9.1.1
 # solr directory includes the solr server, config, and data
 instance_dir: docker/solr
 download_dir: docker/solr
