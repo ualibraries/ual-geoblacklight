@@ -1,24 +1,30 @@
 # syntax=docker/dockerfile:experimental
 
-# We are starting with a full-fledged Java container
+# This Docker container achieves a few things needed for a successful GOB build:
+# 1. a native Java environment for Solr;
+# 2. a Debian environment for easy package installation and testing;
+# 3. installation of a non-root user for RoR dependencies;
+# 4. an easy location to build our files.
+
 FROM eclipse-temurin:latest
 
 ENV DISABLE_SPRING=1
 
+# ARGS can be overwritten in docker run or docker-compose
 ARG RUBY_VER=3.2.1
 ARG RAILS_VERSION=6.1.4.6
 ARG VIEW_COMPONENT_VERSION=2.6.6
 
-ARG SOLR_HOST="http://0.0.0.0"
-ARG SOLR_PORT="8983"
-ARG SOLR_JETTY_HOST="http://0.0.0.0"
+ARG SOLR_HOST=localhost
+ARG SOLR_PORT=8983
+ARG SOLR_JETTY_HOST=0.0.0.0
 ARG SOLR_VERSION=9.1.1
-ARG SOLR_URL="http://solr:SolrRocks@0.0.0.0:8983/solr/blacklight-core/"
+ARG SOLR_URL="http://localhost:8983/solr/blacklight-core/"
 
 ARG ZK_HOST=zoo1:2181
 
 # user and perm args
-# ARGS can be overwritten in docker run or docker-compose
+# NOTE: host user perms are injected in start-me-up.sh
 ARG USER=gob
 ARG PASS=gobb13
 ARG USER_UID=1000
@@ -27,7 +33,8 @@ ARG USER_GID=$USER_UID
 # project DRY dirs
 ENV PROJECT_DIR="/geoblacklight"
 ENV APP_DIR="${PROJECT_DIR}/app"
-ENV USER_HOME="/home/gob"
+ENV SOLR_DIR="${PROJECT_DIR}/solr"
+ENV USER_HOME="/home/${USER}"
 
 # Image install and update packages, and cleaning too!
 ENV DEBIAN_FRONTEND=noninteractive
@@ -37,9 +44,10 @@ RUN apt-get update -q \
 RUN apt-get install -qy \
     bash \
     build-essential \
-    curl \
-    git \
     ca-certificates \
+    curl \
+    expect \
+    git \
     gnupg2 \
     lsof \
     openssl \
@@ -70,7 +78,6 @@ RUN groupadd --gid ${USER_GID} ${USER} \
     && chmod 0440 /etc/sudoers.d/${USER}
 
 RUN mkdir ${PROJECT_DIR} \
-    # mkdir ${PROJECT_DIR}/solr \
     && chown -R ${USER}:${USER} /geoblacklight
 
 RUN echo "source ~/.rvm/scripts/rvm" >> "${USER_HOME}/.bashrc"
@@ -78,13 +85,7 @@ RUN echo "source ~/.rvm/scripts/rvm" >> "${USER_HOME}/.bashrc"
 USER gob
 EXPOSE 3000
 EXPOSE 8983
-WORKDIR ${PROJECT_DIR}
+WORKDIR "${USER_HOME}/docker"
 
 RUN gpg2 --keyserver keyserver.ubuntu.com --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
 RUN curl -sSL https://get.rvm.io | bash -s stable
-
-# install RoR and app code
-COPY . "${USER_HOME}/docker"
-
-SHELL [ "/bin/bash", "-c" ]
-RUN "${USER_HOME}/docker/app/install_app.sh"
