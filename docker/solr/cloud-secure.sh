@@ -3,8 +3,12 @@
 
 export SOLR_DIR="${PROJECT_DIR}/solr"
 
-cd "${SOLR_DIR}/server/scripts/cloud-scripts"
-source zkcli.sh -zkhost zoo1:2181 -cmd putfile /security.json "${USER_HOME}/docker/solr/security.json"
+source ~/.rvm/scripts/rvm
 
-cd ${SOLR_DIR}
-bin/solr restart
+# solr.in.sh controls ZK params and basic auth method
+# we have to copy this in, since Solr was started by GOB w/o it.
+rm "${SOLR_DIR}/bin/solr.in.sh" \
+    && cp "${USER_HOME}/docker/solr/solr.in.sh" "${SOLR_DIR}/bin/solr.in.sh"
+
+cd "${APP_DIR}"
+rake solr:restart

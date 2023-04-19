@@ -13,9 +13,8 @@ if [[ $1 == "pause" && "${APP_RUNNING}" ]]; then
 
 elif [[ $1 == "secure" && "${APP_RUNNING}" ]]; then
 
+    # secure script restarts the local Solr server after copying in ZK basic auth creds.
     docker exec -it gob-test bash -c -l 'cd solr && ./cloud-secure.sh'
-    docker-compose restart
-    docker exec -it gob-test bash -c -l 'cd app && ./serve.sh'
 
 elif [[ "${APP_RUNNING}" ]]; then
 
