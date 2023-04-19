@@ -50,13 +50,6 @@ $ docker exec -it gob-test bash -c -l 'cd app && ./serve.sh'
 
 ## Optional application container commands
 
-**Secure orchestration:**
-
-```shell
-# Start Zookeeper security auth:
-$ docker exec -it gob-test bash -c -l 'cd solr && ./cloud-secure.sh'
-```
-
 **Stop the Docker network:**
 
 This is non-destructive. All containers remain stateful, as well as volumes and network.
