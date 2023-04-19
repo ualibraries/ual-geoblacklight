@@ -1,12 +1,10 @@
 # Place any default configuration for solr_wrapper here
-port: 8983
-host: http://0.0.0.0
+# port: 8983
+# host: localhost
 version: 9.1.1
 # solr directory includes the solr server, config, and data
-instance_dir: docker/solr
-download_dir: docker/solr
-# GOB config metadata dir: /geoblacklight/solr/server/solr/blacklight-core
-# also where the GOB Solr data will be located
+instance_dir: /geoblacklight/solr
+download_dir: /geoblacklight/solr
 collection:
   dir: solr/conf/
   name: blacklight-core
