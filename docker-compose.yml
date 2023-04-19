@@ -5,36 +5,22 @@ services:
     image: ual-goblight:latest
     container_name: gob-test
     user: gob
-    working_dir: /geoblacklight
     ports:
       - "127.0.0.1:3000:3000"
       - "127.0.0.1:8983:8983"
     environment:
-      - USER_UID
-      - USER_GID
-    # TODO: debug data volume mount issue with Geo deployment
-    # volumes:
-    #   - geo_data:/geoblacklight/app/docker
-    networks:
-      - solr
-    depends_on:
-      - zoo1
-    entrypoint: [ "/geoblacklight/serve.sh" ]
-    tty: true
-
-  solr2:
-    image: solr:9.1.1
-    container_name: solr2
-    ports:
-      - 8982:8983
-    environment:
-      - ZK_HOST=zoo1:2181
+      - "USER_UID=${USER_UID:-1000}"
+      - "USER_GID=${USER_GID:-1000}"
+    env_file:
+      - .env
     volumes:
-      - solr2_data:/opt/persist
+      - ./ual_gob:/geoblacklight
+      - ./docker:/home/gob/docker
     networks:
       - solr
     depends_on:
       - zoo1
+    tty: true
 
   zoo1:
     image: zookeeper:3.8.1
@@ -58,6 +44,4 @@ networks:
   solr:
 
 volumes:
-  # geo_data:
-  solr2_data:
   zoo1_data:
