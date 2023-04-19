@@ -14,59 +14,87 @@ Here's a little diagram of GOB and Solr Cloud (WIP learning Mermaid syntax):
       Local_Solr-->Zookeeper;
       Zookeeper-->Local_Solr;
       Zookeeper-->Cloud_Solr;
+      Cloud_Solr-->Zookeeper;
 ```
 
 ## Setup
 
-**Build the Docker container:**
+**1. Build the Docker container:**
 
 ```shell
 $ ./dbuild.sh
 ```
 
-**Start the Docker network:**
+**2. Start the Docker network:**
 
 ```shell
 $ ./start-me-up.sh
 ```
 
-Startup can take a while. The container has to deploy a new RoR GOB app and install Solr. This can be sped up by making an image distro. For now, just wait a while before hitting the `destroy` button.
+This will default to a container rebuild if the docker orchestration is already present.
 
-**Secure the cluster and admin:**
+__NOTE:__ This also installs the GOB app automatically if it does not already exist on the `ual_gob` volume.
 
 ```shell
-# Start Zookeeper security auth:
-$ docker exec -it gob-test bash -c './secure_zk.sh'
+$ docker exec -it gob-test bash -c -l 'cd app && ./install_app.sh'
 ```
+
+This will take a little while and the server is still not started. A list of dependencies should print out as the GOB is installed.
+
+**Start the server:**
+
+The templated GeoBlacklight installation defaults to downloading and starting Solr locally. This Docker orchestration sets up ZooKeeper and one more Solr server to show how to propagate the data.
+
+```shell
+# Start the Rails application, also installing and starting the default Solr
+$ docker exec -it gob-test bash -c -l 'cd app && ./serve.sh'
+```
+
+## Optional application container commands
+
+**Secure orchestration:**
 
 User and pass are in the `docker/solr/security.json` file, as well as in the url in the `docker/app/blacklight.yml` and `.env` and `docker-compose.yml`.
 
-The script will send the security credentials to ZooKeeper, then restart the local Solr server to propegate the changes. Application configuration 
-
-**Change the Compose file configuration:**
-
-To make changes to the docker-compose file, make changes, then:
+The script will send the security credentials to ZooKeeper, then restart the local Solr server to propagate the changes.
 
 ```shell
-$ docker compose restart
+# Start Zookeeper security auth:
+$ docker exec -it gob-test bash -c -l 'cd solr && ./cloud-secure.sh'
+```
+
+**Stop the Docker network:**
+
+This is non-destructive. All containers remain stateful, as well as volumes and network.
+
+```shell
+$ ./start-me-up.sh pause
+```
+
+**Rebuild the containers:**
+
+This rebuilds containers, so internal data that is not persisted on a volume will be destroyed. This is necessary for changes to the `docker-compose.yml` file to take effect.
+
+```shell
+$ ./start-me-up.sh
 ```
 
 **Run Rake commands in the containerized application directory:**
 
 ```shell
-$ docker exec -it gob-test bash -c './rake_command.sh "<command-to-run>"'
+$ docker exec -it gob-test bash -c -l 'cd app && ./rake_command.sh "<command-to-run>"'
 
 # Example - populate Solr test fixtures:
-$ docker exec -it gob-test bash -c './rake_command.sh "geoblacklight:index:seed[:remote]"'
+$ docker exec -it gob-test bash -c -l 'cd app && ./rake_command.sh "geoblacklight:index:seed[:remote]"'
 ```
 
 **Run Solr commands in the container:**
 
 ```shell
-$ docker exec -it gob-test bash -c './solr_command.sh "<command-to-run>"'
+$ docker exec -it gob-test bash -c -l 'cd solr && ./solr_command.sh "<command-to-run>"'
 
 # Example - healthcheck on the GeoBlacklight collection:
-$ docker exec -it gob-test bash -c './solr_command.sh "healthcheck -c blacklight-core"'
+$ docker exec -it gob-test bash -c -l 'cd solr && ./solr_command.sh "healthcheck -c blacklight-core"'
 ```
 
 ## Notes
