@@ -2,9 +2,6 @@
 set -e
 
 # this script is used to run solr tasks on the server
-# run Solr commands with Docker command arguments
 
-source ~/.profile
-
-cd "/geoblacklight/app/docker/solr"
+cd "/geoblacklight/solr"
 bin/solr "$@"
