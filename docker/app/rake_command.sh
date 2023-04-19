@@ -2,9 +2,8 @@
 set -e
 
 # this script is used to run rake tasks in the application
-# run rake commands with Docker command arguments
 
-source ~/.profile
+source ~/.rvm/scripts/rvm
 
 cd /geoblacklight/app
 rake "$@"
