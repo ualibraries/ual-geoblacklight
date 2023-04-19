@@ -19,7 +19,7 @@ Here's a little diagram of GOB and Solr Cloud (WIP learning Mermaid syntax):
 
 ## Setup
 
-**1. Build the Docker container:**
+**1. Build the UAL-GOB Docker image:**
 
 ```shell
 $ ./dbuild.sh
@@ -41,8 +41,6 @@ $ docker exec -it gob-test bash -c -l 'cd app && ./install_app.sh'
 
 This will take a little while and the server is still not started. A list of dependencies should print out as the GOB is installed.
 
-**Start the server:**
-
 The templated GeoBlacklight installation defaults to downloading and starting Solr locally. This Docker orchestration sets up ZooKeeper and one more Solr server to show how to propagate the data.
 
 ```shell
@@ -53,10 +51,6 @@ $ docker exec -it gob-test bash -c -l 'cd app && ./serve.sh'
 ## Optional application container commands
 
 **Secure orchestration:**
-
-User and pass are in the `docker/solr/security.json` file, as well as in the url in the `docker/app/blacklight.yml` and `.env` and `docker-compose.yml`.
-
-The script will send the security credentials to ZooKeeper, then restart the local Solr server to propagate the changes.
 
 ```shell
 # Start Zookeeper security auth:
@@ -77,6 +71,14 @@ This rebuilds containers, so internal data that is not persisted on a volume wil
 
 ```shell
 $ ./start-me-up.sh
+```
+
+**Secure the Solr network:**
+
+If it is desired to secure the Solr servers, passing the `secure` value will cause the `cloud-secure.sh` script to run in the app container, then restart the orchestration.
+
+```shell
+$ ./start-me-up.sh secure
 ```
 
 **Run Rake commands in the containerized application directory:**
