@@ -2,32 +2,36 @@
 set -em
 
 
-ROOT_DIR="/geoblacklight"
+export SOLR_DIR="${PROJECT_DIR}/solr"
 
 source ~/.rvm/scripts/rvm
 
-if [[ ! -f "${ROOT_DIR}/.docker_init_flag" ]]; then
+if [[ ! -f "${PROJECT_DIR}/.docker_init_flag" ]]; then
 
-    touch "${ROOT_DIR}/.docker_init_flag"
+    touch "${PROJECT_DIR}/.docker_init_flag"
 
-    if [[ ! -d "${ROOT_DIR}/app/.bundle" ]]; then
-        mkdir "${ROOT_DIR}/app/.bundle" && chmod 755 "${ROOT_DIR}/app/.bundle"
+    if [[ ! -d "${APP_DIR}/.bundle" ]]; then
+        mkdir "${APP_DIR}/.bundle" && chmod 755 "${APP_DIR}/.bundle"
     fi
 
-    cd "${ROOT_DIR}/app"
+    cd "${APP_DIR}"
     bundle config build.nokogiri --use-system-libraries
     bundle check || bundle install
 
-    rake geoblacklight:server["-p 3000 -b 0.0.0.0"]
+    # final application installation (including local solr) and app/solr startup.
+    rake geoblacklight:server["-p 3000 -b 0.0.0.0"] &
 
 else
-    # restart both servers since we have apparently done this before
-    # GOB server is too dumb to start with the same command as above
+    # since this is probably a container rebuild or start-up, restart both app and solr
 
-    cd "${ROOT_DIR}/app/docker/solr"
-    bin/solr start -h "0.0.0.0" -p 8983 -V
+    if [[ -f "${SOLR_DIR}/bin/solr-8983.pid" ]]; then
+        rm "${SOLR_DIR}/bin/solr-8983.pid"
+    fi
 
-    cd "${ROOT_DIR}/app"
+    cd "${SOLR_DIR}"
+    bin/solr start
+
+    cd "${APP_DIR}"
     rm -rf tmp
     rails s -b "0.0.0.0" -p 3000
 
