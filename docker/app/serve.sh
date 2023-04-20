@@ -19,14 +19,10 @@ if [[ ! -f "${PROJECT_DIR}/.docker_init_flag" ]]; then
     bundle check || bundle install
 
     # final application installation (including local solr) and app/solr startup.
-    rake geoblacklight:server["-p 3000 -b 0.0.0.0"] &
+    rake geoblacklight:server['-p 3000 -b 0.0.0.0']
 
 else
-    # since this is probably a container rebuild or start-up, restart both app and solr
-
-    if [[ -f "${SOLR_DIR}/bin/solr-8983.pid" ]]; then
-        rm "${SOLR_DIR}/bin/solr-8983.pid"
-    fi
+    # container restart requires a restart of both app and solr
 
     cd "${SOLR_DIR}"
     bin/solr start
