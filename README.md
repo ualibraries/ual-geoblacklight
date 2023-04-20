@@ -35,18 +35,9 @@ This will default to a container rebuild if the docker orchestration is already 
 
 __NOTE:__ This also installs the GOB app automatically if it does not already exist on the `ual_gob` volume.
 
-```shell
-$ docker exec -it gob-test bash -c -l 'cd app && ./install_app.sh'
-```
-
 This will take a little while and the server is still not started. A list of dependencies should print out as the GOB is installed.
 
 The templated GeoBlacklight installation defaults to downloading and starting Solr locally. This Docker orchestration sets up ZooKeeper and one more Solr server to show how to propagate the data.
-
-```shell
-# Start the Rails application, also installing and starting the default Solr
-$ docker exec -it gob-test bash -c -l 'cd app && ./serve.sh'
-```
 
 ## Optional application container commands
 
