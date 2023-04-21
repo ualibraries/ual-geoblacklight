@@ -15,6 +15,7 @@ ARG RUBY_VER=3.2.1
 ARG RAILS_VERSION=6.1.4.6
 ARG VIEW_COMPONENT_VERSION=2.6.6
 
+# many of these env vars will be overwritten by docker/solr/solr.in.sh config if cloud-secure.sh is run
 ARG SOLR_HOST=0.0.0.0
 ARG SOLR_PORT=8983
 ARG SOLR_JETTY_HOST=0.0.0.0
