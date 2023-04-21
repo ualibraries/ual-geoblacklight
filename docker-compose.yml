@@ -23,9 +23,9 @@ services:
     tty: true
 
   zoo1:
-    image: zookeeper:3.8.1
+    image: "zookeeper:${ZK_VERSION:-latest}"
     container_name: zoo1
-    restart: unless-stopped
+    restart: always
     hostname: zoo1
     ports:
       - 2181:2181
@@ -36,7 +36,7 @@ services:
       ZOO_4LW_COMMANDS_WHITELIST: mntr, conf, ruok
       ZOO_CFG_EXTRA: "metricsProvider.className=org.apache.zookeeper.metrics.prometheus.PrometheusMetricsProvider metricsProvider.httpPort=7000 metricsProvider.exportJvmInfo=true"
     volumes:
-      - zoo1_data:/opt/persist
+      - zoo1_data:/data
     networks:
       - solr
 
