@@ -31,13 +31,11 @@ $ ./dbuild.sh
 $ ./start-me-up.sh
 ```
 
-This will default to a container rebuild if the docker orchestration is already present.
-
-__NOTE:__ This also installs the GOB app automatically if it does not already exist on the `ual_gob` volume.
-
-This will take a little while and the server is still not started. A list of dependencies should print out as the GOB is installed.
+The GOB app is installed automatically if it does not already exist on the `ual_gob` volume. This will take a little while and the server is still not started. A list of dependencies should print out as the GOB is installed.
 
 The templated GeoBlacklight installation defaults to downloading and starting Solr locally. This Docker orchestration sets up ZooKeeper and one more Solr server to show how to propagate the data.
+
+__NOTE:__ This will default to a container rebuild if the docker orchestration is already present.
 
 ## Optional application container commands
 
