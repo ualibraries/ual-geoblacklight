@@ -129,7 +129,7 @@ SOLR_PID_DIR="/tmp/solr"
 #SOLR_REQUESTLOG_ENABLED=true
 
 # Sets the port Solr binds to, default is 8983
-#SOLR_PORT=8983
+SOLR_PORT=8983
 
 # Restrict access to solr by IP address.
 # Specify a comma-separated list of addresses or networks, for example:
