@@ -4,7 +4,7 @@
 # 1. a native Java environment for Solr;
 # 2. a Debian environment for easy package installation and testing;
 # 3. installation of a non-root user for RoR dependencies;
-# 4. an easy location to build our files.
+# 4. an easy-to-access location for the Docker host to locally mount and build our files.
 
 FROM eclipse-temurin:latest
 
@@ -21,7 +21,6 @@ ARG SOLR_PORT=8983
 ARG SOLR_JETTY_HOST=0.0.0.0
 ARG SOLR_VERSION=9.1.1
 ARG SOLR_URL="http://${SOLR_HOST}:${SOLR_PORT}/solr/blacklight-core/"
-
 ARG ZK_HOST=zoo1:2181
 
 # user and perm args
@@ -81,7 +80,8 @@ RUN groupadd --gid ${USER_GID} ${USER} \
 RUN mkdir ${PROJECT_DIR} \
     && chown -R ${USER}:${USER} /geoblacklight
 
-RUN echo "source ~/.rvm/scripts/rvm" >> "${USER_HOME}/.bashrc"
+RUN echo "source ~/.rvm/scripts/rvm" >> "${USER_HOME}/.bashrc" \
+    && echo 'gem: --no-document' >> "${USER_HOME}/.gemrc"
 
 USER gob
 EXPOSE 3000
