@@ -1,10 +1,10 @@
 # Place any default configuration for solr_wrapper here
-# port: 8983
-# host: localhost
-version: 9.1.1
+port: 8983
+host: solr1
+# version: 9.1.1
 # solr directory includes the solr server, config, and data
-instance_dir: /geoblacklight/solr
-download_dir: /geoblacklight/solr
+# instance_dir: /geoblacklight/solr
+# download_dir: /geoblacklight/solr
 collection:
-  dir: solr/conf/
+  dir: solr/conf
   name: blacklight-core

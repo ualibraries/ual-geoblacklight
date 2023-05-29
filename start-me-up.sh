@@ -1,36 +1,27 @@
 #!/bin/bash
-set -x
 
 
 export USER_GID=$(id -g)
 export USER_UID=$(id -u)
 
-APP_RUNNING="$(docker-compose ps --status=running ual_gob_app | grep 'gob-test')"
+APP_RUNNING="$(docker-compose ps --status=running ual_gob_app | grep 'gob-app')"
 
 if [[ $1 == "pause" && "${APP_RUNNING}" ]]; then
 
+    echo -e "Statefully stopping the Docker orchestration...\n"
     docker-compose stop
-
-elif [[ $1 == "secure" && "${APP_RUNNING}" ]]; then
-
-    # secure script restarts the local Solr server after copying in ZK basic auth creds.
-    docker exec -it gob-test bash -c -l 'cd solr && ./cloud-secure.sh'
 
 elif [[ "${APP_RUNNING}" ]]; then
 
+    echo -e "Recreating the Docker containers (network data and volumes will persist)...\n"
     docker-compose restart
-    docker exec -it gob-test bash -c -l 'cd app && ./serve.sh'
+    docker exec -it gob-app bash -c -l './serve.sh'
 
 else
 
+    # git clone https://github.com/geobtaa/geoportal-solr-config.git gob_config
     docker-compose up -d
-
-fi
-
-# if we haven/t already installed the app, let's go ahead with that.
-if [[ ! -d ./ual_gob/app ]]; then
-
-    docker exec -it gob-test bash -c -l 'cd app && ./install_app.sh'
-    docker exec -it gob-test bash -c -l 'cd app && ./serve.sh'
+    docker exec -it gob-app bash -c -l './install_app.sh'
+    docker exec -it gob-app bash -c -l './serve.sh'
 
 fi

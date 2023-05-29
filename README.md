@@ -17,6 +17,8 @@ Here's a little diagram of GOB and Solr Cloud (WIP learning Mermaid syntax):
       Cloud_Solr-->Zookeeper;
 ```
 
+The GOB app container ("gob-test") has an instance of Solr that is started by default. The compose file also starts up another Solr instance that is connected by ZooKeeper.
+
 ## Setup
 
 **1. Build the UAL-GOB Docker image:**
@@ -57,30 +59,13 @@ This rebuilds containers, so internal data that is not persisted on a volume wil
 $ ./start-me-up.sh
 ```
 
-**Secure the Solr network:**
-
-If it is desired to secure the Solr servers, passing the `secure` value will cause the `cloud-secure.sh` script to run in the app container, then restart the orchestration.
-
-```shell
-$ ./start-me-up.sh secure
-```
-
 **Run Rake commands in the containerized application directory:**
 
 ```shell
-$ docker exec -it gob-test bash -c -l 'cd app && ./rake_command.sh "<command-to-run>"'
+$ docker exec -it gob-app bash -c -l './rake_command.sh "<command-to-run>"'
 
 # Example - populate Solr test fixtures:
-$ docker exec -it gob-test bash -c -l 'cd app && ./rake_command.sh "geoblacklight:index:seed[:remote]"'
-```
-
-**Run Solr commands in the container:**
-
-```shell
-$ docker exec -it gob-test bash -c -l 'cd solr && ./solr_command.sh "<command-to-run>"'
-
-# Example - healthcheck on the GeoBlacklight collection:
-$ docker exec -it gob-test bash -c -l 'cd solr && ./solr_command.sh "healthcheck -c blacklight-core"'
+$ docker exec -it gob-app bash -c -l './rake_command.sh "geoblacklight:index:seed[:remote]"'
 ```
 
 ## Notes
@@ -88,6 +73,8 @@ $ docker exec -it gob-test bash -c -l 'cd solr && ./solr_command.sh "healthcheck
 * https://geoblacklight.org/tutorial/2015/02/09/create-your-application.html#install-geoblacklight
 * https://github.com/geoblacklight/geoblacklight
 * https://github.com/geobtaa/geoportal-solr-config
+* https://solr.apache.org/guide/solr/latest/deployment-guide/zookeeper-ensemble.html
+* https://github.com/docker-solr/docker-solr/tree/master/scripts
 
 ## Helpful hints
 

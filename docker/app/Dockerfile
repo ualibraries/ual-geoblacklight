@@ -1,12 +1,11 @@
 # syntax=docker/dockerfile:experimental
 
 # This Docker container achieves a few things needed for a successful GOB build:
-# 1. a native Java environment for Solr;
-# 2. a Debian environment for easy package installation and testing;
-# 3. installation of a non-root user for RoR dependencies;
-# 4. an easy-to-access location for the Docker host to locally mount and build our files.
+# Debian environment for easy package installation and testing;
+# installation of a non-root user for RoR dependencies;
+# an easy-to-access location for the Docker host to locally mount and build our files.
 
-FROM eclipse-temurin:latest
+FROM ubuntu:latest
 
 ENV DISABLE_SPRING=1
 
@@ -16,7 +15,7 @@ ARG RAILS_VERSION=6.1.4.6
 ARG VIEW_COMPONENT_VERSION=2.6.6
 
 # many of these env vars will be overwritten by docker/solr/solr.in.sh config if cloud-secure.sh is run
-ARG SOLR_HOST=0.0.0.0
+ARG SOLR_HOST=localhost
 ARG SOLR_PORT=8983
 ARG SOLR_JETTY_HOST=0.0.0.0
 ARG SOLR_VERSION=9.1.1

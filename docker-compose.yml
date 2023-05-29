@@ -3,33 +3,46 @@ version: '3.8'
 services:
   ual_gob_app:
     image: ual-goblight:latest
-    container_name: gob-test
+    container_name: gob-app
     user: gob
     ports:
       - "127.0.0.1:3000:3000"
-      - "127.0.0.1:8983:8983"
     environment:
       - "USER_UID=${USER_UID:-1000}"
       - "USER_GID=${USER_GID:-1000}"
+      - ENGINE_CART_RAILS_OPTIONS=--skip-git --skip-listen --skip-spring --skip-keeps --skip-action-cable --skip-coffee --skip-test --skip-solr
     env_file:
       - .env
     volumes:
       - ./ual_gob:/geoblacklight
-      - ./docker:/home/gob/docker
+      - ./docker/app:/home/gob/docker
+    depends_on:
+      - ual_zookeeper
     networks:
       - solr
-    depends_on:
-      - zoo1
     tty: true
 
-  zoo1:
+  ual_solr:
+    image: ual-solr:latest
+    container_name: solr1
+    ports:
+      - "8983:8983"
+    volumes:
+      - solr1_data:/var/solr
+      - ./docker/solr/cloud-secure.sh:/home/solr/docker/cloud-secure.sh
+    depends_on:
+      - ual_zookeeper
+    networks:
+      - solr
+    command: bash -c "/home/solr/docker/cloud-secure.sh"
+
+  ual_zookeeper:
     image: "zookeeper:${ZK_VERSION:-latest}"
     container_name: zoo1
-    restart: always
-    hostname: zoo1
     ports:
-      - 2181:2181
-      - 7001:7000
+      - "2181:2181"
+      - "2888:2888"
+      - "3888:3888"
     environment:
       ZOO_MY_ID: 1
       ZOO_SERVERS: server.1=zoo1:2888:3888;2181
@@ -44,4 +57,5 @@ networks:
   solr:
 
 volumes:
+  solr1_data:
   zoo1_data:

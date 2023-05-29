@@ -103,7 +103,7 @@ SOLR_HOST="0.0.0.0"
 
 # Location where the bin/solr script will save PID files for running instances
 # If not set, the script will create PID files in $SOLR_TIP/bin
-SOLR_PID_DIR="/tmp/solr"
+# SOLR_PID_DIR="/geoblacklight/solr/bin"
 
 # Path to a directory for Solr to store cores and their data. By default, Solr will use server/solr
 # If solr.xml is not stored in ZooKeeper, this directory needs to contain solr.xml
@@ -151,7 +151,7 @@ SOLR_JETTY_HOST="0.0.0.0"
 
 # Enables HTTPS. It is implictly true if you set SOLR_SSL_KEY_STORE. Use this config
 # to enable https module with custom jetty configuration.
-#SOLR_SSL_ENABLED=true
+# SOLR_SSL_ENABLED=true
 # Uncomment to set SSL-related system properties
 # Be sure to update the paths to the correct keystore for your environment
 #SOLR_SSL_KEY_STORE=etc/solr-ssl.keystore.p12
@@ -280,4 +280,4 @@ SOLR_OPTS="$SOLR_OPTS $SOLR_ZK_CREDS_AND_ACLS"
 # SOLR_OPTS="$SOLR_OPTS -Dlog4j2.formatMsgNoLookups=true"
 
 # The bundled plugins in the "modules" folder can easily be enabled as a comma-separated list in SOLR_MODULES variable
-# SOLR_MODULES=extraction,ltr
+SOLR_MODULES=extraction,ltr,scripting

@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
-set -em
 
-
-export SOLR_DIR="${PROJECT_DIR}/solr"
 
 source ~/.rvm/scripts/rvm
 
@@ -18,17 +15,16 @@ if [[ ! -f "${PROJECT_DIR}/.docker_init_flag" ]]; then
 
     touch "${PROJECT_DIR}/.docker_init_flag"
 
-    # final application installation (including local solr) and app/solr startup.
-    rake geoblacklight:server['-p 3000 -b 0.0.0.0']
+    bundle exec rails s -b "0.0.0.0" -p 3000
+    # using the rake geoblacklight way to start below installs solr by default
+    # use this if it is desired to only have a standalone non-cloud deployment
+    # exec bundle exec rake geoblacklight:server["-p 3000 -b 0.0.0.0"]
 
 else
-    # container restart requires a restart of both app and solr
-
-    cd "${SOLR_DIR}"
-    bin/solr start
 
     cd "${APP_DIR}"
+    echo -e "\nRe-starting GOB Rails application... \n"
     rm -rf tmp
-    rails s -b "0.0.0.0" -p 3000
+    bundle exec rails s -b "0.0.0.0" -p 3000
 
 fi
