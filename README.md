@@ -81,10 +81,12 @@ $ docker exec -it gob-app bash -c -l './rake_command.sh "geoblacklight:index:see
 
 Troubleshooting the Solr server is pretty easy with the logs mounted in `app/solr/server/logs`.
 
-ATM, software versions are controlled in one of three places:
+Software versions are controlled in one of three places:
 
 * `docker/app/Dockerfile`
 * `docker/app/serve.sh`
 * `docker-compose.yml`
 
 TODO: consolidate these into one env, if possible.
+
+Unfortunately, the GOB Solr config has to live on the Solr instance, since it is a separate container. It is cloned there at container build time, so the container is run with it already in place. Therefore code updates are necessary both in the GOB app container and the Solr container.
