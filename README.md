@@ -11,13 +11,14 @@ Here's a little diagram of GOB and Solr Cloud (WIP learning Mermaid syntax):
 ```mermaid
   graph TD;
       App-->Local_Solr;
+      App-->Cloud_Solr;
       Local_Solr-->Zookeeper;
+      Cloud_Solr-->Zookeeper;
       Zookeeper-->Local_Solr;
       Zookeeper-->Cloud_Solr;
-      Cloud_Solr-->Zookeeper;
 ```
 
-The GOB app container ("gob-test") has an instance of Solr that is started by default. The compose file also starts up another Solr instance that is connected by ZooKeeper.
+The GOB app container ("gob-test") _can_ have an instance of Solr that is started by default. The compose file starts up another Solr instance that is connected by ZooKeeper, which is the industry standard and probably better represents what production might look like.
 
 ## Setup
 
