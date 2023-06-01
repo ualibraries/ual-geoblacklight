@@ -10,17 +10,15 @@ FROM ubuntu:latest
 ENV DISABLE_SPRING=1
 
 # ARGS can be overwritten in docker run or docker-compose
-ARG RUBY_VER=3.2.1
-ARG RAILS_VERSION=6.1.4.6
-ARG VIEW_COMPONENT_VERSION=2.6.6
+ARG RUBY_VERSION=latest
+ARG RAILS_VERSION=latest
+ARG VIEW_COMPONENT_VERSION=latest
 
-# many of these env vars will be overwritten by docker/solr/solr.in.sh config if cloud-secure.sh is run
-ARG SOLR_HOST=localhost
+ARG SOLR_HOST=solr1
 ARG SOLR_PORT=8983
-ARG SOLR_JETTY_HOST=0.0.0.0
-ARG SOLR_VERSION=9.1.1
-ARG SOLR_URL="http://${SOLR_HOST}:${SOLR_PORT}/solr/blacklight-core/"
-ARG ZK_HOST=zoo1:2181
+ARG SOLR_USER=solr
+ARG SOLR_PASS=SolrRocks
+ARG SOLR_URL="http://${SOLR_USER}:${SOLR_PASS}@${SOLR_HOST}:${SOLR_PORT}/solr/blacklight-core/"
 
 # user and perm args
 # NOTE: host user perms are injected in start-me-up.sh
