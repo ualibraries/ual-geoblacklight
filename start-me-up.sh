@@ -19,7 +19,6 @@ elif [[ "${APP_RUNNING}" ]]; then
 
 else
 
-    # git clone https://github.com/geobtaa/geoportal-solr-config.git gob_config
     docker-compose up -d
     docker exec -it gob-app bash -c -l './install_app.sh'
     docker exec -it gob-app bash -c -l './serve.sh'
