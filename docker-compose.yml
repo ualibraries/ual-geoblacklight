@@ -26,7 +26,7 @@ services:
     image: ual-solr:latest
     container_name: solr1
     ports:
-      - "8983:8983"
+      - "127.0.0.1:8983:8983"
     volumes:
       - solr1_data:/var/solr
       - ./docker/solr/cloud-secure.sh:/home/solr/docker/cloud-secure.sh
