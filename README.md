@@ -2,7 +2,7 @@
 
 ## Overview
 
-Something to help me learn something about [GeoBlacklight](https://geoblacklight.org/)
+This orchestration runs a fully decoupled search service using a GeoBlacklight (Ruby on Rails) server as the application server w/ Solr search service and ZooKeeper middleware containers.
 
 **What is this?**
 
@@ -10,15 +10,15 @@ Here's a little diagram of GOB and Solr Cloud (WIP learning Mermaid syntax):
 
 ```mermaid
   graph TD;
-      App-->Local_Solr;
-      App-->Cloud_Solr;
-      Local_Solr-->Zookeeper;
+      App-->Query_Request;
+      Query_Request-->Cloud_Solr;
       Cloud_Solr-->Zookeeper;
-      Zookeeper-->Local_Solr;
       Zookeeper-->Cloud_Solr;
+      Cloud_Solr-->Response_Data_Object;
+      Response_Data_Object-->App;
 ```
 
-The GOB app container ("gob-test") _can_ have an instance of Solr that is started by default. The compose file starts up another Solr instance that is connected by ZooKeeper, which is the industry standard and probably better represents what production might look like.
+The GOB app container ("gob-test") _can_ have an instance of Solr that is started by default. The compose file starts up another Solr instance that is connected to ZooKeeper, which is the industry standard and probably better represents what production might look like, esp in regards to scalability.
 
 ## Setup
 
@@ -28,19 +28,15 @@ The GOB app container ("gob-test") _can_ have an instance of Solr that is starte
 $ ./dbuild.sh
 ```
 
-**2. Start the Docker network:**
+**2. Start or rebuild the Docker network:**
 
 ```shell
 $ ./start-me-up.sh
 ```
 
-The GOB app is installed automatically if it does not already exist. This will take a little while and the server is still not started. A list of dependencies should print out as the GOB is installed.
+The GOB app is installed automatically if it does not already exist. This will take a little while and the server is still not started. A list of dependencies should print out as the GOB is installed. All data that matters to the app is statefully preserved on the host machine in the `./ual_gob` directory. The GOB app will be in `./ual_gob/app`.
 
-The templated GeoBlacklight installation then defaults to downloading and starting a Solr server locally. This Docker orchestration also sets up Apache ZooKeeper to propagate the data in "cloud mode".
-
-__NOTE:__ This will default to a container rebuild if the docker orchestration is already present.
-
-All data that matters to the app is statefully preserved on the host machine in the `./ual_gob` directory. The GOB app will be in `./ual_gob/app` and all the Solr files and data will be in `./ual_gob/solr`.
+Build scripts set up Apache ZooKeeper and Solr decoupled to propagate search configuration and data in "cloud mode". Search data is located in Docker volumes on startup.
 
 ## Optional application container commands
 
@@ -50,14 +46,6 @@ This is non-destructive. All containers remain stateful, as well as volumes and 
 
 ```shell
 $ ./start-me-up.sh pause
-```
-
-**Rebuild the containers:**
-
-This rebuilds containers, so internal data that is not persisted on a volume will be destroyed. This is necessary for changes to the `docker-compose.yml` file to take effect.
-
-```shell
-$ ./start-me-up.sh
 ```
 
 **Run Rake commands in the containerized application directory:**
