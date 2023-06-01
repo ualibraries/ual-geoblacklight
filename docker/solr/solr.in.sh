@@ -195,15 +195,15 @@ SOLR_JETTY_HOST="0.0.0.0"
 # Settings for authentication
 # Please configure only one of SOLR_AUTHENTICATION_CLIENT_BUILDER or SOLR_AUTH_TYPE parameters
 # SOLR_AUTHENTICATION_CLIENT_BUILDER="org.apache.solr.client.solrj.impl.PreemptiveBasicAuthClientBuilderFactory"
-SOLR_AUTH_TYPE="basic"
-SOLR_AUTHENTICATION_OPTS="-Dbasicauth=solr:SolrRocks"
+# SOLR_AUTH_TYPE="basic"
+# SOLR_AUTHENTICATION_OPTS="-Dbasicauth=solr:SolrRocks"
 
 # Settings for ZK ACL
 SOLR_ZK_CREDS_AND_ACLS="-DzkACLProvider=org.apache.solr.common.cloud.DigestZkACLProvider \
  -DzkCredentialsProvider=org.apache.solr.common.cloud.DigestZkCredentialsProvider \
  -DzkCredentialsInjector=org.apache.solr.common.cloud.VMParamsZkCredentialsInjector \
- -DzkDigestUsername=admin-user -DzkDigestPassword=CHANGEME-ADMIN-PASSWORD \
- -DzkDigestReadonlyUsername=readonly-user -DzkDigestReadonlyPassword=CHANGEME-READONLY-PASSWORD"
+ -DzkDigestUsername=admin-user -DzkDigestPassword=ual-lffassiuurefdi78833 \
+ -DzkDigestReadonlyUsername=readonly-user -DzkDigestReadonlyPassword=ual-347348e292987343"
 SOLR_OPTS="$SOLR_OPTS $SOLR_ZK_CREDS_AND_ACLS"
 
 # optionally, you can use using a a Java properties file 'zkDigestCredentialsFile'

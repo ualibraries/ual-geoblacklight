@@ -11,7 +11,8 @@ fi
 
 echo -e "\nSetting up and securing SolrCloud install with basic authentication...\n"
 cd /opt/solr
-bin/solr zk cp file:/opt/solr/server/solr/security.json zk:/security.json
+# bin/solr zk cp file:/opt/solr/server/solr/security.json zk:/security.json
+bin/solr auth enable -type basicAuth -credentials ${SOLR_AUTH} -zkHost zoo1:2181 -blockUnknown true
 
 # Don't add anything else below this comment
 echo -e "\nRestarting the Solr server now...\n"
