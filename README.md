@@ -76,7 +76,6 @@ $ ./destroy.sh
 
 ## Helpful hints
 
-* Troubleshooting the Solr server is pretty easy with the logs mounted in `app/solr/server/logs`.
 * Software versions are controlled in a couple files:
   * `dbuild.sh`
   * `docker/app/Dockerfile` or `docker/solr/Dockerfile`
