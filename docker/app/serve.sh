@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
 
-export SOLR_DIR="${PROJECT_DIR}/solr"
-
 source ~/.rvm/scripts/rvm
 
 if [[ ! -f "${PROJECT_DIR}/.docker_init_flag" ]]; then
