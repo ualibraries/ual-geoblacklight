@@ -24,7 +24,6 @@ RUN apt-get autoremove -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-COPY --chown=solr:solr ./solr/security.json /opt/solr/server/solr/security.json
 COPY --chown=solr:solr ./solr/solr.in.sh /etc/default/solr.in.sh
 
 RUN git clone https://github.com/geoblacklight/geoblacklight.git /home/solr/geoblacklight

@@ -17,16 +17,12 @@ if [[ ! -f "${PROJECT_DIR}/.docker_init_flag" ]]; then
 
     touch "${PROJECT_DIR}/.docker_init_flag"
 
-    bundle exec rails s -b "0.0.0.0" -p 3000
-    # using the rake geoblacklight way to start below installs solr by default
-    # use this if it is desired to only have a standalone non-cloud deployment
-    # exec bundle exec rake geoblacklight:server["-p 3000 -b 0.0.0.0"]
-
 else
 
     cd "${APP_DIR}"
     echo -e "\nRe-starting GOB Rails application... \n"
     rm -rf tmp
-    bundle exec rails s -b "0.0.0.0" -p 3000
 
 fi
+
+bundle exec rails s -b "0.0.0.0" -p 3000
