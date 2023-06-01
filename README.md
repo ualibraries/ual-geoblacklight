@@ -57,6 +57,14 @@ $ docker exec -it gob-app bash -c -l './rake_command.sh "<command-to-run>"'
 $ docker exec -it gob-app bash -c -l './rake_command.sh "geoblacklight:index:seed[:remote]"'
 ```
 
+**Tear-down**
+
+WARNING: This destroys _all_ data, meaning containers and volumes. (It does not remove Docker images, however.)
+
+```shell
+$ ./destroy.sh
+```
+
 ## Notes
 
 * https://geoblacklight.org/tutorial/2015/02/09/create-your-application.html#install-geoblacklight
