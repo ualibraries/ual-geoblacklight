@@ -74,6 +74,7 @@ $ docker exec -it gob-app bash -c -l './rake_command.sh "geoblacklight:index:see
 * https://geoblacklight.org/tutorial/2015/02/09/create-your-application.html#install-geoblacklight
 * https://github.com/geoblacklight/geoblacklight
 * https://github.com/geobtaa/geoportal-solr-config
+* https://github.com/projectblacklight/blacklight
 * https://solr.apache.org/guide/solr/latest/deployment-guide/zookeeper-ensemble.html
 * https://github.com/docker-solr/docker-solr/tree/master/scripts
 
