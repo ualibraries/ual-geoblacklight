@@ -8,7 +8,7 @@ cd ${PROJECT_DIR}
 
 if [[ ! -d "${APP_DIR}" ]]; then
 
-    rvm install ${RUBY_VER}
+    rvm install ${RUBY_VERSION}
     gem update --system
     gem install bundler rails
 
