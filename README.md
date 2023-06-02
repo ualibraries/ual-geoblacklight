@@ -2,11 +2,11 @@
 
 ## Overview
 
-This orchestration runs a fully decoupled search service using a GeoBlacklight (Ruby on Rails) server as the application server w/ Solr search service and ZooKeeper middleware containers.
+This Docker orchestration runs a fully decoupled GeoBlacklight search service that uses a Blacklight (Ruby on Rails) application querying the Solr & ZooKeeper middleware "ensemble".
 
-**What is this?**
+**How does it work? 30K ft view...**
 
-Here's a little diagram of GOB and Solr Cloud (WIP learning Mermaid syntax):
+Here's a little diagram of the GOB and Solr Cloud interaction (WIP learning Mermaid syntax):
 
 ```mermaid
   graph TD;
@@ -18,11 +18,11 @@ Here's a little diagram of GOB and Solr Cloud (WIP learning Mermaid syntax):
       Response_Data_Object-->App;
 ```
 
-The GOB app container ("gob-test") _can_ have an instance of Solr that is started by default. The compose file starts up another Solr instance that is connected to ZooKeeper, which is the industry standard and probably better represents what production might look like, esp in regards to scalability.
+ The GOB app container queries the Solr instance directly which has direct knowledge fo the GOB metadata structure. "Sharding" information is managed by the ZooKeeper middleware. Using the "blacklight-core" metadata, Solr sends back its data response in a format that can be ingested by RoR models. See the [Blacklight module directory](https://github.com/projectblacklight/blacklight/tree/main/lib/blacklight/solr) for Solr class implementations.
 
 ## Setup
 
-**1. Build the UAL-GOB Docker image:**
+**1. Build the UAL-GOB Docker images (for GOB and Solr containers):**
 
 ```shell
 $ ./dbuild.sh
