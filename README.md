@@ -76,7 +76,8 @@ $ ./destroy.sh
 
 ## Helpful hints
 
-* Software versions are controlled in a couple files:
-  * `dbuild.sh`
-  * `docker/app/Dockerfile` or `docker/solr/Dockerfile`
+* Software versions are controlled in several files:
+  * `.env` has first priority
+  * `dbuild.sh` for software that is installed at build time
+  * `docker-compose.yml`
 * Unfortunately, the GOB Solr config has to live on the Solr instance, since it is a separate container. It is cloned there at container build time, so the container is run with it already in place. Therefore solr config code updates are necessary both in the GOB app container and the Solr container. TODO: change this to a mount if possible.
