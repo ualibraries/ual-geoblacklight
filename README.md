@@ -18,7 +18,7 @@ Here's a little diagram of the GOB and Solr Cloud interaction (WIP learning Merm
       Response_Data_Object-->App;
 ```
 
- The GOB app container queries the Solr instance directly which has direct knowledge fo the GOB metadata structure. "Sharding" information is managed by the ZooKeeper middleware. Using the "blacklight-core" metadata, Solr sends back its data response in a format that can be ingested by RoR models. See the [Blacklight module directory](https://github.com/projectblacklight/blacklight/tree/main/lib/blacklight/solr) for Solr class implementations.
+ The GOB app container queries the Solr instance directly. "Sharding" information is managed by the ZooKeeper middleware. Using the "blacklight-core" metadata, Solr sends back its data response in a format that can be ingested by RoR models. See the [Blacklight module directory](https://github.com/projectblacklight/blacklight/tree/main/lib/blacklight/solr) for Solr class implementations.
 
 ## Setup
 
@@ -81,3 +81,4 @@ $ ./destroy.sh
   * `dbuild.sh` for software that is installed at build time
   * `docker-compose.yml`
 * Unfortunately, the GOB Solr config has to live on the Solr instance, since it is a separate container. It is cloned there at container build time, so the container is run with it already in place. Therefore solr config code updates are necessary both in the GOB app container and the Solr container. TODO: change this to a mount if possible.
+* Blacklight and GeoBlacklight are installed as Ruby modules. Various Rake tasks are found in both these module directories. Some investigation is necessary to find them, such as [GOB's tasks](https://github.com/geoblacklight/geoblacklight/blob/main/lib/tasks/geoblacklight.rake).
