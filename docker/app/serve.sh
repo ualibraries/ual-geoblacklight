@@ -23,4 +23,4 @@ else
 
 fi
 
-bundle exec rails s -b "0.0.0.0" -p 3000
+bundle exec rails s -b "0.0.0.0" -p 3000 -d
