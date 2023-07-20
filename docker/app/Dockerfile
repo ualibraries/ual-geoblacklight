@@ -7,8 +7,6 @@
 
 FROM ubuntu:latest
 
-ENV DISABLE_SPRING=1
-
 # ARGS can be overwritten in docker run or docker-compose
 ARG RUBY_VERSION=latest
 ARG RAILS_VERSION=latest
