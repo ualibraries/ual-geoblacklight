@@ -57,6 +57,12 @@ $ docker exec -it gob-app bash -c -l './rake_command.sh "<command-to-run>"'
 $ docker exec -it gob-app bash -c -l './rake_command.sh "geoblacklight:index:seed[:remote]"'
 ```
 
+**Inspect GOB application logs for development**
+
+```shell
+$ ./inspect-app-logs.sh
+```
+
 **Tear-down**
 
 WARNING: This destroys _all_ data, meaning containers and volumes. (It does not remove Docker images, however.)
