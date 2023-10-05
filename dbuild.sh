@@ -16,4 +16,5 @@ docker build --rm=true -t ual-solr:latest \
     --build-arg SOLR_VERSION=${SOLR_VERSION} \
     --build-arg SOLR_USER=${SOLR_USER} \
     --build-arg SOLR_PASS=${SOLR_PASS} \
+    --build-arg CERT_SECRET=${CERT_SECRET} \
     -f solr/Dockerfile .

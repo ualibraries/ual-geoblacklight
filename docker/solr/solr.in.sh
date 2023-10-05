@@ -154,19 +154,19 @@ SOLR_JETTY_HOST="0.0.0.0"
 # SOLR_SSL_ENABLED=true
 # Uncomment to set SSL-related system properties
 # Be sure to update the paths to the correct keystore for your environment
-#SOLR_SSL_KEY_STORE=etc/solr-ssl.keystore.p12
-#SOLR_SSL_KEY_STORE_PASSWORD=secret
-#SOLR_SSL_TRUST_STORE=etc/solr-ssl.keystore.p12
-#SOLR_SSL_TRUST_STORE_PASSWORD=secret
+SOLR_SSL_KEY_STORE=etc/solr-ssl.keystore.p12
+SOLR_SSL_KEY_STORE_PASSWORD=${SECRET}
+SOLR_SSL_TRUST_STORE=etc/solr-ssl.keystore.p12
+SOLR_SSL_TRUST_STORE_PASSWORD=${SECRET}
 # Require clients to authenticate
-#SOLR_SSL_NEED_CLIENT_AUTH=false
+SOLR_SSL_NEED_CLIENT_AUTH=false
 # Enable clients to authenticate (but not require)
-#SOLR_SSL_WANT_CLIENT_AUTH=false
+SOLR_SSL_WANT_CLIENT_AUTH=false
 # Verify client's hostname during SSL handshake
 #SOLR_SSL_CLIENT_HOSTNAME_VERIFICATION=false
 # SSL Certificates contain host/ip "peer name" information that is validated by default. Setting
 # this to false can be useful to disable these checks when re-using a certificate on many hosts
-#SOLR_SSL_CHECK_PEER_NAME=true
+SOLR_SSL_CHECK_PEER_NAME=true
 # Override Key/Trust Store types if necessary
 #SOLR_SSL_KEY_STORE_TYPE=PKCS12
 #SOLR_SSL_TRUST_STORE_TYPE=PKCS12
