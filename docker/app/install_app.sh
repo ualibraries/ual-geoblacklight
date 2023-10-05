@@ -10,7 +10,8 @@ if [[ ! -d "${APP_DIR}" ]]; then
 
     rvm install ${RUBY_VERSION}
     gem update --system
-    gem install bundler rails
+    gem install bundler
+    gem install rails -v ${RAILS_VERSION}
 
     rails new app -m https://raw.githubusercontent.com/geoblacklight/geoblacklight/main/template.rb
 
