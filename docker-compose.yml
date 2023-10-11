@@ -26,7 +26,9 @@ services:
     image: ual-solr:latest
     container_name: solr1
     ports:
-      - "127.0.0.1:8983:8983"
+      - "127.0.0.1:8983:8984"
+    env_file:
+      - .env
     volumes:
       - solr1_data:/var/solr
       - ./docker/solr/cloud-secure.sh:/home/solr/docker/cloud-secure.sh
@@ -35,6 +37,7 @@ services:
     networks:
       - solr
     command: bash -c "/home/solr/docker/cloud-secure.sh"
+    tty: true
 
   ual_zookeeper:
     image: "zookeeper:${ZK_VERSION:-latest}"
@@ -52,6 +55,7 @@ services:
       - zoo1_data:/data
     networks:
       - solr
+    tty: true
 
 networks:
   solr:
