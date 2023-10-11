@@ -13,6 +13,7 @@ docker build --rm=true -t ual-goblight:latest \
     -f app/Dockerfile .
 
 docker build --rm=true -t ual-solr:latest \
+    --build-arg JAVA_MEM_OPTS=${JAVA_MEM_OPTS} \
     --build-arg SOLR_VERSION=${SOLR_VERSION} \
     --build-arg SOLR_USER=${SOLR_USER} \
     --build-arg SOLR_PASS=${SOLR_PASS} \
