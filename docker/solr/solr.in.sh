@@ -32,11 +32,11 @@
 #SOLR_START_WAIT="$SOLR_STOP_WAIT"
 
 # Increase Java Heap as needed to support your indexing / query needs
-#SOLR_HEAP="512m"
+SOLR_HEAP="5000m"
 
 # Expert: If you want finer control over memory options, specify them directly
 # Comment out SOLR_HEAP if you are using this though, that takes precedence
-#SOLR_JAVA_MEM="-Xms512m -Xmx512m"
+# SOLR_JAVA_MEM=${JAVA_MEM_OPTS}
 
 # Enable verbose GC logging...
 #  * If this is unset, various default options will be selected depending on which JVM version is in use
@@ -154,10 +154,11 @@ SOLR_JETTY_HOST="0.0.0.0"
 # SOLR_SSL_ENABLED=true
 # Uncomment to set SSL-related system properties
 # Be sure to update the paths to the correct keystore for your environment
-SOLR_SSL_KEY_STORE=etc/solr-ssl.keystore.p12
-SOLR_SSL_KEY_STORE_PASSWORD=${SECRET}
-SOLR_SSL_TRUST_STORE=etc/solr-ssl.keystore.p12
-SOLR_SSL_TRUST_STORE_PASSWORD=${SECRET}
+# Looking for an absolute path here!
+SOLR_SSL_KEY_STORE=/var/solr/solr-ssl.keystore.p12
+SOLR_SSL_KEY_STORE_PASSWORD=${CERT_SECRET}
+SOLR_SSL_TRUST_STORE=/var/solr/solr-ssl.keystore.p12
+SOLR_SSL_TRUST_STORE_PASSWORD=${CERT_SECRET}
 # Require clients to authenticate
 SOLR_SSL_NEED_CLIENT_AUTH=false
 # Enable clients to authenticate (but not require)
@@ -168,8 +169,8 @@ SOLR_SSL_WANT_CLIENT_AUTH=false
 # this to false can be useful to disable these checks when re-using a certificate on many hosts
 SOLR_SSL_CHECK_PEER_NAME=true
 # Override Key/Trust Store types if necessary
-#SOLR_SSL_KEY_STORE_TYPE=PKCS12
-#SOLR_SSL_TRUST_STORE_TYPE=PKCS12
+SOLR_SSL_KEY_STORE_TYPE=PKCS12
+SOLR_SSL_TRUST_STORE_TYPE=PKCS12
 
 # Uncomment if you want to override previously defined SSL values for HTTP client
 # otherwise keep them commented and the above values will automatically be set for HTTP clients
