@@ -15,6 +15,8 @@ if [[ ! -f "${PROJECT_DIR}/.docker_init_flag" ]]; then
 
     touch "${PROJECT_DIR}/.docker_init_flag"
 
+    echo -e "\nStarting GOB Rails application... \n"
+
 else
 
     cd "${APP_DIR}"
