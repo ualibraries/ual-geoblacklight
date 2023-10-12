@@ -76,7 +76,8 @@ RUN mkdir ${PROJECT_DIR} \
     && chown -R ${USER}:${USER} /geoblacklight
 
 RUN echo "source ~/.rvm/scripts/rvm" >> "${USER_HOME}/.bashrc" \
-    && echo 'gem: --no-document' >> "${USER_HOME}/.gemrc"
+    && echo 'gem: --no-document' >> "${USER_HOME}/.gemrc" \
+    && chown -R ${USER}:${USER} "${USER_HOME}/.gemrc" "${USER_HOME}/.bashrc"
 
 USER gob
 EXPOSE 3000
