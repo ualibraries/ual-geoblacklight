@@ -38,6 +38,13 @@ The GOB app is installed automatically if it does not already exist. This will t
 
 Build scripts set up Apache ZooKeeper and Solr decoupled to propagate search configuration and data in "cloud mode". Search data is located in Docker volumes on startup.
 
+**3. View the application and Solr admin:**
+
+See the following URLs:
+
+* `127.0.0.1:3000` for the GeoBlacklight application
+* `127.0.0.1:8983` for the Solr admin (admin is locked down; see the .env file for creds)
+
 ## Optional application container commands
 
 **Stop the Docker network:**
