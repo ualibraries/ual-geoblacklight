@@ -6,7 +6,7 @@
 
 if [[ ! -n "$(ls -d /var/solr/data/blacklight-core*)" ]]; then
     echo -e "\nCreating GOB Solr core...\n"
-    solr-create -c blacklight-core -d /blacklight-core
+    solr-create -c blacklight-core -d /blacklight-core -shards 2 -V
 fi
 
 echo -e "\nSetting up and securing SolrCloud install with basic authentication...\n"
