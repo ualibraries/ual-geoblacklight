@@ -15,7 +15,7 @@ services:
     env_file:
       - .env
     volumes:
-      - ./ual_gob:/geoblacklight
+      - ./app:/geoblacklight/app
       - ./docker/app:/home/gob/docker
     depends_on:
       - ual_zookeeper

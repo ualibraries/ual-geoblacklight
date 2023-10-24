@@ -28,7 +28,6 @@ ARG USER_GID=${USER_UID}
 # project DRY dirs
 ENV PROJECT_DIR="/geoblacklight"
 ENV APP_DIR="${PROJECT_DIR}/app"
-ENV SOLR_DIR="${PROJECT_DIR}/solr"
 ENV USER_HOME="/home/${USER}"
 
 # Image install and update packages, and cleaning too!
@@ -84,5 +83,6 @@ EXPOSE 3000
 EXPOSE 8983
 WORKDIR "${USER_HOME}/docker"
 
+RUN echo "export PATH=$PATH:/usr/local/rvm/rubies/${RUBY_VERSION}/bin" >> ~/.bashrc
 RUN gpg2 --keyserver keyserver.ubuntu.com --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
 RUN curl -sSL https://get.rvm.io | bash -s stable

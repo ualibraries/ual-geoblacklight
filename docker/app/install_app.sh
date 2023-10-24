@@ -4,25 +4,13 @@ set -e
 
 source ~/.rvm/scripts/rvm
 
-cd ${PROJECT_DIR}
+cd ${APP_DIR}
 
-if [[ ! -d "${APP_DIR}" ]]; then
+rvm install ${RUBY_VERSION}
+gem update --system
+gem install rails -v ${RAILS_VERSION}
 
-    rvm install ${RUBY_VERSION}
-    gem update --system
-    gem install bundler
-    gem install rails -v ${RAILS_VERSION}
+echo -e "\nPass. App has been initialized.\n"
+echo -e "\nStarting the GOB application.\n"
 
-    rails new app -m https://raw.githubusercontent.com/geoblacklight/geoblacklight/main/template.rb
-
-    # install our current customizations for Docker image
-    rm "${APP_DIR}/.solr_wrapper.yml" \
-        && rm "${APP_DIR}/config/blacklight.yml" \
-        && cp "${USER_HOME}/docker/.solr_wrapper.yml" "${APP_DIR}/.solr_wrapper.yml" \
-        && cp "${USER_HOME}/docker/blacklight.yml" "${APP_DIR}/config/blacklight.yml"
-
-else
-    
-    echo -e "\nPass. App has already been installed at ${APP_DIR}.\n"
-
-fi
+bin/setup
