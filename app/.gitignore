@@ -41,4 +41,3 @@ yarn-debug.log*
 
 # ignore flag for container initialization
 .docker_init_flag
-*.sqlite3
