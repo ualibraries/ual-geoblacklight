@@ -11,6 +11,7 @@ services:
       - "USER_UID=${USER_UID:-1000}"
       - "USER_GID=${USER_GID:-1000}"
       - ENGINE_CART_RAILS_OPTIONS=--skip-git --skip-listen --skip-spring --skip-keeps --skip-action-cable --skip-coffee --skip-test --skip-solr
+      - RAILS_ENV=development
     env_file:
       - .env
     volumes:
