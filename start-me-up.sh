@@ -21,12 +21,10 @@ elif [[ "${APP_RUNNING}" ]]; then
     echo -e "Recreating the Docker containers (network data and volumes will persist)...\n"
     docker-compose restart
     docker exec -it gob-app bash -c -l './app_init.sh'
-    # docker exec -it gob-app bash -c -l './serve.sh'
 
 else
 
     docker-compose up -d
     docker exec -it gob-app bash -c -l './app_init.sh'
-    # docker exec -it gob-app bash -c -l './serve.sh'
 
 fi
