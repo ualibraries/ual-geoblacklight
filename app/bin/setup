@@ -15,6 +15,7 @@ FileUtils.chdir APP_ROOT do
 
   puts '== Installing dependencies =='
   system! 'gem install bundler --conservative'
+  system! 'bundle config build.nokogiri --use-system-libraries'
   system('bundle check') || system!('bundle install')
 
   # Install JavaScript dependencies
@@ -31,7 +32,10 @@ FileUtils.chdir APP_ROOT do
   puts "\n== Removing old logs and tempfiles =="
   system! 'bin/rails log:clear tmp:clear'
 
-  # TODO: Add RAILS_ENV for sniffing restart
-  puts "\n== Restarting application server =="
-  system! 'bin/rails s -b "0.0.0.0" -p 3000 -d'
+  puts "\n== Starting application server =="
+  if ENV['RAILS_ENV'].is_set && ENV['RAILS_ENV'] == "development" then
+    system! 'bin/rails s -b "0.0.0.0" -p 3000 -d'
+  else
+    system! 'bin/rails restart'
+  end
 end
