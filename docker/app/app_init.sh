@@ -10,7 +10,6 @@ rvm install ${RUBY_VERSION}
 gem update --system
 gem install rails -v ${RAILS_VERSION}
 
-echo -e "\nPass. App has been initialized.\n"
 echo -e "\nStarting the GOB application.\n"
 
 bin/setup
