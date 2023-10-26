@@ -33,7 +33,7 @@ FileUtils.chdir APP_ROOT do
   system! 'bin/rails log:clear tmp:clear'
 
   puts "\n== Starting application server =="
-  if ENV['RAILS_ENV'] == 'development' then
+  if ENV['RAILS_ENV'] == 'development' && ENV['USER'] == 'gob' then
     system! 'bin/rails s -b "0.0.0.0" -p 3000 -d'
   else
     system! 'bin/rails restart'
