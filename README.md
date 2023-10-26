@@ -72,7 +72,7 @@ $ ./inspect-app-logs.sh
 
 **Tear-down**
 
-WARNING: This destroys _all_ data, meaning containers and volumes. (It does not remove Docker images, however.)
+WARNING: This destroys _all_ data, meaning containers and volumes. (It does not remove Docker images, however.) The dialogue will ask if you want to clean up any untracked files. Usually there are generated files that are ignored by git. However, if you have added something and not committed, those files may be deleted permanently. Please take a good look at the list to avoid this.
 
 ```shell
 $ ./destroy.sh
