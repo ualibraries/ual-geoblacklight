@@ -4,7 +4,7 @@
 export USER_GID=$(id -g)
 export USER_UID=$(id -u)
 
-APP_RUNNING="$(docker-compose ps --status=running ual_gob_app | grep 'gob-app')"
+APP_RUNNING="$(docker compose ps --status=running ual_gob_app | grep 'gob-app')"
 
 if [[ $1 == "pause" && "${APP_RUNNING}" ]]; then
 
