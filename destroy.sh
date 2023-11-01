@@ -2,15 +2,16 @@
 
 docker compose down -v
 
-git clean -fdxn
-if [ ! -n $? ]; then
+FILES=`git clean -fdxn`
+if [ -n "${FILES}" ]; then
     echo -ne "Do you want to remove the following files? (y|n) \n"
+    echo "${FILES}"
     read option
     if [ "$option" == "y" ]; then
         git clean -fdx
     elif [ "$option" == "n" ]; then
         echo -e "\nNot removing any untracked files.\n"
-    else 
+    else
         echo -e "\nSorry, I could not understand the input.\n"
     fi
 else
