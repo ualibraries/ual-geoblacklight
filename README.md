@@ -86,6 +86,7 @@ $ ./destroy.sh
 * https://github.com/projectblacklight/blacklight
 * https://solr.apache.org/guide/solr/latest/deployment-guide/zookeeper-ensemble.html
 * https://github.com/docker-solr/docker-solr/tree/master/scripts
+* https://github.com/geoblacklight/geoblacklight/tree/main/spec/fixtures/solr_documents
 
 ## Helpful hints
 
