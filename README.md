@@ -34,7 +34,7 @@ $ ./dbuild.sh
 $ ./start-me-up.sh
 ```
 
-The GOB app is installed automatically if it does not already exist. This will take a little while and the server is still not started. A list of dependencies should print out as the GOB is installed. All data that matters to the app is statefully preserved on the host machine in the `./ual_gob` directory. The GOB app will be in `./ual_gob/app`.
+The GOB app is installed automatically if it does not already exist. This will take a little while and the server is still not started. A list of dependencies should print out as the GOB is installed. All data that matters to the app is statefully preserved on the host machine in the `./app` directory. The GOB RoR app will be in `./app/app` (Yes, two apps for the price of one!)
 
 Build scripts set up Apache ZooKeeper and Solr decoupled to propagate search configuration and data in "cloud mode". Search data is located in Docker volumes on startup.
 
@@ -42,8 +42,8 @@ Build scripts set up Apache ZooKeeper and Solr decoupled to propagate search con
 
 See the following URLs:
 
-* `127.0.0.1:3000` for the GeoBlacklight application
-* `127.0.0.1:8983` for the Solr admin (admin is locked down; see the .env file for creds)
+* `localhost:3000` for the GeoBlacklight application
+* `localhost:8983` for the Solr admin (admin is locked down; see the .env file for creds)
 
 ## Optional application container commands
 
@@ -90,9 +90,5 @@ $ ./destroy.sh
 
 ## Helpful hints
 
-* Software versions are controlled in several files:
-  * `.env` has first priority
-  * `dbuild.sh` for software that is installed at build time
-  * `docker-compose.yml`
-* Unfortunately, the GOB Solr config has to live on the Solr instance, since it is a separate container. It is cloned there at container build time, so the container is run with it already in place. Therefore solr config code updates are necessary both in the GOB app container and the Solr container. TODO: change this to a mount if possible.
+* Software versions are controlled in `.env`, as are a few other important environment variables.
 * Blacklight and GeoBlacklight are installed as Ruby modules. Various Rake tasks are found in both these module directories. Some investigation is necessary to find them, such as [GOB's tasks](https://github.com/geoblacklight/geoblacklight/blob/main/lib/tasks/geoblacklight.rake).
