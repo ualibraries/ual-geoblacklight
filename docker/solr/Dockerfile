@@ -26,12 +26,6 @@ RUN apt-get autoremove -y \
 
 COPY --chown=solr:solr ./solr/solr.in.sh /etc/default/solr.in.sh
 
-RUN git clone https://github.com/geoblacklight/geoblacklight.git /home/solr/geoblacklight
-RUN mv /home/solr/geoblacklight/solr/conf /blacklight-core
-RUN chown -R solr:solr /blacklight-core \
-    && chmod -R a+X /blacklight-core
-RUN rm -rf /home/solr/geoblacklight
-
 RUN chown -R solr:solr /var/solr
 
 USER solr
