@@ -75,6 +75,24 @@ $ docker exec -it gob-app bash -c -l './rake_command.sh "<command-to-run>"'
 $ docker exec -it gob-app bash -c -l './rake_command.sh "geoblacklight:index:seed[:remote]"'
 ```
 
+See Geoblacklight tasks [here](https://github.com/geoblacklight/geoblacklight/blob/main/lib/tasks/geoblacklight.rake).
+
+- `:geoblacklight` main namespace for all commands.
+  - `:server` Solr & Geoblacklight startup (which this repo doesn't use). This also installs some seed data.
+  - `:webpack` Runs the app and Solr together in interactive mode with the `foreman` gem.
+  - `:index` child name for running fixtures.
+    - `:seed` by itself runs local fixtures (spec/fixtures/solr_documents).
+      - `[:remote]` reaches out to the github repo (see below) to get fixtures.
+    - `:ingest_all` Ingests a GeoHydra transformed.json.
+    - `:ingest` default to ingest blacklight.json files from directory `data` in project root.
+      - `[:directory]` to pass a directory path to ingest files.
+  - `:downloads` stuff to do with downloading files.
+    - `:delete` deletes cached downloads.
+    - `:mkdir` create the cache directory, like bash.
+    - `:precache` programmatically add cache files.
+  - `:solr:seed` same as `geoblacklight:index:seed`
+  - `:application_asset_paths` echoes out all asset paths, kinda handy.
+
 **Inspect GOB application logs for development**
 
 ```shell
@@ -98,8 +116,11 @@ $ ./destroy.sh
 * https://solr.apache.org/guide/solr/latest/deployment-guide/zookeeper-ensemble.html
 * https://github.com/docker-solr/docker-solr/tree/master/scripts
 * https://github.com/geoblacklight/geoblacklight/tree/main/spec/fixtures/solr_documents
+* https://github.com/OpenGeoMetadata/edu.berkeley/blob/master/ark28722/s7/059k/geoblacklight.json (example geoblacklight.json file in GBL ver.1 schema)
+* https://opengeometadata.org/ogm-aardvark/ (for GBL ver.2 schema)
+* https://opengeometadata.org/aardvark-gbl-1-crosswalk/
 
 ## Helpful hints
 
 * Software versions are controlled in `.env`, as are a few other important environment variables.
-* Blacklight and GeoBlacklight are installed as Ruby modules. Various Rake tasks are found in both these module directories. Some investigation is necessary to find them, such as [GOB's tasks](https://github.com/geoblacklight/geoblacklight/blob/main/lib/tasks/geoblacklight.rake).
+
