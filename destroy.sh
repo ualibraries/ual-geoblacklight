@@ -5,8 +5,8 @@ docker compose down -v
 FILES=`git clean -fdxn`
 if [ -n "${FILES}" ]; then
     echo -e "\n\nThe following files have untracked changes since the last commit, \nusually meaning they are ignored and/or code-generated dependencies. \n\n"
-    echo "${FILES} \n\n"
-    echo -e "Do you want to remove them? (y|n)"
+    echo "${FILES}"
+    echo -e "\nDo you want to remove them? (y|n)"
     read option
     if [ "$option" == "y" ]; then
         git clean -fdx
