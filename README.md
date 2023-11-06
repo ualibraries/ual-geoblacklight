@@ -22,6 +22,17 @@ Here's a little diagram of the GOB and Solr Cloud interaction (WIP learning Merm
 
 ## Setup
 
+### Necessary tools:
+
+  - Computer (okay, sorry, it's Monday!)
+  - Terminal access
+  - Git
+  - Docker, either Desktop or just the straight engine if deploying on any of the Linux distros
+
+**Preliminary Steps:**
+
+Start by cloning this repository to pretty much anywhere on most filesystems that the Docker daemon has access to. There may be filesystem permission issues for your user. Either find your user's UID and GID or ask another IT compadre if they know what the heck I'm talking about. Put those ids in the `.env` file at the root of the project, replacing the UID and GID, respectively. Then proceed to ...
+
 **1. Build the UAL-GOB Docker images (for GOB and Solr containers):**
 
 ```shell
