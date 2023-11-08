@@ -1,6 +1,8 @@
 #!/bin/bash
 
 
+source .env
+
 APP_RUNNING="$(docker compose ps --status=running ual_gob_app | grep 'gob-app')"
 
 if [[ $1 == "pause" && "${APP_RUNNING}" ]]; then
