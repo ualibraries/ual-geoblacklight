@@ -6,7 +6,7 @@ services:
     container_name: gob-app
     user: gob
     ports:
-      - "3000:3000"
+      - "${GOB_PORT:-3000}:3000"
     environment:
       - ENGINE_CART_RAILS_OPTIONS=--skip-git --skip-listen --skip-spring --skip-keeps --skip-action-cable --skip-coffee --skip-test --skip-solr
       - RAILS_ENV=development
@@ -25,7 +25,7 @@ services:
     image: ual-solr:latest
     container_name: solr1
     ports:
-      - "8983:8983"
+      - "${SOLR_PORT:-8983}:8983"
     volumes:
       - solr1_data:/var/solr
       - ./docker/solr/cloud-secure.sh:/home/solr/docker/cloud-secure.sh
