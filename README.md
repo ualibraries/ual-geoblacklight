@@ -105,7 +105,7 @@ $ ./inspect-app-logs.sh
 $ ./make-solr-query.sh <query-something-neat>
 
 # Example (after running seed ingest) - look for geo data containing "Manhattan":
-$ ./make-solr-query.sh "Manhattan"
+$ ./make-solr-query.sh "q=Manhattan"
 ```
 
 **Tear-down**
