@@ -123,4 +123,5 @@ $ ./destroy.sh
 ## Helpful hints
 
 * Software versions are controlled in `.env`, as are a few other important environment variables.
+* Blacklight-core metadata and config are stored in the `app/solr/conf` directory, which is mounted into the Solr container.
 
