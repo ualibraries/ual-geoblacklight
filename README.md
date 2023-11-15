@@ -10,10 +10,12 @@ Here's a little diagram of the GBL and Solr Cloud interaction (Mermaid syntax):
 
 ```mermaid
   graph LR;
-      Geoblacklight-->|QueryRequest|CloudSolr;
-      CloudSolr-->Zookeeper;
-      Zookeeper-->CloudSolr;
-      CloudSolr-->|DataResponse|Geoblacklight;
+      
+      
+      A[Geoblacklight]==>|QueryRequest|B{CloudSolr};
+      B{CloudSolr}-->D(Zookeeper);
+      D(Zookeeper)-->B{CloudSolr};
+      B{CloudSolr}==>|DataResponse|A[Geoblacklight];
 ```
 
  The GBL app container queries the Solr instance directly. "Sharding" information is managed by the ZooKeeper middleware. Using the "blacklight-core" metadata, Solr sends back its data response in a format that can be ingested by RoR models. 
