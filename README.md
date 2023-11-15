@@ -1,4 +1,4 @@
-# Docker orchestration for UAL GOB (Geoblacklight) development
+# Docker orchestration for UAL GBL (Geoblacklight) development
 
 ## Overview
 
@@ -6,19 +6,17 @@ This Docker orchestration runs a fully decoupled GeoBlacklight search service th
 
 **How does it work? 30K ft view...**
 
-Here's a little diagram of the GOB and Solr Cloud interaction (WIP learning Mermaid syntax):
+Here's a little diagram of the GBL and Solr Cloud interaction (Mermaid syntax):
 
 ```mermaid
-  graph TD;
-      App-->Query_Request;
-      Query_Request-->Cloud_Solr;
-      Cloud_Solr-->Zookeeper;
-      Zookeeper-->Cloud_Solr;
-      Cloud_Solr-->Response_Data_Object;
-      Response_Data_Object-->App;
+  graph LR;
+      Geoblacklight-->|QueryRequest|CloudSolr;
+      CloudSolr-->Zookeeper;
+      Zookeeper-->CloudSolr;
+      CloudSolr-->|DataResponse|Geoblacklight;
 ```
 
- The GOB app container queries the Solr instance directly. "Sharding" information is managed by the ZooKeeper middleware. Using the "blacklight-core" metadata, Solr sends back its data response in a format that can be ingested by RoR models. See the [Blacklight module directory](https://github.com/projectblacklight/blacklight/tree/main/lib/blacklight/solr) for Solr class implementations.
+ The GBL app container queries the Solr instance directly. "Sharding" information is managed by the ZooKeeper middleware. Using the "blacklight-core" metadata, Solr sends back its data response in a format that can be ingested by RoR models. 
 
 ## Setup
 
@@ -33,7 +31,7 @@ Here's a little diagram of the GOB and Solr Cloud interaction (WIP learning Merm
 
 Start by cloning this repository to pretty much anywhere on most filesystems that the Docker daemon has access to. There may be filesystem permission issues for your user. Either find your user's UID and GID or ask another IT compadre if they know what the heck I'm talking about. Put those ids in the `.env` file at the root of the project, replacing the UID and GID, respectively. Then proceed to ...
 
-**1. Build the UAL-GOB Docker images (for GOB and Solr containers):**
+**1. Build the UAL-GBL Docker images (for GBL and Solr containers):**
 
 ```shell
 $ ./dbuild.sh
@@ -45,7 +43,7 @@ $ ./dbuild.sh
 $ ./start-me-up.sh
 ```
 
-The GOB app is installed automatically if it does not already exist. This will take a little while and the server is still not started. A list of dependencies should print out as the GOB is installed. All data that matters to the app is statefully preserved on the host machine in the `./app` directory. The GOB RoR app will be in `./app/app` (Yes, two apps for the price of one!)
+The GBL app is installed automatically if it does not already exist. This will take a little while and the server is still not started. A list of dependencies should print out as the GBL is installed. All data that matters to the app is statefully preserved on the host machine in the `./app` directory. The GBL RoR app will be in `./app/app` (Yes, two apps for the price of one!)
 
 Build scripts set up Apache ZooKeeper and Solr decoupled to propagate search configuration and data in "cloud mode". Search data is located in Docker volumes on startup.
 
@@ -93,7 +91,7 @@ See Geoblacklight tasks [here](https://github.com/geoblacklight/geoblacklight/bl
   - `:solr:seed` same as `geoblacklight:index:seed`
   - `:application_asset_paths` echoes out all asset paths, kinda handy.
 
-**Inspect GOB application logs for development**
+**Inspect GBL application logs for development**
 
 ```shell
 $ ./inspect-app-logs.sh
@@ -128,6 +126,7 @@ $ ./destroy.sh
 * https://github.com/OpenGeoMetadata/edu.berkeley/blob/master/ark28722/s7/059k/geoblacklight.json (example geoblacklight.json file in GBL ver.1 schema)
 * https://opengeometadata.org/ogm-aardvark/ (for GBL ver.2 schema)
 * https://opengeometadata.org/aardvark-gbl-1-crosswalk/
+* https://github.com/projectblacklight/blacklight/tree/main/lib/blacklight/solr (Solr classes)
 
 ## Helpful hints
 
