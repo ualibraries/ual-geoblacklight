@@ -96,7 +96,8 @@ See Geoblacklight tasks [here](https://github.com/geoblacklight/geoblacklight/bl
 **Inspect GBL application logs for development**
 
 ```shell
-$ ./inspect-app-logs.sh
+# number of lines to watch can be set, defaults to 10
+$ ./inspect-app-logs.sh 50
 ```
 
 **Run Solr queries for development and testing**
