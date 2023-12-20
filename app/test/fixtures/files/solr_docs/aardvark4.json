@@ -1,0 +1,60 @@
+[
+  {
+    "id": "uarizona-arizona-railroads-1992",
+    "dct_identifier_sm": [
+      "http://dx.doi.org/10.2458/azu_geo_arizona_railroads_1992"
+    ],
+    "dct_title_s": "Railroad Routes, Arizona, 1992",
+    "dct_description_sm": [
+      "Dataset is composed of line features which depict the locations of railroad routes in Arizona."
+    ],
+    "dct_language_sm": [
+      "eng"
+    ],
+    "dct_creator_sm": [
+      "Arizona. State Land Department"
+    ],
+    "dct_publisher_sm": [
+      "Arizona State Land Department, Arizona Land Resources Information System"
+    ],
+    "gbl_resourceClass_sm": [
+      "Datasets"
+    ],
+    "gbl_resourceType_sm": [
+      "Line data"
+    ],
+    "dct_subject_sm": [
+      "railroads",
+      "TIGER file",
+      "Economy",
+      "Transportation"
+    ],
+    "dcat_theme_sm": [
+      "Transportation",
+      "Economy"
+    ],
+    "dct_temporal_sm": [
+      "1992"
+    ],
+    "dct_issued_s": "1993-01-01T:00:00:00",
+    "gbl_indexYear_im": [
+      "1992"
+    ],
+    "dct_spatial_sm": [
+      "railroads",
+      "State of Arizona"
+    ],
+    "locn_geometry": "ENVELOPE(-114.990817, -108.927262, 36.911024, 31.278373)",
+    "dcat_bbox": "ENVELOPE(-114.990817, -108.927262, 36.911024, 31.278373)",
+    "dct_accessRights_s": "Public",
+    "dct_format_s": "Shapefile",
+    "gbl_wxsIdentifier_s": "UniversityLibrary:Arizona_Railroads_1992",
+    "dct_references_s": "{\"http://www.opengis.net/def/serviceType/ogc/wms\":\"https://geo.library.arizona.edu/geoserver/wms\",\"http://www.opengis.net/def/serviceType/ogc/wfs\":\"https://geo.library.arizona.edu/geoserver/wfs\",\"http://www.isotc211.org/schemas/2005/gmd/\":\"https://raw.githubusercontent.com/OpenGeoMetadata/edu.uarizona/master/5A1/4Oa/pW/j4/iso19139.xml\",\"http://schema.org/downloadUrl\":[{\"label\":\"Shapefile\",\"url\":\"http://sequoia.library.arizona.edu/geospatial/public/single_layer_datasets/Arizona_Railroads_1992.zip?ticket=publicAccess\"}]}",
+    "schema_provider_s": "UArizona",
+    "gbl_mdModified_dt": "2023-12-20T23:48:26Z",
+    "gbl_mdVersion_s": "Aardvark",
+    "dct_isPartOf_sm": [
+      "General"
+    ]
+  }
+]

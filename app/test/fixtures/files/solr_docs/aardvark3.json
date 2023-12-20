@@ -1,0 +1,61 @@
+[
+  {
+    "id": "uarizona-arizona-epasuperfund-1997",
+    "dct_identifier_sm": [
+      "http://dx.doi.org/10.2458/azu_geo_arizona_epasuperfund_1997"
+    ],
+    "dct_title_s": "EPA Superfund Sites, Arizona, 1997",
+    "dct_description_sm": [
+      "Dataset depicts EPA Superfund sites throughout Arizona. This dataset was created from the CERLIS database. CERCLIS is a national computerized management information system that automates entry, updating, and retrieval of Comprehensive Environmental Response, Compensation, and Liability Information System data and tracks site and non-site specific Superfund data in support of the Comprehensive Environmental Response, Compensation, and Liability Act. It contains information on hazardous waste site assessment and remediation. For distribution with BASINS v.2.0, the spatial attributes of the database were prepared in Arcview shape file format while selected relational attributes were prepared in Arcview DBF file format."
+    ],
+    "dct_language_sm": [
+      "eng"
+    ],
+    "dct_creator_sm": [
+      "United States. Environmental Protection Agency."
+    ],
+    "dct_publisher_sm": [
+      "U.S. Environmental Protection Agency"
+    ],
+    "gbl_resourceClass_sm": [
+      "Datasets"
+    ],
+    "gbl_resourceType_sm": [
+      "Point data"
+    ],
+    "dct_subject_sm": [
+      "National Priority List (NPL)",
+      "CERCLIS Sites",
+      "Society",
+      "Health",
+      "Environment"
+    ],
+    "dcat_theme_sm": [
+      "Society",
+      "Health",
+      "Environment"
+    ],
+    "dct_temporal_sm": [
+      "1983"
+    ],
+    "dct_issued_s": "1998-08-01T:00:00:00",
+    "gbl_indexYear_im": [
+      "1983"
+    ],
+    "dct_spatial_sm": [
+      "State of Arizona"
+    ],
+    "locn_geometry": "ENVELOPE(-114.761317, -109.798022, 34.5459, 31.305784)",
+    "dcat_bbox": "ENVELOPE(-114.761317, -109.798022, 34.5459, 31.305784)",
+    "dct_accessRights_s": "Public",
+    "dct_format_s": "Shapefile",
+    "gbl_wxsIdentifier_s": "UniversityLibrary:Arizona_EPASuperfund_1997",
+    "dct_references_s": "{\"http://www.opengis.net/def/serviceType/ogc/wms\":\"https://geo.library.arizona.edu/geoserver/wms\",\"http://www.opengis.net/def/serviceType/ogc/wfs\":\"https://geo.library.arizona.edu/geoserver/wfs\",\"http://www.isotc211.org/schemas/2005/gmd/\":\"https://raw.githubusercontent.com/OpenGeoMetadata/edu.uarizona/master/4EO/Y6H/Pt/WL/iso19139.xml\",\"http://schema.org/downloadUrl\":[{\"label\":\"Shapefile\",\"url\":\"http://sequoia.library.arizona.edu/geospatial/public/single_layer_datasets/Arizona_EPASuperfund_1997.zip?ticket=publicAccess\"}]}",
+    "schema_provider_s": "UArizona",
+    "gbl_mdModified_dt": "2023-12-20T23:47:55Z",
+    "gbl_mdVersion_s": "Aardvark",
+    "dct_isPartOf_sm": [
+      "General"
+    ]
+  }
+]

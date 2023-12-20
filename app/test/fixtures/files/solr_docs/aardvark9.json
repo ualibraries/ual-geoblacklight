@@ -1,0 +1,63 @@
+[
+  {
+    "id": "uarizona-arizona-highpotentiallargescalesolar-2014",
+    "dct_identifier_sm": [
+      "http://dx.doi.org/10.2458/azu_geo_arizona_highpotentiallargescalesolar_2014"
+    ],
+    "dct_title_s": "Areas of High Potential for Large Scale Solar Facilities, Arizona, 2014",
+    "dct_description_sm": [
+      "The REOA model approach used to generate this dataset incorporates two main objectives (physical and economic) and a range of sub-objectives to determine suitability. Objectives and sub-objectives are given weights based on the relative importance to each other. The physical objective was the aspect of the land surface, while the economic objectives consisted of proximity to existing roads, railroads, transmission lines, and sub-stations. For each objective and sub-objective a unique model was created in ArcGIS Model Builder that incorporated various tools from the ArcGIS Spatial Analyst Extension for ArcMap. This dataset is not a final assessment of the real-world suitability of a given area of land and must be ground-truthed. Full explanation of methodology can be found here:https://rurallandscapes.extension.arizona.edu/sites/rurallandscapes.extension.arizona.edu/files/resources/Project%20Overview%20for%20REOA%20.pdf\" Summary of Model REOA-Modeling Notes -Model Extent: South (Pima, Santa Cruz, Cochise); West (Yuma, La Paz, Mohave); Central (Maricopa, Pinal, Gila); North Central (Yavapai, Coconino); North East (Navajo, Apache); East Central (Graham, Greenlee) -Raster Cell Size: 0.0025 acres (~33 x 33 feet) or (10 x 10 m) -Model Mask (i.e. Absolute physical constraints for solar siting capability) >National Park Service lands, US Forest Service lands, AZ State parks and; monuments, all wilderness and conservation areas. >All streams classified by ALRIS with 600' total width buffer from centerline of streams and 1000' total width buffer from the centerline of the San Pedro and Santa Cruz Rivers >Lakes: A 500' buffer around lakes will be employed >Slope: All lands with slope greater than 4% (areas with 2% or less slope = high suitability, 2.01 - 3% slope = moderate suitability, and 3.01 – 4% slope = low suitability). >Solar insolation (7 kw or greater). Note: Arizona has been deemed suitable (7 kW or greater) state-wide by the National Renewable Energy Lab -Subjective Constraints (to be overlaid, transparently, on final model output or considered by individual jurisdictions as data availability permits): >Soils: Anchoring and compaction >Floodplains >404 permit areas >Wildlife corridors and critical habitat >Scenic corridors and viewsheds >Others if available -Project Size: >Small scale: 5 megawatts or less >Large scale: greater than 5 megawatts -Data Storage: ArcCatalog GeoDatabase -Projection and Coordinate System: North American Datum 1983 Universal Transverse Mercator Zone 12 North (NAD 83 UTM Zone 12N) -Modeling System: ArcGIS ModelBuilder -Data Sources: >County GIS Resources >Arizona Land Resource Information System (ALRIS) >National Renewable Energy Labs (NREL) >Southern Arizona Data Services Program >University of Arizona >US Census Bureau >University of Arizona - Advanced Resources Technology (ART) GIS Service Center Goals and ObjectivesGoal 1: Solar: Identify areas suitable for photovoltaic (PV) arrays and Concentrating Solar Power (CSP). 1. Physical Suitability – (Weight: .25) -Areas with S, SE, SW, and flat aspects as highest potential, all other aspects as lowest potential (Weight: .5) -Areas with slope 4% or less (areas with 2% or less slope = high suitability, 2.01 – 3% slope = moderate suitability, and 3.01 to 4% slope = low suitability) (Weight: .5) 2. Economic Suitability – (Weight: .75) -Identify lands proximal to transmission lines (within 300’ of 115 kV or greater = high suitability, 300’ – 1000’ = moderate suitability, and greater than 1000’ = low suitability) (Weight: .35) -Identify lands proximal to sub-stations (Weight: .35) -Identify lands proximal to roads (Weight: .2) -Identify lands proximal to railroads (Weight: .1)"
+    ],
+    "dct_language_sm": [
+      "eng"
+    ],
+    "dct_creator_sm": [
+      "University of Arizona. Cooperative Extension"
+    ],
+    "dct_publisher_sm": [
+      "University of Arizona. Cooperative Extension"
+    ],
+    "gbl_resourceClass_sm": [
+      "Datasets"
+    ],
+    "gbl_resourceType_sm": [
+      "Polygon data"
+    ],
+    "dct_subject_sm": [
+      "Solar, Facilities, Arizona, Apel, University of Arizona, Cooperative Extension, REOA",
+      "Environment",
+      "Planning Cadastre",
+      "Geoscientific Information",
+      "utilitiesCommunication",
+      "Location"
+    ],
+    "dcat_theme_sm": [
+      "Environment",
+      "Property",
+      "Utilities",
+      "Location"
+    ],
+    "dct_temporal_sm": [
+      "2014-12-31T00:00:00"
+    ],
+    "dct_issued_s": "2014-12-31T:00:00:00",
+    "gbl_indexYear_im": [
+      "2014"
+    ],
+    "dct_spatial_sm": [
+      "State of Arizona"
+    ],
+    "locn_geometry": "ENVELOPE(-115.026077, -108.929726, 37.030043, 31.277517)",
+    "dcat_bbox": "ENVELOPE(-115.026077, -108.929726, 37.030043, 31.277517)",
+    "dct_accessRights_s": "Public",
+    "dct_format_s": "Shapefile",
+    "gbl_wxsIdentifier_s": "UniversityLibrary:Arizona_HighPotentialLargeScaleSolar_2014",
+    "dct_references_s": "{\"http://www.opengis.net/def/serviceType/ogc/wms\":\"https://geo.library.arizona.edu/geoserver/wms\",\"http://www.opengis.net/def/serviceType/ogc/wfs\":\"https://geo.library.arizona.edu/geoserver/wfs\",\"http://www.isotc211.org/schemas/2005/gmd/\":\"https://raw.githubusercontent.com/OpenGeoMetadata/edu.uarizona/master/9ZQ/Lzg/7g/5y/iso19139.xml\",\"http://schema.org/downloadUrl\":[{\"label\":\"Shapefile\",\"url\":\"http://sequoia.library.arizona.edu/geospatial/public/single_layer_datasets/Arizona_HighPotentialLargeScaleSolar_2014.zip?ticket=publicAccess\"}]}",
+    "schema_provider_s": "UArizona",
+    "gbl_mdModified_dt": "2023-12-20T23:51:18Z",
+    "gbl_mdVersion_s": "Aardvark",
+    "dct_isPartOf_sm": [
+      "Arizona Regional Energy Opporunity Analysis (REOA)"
+    ]
+  }
+]

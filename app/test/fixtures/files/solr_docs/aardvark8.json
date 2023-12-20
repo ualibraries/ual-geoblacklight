@@ -1,0 +1,65 @@
+[
+  {
+    "id": "uarizona-china-buddhisttemplelocations-2006",
+    "dct_identifier_sm": [
+      "http://dx.doi.org/10.2458/azu_geo_china_buddhisttemplelocations_2006"
+    ],
+    "dct_title_s": "Buddhist Temples (BGIS Version 1.1), China, 2006",
+    "dct_description_sm": [
+      "This is a georeferenced dataset of contemporary Chinese Buddhist sites based on a Chinese directory published in 2006. The source data is based on Gui Weibing 桂未冰 (ed.), Zhongguo Fojiao siyuan minglu 2006 中国佛教寺院名录 (2006). Hong Kong: Zhonghua fojiao chubanshe, 2006. Coordinates were determined by the research team led by Prof. Ge Jianxiong 葛剑雄at Fudan University in 2008. (Note: coordinates were not obtained from Google sources).Version 1.1 updates previous version 1.0 which was edited and prepared by Jiang Wu in 2010. This new version corrects mistakes and typos in the previous version with the help of Ouyang Nan."
+    ],
+    "dct_language_sm": [
+      "eng; USA"
+    ],
+    "dct_creator_sm": [
+      "Jiang Wu, University of Arizona"
+    ],
+    "dct_publisher_sm": [
+      "Jiang Wu, University of Arizona"
+    ],
+    "gbl_resourceClass_sm": [
+      "Datasets"
+    ],
+    "gbl_resourceType_sm": [
+      "Point data"
+    ],
+    "dct_subject_sm": [
+      "Association",
+      "Monastery",
+      "Chinese",
+      "Religious",
+      "Temple",
+      "Cave",
+      "Chaple",
+      "Buddhist",
+      "House",
+      "Society"
+    ],
+    "dcat_theme_sm": [
+      "Structure",
+      "Society"
+    ],
+    "dct_temporal_sm": [
+      "2006-01-01T00:00:00"
+    ],
+    "dct_issued_s": "9999-01-01T:00:00:00",
+    "gbl_indexYear_im": [
+      "2006"
+    ],
+    "dct_spatial_sm": [
+      "China"
+    ],
+    "locn_geometry": "ENVELOPE(75.987778, 132.488889, 52.997780, 18.235560)",
+    "dcat_bbox": "ENVELOPE(75.987778, 132.488889, 52.997780, 18.235560)",
+    "dct_accessRights_s": "Public",
+    "dct_format_s": "Shapefile",
+    "gbl_wxsIdentifier_s": "UniversityLibrary:China_BuddhistTempleLocations_2006",
+    "dct_references_s": "{\"http://www.opengis.net/def/serviceType/ogc/wms\":\"https://geo.library.arizona.edu/geoserver/wms\",\"http://www.opengis.net/def/serviceType/ogc/wfs\":\"https://geo.library.arizona.edu/geoserver/wfs\",\"http://www.isotc211.org/schemas/2005/gmd/\":\"https://raw.githubusercontent.com/OpenGeoMetadata/edu.uarizona/master/7Vf/vy0/mN/4U/iso19139.xml\",\"http://schema.org/downloadUrl\":[{\"label\":\"Shapefile\",\"url\":\"http://sequoia.library.arizona.edu/geospatial/public/single_layer_datasets/China_BuddhistTempleLocations_2006.zip?ticket=publicAccess\"}]}",
+    "schema_provider_s": "UArizona",
+    "gbl_mdModified_dt": "2023-12-20T23:50:44Z",
+    "gbl_mdVersion_s": "Aardvark",
+    "dct_isPartOf_sm": [
+      "BGIS"
+    ]
+  }
+]

@@ -1,0 +1,63 @@
+[
+  {
+    "id": "uarizona-az-ca-nv-rcrissites-1998",
+    "dct_identifier_sm": [
+      "http://dx.doi.org/10.2458/azu_geo_az-ca-nv_rcrissites_1998"
+    ],
+    "dct_title_s": "EPA RCRIS Sites, AZ, CA, NV, 1998",
+    "dct_description_sm": [
+      "Whenever appropriate, portions of this metadata were directly taken from the metadata of the original data set. RCRIS (Hazardous Waste - Violations and Permits Database) is a national computerized management information system in support of the Resource Conservation and Recovery Act (RCRA). RCRA requires that generators, transporters, treaters, storers, and disposers of hazardous waste provide information concerning their activities to state environmental agencies. For distribution with BASINS v.2.0, the spatial attributes of the database were prepared in Arcview shape file format while selected relational attributes were prepared in Arcview DBF file format."
+    ],
+    "dct_language_sm": [
+      "eng"
+    ],
+    "dct_creator_sm": [
+      "United States. Environmental Protection Agency."
+    ],
+    "dct_publisher_sm": [
+      "U.S. Environmental Protection Agency"
+    ],
+    "gbl_resourceClass_sm": [
+      "Datasets"
+    ],
+    "gbl_resourceType_sm": [
+      "Point data"
+    ],
+    "dct_subject_sm": [
+      "Hazardous and Solid Wastes",
+      "RCRIS Sites",
+      "Location",
+      "Health",
+      "Environment"
+    ],
+    "dcat_theme_sm": [
+      "Location",
+      "Health",
+      "Environment"
+    ],
+    "dct_temporal_sm": [
+      "1983"
+    ],
+    "dct_issued_s": "1998-08-01T:00:00:00",
+    "gbl_indexYear_im": [
+      "1983"
+    ],
+    "dct_spatial_sm": [
+      "State of California",
+      "State of Nevada",
+      "State of Arizona"
+    ],
+    "locn_geometry": "ENVELOPE(-124.656025, -107.584391, 43.200094, 30.802282)",
+    "dcat_bbox": "ENVELOPE(-124.656025, -107.584391, 43.200094, 30.802282)",
+    "dct_accessRights_s": "Public",
+    "dct_format_s": "Shapefile",
+    "gbl_wxsIdentifier_s": "UniversityLibrary:AZ-CA-NV_RCRISsites_1998",
+    "dct_references_s": "{\"http://www.opengis.net/def/serviceType/ogc/wms\":\"https://geo.library.arizona.edu/geoserver/wms\",\"http://www.opengis.net/def/serviceType/ogc/wfs\":\"https://geo.library.arizona.edu/geoserver/wfs\",\"http://www.isotc211.org/schemas/2005/gmd/\":\"https://raw.githubusercontent.com/OpenGeoMetadata/edu.uarizona/master/5St/at1/cI/lm/iso19139.xml\",\"http://schema.org/downloadUrl\":[{\"label\":\"Shapefile\",\"url\":\"http://sequoia.library.arizona.edu/geospatial/public/single_layer_datasets/AZ-CA-NV_RCRISsites_1998.zip?ticket=publicAccess\"}]}",
+    "schema_provider_s": "UArizona",
+    "gbl_mdModified_dt": "2023-12-20T23:49:13Z",
+    "gbl_mdVersion_s": "Aardvark",
+    "dct_isPartOf_sm": [
+      "General"
+    ]
+  }
+]

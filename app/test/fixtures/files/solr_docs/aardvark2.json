@@ -1,0 +1,55 @@
+[
+  {
+    "id": "uarizona-arizona-interstates-1988",
+    "dct_identifier_sm": [
+      "http://dx.doi.org/10.2458/azu_geo_arizona_interstates_1988"
+    ],
+    "dct_title_s": "Interstate Highways, Arizona, 1988",
+    "dct_description_sm": [
+      "This data set consists of all interstate highways in Arizona. Converted in the fall of 1988 from the DLG to ARC format. This dataset was created by extracting segments coded as interstate highways from individual blocks of DLG data. The resultant interstate blocks were appended together to create a single data set. An item named CLASS,1,I was added and was calculated for ease of use."
+    ],
+    "dct_language_sm": [
+      "eng"
+    ],
+    "dct_creator_sm": [
+      "Arizona. State Land Department"
+    ],
+    "dct_publisher_sm": [
+      "Arizona State Land Department, Arizona Land Resources Information System"
+    ],
+    "gbl_resourceClass_sm": [
+      "Datasets"
+    ],
+    "gbl_resourceType_sm": [
+      "Line data"
+    ],
+    "dct_subject_sm": [
+      "Transportation"
+    ],
+    "dcat_theme_sm": [
+      "Transportation"
+    ],
+    "dct_temporal_sm": [
+      "1988"
+    ],
+    "dct_issued_s": "1988-01-01T:00:00:00",
+    "gbl_indexYear_im": [
+      "1988"
+    ],
+    "dct_spatial_sm": [
+      "State of Arizona"
+    ],
+    "locn_geometry": "ENVELOPE(-114.804954, -108.933231, 37.029006, 31.283593)",
+    "dcat_bbox": "ENVELOPE(-114.804954, -108.933231, 37.029006, 31.283593)",
+    "dct_accessRights_s": "Public",
+    "dct_format_s": "Shapefile",
+    "gbl_wxsIdentifier_s": "UniversityLibrary:Arizona_Interstates_1988",
+    "dct_references_s": "{\"http://www.opengis.net/def/serviceType/ogc/wms\":\"https://geo.library.arizona.edu/geoserver/wms\",\"http://www.opengis.net/def/serviceType/ogc/wfs\":\"https://geo.library.arizona.edu/geoserver/wfs\",\"http://www.isotc211.org/schemas/2005/gmd/\":\"https://raw.githubusercontent.com/OpenGeoMetadata/edu.uarizona/master/3uu/w6C/lu/iU/iso19139.xml\",\"http://schema.org/downloadUrl\":[{\"label\":\"Shapefile\",\"url\":\"http://sequoia.library.arizona.edu/geospatial/public/single_layer_datasets/Arizona_Interstates_1988.zip?ticket=publicAccess\"}]}",
+    "schema_provider_s": "UArizona",
+    "gbl_mdModified_dt": "2023-12-20T23:47:27Z",
+    "gbl_mdVersion_s": "Aardvark",
+    "dct_isPartOf_sm": [
+      "General"
+    ]
+  }
+]

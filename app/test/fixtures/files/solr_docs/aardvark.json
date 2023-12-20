@@ -1,0 +1,57 @@
+[
+  {
+    "id": "uarizona-arizona-annmeanlengthfreezefree-1961to1990",
+    "dct_identifier_sm": [
+      "http://dx.doi.org/10.2458/azu_geo_arizona_annmeanlengthfreezefree_1961to1990"
+    ],
+    "dct_title_s": "Annual Mean Length of Freeze-Free Period, Arizona, 1961-1990",
+    "dct_description_sm": [
+      "This element was computed using data from the National Climatic Data Center's Cooperative Summary of the Day (TD-3200) database (NCDC, 1995). The original data is in whole degrees Fahrenheit. This element is given as the number of whole days. The length of the freeze-free period was based on the difference between the median and mean dates, respectively, of the last 32 degree Fahrenheit temperature in spring (Element TEMP09) and the first 32 degree Fahrenheit temperature in autumn (Element TEMP10). If either element was designated \"RARE FREEZE\" the station was excluded from the database. If both elements were designated \"NO FREEZE,\" then this element was designated the same. If only one element was designated \"NO FREEZE,\" then the station was excluded. Daily minimum temperatures were the lowest observed temperatures for 24 hours ending at the time of observation for a given station. Data extracted for Arizona and 25 mile buffer."
+    ],
+    "dct_language_sm": [
+      "eng"
+    ],
+    "dct_creator_sm": [
+      "National Climatic Data Center (U.S.)"
+    ],
+    "dct_publisher_sm": [
+      "National Climatic Data Center (U.S.)"
+    ],
+    "gbl_resourceClass_sm": [
+      "Datasets"
+    ],
+    "gbl_resourceType_sm": [
+      "Polygon data"
+    ],
+    "dct_subject_sm": [
+      "Freeze-free period",
+      "climatologyMeterologyAtmosphere",
+      "climatologyMeteorologyAtmosphere"
+    ],
+    "dcat_theme_sm": [
+      "Climate"
+    ],
+    "dct_temporal_sm": [
+      "1961"
+    ],
+    "dct_issued_s": "1995-01-01T:00:00:00",
+    "gbl_indexYear_im": [
+      "1961"
+    ],
+    "dct_spatial_sm": [
+      "State of Arizona"
+    ],
+    "locn_geometry": "ENVELOPE(-115.484635, -108.4506, 37.40196, 31.183411)",
+    "dcat_bbox": "ENVELOPE(-115.484635, -108.4506, 37.40196, 31.183411)",
+    "dct_accessRights_s": "Public",
+    "dct_format_s": "Shapefile",
+    "gbl_wxsIdentifier_s": "UniversityLibrary:Arizona_AnnMeanLengthFreezeFree_1961to1990",
+    "dct_references_s": "{\"http://www.opengis.net/def/serviceType/ogc/wms\":\"https://geo.library.arizona.edu/geoserver/wms\",\"http://www.opengis.net/def/serviceType/ogc/wfs\":\"https://geo.library.arizona.edu/geoserver/wfs\",\"http://www.isotc211.org/schemas/2005/gmd/\":\"https://raw.githubusercontent.com/OpenGeoMetadata/edu.uarizona/master/0B9/KzB/K8/Ji/iso19139.xml\",\"http://schema.org/downloadUrl\":[{\"label\":\"Shapefile\",\"url\":\"http://sequoia.library.arizona.edu/geospatial/public/single_layer_datasets/Arizona_AnnMeanLengthFreezeFree_1961to1990.zip?ticket=publicAccess\"}]}",
+    "schema_provider_s": "UArizona",
+    "gbl_mdModified_dt": "2023-12-20T23:46:57Z",
+    "gbl_mdVersion_s": "Aardvark",
+    "dct_isPartOf_sm": [
+      "General"
+    ]
+  }
+]
