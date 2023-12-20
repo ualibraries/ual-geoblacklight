@@ -8,7 +8,6 @@ services:
     ports:
       - "${GOB_PORT:-3000}:3000"
     environment:
-      - ENGINE_CART_RAILS_OPTIONS=--skip-git --skip-listen --skip-spring --skip-keeps --skip-action-cable --skip-coffee --skip-test --skip-solr
       - RAILS_ENV=development
     env_file:
       - .env
