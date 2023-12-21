@@ -71,8 +71,11 @@ $ ./start-me-up.sh pause
 ```shell
 $ docker exec -it gob-app bash -c -l './rake_command.sh "<command-to-run>"'
 
-# Example - populate Solr test fixtures:
+# Populate default Solr test fixtures:
 $ docker exec -it gob-app bash -c -l './rake_command.sh "geoblacklight:index:seed[:remote]"'
+
+# Ingest UAL test docs:
+$ docker exec -it gob-app bash -c -l './rake_command.sh "ual-docs:load"'
 ```
 
 See Geoblacklight tasks [here](https://github.com/geoblacklight/geoblacklight/blob/main/lib/tasks/geoblacklight.rake).
