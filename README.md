@@ -75,7 +75,7 @@ $ docker exec -it gob-app bash -c -l './rake_command.sh "<command-to-run>"'
 $ docker exec -it gob-app bash -c -l './rake_command.sh "geoblacklight:index:seed[:remote]"'
 
 # Ingest UAL test docs:
-$ docker exec -it gob-app bash -c -l './rake_command.sh "ual-docs:load"'
+$ docker exec -it gob-app bash -c -l './rake_command.sh "ual_docs:load"'
 ```
 
 See Geoblacklight tasks [here](https://github.com/geoblacklight/geoblacklight/blob/main/lib/tasks/geoblacklight.rake).
