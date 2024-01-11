@@ -1,0 +1,16 @@
+services:
+  geoserver:
+    container_name: geo1
+    image: docker.osgeo.org/geoserver:2.25.x
+    networks:
+      - geoblacklight-docker_solr
+    ports:
+      - 80:8080
+    volumes:
+      - ./data:/opt/geoserver_data/
+    environment:
+      - SKIP_DEMO_DATA=true
+
+networks:
+  geoblacklight-docker_solr:
+    external: true
