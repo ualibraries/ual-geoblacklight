@@ -1,0 +1,32 @@
+services:
+  qgis-server:
+    build: .
+    image: qgis-server
+    container_name: qgis-server
+    hostname: qgis-server
+    ports:
+      - 5555:5555
+    networks:
+      - geoblacklight-docker_solr
+    volumes:
+      - ./data:/data:ro
+      - "./projects/QGIS-Training-Data/exercise_data/qgis-server-tutorial-data:/home/qgis/projects:ro"
+    environment:
+      - QGIS_PROJECT_FILE=/home/qgis/projects/world.qgs
+      - QGIS_SERVER_LOG_LEVEL=0
+      - DEBUG=1
+
+  nginx:
+    image: nginx:latest
+    ports:
+    - 8080:80
+    networks:
+      - geoblacklight-docker_solr
+    volumes:
+    - ./cfg/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+    - qgis-server
+
+networks:
+  geoblacklight-docker_solr:
+    external: true
