@@ -10,15 +10,15 @@ Here's a little diagram of the GBL and Solr Cloud interaction (Mermaid syntax):
 
 ```mermaid
   graph LR;
-      
-      
+
+
       A[Geoblacklight]==>|QueryRequest|B{CloudSolr};
       B{CloudSolr}-->D(Zookeeper);
       D(Zookeeper)-->B{CloudSolr};
       B{CloudSolr}==>|DataResponse|A[Geoblacklight];
 ```
 
- The GBL app container queries the Solr instance directly. "Sharding" information is managed by the ZooKeeper middleware. Using the "blacklight-core" metadata, Solr sends back its data response in a format that can be ingested by RoR models. 
+ The GBL app container queries the Solr instance directly. "Sharding" information is managed by the ZooKeeper middleware. Using the "blacklight-core" metadata, Solr sends back its data response in a format that can be ingested by RoR models.
 
 ## Setup
 
@@ -140,4 +140,3 @@ $ ./destroy.sh
 
 * Software versions are controlled in `.env`, as are a few other important environment variables.
 * Blacklight-core metadata and config are stored in the `app/solr/conf` directory, which is mounted into the Solr container.
-
