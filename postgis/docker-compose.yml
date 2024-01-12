@@ -1,0 +1,16 @@
+services:
+  postgres:
+    container_name: postgres1
+    image: postgis/postgis:16-3.4
+    networks:
+      - geoblacklight-docker_solr
+    volumes:
+      - ./data:/var/lib/postgresql/data
+      - ./auth:/run/secrets
+    environment:
+      - POSTGRES_USER=gob
+      - POSTGRES_PASSWORD_FILE=/run/secrets/pg_pw
+
+networks:
+  geoblacklight-docker_solr:
+    external: true
