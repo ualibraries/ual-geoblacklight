@@ -3,14 +3,34 @@ services:
     container_name: postgres1
     image: postgis/postgis:16-3.4
     networks:
-      - geoblacklight-docker_solr
+      - ual-gob
     volumes:
-      - ./data:/var/lib/postgresql/data
-      - ./auth:/run/secrets
+      - ./postgis/data:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=gob
       - POSTGRES_PASSWORD_FILE=/run/secrets/pg_pw
+    secrets:
+      - pg_pw
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    ports:
+      - 81:8080
+    networks:
+      - ual-gob
+    volumes:
+      - ./geoserver/data:/var/lib/pgadmin
+      - ./geoserver/auth:/var/auth:ro
+      - ./geoserver/mnt:/mnt
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@example.com
+      - PGADMIN_DEFAULT_PASSWORD_FILE=/var/auth/pga4_pw.txt
+      - PGADMIN_LISTEN_PORT=8080
+      - PGADMIN_DISABLE_POSTFIX=yes
 
 networks:
-  geoblacklight-docker_solr:
-    external: true
+  ual-gob:
+
+secrets:
+    pg_pw:
+      file: postgis/auth/pg_pw
