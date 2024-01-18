@@ -15,6 +15,11 @@ elif [[ $1 == "test" && !"${APP_RUNNING}" ]]; then
     echo -e "Starting the Docker orchestration without app install and server startup...\n"
     docker compose up -d
 
+elif [[ $1 == "geoserver" && !"${APP_RUNNING}" ]]; then
+
+    echo -e "Starting the Docker orchestrationwith geoserver container and postgis startup...\n"
+    docker compose -f docker-compose.yml -f geoserver/docker-compose.yml -f postgis/docker-compose.yml up -d
+
 elif [[ "${APP_RUNNING}" ]]; then
 
     echo -e "Recreating the Docker containers (network data and volumes will persist)...\n"
