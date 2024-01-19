@@ -76,4 +76,6 @@ Rails.application.configure do
 
   # Allow local connections
   config.hosts.clear
+
+  config.web_console.whiny_requests = false
 end
