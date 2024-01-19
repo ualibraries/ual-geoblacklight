@@ -2,3 +2,4 @@
 /geoserver/data
 /geoserver/mnt
 /postgis/data
+/.env
