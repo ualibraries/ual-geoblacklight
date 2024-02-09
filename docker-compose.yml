@@ -9,6 +9,7 @@ services:
       - "${GOB_PORT:-3000}:3000"
     environment:
       - RAILS_ENV=development
+      - OGM_PATH=tmp/ual-ogm
     env_file:
       - .env
     volumes:
