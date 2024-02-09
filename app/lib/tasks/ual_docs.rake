@@ -33,5 +33,7 @@ namespace :ual_docs do
             # File.open(filename, 'w') { |file| file.write(JSON.dump(record_out)) }
             Blacklight.default_index.connection.add record_out
         end
+        Blacklight.default_index.connection.commit
+        
     end
 end
