@@ -33,7 +33,6 @@ namespace :ual_docs do
                 record_out['dcat_bbox'] = record_out.delete('solr_geom')
 
                 # clean non-digit chars from numerical fields
-                record_out['dct_temporal_sm'].gsub!(/\D/, '')
                 record_out['gbl_indexYear_im'].gsub!(/\D/, '')
 
                 # overwrite data back to file later if we want to commit them
