@@ -3,3 +3,4 @@
 /docker/geoserver/mnt
 /docker/postgis/data
 /.env
+/app/tmp/ual-ogm
