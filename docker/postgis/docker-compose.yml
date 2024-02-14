@@ -33,4 +33,4 @@ networks:
 
 secrets:
     pg_pw:
-      file: postgis/auth/pg_pw
+      file: docker/postgis/auth/pg_pw
