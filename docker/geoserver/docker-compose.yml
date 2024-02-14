@@ -7,7 +7,7 @@ services:
     ports:
       - 8881:8080
     volumes:
-      - ./data:/opt/geoserver_data/
+      - ./docker/geoserver/data:/opt/geoserver_data/
     environment:
       - SKIP_DEMO_DATA=true
 

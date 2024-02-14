@@ -5,7 +5,7 @@ services:
     networks:
       - ual-gob
     volumes:
-      - ./postgis/data:/var/lib/postgresql/data
+      - ./docker/postgis/data:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=gob
       - POSTGRES_PASSWORD_FILE=/run/secrets/pg_pw
@@ -19,9 +19,9 @@ services:
     networks:
       - ual-gob
     volumes:
-      - ./geoserver/data:/var/lib/pgadmin
-      - ./geoserver/auth:/var/auth:ro
-      - ./geoserver/mnt:/mnt
+      - ./docker/geoserver/data:/var/lib/pgadmin
+      - ./docker/geoserver/auth:/var/auth:ro
+      - ./docker/geoserver/mnt:/mnt
     environment:
       - PGADMIN_DEFAULT_EMAIL=admin@example.com
       - PGADMIN_DEFAULT_PASSWORD_FILE=/var/auth/pga4_pw.txt

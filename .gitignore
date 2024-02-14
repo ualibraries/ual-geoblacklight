@@ -1,5 +1,5 @@
-/geoserver/auth
-/geoserver/data
-/geoserver/mnt
-/postgis/data
+/docker/geoserver/auth
+/docker/geoserver/data
+/docker/geoserver/mnt
+/docker/postgis/data
 /.env
