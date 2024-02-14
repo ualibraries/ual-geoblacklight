@@ -66,6 +66,14 @@ This is non-destructive. All containers remain stateful, as well as volumes and 
 $ ./start-me-up.sh pause
 ```
 
+**Start the Geoserver orchestration**
+
+This starts the GeoServer and Postgres containers. These orchestrate the functionality necessary to load layers in the Geoblacklight map windows, as well as downloading map layers. See [docs](./docs/geoserver-setup.md) for more info on setup.
+
+```shell
+$ ./start-me-up.sh geoserver
+```
+
 **Run Rake commands in the containerized application directory:**
 
 ```shell
