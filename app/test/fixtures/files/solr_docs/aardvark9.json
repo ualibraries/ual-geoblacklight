@@ -51,7 +51,7 @@
     "dcat_bbox": "ENVELOPE(-115.026077, -108.929726, 37.030043, 31.277517)",
     "dct_accessRights_s": "Public",
     "dct_format_s": "Shapefile",
-    "gbl_wxsIdentifier_s": "UniversityLibrary:Arizona_HighPotentialLargeScaleSolar_2014",
+    "gbl_wxsIdentifier_s": "UniversityLibrary:arizona_highpotentiallargescalesolar_2014",
     "dct_references_s": "{\"http://www.opengis.net/def/serviceType/ogc/wms\":\"https://geo.library.arizona.edu/geoserver/wms\",\"http://www.opengis.net/def/serviceType/ogc/wfs\":\"https://geo.library.arizona.edu/geoserver/wfs\",\"http://www.isotc211.org/schemas/2005/gmd/\":\"https://raw.githubusercontent.com/OpenGeoMetadata/edu.uarizona/master/9ZQ/Lzg/7g/5y/iso19139.xml\",\"http://schema.org/downloadUrl\":[{\"label\":\"Shapefile\",\"url\":\"http://sequoia.library.arizona.edu/geospatial/public/single_layer_datasets/Arizona_HighPotentialLargeScaleSolar_2014.zip?ticket=publicAccess\"}]}",
     "schema_provider_s": "UArizona",
     "gbl_mdModified_dt": "2023-12-20T23:51:18Z",

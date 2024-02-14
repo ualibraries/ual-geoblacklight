@@ -53,7 +53,7 @@
     "dcat_bbox": "ENVELOPE(75.987778, 132.488889, 52.997780, 18.235560)",
     "dct_accessRights_s": "Public",
     "dct_format_s": "Shapefile",
-    "gbl_wxsIdentifier_s": "UniversityLibrary:China_BuddhistTempleLocations_2006",
+    "gbl_wxsIdentifier_s": "UniversityLibrary:china_buddhisttemplelocations_2006",
     "dct_references_s": "{\"http://www.opengis.net/def/serviceType/ogc/wms\":\"https://geo.library.arizona.edu/geoserver/wms\",\"http://www.opengis.net/def/serviceType/ogc/wfs\":\"https://geo.library.arizona.edu/geoserver/wfs\",\"http://www.isotc211.org/schemas/2005/gmd/\":\"https://raw.githubusercontent.com/OpenGeoMetadata/edu.uarizona/master/7Vf/vy0/mN/4U/iso19139.xml\",\"http://schema.org/downloadUrl\":[{\"label\":\"Shapefile\",\"url\":\"http://sequoia.library.arizona.edu/geospatial/public/single_layer_datasets/China_BuddhistTempleLocations_2006.zip?ticket=publicAccess\"}]}",
     "schema_provider_s": "UArizona",
     "gbl_mdModified_dt": "2023-12-20T23:50:44Z",
