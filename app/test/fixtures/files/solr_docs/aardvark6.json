@@ -46,7 +46,7 @@
     "dct_accessRights_s": "Public",
     "dct_format_s": "Shapefile",
     "gbl_wxsIdentifier_s": "UniversityLibrary:arizona_mediandatefirstsnowfall_1961to1990",
-    "dct_references_s": "{\"http://www.opengis.net/def/serviceType/ogc/wms\":\"http://127.0.0.1:8881/geoserver/wms\",\"http://www.opengis.net/def/serviceType/ogc/wfs\":\"http://geo1:8881/geoserver/wfs\",\"http://www.isotc211.org/schemas/2005/gmd/\":\"https://raw.githubusercontent.com/OpenGeoMetadata/edu.uarizona/master/6cA/yOa/JO/t9/iso19139.xml\",\"http://schema.org/downloadUrl\":[{\"label\":\"Shapefile\",\"url\":\"https://geoblacklight-test.s3.us-west-2.amazonaws.com/shapefiles/SNOW33A.zip\"}]}",
+    "dct_references_s": "{\"http://www.opengis.net/def/serviceType/ogc/wms\":\"http://127.0.0.1:8881/geoserver/wms\",\"http://www.opengis.net/def/serviceType/ogc/wfs\":\"http://127.0.0.1:8881/geoserver/wfs\",\"http://www.isotc211.org/schemas/2005/gmd/\":\"https://raw.githubusercontent.com/OpenGeoMetadata/edu.uarizona/master/6cA/yOa/JO/t9/iso19139.xml\",\"http://schema.org/downloadUrl\":[{\"label\":\"Shapefile\",\"url\":\"https://geoblacklight-test.s3.us-west-2.amazonaws.com/shapefiles/SNOW33A.zip\"}]}",
     "schema_provider_s": "UArizona",
     "gbl_mdModified_dt": "2024-01-19T21:21:33Z",
     "gbl_mdVersion_s": "Aardvark",
