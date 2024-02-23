@@ -5,8 +5,8 @@ services:
     image: ual-goblight:latest
     container_name: gob-app
     user: gob
-    ports:
-      - "${GOB_PORT:-3000}:3000"
+    # ports:
+    #   - "3000:3000"
     environment:
       - RAILS_ENV=development
       - OGM_PATH=tmp/ual-ogm
@@ -15,17 +15,19 @@ services:
     volumes:
       - ./app:/geoblacklight/app
       - ./docker/app:/home/gob/docker
-    depends_on:
-      - ual_zookeeper
     networks:
       - ual-gob
     tty: true
+    labels:
+      - "traefik.http.routers.ual_gob_app.entrypoints=gob-app"
+      - "traefik.http.routers.ual_gob_app.rule=Host(`gobapp.localhost`)"
+      - "traefik.enable=true"
 
   ual_solr:
     image: ual-solr:latest
     container_name: solr1
-    ports:
-      - "${SOLR_PORT:-8983}:8983"
+    # ports:
+    #   - "8983:8983"
     volumes:
       - solr1_data:/var/solr
       - ./docker/solr/cloud-secure.sh:/home/solr/docker/cloud-secure.sh
@@ -35,6 +37,10 @@ services:
     networks:
       - ual-gob
     command: bash -c "/home/solr/docker/cloud-secure.sh"
+    labels:
+      - "traefik.http.routers.ual_solr.entrypoints=gob-solr"
+      - "traefik.http.routers.ual_solr.rule=Host(`gobapp.localhost`)"
+      - "traefik.enable=true"
 
   ual_zookeeper:
     image: "zookeeper:${ZK_VERSION:-latest}"
@@ -43,6 +49,7 @@ services:
       - "2181:2181"
       - "2888:2888"
       - "3888:3888"
+      - "8883:8080"
     environment:
       - ZOO_MY_ID=1
       - ZOO_SERVERS=server.1=zoo1:2888:3888;2181
@@ -53,8 +60,29 @@ services:
     networks:
       - ual-gob
 
+  ual_proxy:
+    image: traefik:v2.2
+    container_name: gob-proxy
+    ports:
+      - "${GOB_PORT:-3001}:3000"
+      - "${SOLR_PORT:-8984}:8983"
+      - "${GOSER_PORT:-8881}:8083"
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.gob-app.address=:3000"
+      - "--entrypoints.gob-solr.address=:8983"
+      - "--entrypoints.gob-goser.address=:8083"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - ual-gob
+    restart: unless-stopped
+
 networks:
   ual-gob:
+    external: true
 
 volumes:
   solr1_data:

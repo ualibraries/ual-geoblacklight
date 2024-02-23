@@ -5,11 +5,16 @@ services:
     networks:
       - ual-gob
     ports:
-      - 8881:8080
+      - "8083:8080"
     volumes:
       - ./docker/geoserver/data:/opt/geoserver_data/
     environment:
       - SKIP_DEMO_DATA=true
+    labels:
+      - "traefik.http.routers.geoserver.entrypoints=gob-goser"
+      - "traefik.http.routers.geoserver.rule=Host(`gobapp.localhost`)"
+      - "traefik.enable=true"
 
 networks:
   ual-gob:
+    external: true

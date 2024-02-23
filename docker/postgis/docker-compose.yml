@@ -30,6 +30,7 @@ services:
 
 networks:
   ual-gob:
+    external: true
 
 secrets:
     pg_pw:
