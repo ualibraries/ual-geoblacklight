@@ -53,8 +53,9 @@ Build scripts set up Apache ZooKeeper and Solr decoupled to propagate search con
 
 See the following URLs:
 
-* `localhost:3000` for the GeoBlacklight application
-* `localhost:8984` for the Solr admin (admin is locked down; see the .env file for creds)
+* `gobapp.localhost:3000` for the GeoBlacklight application
+* `gobapp.localhost:8984` for the Solr admin (admin is locked down; see the .env file for creds)
+* `gobapp.localhost:8881/geoserver` for the Geoserver backend (optional startup, see geoserver docs for creds)
 
 ## Optional application container commands
 
