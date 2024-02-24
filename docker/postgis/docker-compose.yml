@@ -15,7 +15,7 @@ services:
   pgadmin:
     image: dpage/pgadmin4:latest
     ports:
-      - 81:8080
+      - 8087:8080
     networks:
       - ual-gob
     volumes:
@@ -27,6 +27,10 @@ services:
       - PGADMIN_DEFAULT_PASSWORD_FILE=/var/auth/pga4_pw.txt
       - PGADMIN_LISTEN_PORT=8080
       - PGADMIN_DISABLE_POSTFIX=yes
+    labels:
+      - "traefik.http.routers.pgadmin.entrypoints=gob-pga"
+      - "traefik.http.routers.pgadmin.rule=Host(`gobapp.localhost`)"
+      - "traefik.enable=true"
 
 networks:
   ual-gob:

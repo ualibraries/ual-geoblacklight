@@ -20,7 +20,7 @@ elif [[ $1 == "geoserver" && !"${APP_RUNNING}" ]]; then
 
     echo -e "Starting the Docker orchestration with geoserver container and postgis startup...\n"
     docker network create -d bridge ual-gob
-    docker compose -f ./docker-compose.yml -f ./docker/geoserver/docker-compose.yml up -d
+    docker compose -f ./docker-compose.yml -f ./docker/geoserver/docker-compose.yml -f ./docker/postgis/docker-compose.yml up -d
     docker exec -it gob-app bash -c -l './app_init.sh'
 
 elif [[ "${APP_RUNNING}" ]]; then

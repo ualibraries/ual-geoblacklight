@@ -67,6 +67,7 @@ services:
       - "${GOB_PORT:-3001}:3000"
       - "${SOLR_PORT:-8984}:8983"
       - "${GOSER_PORT:-8881}:8083"
+      - "${PGA_PORT:-8885}:8087"
       - "8089:8080"
     command:
       - "--api.insecure=true"
@@ -79,6 +80,7 @@ services:
       - "--entrypoints.gob-app.address=:3000"
       - "--entrypoints.gob-solr.address=:8983"
       - "--entrypoints.gob-goser.address=:8083"
+      - "--entrypoints.gob-pga.address=:8087"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
