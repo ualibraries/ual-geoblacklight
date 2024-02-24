@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.9'
 
 services:
   ual_gob_app:
@@ -61,14 +61,19 @@ services:
       - ual-gob
 
   ual_proxy:
-    image: traefik:v2.2
+    image: traefik:v2.4
     container_name: gob-proxy
     ports:
       - "${GOB_PORT:-3001}:3000"
       - "${SOLR_PORT:-8984}:8983"
       - "${GOSER_PORT:-8881}:8083"
+      - "8089:8080"
     command:
       - "--api.insecure=true"
+      - "--api.dashboard=true"
+      - "--api.debug=true"
+      - "--log.level=DEBUG"
+      - "--accesslog=true"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
       - "--entrypoints.gob-app.address=:3000"
