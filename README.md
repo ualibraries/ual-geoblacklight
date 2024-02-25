@@ -49,13 +49,17 @@ The GBL app is installed automatically if it does not already exist. This will t
 
 Build scripts set up Apache ZooKeeper and Solr decoupled to propagate search configuration and data in "cloud mode". Search data is located in Docker volumes on startup.
 
-**3. View the application and Solr admin:**
+**3. View application and service admins:**
 
 See the following URLs:
 
-* `gobapp.localhost:3000` for the GeoBlacklight application
-* `gobapp.localhost:8984` for the Solr admin (admin is locked down; see the .env file for creds)
-* `gobapp.localhost:8881/geoserver` for the Geoserver backend (optional startup, see geoserver docs for creds)
+| URL | Service |
+| --- | ------- |
+| `gobapp.localhost:3000` | GeoBlacklight app |
+| `gobapp.localhost:8983` | Solr admin (admin is locked down; see the .env file for creds) |
+| `gobapp.localhost:8881/geoserver` | Geoserver backend (see geoserver docs for creds) |
+| `gobapp.localhost:8087` | PGAdmin GUI (see docker/postgis/docker-compose for creds) |
+| `127.0.0.1:8089/dashboard/` | Traefick proxy dashboard |
 
 ## Optional application container commands
 
