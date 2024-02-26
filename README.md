@@ -29,7 +29,7 @@ Here's a little diagram of the GBL and Solr Cloud interaction (Mermaid syntax):
   - Git
   - Docker, either Desktop or just the straight engine if deploying on any of the Linux distros
 
-**Preliminary Steps:**
+### Preliminary Steps:
 
 Start by cloning this repository to pretty much anywhere on most filesystems that the Docker daemon has access to. There may be filesystem permission issues for your user. Either find your user's UID and GID or ask another IT compadre if they know what the heck I'm talking about. Put those ids in the `.env` file at the root of the project, replacing the UID and GID, respectively. Then proceed to ...
 
@@ -63,7 +63,7 @@ See the following URLs:
 
 ## Optional application container commands
 
-**Stop the Docker network:**
+### Stop the Docker network:
 
 This is non-destructive. All containers remain stateful, as well as volumes and network.
 
@@ -71,7 +71,7 @@ This is non-destructive. All containers remain stateful, as well as volumes and 
 $ ./start-me-up.sh pause
 ```
 
-**Start the Geoserver orchestration**
+### Start the Geoserver orchestration
 
 This starts the GeoServer and Postgres containers. These orchestrate the functionality necessary to load layers in the Geoblacklight map windows, as well as downloading map layers. See [docs](./docs/geoserver-setup.md) for more info on setup.
 
@@ -79,7 +79,7 @@ This starts the GeoServer and Postgres containers. These orchestrate the functio
 $ ./start-me-up.sh geoserver
 ```
 
-**Run Rake commands in the containerized application directory:**
+### Run Rake commands in the containerized application directory:
 
 ```shell
 $ docker exec -it gob-app bash -c -l './rake_command.sh "<command-to-run>"'
@@ -112,14 +112,14 @@ See Geoblacklight tasks [here](https://github.com/geoblacklight/geoblacklight/bl
   - `:solr:seed` same as `geoblacklight:index:seed`
   - `:application_asset_paths` echoes out all asset paths, kinda handy.
 
-**Inspect GBL application logs for development**
+### Inspect GBL application logs for development
 
 ```shell
 # number of lines to watch can be set, defaults to 10
 $ ./inspect-app-logs.sh 50
 ```
 
-**Run Solr queries for development and testing**
+### Run Solr queries for development and testing
 
 ```shell
 $ ./make-solr-query.sh <query-something-neat>
@@ -130,7 +130,7 @@ $ ./make-solr-query.sh "q=Manhattan"
 
 Also see the Solr query screen in the Solr admin: https://solr.apache.org/guide/solr/latest/query-guide/query-screen.html. Scroll to the main, lefthand menu. Click on the collection, "blacklight-core". Then scroll down to the query button.
 
-**Tear-down**
+### Tear-down
 
 WARNING: This destroys _all_ data, meaning containers and volumes. (It does not remove Docker images, however.) The dialogue will ask if you want to clean up any untracked files. Usually there are generated files that are ignored by git. However, if you have added something and not committed, those files may be deleted permanently. Please take a good look at the list to avoid this.
 
