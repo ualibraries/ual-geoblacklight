@@ -59,7 +59,7 @@ See the following URLs:
 | `gobapp.localhost:8983` | Solr admin (admin is locked down; see the .env file for creds) |
 | `gobapp.localhost:8881/geoserver` | Geoserver backend (see geoserver docs for creds) |
 | `gobapp.localhost:8087` | PGAdmin GUI (see docker/postgis/docker-compose for creds) |
-| `127.0.0.1:8089/dashboard/` | Traefick proxy dashboard |
+| `127.0.0.1:8089/dashboard/` | Traefik proxy dashboard |
 
 ## Optional application container commands
 
