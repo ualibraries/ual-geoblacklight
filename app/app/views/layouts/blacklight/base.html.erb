@@ -29,7 +29,7 @@
     <%= content_for(:head) %>
   </head>
   <body class="<%= render_body_class %>">
-    <header class="bg-red arizona-header" id="header_arizona">
+    <header class="bg-blue arizona-header" id="header_arizona">
       <div class="container">
         <div class="row">
           <a class="arizona-logo" href="http://www.arizona.edu" title="The University of Arizona homepage">
@@ -57,5 +57,7 @@
 
     <%= render partial: 'shared/footer' %>
     <%= render partial: 'shared/modal' %>
+
+    <%= render partial: 'shared/ual_footer' %>
   </body>
 <% end %>
