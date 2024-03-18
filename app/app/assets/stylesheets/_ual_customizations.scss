@@ -1,0 +1,43 @@
+/**
+ * Facets
+ */
+
+// Remove whitespace added by AZBS headings (in facet context)
+#facets {
+  .card {
+    .card-header {
+      margin: 0;
+    }
+  }
+
+  // Remove uppercase style
+  .facets-collapse .btn {
+    text-transform: none;
+  }
+}
+
+/**
+ * Documents
+ */
+
+ #documents {
+  // Make spacing consistent
+  .document {
+    padding: 1rem 0;
+    margin: 0;
+  }
+  // Remove whitespace added by AZBS headings (in documents context)
+  .index_title {
+    margin: 0;
+  }
+}
+
+#appliedParams {
+  .applied-filter {
+    .constraint-value:hover,
+    .constraint-value:active {
+      background-color: none;
+      color: inherit;
+    }
+  }
+}
