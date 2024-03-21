@@ -10,13 +10,16 @@
       </div>
       <div class="col-12 col-sm-7 col-md-8 col-lg-8 text-center-xs text-right-not-xs">
         <p><strong>Main Library</strong> | 1510 E. University Blvd. Tucson, AZ 85721</p>
+        <p>(520) 621-6442</p>
+        <p><a href="https://lib.arizona.edu/giving" class="btn btn-blue">Give</a></p>
       </div>
     </div>
     <div class="row mt-3">
       <div class="col-12 text-center">
         <hr />
         <div id="geoblacklight-version">
-          <%= t('geoblacklight.home.version', version: Geoblacklight::VERSION ) %>
+          <%= image_tag("geoblacklight-logo.png", alt: "GeoBlacklight", width: "175") %><br />
+          <span class="text-muted"><small><em><%= t('geoblacklight.home.version', version: Geoblacklight::VERSION ) %></small></em></span>
         </div>
         <hr />
         <p><small><em>We respectfully acknowledge the University of Arizona is on the land and territories of Indigenous peoples. Today, Arizona is home to 22 federally recognized tribes, with Tucson being home to the O’odham and the Yaqui. Committed to diversity and inclusion, the University strives to build sustainable relationships with sovereign Native Nations and Indigenous communities through education offerings, partnerships, and community service.</em></small></p>
