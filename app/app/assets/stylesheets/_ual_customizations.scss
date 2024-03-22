@@ -34,10 +34,20 @@
 
 #appliedParams {
   .applied-filter {
+    // Hover effects make experience confusing when you can't click the button
     .constraint-value:hover,
     .constraint-value:active {
-      background-color: none;
+      background-color: #dee2e6;
+      border-color: #dee2e6;
       color: inherit;
+    }
+
+    .remove:hover,
+    .remove:active {
+      // Reset hard-coded GBL styles
+      background-color: rgb(158, 155, 150);
+      border-color: rgb(155, 151, 145);
+      color: rgb(43, 46, 48);
     }
   }
 }
