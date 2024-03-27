@@ -7,7 +7,7 @@
     </div>
     <div class="col-12 col-lg-8">
       <div class="card-body">
-        <%= content_tag :h3, t(@label), class: "mt-0" %>
+        <%= content_tag :h3, t(@label), class: "mt-0 text-dark" %>
         <%- facets = @response.aggregations[@facet_field].items.map { |item|
           link_to(item.value, search_catalog_path("f[#{@facet_field}][]": item.value), class: "home-facet-link badge badge-pill badge-light")
         } %>
@@ -15,7 +15,7 @@
         <%= facets.join(" ").html_safe %>
 
       </div>
-      <div class="card-body pt-0"><%= link_to "View more", facets_more, class: "btn btn-blue" %></div>
+      <div class="card-body pt-0"><%= link_to "View all", facets_more, class: "btn btn-blue" %></div>
     </div>
   </div>
 </div>
