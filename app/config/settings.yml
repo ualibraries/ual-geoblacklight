@@ -20,7 +20,7 @@ OVERLAP_RATIO_BOOST: '2'
 # Leave null to default to entire world
 # Add a stringified GeoJSON object to scope initial render (example from UMass)
 # HOMEPAGE_MAP_GEOM: null
-HOMEPAGE_MAP_GEOM: '{"type":"Polygon","coordinates":[[[-73.58,42.93],[-73.58,41.20],[-69.90,41.20],[-69.90,42.93]]]}'
+HOMEPAGE_MAP_GEOM: '{"type":"Polygon","coordinates":[[[-115.24,37.29],[-115.24, 31.18],[-108.62,37.29],[-108.62,31.18]]]}'
 
 # Non-search-field GeoBlacklight application permitted params
 GBL_PARAMS:
