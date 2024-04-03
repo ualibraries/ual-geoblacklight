@@ -29,7 +29,7 @@ module Blacklight
       end
 
       def before_render
-        with_button(classes: 'btn btn-outline-dark dropdown-toggle', label: button_label) unless button
+        with_button(classes: 'btn btn-outline-secondary dropdown-toggle', label: button_label) unless button
 
         return if options.any?
 
