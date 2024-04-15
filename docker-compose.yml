@@ -16,7 +16,7 @@ services:
     volumes:
       - ./app:/geoblacklight/app
       - ./docker/app:/home/gob/docker
-      - /home/${USER}/.ssh/agent-socket:/ssh-agent
+      - /run/host-services/ssh-auth.sock:/ssh-agent
     depends_on:
       - ual_zookeeper
     networks:
