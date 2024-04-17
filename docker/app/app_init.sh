@@ -2,6 +2,9 @@
 set -e
 
 
+# Change the ownership of SSH keys to allow internal deployments
+chown -R gob:gob /home/gob/.ssh
+
 # RVM is installed at container build time, but RoR is installed here.
 # We don't use the templated install, so we can use the (faster) setup script.
 
