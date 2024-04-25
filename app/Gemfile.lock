@@ -235,6 +235,7 @@ GEM
     minitar (0.9)
     minitest (5.23.1)
     msgpack (1.7.2)
+    mutex_m (0.2.0)
     net-http (0.4.1)
       uri
     mutex_m (0.2.0)
@@ -262,6 +263,8 @@ GEM
     nokogiri (1.16.5-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.16.5-x86-linux)
+      racc (~> 1.4)
+    nokogiri (1.15.4-aarch64-linux)
       racc (~> 1.4)
     nokogiri (1.16.5-x86_64-darwin)
     nokogiri (1.16.5-arm64-darwin)
@@ -367,6 +370,12 @@ GEM
     sqlite3 (1.7.3-x86-linux)
     sqlite3 (1.7.3-x86_64-darwin)
     sqlite3 (1.7.3-x86_64-linux)
+    sshkit (1.22.1)
+      base64
+      mutex_m
+      net-scp (>= 1.1.2)
+      net-sftp (>= 2.1.2)
+      net-ssh (>= 2.8.0)
     strscan (3.1.0)
     sshkit (1.22.1)
       base64
