@@ -5,7 +5,7 @@
 # installation of a non-root user for RoR dependencies;
 # an easy-to-access location for the Docker host to locally mount and build our files.
 
-FROM ubuntu:latest
+FROM ubuntu:22.04
 
 # ARGS can be overwritten in docker run or docker-compose
 ARG RUBY_VERSION=latest
