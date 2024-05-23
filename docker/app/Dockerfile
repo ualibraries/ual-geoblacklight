@@ -5,7 +5,7 @@
 # installation of a non-root user for RoR dependencies;
 # an easy-to-access location for the Docker host to locally mount and build our files.
 
-FROM ubuntu:22.04
+FROM ubuntu:jammy
 
 # ARGS can be overwritten in docker run or docker-compose
 ARG RUBY_VERSION=latest
@@ -22,7 +22,7 @@ ENV SOLR_URL="http://${SOLR_USER}:${SOLR_PASS}@${SOLR_HOST}:${SOLR_PORT}/solr/bl
 # NOTE: host user perms are injected in start-me-up.sh
 ARG USER=gob
 ARG PASS=gobb13
-ARG USER_UID=1000
+ARG USER_UID=1001
 ARG USER_GID=${USER_UID}
 
 # project DRY dirs
