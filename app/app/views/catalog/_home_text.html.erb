@@ -1,3 +1,18 @@
+<%#
+This is an override of the GeoBlacklight (GBL) _home_text.html.erb file.
+Blacklight (BL) also has this file, but is overridden by GBL, so we are
+overriding based on GBL > BL.
+
+https://github.com/geoblacklight/geoblacklight/blob/main/app/views/catalog/_home_text.html.erb
+
+Adjusts the appearance of the home page components layout to be easier
+to navigate, especially on more narrow screen sizes. We are commenting
+out the instutition category, since all of our data is currently all
+UAZ data, which makes it redundant and not useful as a filter. We can
+add this back in once we are further along with data in the project.
+
+%>
+
 <div class="container">
   <div class="row">
     <div class="col-12 col-lg-6">
