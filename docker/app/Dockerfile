@@ -79,7 +79,6 @@ RUN echo "source ~/.rvm/scripts/rvm" >> "${USER_HOME}/.bashrc" \
     && chown -R ${USER}:${USER} "${USER_HOME}/.gemrc" "${USER_HOME}/.bashrc"
 
 USER gob
-ENV USER=${USER}
 EXPOSE 3000
 EXPOSE 8983
 WORKDIR "${USER_HOME}/docker"
