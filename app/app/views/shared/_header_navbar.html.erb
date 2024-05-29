@@ -1,9 +1,14 @@
+<%#
+This is an override of the GeoBlacklight (GBL) _header_navbar.html.erb file.
+Blacklight (BL) also has this file, but is overridden by GBL, so we are
+overriding based on GBL > BL.
+
+https://github.com/geoblacklight/geoblacklight/blob/main/app/views/shared/_header_navbar.html.erb
+%>
+
 <div class="<%= container_classes %>">
   <nav class="navbar navbar-offcanvas mt-2 mb-5 py-4 border-top-0" role="navigation">
-    <a href="<%= root_path %>"><%= image_tag("ual_logo.svg", alt: "University of Arizona Libraries | GeoBlacklight Home", width: "350") %></a>
-
-    <%#= link_to application_name, root_path, class: "mb-0 navbar-logo" %>
-    
+    <a href="<%= root_path %>"><%= image_tag("ual_logo.svg", alt: "University of Arizona Libraries | GeoBlacklight Home", width: "350") %></a>    
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#user-util-collapse" aria-controls="user-util-collapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -34,9 +39,6 @@
     <div class="geobl-homepage-masthead bg-gray-300 mb-3">
       <div class="row">
         <div class="col-12 py-5">
-          <%# <div class="d-flex justify-content-center"> %>
-            <%#= content_tag :h1, t("geoblacklight.home.headline"), class: "text-center" %>
-          <%# </div> %>
           <div class="d-flex justify-content-center">
             <%= content_tag :h1, t("geoblacklight.home.search_heading"), class: "text-center mt-0" %>
           </div>
