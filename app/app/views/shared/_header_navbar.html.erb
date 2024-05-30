@@ -12,10 +12,6 @@ https://github.com/geoblacklight/geoblacklight/blob/main/app/views/shared/_heade
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#user-util-collapse" aria-controls="user-util-collapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
-    <div class="collapse navbar-collapse justify-content-md-end" id="user-util-collapse">
-      <%= render "shared/user_util_links" %>
-    </div>
   </nav>
 </div>
 <%- renderable_fields = blacklight_config.search_fields.values.collect { |field_def| [label_for_search_field(field_def.key), field_def.key] if should_render_field?(field_def)}.compact %>
