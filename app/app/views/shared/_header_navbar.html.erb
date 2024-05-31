@@ -9,6 +9,7 @@ https://github.com/geoblacklight/geoblacklight/blob/main/app/views/shared/_heade
 <div class="<%= container_classes %>">
   <nav class="navbar mt-2 mb-5 py-4 border-bottom" role="navigation">
     <a href="<%= root_path %>"><%= image_tag("ual_logo.svg", alt: "University of Arizona Libraries | GeoBlacklight Home", width: "350") %></a>    
+    <%= render "shared/user_util_links" %>
   </nav>
 </div>
 <%- renderable_fields = blacklight_config.search_fields.values.collect { |field_def| [label_for_search_field(field_def.key), field_def.key] if should_render_field?(field_def)}.compact %>
