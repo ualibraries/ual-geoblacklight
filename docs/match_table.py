@@ -4,8 +4,8 @@ import os, json, csv
 
 # Define paths to OGM & CyVerse data.
 # These values should be changed according to your machine and paths.
-ogm_files = r"/Users/slaya/Desktop/_git/lbry/OGM_edu.arizona"
-cyverse_file = r"/Users/slaya/Desktop/OGM Match Table/cyverse_data.csv"
+ogm_files = r"/Users/your_user/your_path_to/edu.arizona"
+cyverse_file = r"/Users/your_user/your_path_to/cyverse_data.csv"
 
 def generate_match_table(ogm_file_path, cyverse_file_path):
   """Generates and returns a table that matches Sequoia metadada links to CyVerse metadata links based on filename."""
