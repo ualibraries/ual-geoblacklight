@@ -35,10 +35,8 @@ def generate_match_table(ogm_file_path, cyverse_file_path):
               sequoia_link = sequoia_data["http://schema.org/downloadUrl"]
               sequoia_link = sequoia_link.replace("?ticket=publicAccess", '')
               sequoia_link = sequoia_link.replace("?publicAccess", '')
-              # Save the Sequoia filename to a variable (to act as match key), and clean up the filename.
+              # Save the Sequoia filename to a variable (to act as match key).
               match_key = sequoia_link.split('/')[-1]
-              match_key = match_key.replace("?ticket=publicAccess", '')
-              match_key = match_key.replace("?publicAccess", '')
               # Push the Sequoia link to match_table, leaving cyverse empty for now.
               match_table[match_key] = {'sequoia': sequoia_link, 'cyverse':''}
   
