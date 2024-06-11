@@ -4,8 +4,8 @@ import os, json, csv
 
 # Define paths to OGM & CyVerse data.
 # These values should be changed according to your machine and paths.
-ogm_files = r"/Users/your_user/your_path_to/edu.arizona"
-cyverse_file = r"/Users/your_user/your_path_to/cyverse_data.csv"
+ogm_files = r"/Users/slaya/Desktop/_git/lbry/OGM_edu.arizona"
+cyverse_file = r"/Users/slaya/Desktop/OGM Match Table/cyverse_data.csv"
 
 def generate_match_table(ogm_file_path, cyverse_file_path):
   """Generates and returns a table that matches Sequoia metadada links to CyVerse metadata links based on filename."""
@@ -91,9 +91,19 @@ def print_stats(match_table_stats):
   print("Empty Entries: " + match_table_stats["empty"])
 
 
+def write_match_table(match_table):
+  """Writes the contents from generate_match_table() to a JSON file."""
+
+  with open("app/lib/tasks/match_table.json", "w") as matchtable: 
+    json.dump(match_table, matchtable)
+
+
 # Save the results of generate_match_table() and generate_stats to variables.
 match_table = generate_match_table(ogm_files, cyverse_file)
 match_table_stats = generate_stats(match_table)
+
+# Write the results to a JSON file for use in the /app/lib/tasks folder (to be used by .rake file).
+write_match_table(match_table)
 
 # Print match_table and match_table_stats. Uncomment lines 101-107 to use them.
 # print("\n" + "-"*10 + " MATCH TABLE STATS " + "-"*10)
