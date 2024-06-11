@@ -22,6 +22,7 @@ The structure of the dictionary is as follows:
 ```
 *Note: fake links and filenames used for demonstration purposes.*
 
+After generating the match table, the table is then written to a JSON file in the `/app/lib/tasks` directory so that it can be leveraged by the `.rake` file.
 
 ## Using the Script
 
