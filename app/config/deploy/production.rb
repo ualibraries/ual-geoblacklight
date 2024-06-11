@@ -6,31 +6,14 @@
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
+# Set the Rails environment to production
+set :rails_env, 'production'
 
 # Set the stage name
 set :stage, :production
 
 # Define the server(s) for deployment
-server 'geodata-sandbox.library.arizona.edu', user: 'deploy'
-
-# Set the application name and repository URL
-set :application, "ual-goblight"
-set :repo_url, "git@github.com:ualibraries/geoblacklight-docker.git"
-
-# Default branch is :main
-set :branch, "main"
-
-# Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/var/www/#{fetch(:application)}"
-
-# SSH options
- set :ssh_options, {
-    keys: ["/home/gob/.ssh/ed25519_ashvini"],
-  forward_agent: true,
-  auth_methods: ["publickey"],
-  port: 22
-}
-
+server '150.135.174.83', user: 'deploy'
 
 # role-based syntax
 # ==================

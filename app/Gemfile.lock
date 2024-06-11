@@ -93,6 +93,11 @@ GEM
       i18n
       rake (>= 10.0.0)
       sshkit (>= 1.9.0)
+    capistrano-bundler (1.6.0)
+      capistrano (~> 3.1)
+    capistrano-rails (1.6.3)
+      capistrano (~> 3.1)
+      capistrano-bundler (>= 1.1, < 3)
     capybara (3.39.2)
       addressable
       matrix
@@ -122,6 +127,7 @@ GEM
       devise
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (3.1.2)
     dry-cli (1.0.0)
     ed25519 (1.3.0)
     erubi (1.12.0)
@@ -412,9 +418,12 @@ DEPENDENCIES
   bootstrap (~> 4.0)
   byebug
   capistrano (~> 3.18)
+  capistrano-bundler (~> 1.6)
+  capistrano-rails (~> 1.4)
   capybara (>= 3.26)
   devise
   devise-guests (~> 0.8)
+  dotenv
   ed25519 (>= 1.2, < 2.0)
   geo_combine (~> 0.9)
   geoblacklight (~> 4.3)
