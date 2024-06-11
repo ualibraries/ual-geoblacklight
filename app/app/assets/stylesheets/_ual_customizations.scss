@@ -1,0 +1,64 @@
+/**
+ * Facets
+ */
+
+// Remove whitespace added by AZBS headings (in facet context)
+#facets {
+  .card {
+    .card-header {
+      margin: 0;
+    }
+  }
+
+  // Remove uppercase style
+  .facets-collapse .btn {
+    text-transform: none;
+  }
+}
+
+/**
+ * Documents
+ */
+
+ #documents {
+  // Make spacing consistent
+  .document {
+    padding: 1rem 0;
+    margin: 0;
+  }
+  // Remove whitespace added by AZBS headings (in documents context)
+  .index_title {
+    margin: 0;
+  }
+}
+
+#appliedParams {
+  .applied-filter {
+    // Hover effects make experience confusing when you can't click the button
+    .constraint-value:hover,
+    .constraint-value:active {
+      background-color: #dee2e6;
+      border-color: #dee2e6;
+      color: inherit;
+    }
+
+    .remove:hover,
+    .remove:active {
+      // Reset hard-coded GBL styles
+      background-color: rgb(158, 155, 150);
+      border-color: rgb(155, 151, 145);
+      color: rgb(43, 46, 48);
+    }
+  }
+}
+
+/**
+ * Homepage Customizations
+ */
+
+#main-container .category-block {
+   min-height: auto !important;
+}
+.ual-card .category-icon .blacklight-icons svg {
+  top: 0;  
+}
