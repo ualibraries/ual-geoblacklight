@@ -151,3 +151,19 @@ $ ./destroy.sh
 
 * Software versions are controlled in `.env`, as are a few other important environment variables.
 * Blacklight-core metadata and config are stored in the `app/solr/conf` directory, which is mounted into the Solr container.
+
+## Rails Console
+
+If you need to access the Rails Console, you can do so by attaching the `ual-goblight:latest` container (if you are using VSCode and Docker plugin).
+
+After attaching the container:
+
+1. `cd` into `/geoblacklight/app`
+2. Run `rails c` to fire up the console
+
+### Helpful Rails Console Commands
+
+| Command | Purpose |
+| ------- | ------ |
+| `reload!` | Refresh the build (clear cache) |
+|  |  |

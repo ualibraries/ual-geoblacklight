@@ -1,0 +1,21 @@
+<div class="category-block card ual-card mb-5">
+  <div class="row no-gutters">
+    <div class="col-12 col-lg-4 align-items-center text-center">
+      <div class="category-icon bg-blue h-100 p-3 d-flex align-items-center justify-content-center">
+        <%= geoblacklight_icon(@icon) %>
+      </div>
+    </div>
+    <div class="col-12 col-lg-8">
+      <div class="card-body">
+        <%= content_tag :h3, t(@label), class: "mt-0 text-dark" %>
+        <%- facets = @response.aggregations[@facet_field].items.map { |item|
+          link_to(item.value, search_catalog_path("f[#{@facet_field}][]": item.value), class: "home-facet-link badge badge-pill badge-light")
+        } %>
+        <%- facets_more = facet_catalog_path(@facet_field) %>
+        <%= facets.join(" ").html_safe %>
+
+      </div>
+      <div class="card-body pt-0"><%= link_to "View all", facets_more, class: "btn btn-dark" %></div>
+    </div>
+  </div>
+</div>

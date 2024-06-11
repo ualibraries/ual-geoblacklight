@@ -1,3 +1,6 @@
 en:
   blacklight:
-    application_name: 'GeoBlacklight'
+    application_name: 'University of Arizona Libraries | GeoBlacklight'
+    back_to_search: 'Back to Search Results'  
+    search:
+      header: 'Search Results'
