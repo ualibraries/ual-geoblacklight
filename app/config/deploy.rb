@@ -18,7 +18,8 @@ set :application, "ual-goblight"
 set :repo_url, "git@github.com:ualibraries/geoblacklight-docker.git"
 
 # Default branch is :master
-set :branch, "main"
+#set :branch, "main"
+set :branch, "story/15628"
 
 # Default deploy_to directory is /var/www/
 set :deploy_to, "/var/www"

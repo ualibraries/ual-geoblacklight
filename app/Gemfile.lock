@@ -93,11 +93,6 @@ GEM
       i18n
       rake (>= 10.0.0)
       sshkit (>= 1.9.0)
-    capistrano-bundler (1.6.0)
-      capistrano (~> 3.1)
-    capistrano-rails (1.6.3)
-      capistrano (~> 3.1)
-      capistrano-bundler (>= 1.1, < 3)
     capybara (3.40.0)
       addressable
       matrix
@@ -238,7 +233,6 @@ GEM
     mutex_m (0.2.0)
     net-http (0.4.1)
       uri
-    mutex_m (0.2.0)
     net-http-persistent (4.0.2)
       connection_pool (~> 2.2)
     net-imap (0.4.11)
@@ -256,18 +250,16 @@ GEM
       net-protocol
     net-ssh (7.2.3)
     nio4r (2.7.3)
-    nokogiri (1.16.5-aarch64-linux)
+    nokogiri (1.16.3-aarch64-linux)
       racc (~> 1.4)
-    nokogiri (1.16.5-arm-linux)
+    nokogiri (1.16.3-arm-linux)
       racc (~> 1.4)
-    nokogiri (1.16.5-arm64-darwin)
+    nokogiri (1.16.3-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.16.5-x86-linux)
+    nokogiri (1.16.3-x86-linux)
       racc (~> 1.4)
-    nokogiri (1.15.4-aarch64-linux)
+    nokogiri (1.16.3-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.16.5-x86_64-darwin)
-    nokogiri (1.16.5-arm64-darwin)
     nokogiri (1.16.3-x86_64-linux)
     orm_adapter (0.5.0)
     ostruct (0.6.0)
@@ -377,12 +369,6 @@ GEM
       net-sftp (>= 2.1.2)
       net-ssh (>= 2.8.0)
     strscan (3.1.0)
-    sshkit (1.22.1)
-      base64
-      mutex_m
-      net-scp (>= 1.1.2)
-      net-sftp (>= 2.1.2)
-      net-ssh (>= 2.8.0)
     thor (1.3.1)
     tilt (2.3.0)
     timeout (0.4.1)
@@ -446,8 +432,6 @@ DEPENDENCIES
   bootstrap (~> 4.0)
   byebug
   capistrano (~> 3.18)
-  capistrano-bundler (~> 1.6)
-  capistrano-rails (~> 1.4)
   capybara (>= 3.26)
   devise
   devise-guests (~> 0.8)
@@ -476,7 +460,7 @@ DEPENDENCIES
   webpacker (~> 5.0)
 
 RUBY VERSION
-   ruby 3.2.1p31
+   ruby 3.2.2p53
 
 BUNDLED WITH
    2.5.10

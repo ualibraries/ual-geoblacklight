@@ -15,6 +15,7 @@ set :stage, :production
 # Define the server(s) for deployment
 server '150.135.174.83', user: 'deploy'
 
+config.require_master_key = true
 # role-based syntax
 # ==================
 
