@@ -25,7 +25,7 @@ set :branch, "story/15628"
 set :deploy_to, "/var/www"
 
 # Ensure PATH is set correctly
-set :default_env, { path: "/home/deploy/.rvm/gems/ruby-3.2.2/bin:$PATH" }
+#set :default_env, { path: "/home/deploy/.rvm/gems/ruby-3.2.2/bin:$PATH" }
 
 # SSH options
 set :ssh_options, {
