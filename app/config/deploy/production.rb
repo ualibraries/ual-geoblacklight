@@ -14,10 +14,6 @@ set :stage, :production
 
 # Define the server(s) for deployment
 server '150.135.174.83', user: 'deploy'
-
-set :default_env, {
-  'RAILS_MASTER_KEY' => '865d7f6b32ece9bf07ad382a29f04108'
-}
 # role-based syntax
 # ==================
 
