@@ -1,4 +1,3 @@
-/docker/postgis/data
 /.env
 /app/tmp/ual-ogm
 .DS_Store
