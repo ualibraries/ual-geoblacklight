@@ -47,6 +47,9 @@ set :ssh_options, {
 
 #Default value for keep_releases is 5
 set :keep_releases, 10
+append :linked_files, 'app/config/master.key'
+
+
 
 # Set the path to Bundler explicitly
 #set :bundle_path, '/home/deploy/.rvm/gems/ruby-3.2.2/bin'
@@ -82,14 +85,33 @@ end
 #    end
  # end
 
- namespace :deploy do
-  
-  desc "Print environment variables"
-  task :print do
-    on roles(:all) do
-      execute :printenv
+#  namespace :deploy do
+#   desc 'Upload master.key'
+#   task :upload_master_key do
+#     on roles(:all) do
+#       execute "mkdir -p #{shared_path}/config"
+#       upload! 'config/master.key', "#{shared_path}/config/master.key"
+#     end
+#   end
+#   before 'deploy:check:linked_files', 'deploy:upload_master_key'
+# end
+namespace :deploy do
+  namespace :check do
+    before :linked_files, :set_master_key do
+      on roles(:all) do
+       # unless test("[ -f #{shared_path}/config/master.key ]")
+          upload! 'config/master.key', "#{shared_path}/config/master.key"
+      #  end
+      end
     end
   end
+end
+  #desc "Print environment variables"
+  #task :print do
+   # on roles(:all) do
+  #    execute :printenv
+  #  end
+ # end
 
   #desc 'bundle install'
   #task :install do
@@ -99,24 +121,25 @@ end
   #end
 #end
 
-  desc 'Restart application'
-  task :restart1 do
-    on roles(:all) do
-      within current_path do
-        execute :touch, 'app/restart.txt' 
-      end
-    end
-  end
+  # desc 'Restart application'
+  # task :restart1 do
+  #   on roles(:all) do
+  #     within current_path do
+  #       execute :touch, 'app/restart.txt' 
+  #     end
+  #   end
+  # end
 
-  after :publishing, :restart1
+#   after :publishing, :restart1
 
-  desc 'Print current path'
-  task :print_current_path do
-    on roles(:all) do
-      info "Current path is #{current_path}"
-    end
-  end
-end
+#   desc 'Print current path'
+#   task :print_current_path do
+#     on roles(:all) do
+#       info "Current path is #{current_path}"
+#     end
+#   end
+# end
 
+# Hook the task to run before starting the deploy
  # after :publishing, :restart
 #end 
