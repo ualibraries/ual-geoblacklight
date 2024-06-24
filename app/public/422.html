@@ -1,67 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="h-100">
 <head>
-  <title>The change you wanted was rejected (422)</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
-
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
-
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
-
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-  </style>
+  <title>Page Not Found</title>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.digital.arizona.edu/lib/arizona-bootstrap/2.0.25/css/arizona-bootstrap.min.css" crossorigin="anonymous">
 </head>
 
-<body class="rails-default-error-page">
-  <!-- This file lives in public/422.html -->
-  <div class="dialog">
-    <div>
-      <h1>The change you wanted was rejected.</h1>
-      <p>Maybe you tried to change something you didn't have access to.</p>
+<body class="d-flex flex-column h-100">
+  <div class="bg-cool-gray">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 py-2">
+          <a href="https://lib.arizona.edu/"><img src="ual_logo.svg" alt="University of Arizona Libraries | GeoBlacklight Home" width="250"></a>
+        </div>
+      </div>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
   </div>
+
+  <div class="bg-blue py-4 mb-5">
+    <div class="container">
+      <div class="row">
+        <nav class="navbar navbar-dark navbar-expand-lg w-100" role="navigation">
+          <a href="/" class="h2 text-decoration-none font-weight-normal my-0">Geospatial Data Repository</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#geospatialNavbar" aria-controls="geospatialNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="material-icons-sharp"> menu </span>
+          </button>
+          <div class="navbar-collapse collapse justify-content-end" id="geospatialNavbar">
+            <ul class="navbar-nav mt-3 mt-lg-0">
+              <li class="nav-item"><a href="/search_history" class="nav-link">History</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <main class="container mb-5" role="main">
+    <div class="row">
+      <div class="col-12">
+        <h1>Page not found</h1>
+        <p>We're sorry, but something went wrong. Please return to the home page to start a new search.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer mt-auto bg-cool-gray py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-lg-9">
+          <a class="d-inline-block mb-3" href="https://lib.arizona.edu/"><img src="ual_logo_uarizona.png" alt="University of Arizona Libraries" width="250"></a>
+          <p>&copy;2024 The Arizona Board of Regents on behalf of <a href="https://www.arizona.edu/">The University of Arizona.</a><br />Main Library | 1510 E. University Blvd. Tucson, AZ 85721</p>
+          <p class="mb-0"><a href="https://lib.arizona.edu/contact" class="btn btn-red" target="_blank">Contact Us</a></p>
+        </div>
+        <div class="col-12 col-lg-3 text-lg-right mt-5 mt-lg-0">
+          <div id="geoblacklight-version">
+            <a href="https://geoblacklight.org/" target="_blank"><img src="geoblacklight-logo.png" alt="GeoBlacklight" width="175"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>
