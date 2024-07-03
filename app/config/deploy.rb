@@ -18,8 +18,8 @@ set :application, "ual-goblight"
 set :repo_url, "git@github.com:ualibraries/geoblacklight-docker.git"
 
 # Default branch is :master
-set :branch, "main"
-#set :branch, "story/15628"
+#set :branch, "main"
+set :branch, "story/15628"
 
 # Default deploy_to directory is /var/www/
 set :deploy_to, "/var/www"
@@ -77,34 +77,51 @@ set :keep_releases, 10
 # end
 ##-----------------------------------------------------------------------------##
 
+
 #-------------------------------------------------------------------------------#
 # After deployement each time capistrano should create credential and master key file
-set :local_credentials_key_path, "config/credentials.yml.enc"
-namespace :deploy do
-  desc 'Generate new master.key and credentials.yml.enc'
-  task :generate_credentials do
-    on roles(:all) do
-      within release_path do
-        #execute :rm, '-f', "#{release_path}/app/config/master.key"
-        execute :rm, '-f', "#{release_path}/app/config/credentials.yml.enc"
-        upload! fetch(:local_credentials_key_path), "#{release_path}/app/config/credentials.yml.enc"
+# namespace :deploy do
+#   desc 'Generate new master.key and credentials.yml.enc'
+#   task :generate_credentials do
+#     on roles(:all) do
+#       within release_path do
+#         execute :rm, '-f', "#{release_path}/app/config/master.key"
+#         execute :rm, '-f', "#{release_path}/app/config/credentials.yml.enc"
 
-        # Ensure the config directory exists
-        #execute :mkdir, "-p", "#{shared_path}/config"
+#         # Ensure the config directory exists
+#         #execute :mkdir, "-p", "#{shared_path}/config"
 
-        # Generate a new master.key
-        #execute :rails, 'secret > config/master.key'
-       # execute :cp, 'config/master.key', "#{shared_path}/config/master.key"
+#         # Generate a new master.key
+#         #execute :rails, 'secret > config/master.key'
+#        # execute :cp, 'config/master.key', "#{shared_path}/config/master.key"
 
-        # Generate new credentials.yml.enc and master.key#
-        #execute :bundle, :exec, "EDITOR='nano --wait' rails credentials:edit"
-       ## execute :bash, "-l -c 'source ~/.rvm/scripts/rvm && cd #{release_path}/app && EDITOR=\"nano --wait\" bundle exec rails credentials:edit'"
-      end
-    end
-  end
-  after 'deploy:symlink:release', 'deploy:generate_credentials'
-end
+#          #Generate new credentials.yml.enc and master.key#
+#          #execute :bundle, :exec, "EDITOR='nano --wait' rails credentials:edit"
+#          execute :bash, "-l -c 'source ~/.rvm/scripts/rvm && cd #{release_path}/app && EDITOR=\"nano --wait\" bundle exec rails credentials:edit'"
+#       end
+#     end
+#   end
+#   after 'deploy:symlink:release', 'deploy:generate_credentials'
+# end
 #-------------------------------------------------------------------------------------#
+##-------------------------------------------------------------------------------------##
+
+# Upload credentials.yml.enc
+#set :local_credentials_key_path, "config/credentials.yml.enc"
+# namespace :deploy do
+#   desc 'Generate new master.key and credentials.yml.enc'
+#   task :upload_credentials_file  do
+#     on roles(:all) do
+#       within release_path do
+#         execute :rm, '-f', "#{release_path}/app/config/credentials.yml.enc"
+#         ##upload! fetch(:local_credentials_key_path), "#{release_path}/app/config/credentials.yml.enc"
+#       end
+#     end
+#   end
+#   after 'deploy:symlink:release', 'deploy:upload_credentials_file'
+# end
+##-----------------------------------------------------------------------------##
+
 #-------------------------------------------------------------------------------------#
 # restart server
 #  namespace :deploy do
