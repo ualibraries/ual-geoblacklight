@@ -118,5 +118,4 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
  # config.require_master_key = true
- config.secret_key_base ='6c8d3f8aa49c8350c1364b13c0e4afba44f9d1a4754e91508b6cd7cdb1fd2183f73e16b7af7e46038b398fd1a3f9bf584d00c6a6d3a1ae20e9e74966f1ebec98'
 end
