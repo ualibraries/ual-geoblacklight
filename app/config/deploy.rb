@@ -18,8 +18,8 @@ set :application, "ual-goblight"
 set :repo_url, "git@github.com:ualibraries/geoblacklight-docker.git"
 
 # Default branch is :master
-#set :branch, "main"
-set :branch, "story/15628"
+set :branch, "main"
+#set :branch, "story/15628"
 
 # Default deploy_to directory is /var/www/
 set :deploy_to, "/var/www"
@@ -77,7 +77,6 @@ set :keep_releases, 10
 # end
 ##-----------------------------------------------------------------------------##
 
-
 #-------------------------------------------------------------------------------#
 # After deployement each time capistrano should create credential and master key file
 # namespace :deploy do
@@ -106,35 +105,35 @@ set :keep_releases, 10
 #-------------------------------------------------------------------------------------#
 ##-------------------------------------------------------------------------------------##
 
-# Upload credentials.yml.enc
-#set :local_credentials_key_path, "config/credentials.yml.enc"
+  #Upload credentials.yml.enc
+# set :local_credentials_key_path, "config/credentials.yml.enc"
 # namespace :deploy do
-#   desc 'Generate new master.key and credentials.yml.enc'
+#   desc 'Upload credentials.yml.enc'
 #   task :upload_credentials_file  do
 #     on roles(:all) do
 #       within release_path do
 #         execute :rm, '-f', "#{release_path}/app/config/credentials.yml.enc"
-#         ##upload! fetch(:local_credentials_key_path), "#{release_path}/app/config/credentials.yml.enc"
+#         upload! fetch(:local_credentials_key_path), "#{release_path}/app/config/credentials.yml.enc"
 #       end
 #     end
 #   end
 #   after 'deploy:symlink:release', 'deploy:upload_credentials_file'
 # end
-##-----------------------------------------------------------------------------##
+#-----------------------------------------------------------------------------##
 
 #-------------------------------------------------------------------------------------#
-# restart server
+#restart server
 #  namespace :deploy do
 #  desc 'Restart application'
 #    task :restart do
 #     on roles(:all), in: :sequence, wait: 5 do
 #        #Touch the restart.txt file to restart Passenger
-#       execute :touch, release_path.join('tmp/restart.txt')
-#       execute :sudo, :service, :nginx, :restart
+#       execute :touch, release_path.join('app/tmp/restart.txt')
+#       #execute :sudo, :service, :nginx, :restart
 #       execute :sudo, :service, :apache2, :restart
 #     end
 #   end
-#   #Hook the task to run before starting the deploy
+#   #Hook the task to run fter deployy
 #   after :publishing, :restart
 # end
 #---------------------------------------------------------------------------------#
@@ -174,13 +173,4 @@ set :keep_releases, 10
 #   end
 
 #end
-
-#namespace :deploy do
-# desc 'Restart application'
-#  task :restart do
- #   on roles(:all), in: :sequence, wait: 5 do
-      # Touch the restart.txt file to restart Passenger
-  #    execute :touch, release_path.join('tmp/restart.txt')
-#    end
- # end
 #-----------------------------------------------------------------------------------------
