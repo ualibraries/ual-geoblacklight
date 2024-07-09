@@ -19,7 +19,6 @@ set :repo_url, "git@github.com:ualibraries/geoblacklight-docker.git"
 
 # Default branch is :master
 set :branch, "main"
-#set :branch, "story/15628"
 
 # Default deploy_to directory is /var/www/
 set :deploy_to, "/var/www"
@@ -33,26 +32,33 @@ set :ssh_options, {
   port: 22
 }
 
-# SSH options
-#set :ssh_options, {
-# keys: ["/home/gob/.ssh/ed25519_ashvini"],
-# forward_agent: false,
-# auth_methods: ["publickey"],
-# user: "deploy",
-# port: 22
-#}
-
 #Default value for keep_releases is 5
 set :keep_releases, 10
 
 #append :linked_files, 'app/config/master.key'
 
-##-------------------------------------------------------------------------------------##
+##----------------------------------------------------------------------------------------------------##
+# #TASK : RESTART SERVER
+#  namespace :deploy do
+#  desc 'Restart application'
+#    task :restart do
+#     on roles(:all), in: :sequence, wait: 5 do
+#        #Touch the restart.txt file to restart Passenger
+#       execute :touch, release_path.join('app/tmp/restart.txt')
+#       execute :sudo, :service, :apache2, :restart
+#     end
+#   end
+#   #Hook the task to run fter deployy
+#   after :publishing, :restart
+# end
+##----------------------------------------------------------------------------------------------------##
 
-# USIMG CAPISTRANO SYMBOLIC LINK
+
+##----------------------------------------------------------------------------------------------------##
+
+# #TASK : USIMG CAPISTRANO SYMBOLIC LINK
 
 # set :local_master_key_path, "config/master.key"
-
 # namespace :deploy do
 #   desc 'Upload master.key'
 #   task :upload_master_key do
@@ -75,10 +81,10 @@ set :keep_releases, 10
 #   before 'deploy:check:linked_files', 'deploy:upload_master_key'
 #   after 'deploy:symlink:shared', 'deploy:link_master_key'
 # end
-##-----------------------------------------------------------------------------##
+##----------------------------------------------------------------------------------------------------##
 
-#-------------------------------------------------------------------------------#
-# After deployement each time capistrano should create credential and master key file
+##----------------------------------------------------------------------------------------------------##
+# #TASK : AFTER DEPLOYEMENT EACH TIME CAPISTRANO SHOULD CREATE CREDENTIAL AND MASTER KEY FILE
 # namespace :deploy do
 #   desc 'Generate new master.key and credentials.yml.enc'
 #   task :generate_credentials do
@@ -102,10 +108,12 @@ set :keep_releases, 10
 #   end
 #   after 'deploy:symlink:release', 'deploy:generate_credentials'
 # end
-#-------------------------------------------------------------------------------------#
-##-------------------------------------------------------------------------------------##
+##----------------------------------------------------------------------------------------------------##
 
-  #Upload credentials.yml.enc
+
+##----------------------------------------------------------------------------------------------------##
+
+# #TASK : UPLOAD CREDENTIALS.YML.ENC
 # set :local_credentials_key_path, "config/credentials.yml.enc"
 # namespace :deploy do
 #   desc 'Upload credentials.yml.enc'
@@ -119,39 +127,12 @@ set :keep_releases, 10
 #   end
 #   after 'deploy:symlink:release', 'deploy:upload_credentials_file'
 # end
-#-----------------------------------------------------------------------------##
-
-#-------------------------------------------------------------------------------------#
-#restart server
-#  namespace :deploy do
-#  desc 'Restart application'
-#    task :restart do
-#     on roles(:all), in: :sequence, wait: 5 do
-#        #Touch the restart.txt file to restart Passenger
-#       execute :touch, release_path.join('app/tmp/restart.txt')
-#       #execute :sudo, :service, :nginx, :restart
-#       execute :sudo, :service, :apache2, :restart
-#     end
-#   end
-#   #Hook the task to run fter deployy
-#   after :publishing, :restart
-# end
-#---------------------------------------------------------------------------------#
-#---------------------------------------------------------------------------------#
-# Set the path to Bundler explicitly
-#set :bundle_path, '/home/deploy/.rvm/gems/ruby-3.2.2/bin'
+##----------------------------------------------------------------------------------------------------##
 
 
-#--------------------------------------------------------------------------------#
-# Deployement Successfull task
-#after :deploy, 'greetings:deploy_successful'
-#namespace :greetings do
-#  task :deploy_successful do
-   #on roles(:all) do
-     # info "Deploy Successful"
-   # end
- # end
-#end
+##----------------------------------------------------------------------------------------------------##
+# #TASK : DEPLOYEMENT SUCCESSFULL TASK
+
 # namespace :greetings do
 #   task :deploy_successful do
 #     on roles(:all) do |host|
@@ -164,13 +145,24 @@ set :keep_releases, 10
 #       end
 #     end
 #   end
+#after :deploy, 'greetings:deploy_successful'
+#end
+##----------------------------------------------------------------------------------------------------##
 
-#   desc 'Print current path'
-#   task :print_current_path do
-#     on roles(:all) do
-#       info "Current path is #{current_path}"
+
+##----------------------------------------------------------------------------------------------------##
+# #TASK : Restart server
+
+#  namespace :deploy do
+#  desc 'Restart application'
+#    task :restart do
+#     on roles(:all), in: :sequence, wait: 5 do
+#        #Touch the restart.txt file to restart Passenger
+#       execute :touch, release_path.join('app/tmp/restart.txt')
+#       execute :sudo, :service, :apache2, :restart
 #     end
 #   end
-
-#end
-#-----------------------------------------------------------------------------------------
+#   #Hook the task to run fter deployy
+#   after :publishing, :restart
+# end
+##----------------------------------------------------------------------------------------------------##
