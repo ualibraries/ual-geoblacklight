@@ -1,7 +1,3 @@
-/docker/geoserver/auth
-/docker/geoserver/data
-/docker/geoserver/mnt
-/docker/postgis/data
 /.env
 /app/tmp/ual-ogm
 .DS_Store
