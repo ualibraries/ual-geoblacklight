@@ -5,13 +5,33 @@ overriding based on GBL > BL.
 
 https://github.com/geoblacklight/geoblacklight/blob/main/app/views/shared/_header_navbar.html.erb
 %>
-
-<div class="<%= container_classes %>">
-  <nav class="navbar mt-2 mb-5 py-4 border-bottom" role="navigation">
-    <a href="<%= root_path %>"><%= image_tag("ual_logo.svg", alt: "University of Arizona Libraries | GeoBlacklight Home", width: "350") %></a>    
-    <%= render "shared/user_util_links" %>
-  </nav>
+<div class="bg-cool-gray">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 py-2">
+        <a href="https://lib.arizona.edu/"><%= image_tag("ual_logo.svg", alt: "University of Arizona Libraries | GeoBlacklight Home", width: "250") %></a>
+      </div>
+    </div>
+  </div>
 </div>
+<div class="bg-blue py-4 mb-5">
+  <div class="<%= container_classes %>">
+    <div class="row">
+      <nav class="navbar navbar-dark navbar-expand-lg w-100" role="navigation">
+        <a href="<%= root_path %>" class="h2 text-decoration-none font-weight-normal my-0">Geospatial Data Repository</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#geospatialNavbar" aria-controls="geospatialNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="material-icons-sharp"> menu </span>
+        </button>
+        <div class="navbar-collapse collapse justify-content-end" id="geospatialNavbar">
+          <ul class="navbar-nav mt-3 mt-lg-0">
+            <%= render "shared/user_util_links" %>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>
+
 <%- renderable_fields = blacklight_config.search_fields.values.collect { |field_def| [label_for_search_field(field_def.key), field_def.key] if should_render_field?(field_def)}.compact %>
 <% if controller_name == "catalog" && (has_search_parameters? || params[:action] == "show") %>
   <div class="<%= container_classes %> stuff">
@@ -48,7 +68,6 @@ https://github.com/geoblacklight/geoblacklight/blob/main/app/views/shared/_heade
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>

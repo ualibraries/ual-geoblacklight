@@ -2,34 +2,18 @@
 This is an custom template, not an override of GeoBlacklight
 or Blacklight components. Attached in base.html.erb.
 %>
-<footer class="footer mt-auto bg-gray-300 py-5">
+<footer class="footer mt-auto bg-cool-gray py-5">
   <div class="container">
     <div class="row">
-      <div class="col-12 col-sm-5 col-md-4 col-lg-4 text-center-xs text-left-not-xs">
-        <div class="row bottom-buffer-30">
-          <div class="col">
-            <a href="https://lib.arizona.edu/" title="University of Arizona Libraries | Home" rel="home" class="d-block mt-0"><img class="img-fluid" src="https://lib.arizona.edu/logo.svg" alt="University of Arizona Libraries" /></a>
-          </div>
-        </div>
+      <div class="col-12 col-lg-9">
+        <a class="d-inline-block mb-3" href="https://lib.arizona.edu/"><%= image_tag("ual_logo_uarizona.png", alt: "University of Arizona Libraries", width: "250") %></a>
+        <p>&copy;2024 The Arizona Board of Regents on behalf of <a href="https://www.arizona.edu/">The University of Arizona.</a><br />Main Library | 1510 E. University Blvd. Tucson, AZ 85721</p>
+        <p class="mb-0"><a href="https://lib.arizona.edu/contact" class="btn btn-red" target="_blank">Contact Us</a></p>
       </div>
-      <div class="col-12 col-sm-7 col-md-8 col-lg-8 text-center-xs text-right-not-xs">
-        <p><strong>Main Library</strong> | 1510 E. University Blvd. Tucson, AZ 85721</p>
-        <p>(520) 621-6442</p>
-        <p><a href="https://lib.arizona.edu/giving" class="btn btn-blue">Give</a></p>
-      </div>
-    </div>
-    <div class="row mt-3">
-      <div class="col-12 text-center">
-        <hr />
+      <div class="col-12 col-lg-3 text-lg-right mt-5 mt-lg-0">
         <div id="geoblacklight-version">
-          <%= image_tag("geoblacklight-logo.png", alt: "GeoBlacklight", width: "175") %><br />
-          <span class="text-muted"><small><em><%= t('geoblacklight.home.version', version: Geoblacklight::VERSION ) %></small></em></span>
+          <a href="https://geoblacklight.org/" target="_blank"><%= image_tag("geoblacklight-logo.png", alt: "GeoBlacklight", width: "175") %></a>
         </div>
-        <hr />
-        <p><small><em>We respectfully acknowledge the University of Arizona is on the land and territories of Indigenous peoples. Today, Arizona is home to 22 federally recognized tribes, with Tucson being home to the O’odham and the Yaqui. Committed to diversity and inclusion, the University strives to build sustainable relationships with sovereign Native Nations and Indigenous communities through education offerings, partnerships, and community service.</em></small></p>
-        <hr />
-        <p><a href="https://www.arizona.edu/information-security-privacy"><small>University Information Security and Privacy</small></a></p>
-        <p><small>&copy;2024 The Arizona Board of Regents on behalf of <a href="https://www.arizona.edu/">The University of Arizona.</a></small></p>
       </div>
     </div>
   </div>
