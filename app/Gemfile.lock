@@ -60,8 +60,8 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
-    addressable (2.8.6)
-      public_suffix (>= 2.0.2, < 6.0)
+    addressable (2.8.7)
+      public_suffix (>= 2.0.2, < 7.0)
     autoprefixer-rails (10.4.16.0)
     airbrussh (1.5.2)
       sshkit (>= 1.6.1, != 1.7.0)
@@ -104,7 +104,7 @@ GEM
       xpath (~> 3.2)
     coderay (1.1.3)
     concurrent-ruby (1.3.3)
-    config (5.4.0)
+    config (5.5.1)
       deep_merge (~> 1.2, >= 1.2.1)
     connection_pool (2.4.1)
     crass (1.0.6)
@@ -121,13 +121,19 @@ GEM
     devise-guests (0.8.3)
       devise
     domain_name (0.6.20240107)
+<<<<<<< HEAD
     dotenv (3.1.2)
     dry-cli (1.0.0)
     ed25519 (1.3.0)
     erubi (1.12.0)
+=======
+    dry-cli (1.1.0)
+    erubi (1.13.0)
+>>>>>>> origin/main
     execjs (2.9.1)
-    faraday (2.9.0)
+    faraday (2.10.0)
       faraday-net_http (>= 2.0, < 3.2)
+      logger
     faraday-net_http (3.1.0)
       net-http
     faraday-net_http_persistent (2.1.0)
@@ -135,7 +141,16 @@ GEM
       net-http-persistent (~> 4.0)
     faraday-retry (2.2.1)
       faraday (~> 2.0)
-    ffi (1.16.3)
+    ffi (1.17.0-aarch64-linux-gnu)
+    ffi (1.17.0-aarch64-linux-musl)
+    ffi (1.17.0-arm-linux-gnu)
+    ffi (1.17.0-arm-linux-musl)
+    ffi (1.17.0-arm64-darwin)
+    ffi (1.17.0-x86-linux-gnu)
+    ffi (1.17.0-x86-linux-musl)
+    ffi (1.17.0-x86_64-darwin)
+    ffi (1.17.0-x86_64-linux-gnu)
+    ffi (1.17.0-x86_64-linux-musl)
     ffi-compiler (1.3.2)
       ffi (>= 1.15.5)
       rake
@@ -162,7 +177,7 @@ GEM
       rgeo-geojson
       sprockets-rails (~> 3.0)
       vite_rails (~> 3.0)
-    git (2.0.1)
+    git (2.1.1)
       activesupport (>= 5.0)
       addressable (~> 2.8)
       process_executer (~> 1.1)
@@ -180,7 +195,7 @@ GEM
       http-cookie (~> 1.0)
       http-form_data (~> 2.2)
       llhttp-ffi (~> 0.5.0)
-    http-cookie (1.0.5)
+    http-cookie (1.0.6)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
     i18n (1.14.5)
@@ -192,7 +207,7 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
-    json-schema (4.3.0)
+    json-schema (4.3.1)
       addressable (>= 2.8)
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
@@ -212,6 +227,7 @@ GEM
     llhttp-ffi (0.5.0)
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
+    logger (1.6.0)
     loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -225,17 +241,17 @@ GEM
     method_source (1.1.0)
     mime-types (3.5.2)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2024.0507)
+    mime-types-data (3.2024.0702)
     mini_mime (1.1.5)
     minitar (0.9)
-    minitest (5.23.1)
+    minitest (5.24.1)
     msgpack (1.7.2)
     net-http (0.4.1)
       uri
     mutex_m (0.2.0)
     net-http-persistent (4.0.2)
       connection_pool (~> 2.2)
-    net-imap (0.4.11)
+    net-imap (0.4.14)
       date
       net-protocol
     net-pop (0.1.2)
@@ -249,24 +265,28 @@ GEM
       net-ssh (>= 5.0.0, < 8.0.0)
       net-protocol
     nio4r (2.7.3)
+<<<<<<< HEAD
     nokogiri (1.16.5-aarch64-linux)
     net-ssh (7.2.3)
+=======
+    nokogiri (1.16.6-aarch64-linux)
+>>>>>>> origin/main
       racc (~> 1.4)
-    nokogiri (1.16.5-arm-linux)
+    nokogiri (1.16.6-arm-linux)
       racc (~> 1.4)
-    nokogiri (1.16.5-arm64-darwin)
+    nokogiri (1.16.6-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.16.5-x86-linux)
+    nokogiri (1.16.6-x86-linux)
       racc (~> 1.4)
-    nokogiri (1.16.5-x86_64-darwin)
+    nokogiri (1.16.6-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.16.5-x86_64-linux)
+    nokogiri (1.16.6-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     ostruct (0.6.0)
     popper_js (1.16.1)
     process_executer (1.1.0)
-    public_suffix (5.0.5)
+    public_suffix (6.0.0)
     puma (5.6.8)
       nio4r (~> 2.0)
     racc (1.8.0)
@@ -315,8 +335,8 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     retriable (3.1.2)
-    rexml (3.2.8)
-      strscan (>= 3.0.9)
+    rexml (3.3.2)
+      strscan
     rgeo (3.0.1)
     rgeo-geojson (2.1.1)
       rgeo (>= 1.0.0)
@@ -325,7 +345,7 @@ GEM
       faraday (>= 0.9, < 3, != 2.0.0)
     ruby-progressbar (1.13.0)
     rubyzip (2.3.2)
-    sanitize (6.1.0)
+    sanitize (6.1.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     sass-rails (6.0.0)
@@ -353,9 +373,9 @@ GEM
       base64
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
-    sprockets-rails (3.4.2)
-      actionpack (>= 5.2)
-      activesupport (>= 5.2)
+    sprockets-rails (3.5.1)
+      actionpack (>= 6.1)
+      activesupport (>= 6.1)
       sprockets (>= 3.0.0)
     sqlite3 (1.7.3-aarch64-linux)
     sqlite3 (1.7.3-arm-linux)
@@ -365,6 +385,7 @@ GEM
     sqlite3 (1.7.3-x86_64-linux)
     strscan (3.1.0)
     thor (1.3.1)
+<<<<<<< HEAD
     sshkit (1.22.1)
       base64
       mutex_m
@@ -372,6 +393,9 @@ GEM
       net-sftp (>= 2.1.2)
       net-ssh (>= 2.8.0)
     tilt (2.3.0)
+=======
+    tilt (2.4.0)
+>>>>>>> origin/main
     timeout (0.4.1)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
@@ -383,14 +407,14 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     uri (0.13.0)
-    view_component (3.12.1)
+    view_component (3.13.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
     vite_rails (3.0.17)
       railties (>= 5.1, < 8)
       vite_ruby (~> 3.0, >= 3.2.2)
-    vite_ruby (3.5.0)
+    vite_ruby (3.6.0)
       dry-cli (>= 0.7, < 2)
       rack-proxy (~> 0.6, >= 0.6.1)
       zeitwerk (~> 2.2)
@@ -410,23 +434,31 @@ GEM
       rack-proxy (>= 0.6.1)
       railties (>= 5.2)
       semantic_range (>= 2.3.0)
-    websocket (1.2.10)
+    websocket (1.2.11)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.15)
+    zeitwerk (2.6.16)
 
 PLATFORMS
   aarch64-linux
-  arm-linux
+  aarch64-linux-gnu
+  aarch64-linux-musl
+  arm-linux-gnu
+  arm-linux-musl
   arm64-darwin
   x86-linux
+  x86-linux-gnu
+  x86-linux-musl
   x86_64-darwin
   x86_64-linux
+  x86_64-linux-gnu
+  x86_64-linux-musl
 
 DEPENDENCIES
+<<<<<<< HEAD
   bcrypt_pbkdf (>= 1.0, < 2.0)
   blacklight (~> 7.0)
   bootsnap (>= 1.4.4)
@@ -454,14 +486,39 @@ DEPENDENCIES
   sprockets (< 4.0)
   sqlite3 (~> 1.4)
   turbolinks (~> 5)
+=======
+  blacklight (= 7.37.0)
+  bootsnap (= 1.18.3)
+  bootstrap (= 4.6.2)
+  byebug (= 11.1.3)
+  capybara (= 3.40.0)
+  devise (= 4.9.4)
+  devise-guests (= 0.8.3)
+  geo_combine (= 0.9.0)
+  geoblacklight (= 4.4.0)
+  jbuilder (= 2.12.0)
+  jquery-rails (= 4.6.0)
+  listen (= 3.9.0)
+  puma (= 5.6.8)
+  rack-mini-profiler (= 2.3.4)
+  rails (= 6.1.7.8)
+  rsolr (= 2.6.0)
+  sass-rails (= 6.0.0)
+  selenium-webdriver (= 4.10.0)
+  solr_wrapper (= 4.0.2)
+  spring (= 4.2.1)
+  sprockets (= 3.7.3)
+  sqlite3 (= 1.7.3)
+  turbolinks (= 5.2.1)
+>>>>>>> origin/main
   twitter-typeahead-rails (= 0.11.1.pre.corejavascript)
   tzinfo-data
-  web-console (>= 4.1.0)
-  webdrivers
-  webpacker (~> 5.0)
+  web-console (= 4.2.1)
+  webdrivers (= 5.3.1)
+  webpacker (= 5.4.4)
 
 RUBY VERSION
    ruby 3.2.2p53
 
 BUNDLED WITH
-   2.5.10
+   2.5.14
