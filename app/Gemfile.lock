@@ -62,10 +62,10 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
-    autoprefixer-rails (10.4.16.0)
     airbrussh (1.5.2)
-      sshkit (>= 1.6.1, != 1.7.0)
       execjs (~> 2)
+      sshkit (>= 1.6.1, != 1.7.0)
+    autoprefixer-rails (10.4.16.0)
     base64 (0.2.0)
     bcrypt (3.1.20)
     bcrypt_pbkdf (1.1.0)
@@ -88,20 +88,20 @@ GEM
       sassc-rails (>= 2.0.0)
     builder (3.3.0)
     byebug (11.1.3)
-    capybara (3.40.0)
     capistrano (3.18.1)
+      addressable
       airbrussh (>= 1.0.0)
       i18n
-      rake (>= 10.0.0)
-      sshkit (>= 1.9.0)
-      addressable
       matrix
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.11)
       rack (>= 1.6.0)
       rack-test (>= 0.6.3)
+      rake (>= 10.0.0)
       regexp_parser (>= 1.5, < 3.0)
+      sshkit (>= 1.9.0)
       xpath (~> 3.2)
+    capybara (3.40.0)
     coderay (1.1.3)
     concurrent-ruby (1.3.3)
     config (5.5.1)
@@ -121,15 +121,10 @@ GEM
     devise-guests (0.8.3)
       devise
     domain_name (0.6.20240107)
-<<<<<<< HEAD
     dotenv (3.1.2)
-    dry-cli (1.0.0)
-    ed25519 (1.3.0)
-    erubi (1.12.0)
-=======
     dry-cli (1.1.0)
+    ed25519 (1.3.0)
     erubi (1.13.0)
->>>>>>> origin/main
     execjs (2.9.1)
     faraday (2.10.0)
       faraday-net_http (>= 2.0, < 3.2)
@@ -248,7 +243,6 @@ GEM
     msgpack (1.7.2)
     net-http (0.4.1)
       uri
-    mutex_m (0.2.0)
     net-http-persistent (4.0.2)
       connection_pool (~> 2.2)
     net-imap (0.4.14)
@@ -258,19 +252,14 @@ GEM
       net-protocol
     net-protocol (0.2.2)
       timeout
-    net-smtp (0.5.0)
     net-scp (4.0.0)
       net-ssh (>= 2.6.5, < 8.0.0)
     net-sftp (4.0.0)
       net-ssh (>= 5.0.0, < 8.0.0)
-      net-protocol
-    nio4r (2.7.3)
-<<<<<<< HEAD
-    nokogiri (1.16.5-aarch64-linux)
+    net-smtp (0.5.0)
     net-ssh (7.2.3)
-=======
+    nio4r (2.7.3)
     nokogiri (1.16.6-aarch64-linux)
->>>>>>> origin/main
       racc (~> 1.4)
     nokogiri (1.16.6-arm-linux)
       racc (~> 1.4)
@@ -383,19 +372,14 @@ GEM
     sqlite3 (1.7.3-x86-linux)
     sqlite3 (1.7.3-x86_64-darwin)
     sqlite3 (1.7.3-x86_64-linux)
-    strscan (3.1.0)
-    thor (1.3.1)
-<<<<<<< HEAD
-    sshkit (1.22.1)
+    sshkit (1.23.0)
       base64
-      mutex_m
       net-scp (>= 1.1.2)
       net-sftp (>= 2.1.2)
       net-ssh (>= 2.8.0)
-    tilt (2.3.0)
-=======
+    strscan (3.1.0)
+    thor (1.3.1)
     tilt (2.4.0)
->>>>>>> origin/main
     timeout (0.4.1)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
@@ -458,42 +442,17 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
-<<<<<<< HEAD
-  bcrypt_pbkdf (>= 1.0, < 2.0)
-  blacklight (~> 7.0)
-  bootsnap (>= 1.4.4)
-  bootstrap (~> 4.0)
-  byebug
-  capistrano (~> 3.18)
-  capybara (>= 3.26)
-  devise
-  devise-guests (~> 0.8)
-  dotenv
-  ed25519 (>= 1.2, < 2.0)
-  geo_combine (~> 0.9)
-  geoblacklight (~> 4.3)
-  jbuilder (~> 2.7)
-  jquery-rails
-  listen (~> 3.3)
-  puma (~> 5.6)
-  rack-mini-profiler (~> 2.0)
-  rails (~> 6.1.7, >= 6.1.7.6)
-  rsolr (>= 1.0, < 3)
-  sass-rails (>= 6)
-  selenium-webdriver (>= 4.0.0.rc1)
-  solr_wrapper (>= 0.3)
-  spring
-  sprockets (< 4.0)
-  sqlite3 (~> 1.4)
-  turbolinks (~> 5)
-=======
+  bcrypt_pbkdf (= 1.1.0)
   blacklight (= 7.37.0)
   bootsnap (= 1.18.3)
   bootstrap (= 4.6.2)
   byebug (= 11.1.3)
+  capistrano (= 3.18.1)
   capybara (= 3.40.0)
   devise (= 4.9.4)
   devise-guests (= 0.8.3)
+  dotenv
+  ed25519 (= 1.3.0)
   geo_combine (= 0.9.0)
   geoblacklight (= 4.4.0)
   jbuilder (= 2.12.0)
@@ -510,7 +469,6 @@ DEPENDENCIES
   sprockets (= 3.7.3)
   sqlite3 (= 1.7.3)
   turbolinks (= 5.2.1)
->>>>>>> origin/main
   twitter-typeahead-rails (= 0.11.1.pre.corejavascript)
   tzinfo-data
   web-console (= 4.2.1)
