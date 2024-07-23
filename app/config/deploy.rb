@@ -41,32 +41,28 @@ set :keep_releases, 10
 set :bundle_gemfile, "app/Gemfile"
 
 ##----------------------------------------------------------------------------------------------------##
-# #TASK : RESTART SERVER
-  set :local_credentials_key_path, "config/credentials.yml.enc"
-  namespace :deploy do
-  desc 'Restart application'
-    task :restart do
-      on roles(:all), in: :sequence, wait: 5 do
-      #Touch the restart.txt file to restart Passenger
-      #execute :touch, release_path.join('app/tmp/restart.txt')
-      # execute :sudo, :service, :apache2, :restart
-      # Path to your application directory
-     #  execute :sudo, 'systemctl restart apache2'
-     # app_path = "#{release_path}/app"
+  #TASK : RESTART SERVER
+  # namespace :deploy do
+  # desc 'Restart application'
+  #   task :restart do
+  #     on roles(:all), in: :sequence, wait: 5 do
+  #     #Touch the restart.txt file to restart Passenger
+  #     #execute :touch, release_path.join('app/tmp/restart.txt')
+  #     # execute :sudo, :service, :apache2, :restart
+  #     # Path to your application directory
+  #    #  execute :sudo, 'systemctl restart apache2'
 
-      # Passenger restart command
-     # passenger_restart_command = "passenger-config restart-app #{app_path}"
-      passenger_restart_command = "passenger-config restart-app /var/www/current"
-        # Execute the Passenger restart command without sudo
-      execute passenger_restart_command
-   invoke!("passenger:restart")
+  #   # Passenger restart with  passenger command
+  #     info "Restarting Passenger by touching tmp/restart.txt"
+  #     execute :touch, release_path.join('app/tmp/restart.txt')
+  #     execute :passenger, 'restart-app', release_path.join('/var/www/current')
+  #     info "Passenger restart command executed"
 
-      end
-    end
-    #Hook the task to run fter deployy
-  # after :publishing, :restart
-    after :publishing, :'deploy:restart'
-  end
+  #   end
+  #   end
+  #   after :publishing, :'deploy:restart'
+  # end
+
 ##----------------------------------------------------------------------------------------------------##
 
 # #TASK : UPLOAD CREDENTIALS.YML.ENC
@@ -82,5 +78,5 @@ set :bundle_gemfile, "app/Gemfile"
 #     end
 #   end
 #   after 'deploy:symlink:release', 'deploy:upload_credentials_file'
-#end
+# end
 ##----------------------------------------------------------------------------------------------------##
