@@ -36,20 +36,18 @@ namespace :ual_docs do
                 # clean non-digit chars from numerical fields
                 record_out['gbl_indexYear_im'] = record_out['gbl_indexYear_im'].map { |year| year.gsub(/\D/, '') }
                 
-                # Replace Sequoia links with CyVerse links
+                # Access dct_references_s field to modify metadata
                 dct_references_s = JSON.parse(record_out['dct_references_s'])
                 
+                # Replace Sequoia links with CyVerse links
                 match_table.each do |item, details|
                     if (dct_references_s['http://schema.org/downloadUrl'].include? details['sequoia']) && (!details['cyverse'].empty?)
-                        substring_start = record_out['dct_references_s'].index('http://sequoia.library.arizona.edu')
-                        sequoia_substring = record_out['dct_references_s'][substring_start, record_out['dct_references_s'].length-1]
-                        sequoia_substring = sequoia_substring.gsub('"}', '')
-                        substring_end =  substring_start + sequoia_substring.length-1
-                       
-                        cyverse_replacement = record_out['dct_references_s'][0..substring_start-1] + details['cyverse'] + record_out['dct_references_s'][substring_end+1..record_out['dct_references_s'].length]
-                        record_out['dct_references_s'] = cyverse_replacement
+                        dct_references_s['http://schema.org/downloadUrl'] = details['cyverse']
                     end
                 end
+
+                # Rewrite the field's value back to JSON
+                record_out['dct_references_s'] = dct_references_s.to_json
 
                 # overwrite data back to file later if we want to commit them
                 # File.open(filename, 'w') { |file| file.write(JSON.dump(record_out)) }
