@@ -31,27 +31,42 @@ set :ssh_options, {
   user: "deploy",
   port: 22
 }
+#append :linked_files, 'config/database.yml'
+append :linked_dirs, "log"
 
 #Default value for keep_releases is 5
 set :keep_releases, 10
 
+# Gemfile path for bundle install
+set :bundle_gemfile, "app/Gemfile"
+
 ##----------------------------------------------------------------------------------------------------##
 # #TASK : RESTART SERVER
-#  namespace :deploy do
-#  desc 'Restart application'
-#    task :restart do
-#     on roles(:all), in: :sequence, wait: 5 do
-#        #Touch the restart.txt file to restart Passenger
-#       execute :touch, release_path.join('app/tmp/restart.txt')
-#       execute :sudo, :service, :apache2, :restart
-#     end
-#   end
-#   #Hook the task to run fter deployy
-#   after :publishing, :restart
-# end
-##----------------------------------------------------------------------------------------------------##
+  set :local_credentials_key_path, "config/credentials.yml.enc"
+  namespace :deploy do
+  desc 'Restart application'
+    task :restart do
+      on roles(:all), in: :sequence, wait: 5 do
+      #Touch the restart.txt file to restart Passenger
+      #execute :touch, release_path.join('app/tmp/restart.txt')
+      # execute :sudo, :service, :apache2, :restart
+      # Path to your application directory
+     #  execute :sudo, 'systemctl restart apache2'
+     # app_path = "#{release_path}/app"
 
+      # Passenger restart command
+     # passenger_restart_command = "passenger-config restart-app #{app_path}"
+      passenger_restart_command = "passenger-config restart-app /var/www/current"
+        # Execute the Passenger restart command without sudo
+      execute passenger_restart_command
+   invoke!("passenger:restart")
 
+      end
+    end
+    #Hook the task to run fter deployy
+  # after :publishing, :restart
+    after :publishing, :'deploy:restart'
+  end
 ##----------------------------------------------------------------------------------------------------##
 
 # #TASK : UPLOAD CREDENTIALS.YML.ENC
@@ -67,5 +82,5 @@ set :keep_releases, 10
 #     end
 #   end
 #   after 'deploy:symlink:release', 'deploy:upload_credentials_file'
-# end
+#end
 ##----------------------------------------------------------------------------------------------------##
