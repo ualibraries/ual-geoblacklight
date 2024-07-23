@@ -30,6 +30,8 @@ namespace :ual_docs do
                 # Migrate it to Aardvark schema
                 record_out = GeoCombine::Migrators::V1AardvarkMigrator.new(v1_hash: record).run
 
+                # Add bounding box coordinates to locn_geometry
+                record_out['locn_geometry'] = record_out['dcat_bbox']
                 # change field keys not in Aardvark migration
                 record_out['dcat_bbox'] = record_out.delete('solr_geom')
 
@@ -38,6 +40,10 @@ namespace :ual_docs do
                 
                 # Access dct_references_s field to modify metadata
                 dct_references_s = JSON.parse(record_out['dct_references_s'])
+                
+                # Remove references to geoserver from metadata
+                dct_references_s.delete('http://www.opengis.net/def/serviceType/ogc/wms')
+                dct_references_s.delete('http://www.opengis.net/def/serviceType/ogc/wfs')                
                 
                 # Replace Sequoia links with CyVerse links
                 match_table.each do |item, details|
