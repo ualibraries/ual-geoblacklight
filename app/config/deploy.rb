@@ -1,5 +1,5 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.18.1"
+lock "~> 3.0"
 
 # Load environment variables from .env file
 require 'dotenv'
@@ -17,7 +17,10 @@ raise "DEPLOY_SSH_KEY_PATH environment variable is not set" unless ssh_key_path
 set :application, "ual-goblight"
 set :repo_url, "git@github.com:ualibraries/geoblacklight-docker.git"
 
-# Default branch is :master
+# Sets rvm to ~/.rvm
+set :rvm_type, :user
+
+# Default branch is :main
 set :branch, "main"
 
 # Default deploy_to directory is /var/www/
@@ -31,8 +34,9 @@ set :ssh_options, {
   user: "deploy",
   port: 22
 }
+
 #append :linked_files, 'config/database.yml'
-append :linked_dirs, "log"
+append :linked_dirs, "app/log", "app/.bundle"
 
 #Default value for keep_releases is 5
 set :keep_releases, 10
