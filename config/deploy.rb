@@ -1,9 +1,6 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.0"
 
-# Load environment variables from .env file
-require 'dotenv'
-
 # Dynamically determine the project's root directory and load the .env file
 project_root = File.expand_path('.', __dir__)
 Dotenv.load(File.join(project_root, '.env'))
@@ -40,10 +37,6 @@ append :linked_dirs, "log", ".bundle"
 
 #Default value for keep_releases is 5
 set :keep_releases, 10
-
-# Gemfile path for bundle install
-set :bundle_gemfile, "Gemfile"
-
 
 ##----------------------------------------------------------------------------------------------------##
   #TASK : RESTART SERVER
