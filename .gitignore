@@ -43,6 +43,5 @@ yarn-debug.log*
 
 
 /.env
-/app/tmp/ual-ogm
 .DS_Store
 /.idea
