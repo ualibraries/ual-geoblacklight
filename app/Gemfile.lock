@@ -119,7 +119,7 @@ GEM
     faraday (2.10.0)
       faraday-net_http (>= 2.0, < 3.2)
       logger
-    faraday-net_http (3.1.0)
+    faraday-net_http (3.1.1)
       net-http
     faraday-net_http_persistent (2.1.0)
       faraday (~> 2.5)
@@ -139,7 +139,7 @@ GEM
     ffi-compiler (1.3.2)
       ffi (>= 1.15.5)
       rake
-    geo_combine (0.9.0)
+    geo_combine (0.9.1)
       activesupport
       faraday-net_http_persistent (~> 2.0)
       faraday-retry (~> 2.2)
@@ -231,6 +231,7 @@ GEM
     minitar (0.9)
     minitest (5.24.1)
     msgpack (1.7.2)
+    multi_json (1.15.0)
     net-http (0.4.1)
       uri
     net-http-persistent (4.0.2)
@@ -261,7 +262,7 @@ GEM
     ostruct (0.6.0)
     popper_js (1.16.1)
     process_executer (1.1.0)
-    public_suffix (6.0.0)
+    public_suffix (6.0.1)
     puma (5.6.8)
       nio4r (~> 2.0)
     racc (1.8.0)
@@ -313,7 +314,8 @@ GEM
     rexml (3.3.2)
       strscan
     rgeo (3.0.1)
-    rgeo-geojson (2.1.1)
+    rgeo-geojson (2.2.0)
+      multi_json (~> 1.15)
       rgeo (>= 1.0.0)
     rsolr (2.6.0)
       builder (>= 2.1.2)
@@ -379,7 +381,7 @@ GEM
     vite_rails (3.0.17)
       railties (>= 5.1, < 8)
       vite_ruby (~> 3.0, >= 3.2.2)
-    vite_ruby (3.6.0)
+    vite_ruby (3.7.0)
       dry-cli (>= 0.7, < 2)
       rack-proxy (~> 0.6, >= 0.6.1)
       zeitwerk (~> 2.2)
@@ -408,9 +410,9 @@ GEM
     zeitwerk (2.6.16)
 
 PLATFORMS
-  aarch64-linux
   aarch64-linux-gnu
   aarch64-linux-musl
+  arm-linux
   arm-linux-gnu
   arm-linux-musl
   arm64-darwin
@@ -430,7 +432,7 @@ DEPENDENCIES
   capybara (= 3.40.0)
   devise (= 4.9.4)
   devise-guests (= 0.8.3)
-  geo_combine (= 0.9.0)
+  geo_combine (= 0.9.1)
   geoblacklight (= 4.4.0)
   jbuilder (= 2.12.0)
   jquery-rails (= 4.6.0)
@@ -456,4 +458,4 @@ RUBY VERSION
    ruby 3.2.2p53
 
 BUNDLED WITH
-   2.5.14
+   2.5.16
