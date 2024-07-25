@@ -32,8 +32,8 @@ set :ssh_options, {
   port: 22
 }
 
-#append :linked_files, 'config/database.yml'
-append :linked_dirs, "log", ".bundle"
+append :linked_files, ".env", "config/master.key", "db/production.sqlite3"
+append :linked_dirs, "log", ".bundle", 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle'
 
 #Default value for keep_releases is 5
 set :keep_releases, 10
