@@ -30,9 +30,6 @@ namespace :ual_docs do
                 # Migrate it to Aardvark schema
                 record_out = GeoCombine::Migrators::V1AardvarkMigrator.new(v1_hash: record).run
 
-                # Add bounding box coordinates to locn_geometry - doesn't exist in our source data 2024/07/24 (https://github.com/OpenGeoMetadata/GeoCombine/blame/main/lib/geo_combine/migrators/v1_aardvark_migrator.rb#L62)
-                record_out['locn_geometry'] = record_out['dcat_bbox']
-
                 # clean non-digit chars from numerical fields
                 record_out['gbl_indexYear_im'] = record_out['gbl_indexYear_im'].map { |year| year.gsub(/\D/, '') }
                 
