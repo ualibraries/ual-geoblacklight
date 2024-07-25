@@ -1,4 +1,33 @@
 /**
+ * Bootstrap Overrides (to match AZBS)
+ */
+.card {
+  border-radius: 0;
+}
+.show-tools .list-group .list-group-item {
+  border: 1px solid rgba(0,0,0,.125);
+  border-width: 0 0 1px;
+}
+
+// Couldn't get the class directly on the a tag, so this is a workaround
+.downloads-sidebar {
+  .dropdown-item {
+    padding: 0;
+  }
+  .dropdown-item a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: .25rem 1.5rem;
+    display: block;
+  
+    &:hover {
+      color: #ffffff;
+      text-decoration: none;
+    }
+  }
+}
+
+/**
  * Facets
  */
 
@@ -29,6 +58,16 @@
   // Remove whitespace added by AZBS headings (in documents context)
   .index_title {
     margin: 0;
+  }
+
+}
+
+#document {
+  // Ensure longer words (i.e., URLs) don't break the page layout on smaller breakpoints
+  .document-metadata dt,
+  .document-metadata dd {
+    word-break: break-word;
+    word-wrap: break-word;
   }
 }
 
@@ -61,4 +100,10 @@
 }
 .ual-card .category-icon .blacklight-icons svg {
   top: 0;  
+}
+
+@media screen and (max-width: 991px) {
+  .ual-card .category-icon .blacklight-icons {
+    height: 4rem;
+  }
 }

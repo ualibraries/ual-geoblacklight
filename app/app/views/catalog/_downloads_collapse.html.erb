@@ -4,24 +4,34 @@
 <% if document.direct_download.present? %>
   <% if document.direct_download[:download].is_a? Array %>
     <% document.direct_download[:download].each do |download| %>
-      <%= download_link_file(download['label'], document.id, download['url']) %>
+      <div class="dropdown-item">
+        <%= download_link_file(download['label'], document.id, download['url']) %>
+      </div>
     <% end %>
   <% end %>
   <% if document.direct_download[:download].is_a? String %>
-    <%= download_link_file(download_text(document.file_format), document.id, document.direct_download[:download]) %>
+    <div class="dropdown-item">
+      <%= download_link_file(download_text(document.file_format), document.id, document.direct_download[:download]) %>
+    </div>
   <% end %>
 <% end %>
 
 <% if document.hgl_download.present? %>
-  <%= download_link_hgl(download_text(document.download_types.first[0]), document) %>
+  <div class="dropdown-item">
+    <%= download_link_hgl(download_text(document.download_types.first[0]), document) %>
+  </div>
 <% end %>
 
 <% if document.iiif_download.present? %>
-  <%= download_link_iiif %>
+  <div class="dropdown-item">
+    <%= download_link_iiif %>
+  </div>
 <% end %>
 
 <% if document.download_types.present? %>
   <% document.download_types.each do |type| %>
-    <%= download_link_generated(type.first, document) %>
+    <div class="dropdown-item">
+      <%= download_link_generated(type.first, document) %>
+    </div>
   <% end %>
 <% end %>
