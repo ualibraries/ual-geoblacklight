@@ -5,11 +5,6 @@ require "capistrano/setup"
 require "capistrano/deploy"
 require 'dotenv'
 
-# Dynamically determine the project's root directory and load the .env file
-project_root = File.expand_path('..', __dir__)
-Dotenv.load(File.join(project_root, '.env'))
-
-
 # Load the SCM plugin appropriate to your project:
 #
 # require "capistrano/scm/hg"
@@ -43,7 +38,7 @@ install_plugin Capistrano::SCM::Git
 # require "capistrano/chruby"
 # require 'capistrano/rails'
 # require "capistrano/rails/assets"
-# require "capistrano/rails/migrations"
+require "capistrano/rails/migrations"
 
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined

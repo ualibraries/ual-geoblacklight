@@ -41,6 +41,7 @@ group :development do
   gem 'capistrano-bundler', '2.1.0'
   gem 'capistrano-rvm', '0.1.2'
   gem 'capistrano-passenger','0.2.1'
+  gem "capistrano-rails", "1.6.3", require: false
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '4.2.1'
   # Display performance information such as SQL time and flame graphs for each request in your browser.
