@@ -35,24 +35,41 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update -q \
     && apt-get upgrade -qy
 
-RUN apt-get install -qy \
-    bash \
-    build-essential \
-    ca-certificates \
-    curl \
-    expect \
-    git \
-    gnupg2 \
-    lsof \
-    openssl \
-    nodejs \
-    npm \
-    sqlite3 \
-    sudo \
-    vim \
-    tzdata
+RUN apt-get update -q \
+    && apt-get install -qy \
+        bash \
+        build-essential \
+        ca-certificates \
+        curl \
+        expect \
+        git \
+        gnupg2 \
+        lsof \
+        openssl \
+        sqlite3 \
+        sudo \
+        vim \
+        tzdata
 
-# install node stuff
+# Install node
+
+# Add NodeSource signing key
+RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | gpg2 --dearmor -o /usr/share/keyrings/nodesource-archive-keyring.gpg
+
+# Add the NodeSource repository
+RUN echo "deb [signed-by=/usr/share/keyrings/nodesource-archive-keyring.gpg] https://deb.nodesource.com/node_${NODE_MAJOR_VERSION}.x jammy main" | tee /etc/apt/sources.list.d/nodesource.list
+
+# Update the package list again
+RUN apt-get update
+
+# Install Node.js 20
+RUN apt-get install -y nodejs
+
+# Verify Node.js installation
+RUN node -v
+RUN npm -v
+
+# Install yarn
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get update -q
