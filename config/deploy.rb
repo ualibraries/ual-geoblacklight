@@ -14,7 +14,7 @@ set :repo_url, "git@github.com:ualibraries/geoblacklight-docker.git"
 set :rvm_type, :user
 
 # Default branch is :main
-set :branch, "story/15628"
+set :branch, "main"
 
 # Default deploy_to directory is /var/www/
 set :deploy_to, "/var/www"
