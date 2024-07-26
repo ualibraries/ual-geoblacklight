@@ -31,12 +31,14 @@ install_plugin Capistrano::SCM::Git
 require "capistrano/rvm"
 require "capistrano/bundler"
 require "capistrano/passenger"
-require "capistrano/rails/migrations"
+require 'capistrano/rails'
 
 # require "capistrano/rbenv"
 # require "capistrano/chruby"
-# require 'capistrano/rails'
+
+# Not needed if 'capistrano/rails' is required
 # require "capistrano/rails/assets"
+# require "capistrano/rails/migrations"
 
 
 
