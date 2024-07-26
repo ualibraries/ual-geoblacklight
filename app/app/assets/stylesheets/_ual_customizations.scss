@@ -8,6 +8,11 @@
   border: 1px solid rgba(0,0,0,.125);
   border-width: 0 0 1px;
 }
+.btn {
+  // Temporary fix until we upgrade AZ Bootstrap
+  text-transform: none !important;
+  letter-spacing: 0.5px;
+}
 
 // Couldn't get the class directly on the a tag, so this is a workaround
 .downloads-sidebar {
