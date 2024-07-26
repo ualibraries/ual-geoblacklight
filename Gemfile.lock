@@ -159,7 +159,7 @@ GEM
     ffi-compiler (1.3.2)
       ffi (>= 1.15.5)
       rake
-    geo_combine (0.9.0)
+    geo_combine (0.9.1)
       activesupport
       faraday-net_http_persistent (~> 2.0)
       faraday-retry (~> 2.2)
@@ -443,6 +443,7 @@ PLATFORMS
   aarch64-linux
   aarch64-linux-gnu
   aarch64-linux-musl
+  arm-linux
   arm-linux-gnu
   arm-linux-musl
   arm64-darwin
@@ -450,7 +451,6 @@ PLATFORMS
   x86-linux-gnu
   x86-linux-musl
   x86_64-darwin
-  x86_64-linux
   x86_64-linux-gnu
   x86_64-linux-musl
 
@@ -470,7 +470,7 @@ DEPENDENCIES
   devise-guests (= 0.8.3)
   dotenv
   ed25519 (= 1.3.0)
-  geo_combine (= 0.9.0)
+  geo_combine (= 0.9.1)
   geoblacklight (= 4.4.0)
   jbuilder (= 2.12.0)
   jquery-rails (= 4.6.0)
@@ -496,4 +496,4 @@ RUBY VERSION
    ruby 3.2.2p53
 
 BUNDLED WITH
-   2.5.14
+   2.5.16
