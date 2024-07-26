@@ -19,7 +19,7 @@ gem 'jbuilder', '2.12.0'
 # Dependencies for ed25519
 gem 'ed25519', '1.3.0'
 gem 'bcrypt_pbkdf', '1.1.0'
-gem 'dotenv', require: false
+gem 'dotenv', '3.1.2'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
