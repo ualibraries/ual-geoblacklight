@@ -41,7 +41,7 @@ yarn-debug.log*
 
 /config/master.key
 
-
+# Local development related files and directories to ignore
 /.env
 .DS_Store
 /.idea
