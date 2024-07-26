@@ -14,8 +14,3 @@ set :stage, :production
 
 # Define the server(s) for deployment
 server '150.135.174.83', user: 'deploy', roles: %w{web app db}
-
-set :bundle_config, {
-  deployment: true,
-  with: ""
-}
