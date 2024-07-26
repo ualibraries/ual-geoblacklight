@@ -33,22 +33,8 @@ https://github.com/geoblacklight/geoblacklight/blob/main/app/views/shared/_heade
 </div>
 
 <%- renderable_fields = blacklight_config.search_fields.values.collect { |field_def| [label_for_search_field(field_def.key), field_def.key] if should_render_field?(field_def)}.compact %>
-<% if controller_name == "catalog" && (has_search_parameters? || params[:action] == "show") %>
-  <div class="<%= container_classes %>">
-    <div class="row mt-3 mb-5">
-      <div class="col-12">
-        <div class="navbar-search navbar navbar-light bg-faded border-0 justify-content-center bg-gray-300 p-3" role="navigation">
-          <%= render((blacklight_config&.view_config(document_index_view_type)&.search_bar_component ||Blacklight::SearchBarComponent).new(
-              url: search_action_url,
-              advanced_search_url: search_action_url(action: "advanced_search"),
-              search_fields: renderable_fields,
-              params: search_state.params_for_search.except(:qt),
-              autocomplete_path: search_action_path(action: :suggest)))  %>
-        </div>
-      </div>
-    </div>
-  </div>
-<% else %>
+
+<% if current_page?(root_path) && (not has_search_parameters?) %>
   <div class="container">
     <div class="row">
       <div class="col-12 py-5">
