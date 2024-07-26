@@ -51,7 +51,7 @@
 }
 
 /**
- * Documents
+ * Documents (search results)
  */
 
  #documents {
@@ -65,15 +65,6 @@
     margin: 0;
   }
 
-}
-
-#document {
-  // Ensure longer words (i.e., URLs) don't break the page layout on smaller breakpoints
-  .document-metadata dt,
-  .document-metadata dd {
-    word-break: break-word;
-    word-wrap: break-word;
-  }
 }
 
 #appliedParams {
@@ -97,7 +88,53 @@
 }
 
 /**
- * Homepage Customizations
+ * Document (single item)
+ */
+#document {
+  // Ensure longer words (i.e., URLs) don't break the page layout on smaller breakpoints
+  .document-metadata dt,
+  .document-metadata dd {
+    word-break: break-word;
+    word-wrap: break-word;
+  }
+
+  #map {
+    margin: 2rem 0;
+  }
+  #viewer-container {
+    margin: 0;
+  }
+
+  .blacklight-icons svg{
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+
+  .blacklight-icons,
+  .icon-missing {
+    height: auto;
+    width: auto;
+    padding: 0 0.6rem;
+  }
+}
+
+
+/**
+ * Pagination
+ */
+.pagination-search-widgets {
+  border: {
+    width: 1px 0 0 0;
+    style: solid;
+    color: #dee2e6;
+  } 
+  margin: 3rem 0 0 0;
+  padding: 3rem 0 0 0;
+}
+
+
+/**
+ * Homepage
  */
 
 #main-container .category-block {
