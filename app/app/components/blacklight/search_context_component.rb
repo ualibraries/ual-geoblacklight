@@ -19,12 +19,14 @@ module Blacklight
       end
     end
 
+    # Replacement of link_to_previous_document so that we can modify markup/classes
     def ual_link_to_previous_document(document = nil, *args, **kwargs)
       Deprecation.silence(Blacklight::UrlHelperBehavior) do
         helpers.ual_link_to_previous_document(document || @search_context[:prev], *args, **kwargs)
       end
     end
 
+    # Replacement of link_to_next_document so that we can modify markup/classes
     def ual_link_to_next_document(document = nil, *args, **kwargs)
       Deprecation.silence(Blacklight::UrlHelperBehavior) do
         helpers.ual_link_to_next_document(document || @search_context[:next], *args, **kwargs)
