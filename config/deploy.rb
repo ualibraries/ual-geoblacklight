@@ -31,7 +31,7 @@ set :ssh_options, {
   user: "deploy",
   port: 22
 }
-
+set :passenger_restart_with_sudo, true
 append :linked_files, ".env", "config/master.key"
 append :linked_dirs, "log", ".bundle", 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle'
 
