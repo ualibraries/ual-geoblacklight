@@ -1,10 +1,6 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.0"
 
-# Dynamically determine the project's root directory and load the .env file
-project_root = File.expand_path('.', __dir__)
-Dotenv.load(File.join(project_root, '.env'))
-
 # Fetch SSH key path from environment variables
 ssh_key_path = ENV['DEPLOY_SSH_KEY_PATH']
 
