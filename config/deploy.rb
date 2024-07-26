@@ -18,7 +18,7 @@ set :repo_url, "git@github.com:ualibraries/geoblacklight-docker.git"
 set :rvm_type, :user
 
 # Default branch is :main
-set :branch, "main"
+set :branch, "story/15628"
 
 # Default deploy_to directory is /var/www/
 set :deploy_to, "/var/www"
@@ -32,7 +32,7 @@ set :ssh_options, {
   port: 22
 }
 
-append :linked_files, ".env", "config/master.key", "db/production.sqlite3"
+append :linked_files, ".env", "config/master.key"
 append :linked_dirs, "log", ".bundle", 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle'
 
 #Default value for keep_releases is 5
