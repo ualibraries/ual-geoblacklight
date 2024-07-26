@@ -19,15 +19,15 @@ module Blacklight
       end
     end
 
-    def link_to_previous_document(document = nil, *args, **kwargs)
+    def ual_link_to_previous_document(document = nil, *args, **kwargs)
       Deprecation.silence(Blacklight::UrlHelperBehavior) do
-        helpers.link_to_previous_document(document || @search_context[:prev], *args, **kwargs)
+        helpers.ual_link_to_previous_document(document || @search_context[:prev], *args, **kwargs)
       end
     end
 
-    def link_to_next_document(document = nil, *args, **kwargs)
+    def ual_link_to_next_document(document = nil, *args, **kwargs)
       Deprecation.silence(Blacklight::UrlHelperBehavior) do
-        helpers.link_to_next_document(document || @search_context[:next], *args, **kwargs)
+        helpers.ual_link_to_next_document(document || @search_context[:next], *args, **kwargs)
       end
     end
   end
