@@ -365,6 +365,8 @@ GEM
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
     semantic_range (3.0.0)
+    slackistrano (4.0.2)
+      capistrano (>= 3.8.1)
     solr_wrapper (4.0.2)
       http
       minitar
@@ -481,6 +483,7 @@ DEPENDENCIES
   rsolr (= 2.6.0)
   sass-rails (= 6.0.0)
   selenium-webdriver (= 4.10.0)
+  slackistrano (= 4.0.2)
   solr_wrapper (= 4.0.2)
   spring (= 4.2.1)
   sprockets (= 3.7.3)

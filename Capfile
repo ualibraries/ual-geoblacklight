@@ -33,6 +33,9 @@ require "capistrano/bundler"
 require "capistrano/passenger"
 require 'capistrano/rails'
 
+require 'slackistrano/capistrano'
+require_relative 'lib/custom_slack_messaging'
+
 # require "capistrano/rbenv"
 # require "capistrano/chruby"
 

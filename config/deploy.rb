@@ -1,3 +1,5 @@
+require 'dotenv/load'
+
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.0"
 
@@ -6,6 +8,12 @@ ssh_key_path = ENV['DEPLOY_SSH_KEY_PATH']
 
 # Raise an error if the SSH key path is not provided
 raise "DEPLOY_SSH_KEY_PATH environment variable is not set" unless ssh_key_path
+
+# Fetch Slack webhook from environment variables
+slack_webhook = ENV['SLACK_WEB_HOOK']
+
+# Raise an error if the Slack webhook is not provided
+raise "SLACK_WEB_HOOK environment variable is not set. This is required for deployment. #{slack_webhook}" unless slack_webhook
 
 set :application, "ual-goblight"
 set :repo_url, "git@github.com:ualibraries/geoblacklight-docker.git"
@@ -33,6 +41,14 @@ append :linked_dirs, "log", ".bundle", 'tmp/pids', 'tmp/cache', 'tmp/sockets', '
 
 #Default value for keep_releases is 5
 set :keep_releases, 10
+
+set :passenger_restart_with_sudo, true
+
+set :slackistrano, {
+  klass: Slackistrano::CustomSlackMessaging,
+  channel: '#tess-dev-deployer',
+  webhook: slack_webhook
+}
 
 ##----------------------------------------------------------------------------------------------------##
   #TASK : RESTART SERVER
