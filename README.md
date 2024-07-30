@@ -56,6 +56,36 @@ See the following URLs:
 * `localhost:3000` for the GeoBlacklight application
 * `localhost:8984` for the Solr admin (admin is locked down; see the .env file for creds)
 
+## Deployment
+
+We use [Capistrano](https://capistranorb.com/) for deployments. Deployments are easiest to run through the Docker container for local development. You must provide the Slack webhook using the `SLACK_WEB_HOOK` environment variable in the `.env` file in order to deploy. You won't be able to deploy without it.
+
+0. Make sure you're on the Library network (on site or using VPN)
+1. SSH into the `ual_gob_app` service
+
+    ```shell
+    docker compose exec ual_gob_app bash
+    ```
+
+2. Change directory to `/geoblacklight/app` inside the container
+
+    ```shell
+    cd /geoblacklight/app
+    ```
+
+3. Run the Capistrano deployment command
+
+    ```shell
+    cap production deploy
+    ```
+    This will deploy the `main` branch to production. Alternatively you can provide a branch name to deploy:
+    
+    ```shell
+    cap production deploy BRANCH=some_branch_name
+    ```
+
+You can check the status of the deployment in the `#tess-dev-deployer` Slack channel in the UAL Slack workspace.
+
 ## Optional application container commands
 
 **Stop the Docker network:**
