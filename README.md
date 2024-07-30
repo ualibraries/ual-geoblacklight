@@ -58,7 +58,7 @@ See the following URLs:
 
 ## Deployment
 
-We use [Capistrano](https://capistranorb.com/) for deployments. Deployments are easiest to run through the Docker container for local development. You must provide the Slack webhook using the `SLACK_WEB_HOOK` environment variable in the `.env` file in order to deploy. You won't be able to deploy without it. You can find the webhook stored in [Stache](https://stache.arizona.edu) under the "Capistrano Slack App Webhook" entry. You must also provide the path to your SSH key in the `DEPLOY_SSH_KEY_PATH` environment variable in `.env`. **It must be an RSA or ED25519 key**.
+We use [Capistrano](https://capistranorb.com/) for deployments. Deployments are easiest to run through the Docker container for local development. You must provide the Slack webhook using the `SLACK_WEB_HOOK` environment variable in the `.env` file in order to deploy. You won't be able to deploy without it. You can find the webhook stored in [Stache](https://stache.arizona.edu) under the "Capistrano Slack App Webhook" entry. You must also provide the path to your SSH key in the `DEPLOY_SSH_KEY_PATH` environment variable in `.env`. **It must be an RSA or ED25519 key**. Lastly, the deployment is executed as the 'deploy' user, so you must have your SSH public key added to the deploy users `authorized_keys` file.
 
 Here are the steps to deploy to production:
 
