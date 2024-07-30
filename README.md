@@ -45,7 +45,7 @@ $ ./dbuild.sh
 $ ./start-me-up.sh
 ```
 
-The GBL app is installed automatically if it does not already exist. This will take a little while and the server is still not started. A list of dependencies should print out as the GBL is installed. All data that matters to the app is statefully preserved on the host machine in the `./app` directory. The GBL RoR app will be in `./app/app` (Yes, two apps for the price of one!)
+The GBL app is installed automatically if it does not already exist. This will take a little while and the server is still not started. A list of dependencies should print out as the GBL is installed.
 
 Build scripts set up Apache ZooKeeper and Solr decoupled to propagate search configuration and data in "cloud mode". Search data is located in Docker volumes on startup.
 
@@ -149,7 +149,7 @@ Also see the Solr query screen in the Solr admin: https://solr.apache.org/guide/
 
 **Tear-down**
 
-WARNING: This destroys _all_ data, meaning containers and volumes. (It does not remove Docker images, however.) The dialogue will ask if you want to clean up any untracked files. Usually there are generated files that are ignored by git. However, if you have added something and not committed, those files may be deleted permanently. Please take a good look at the list to avoid this.
+WARNING: This destroys _all_ data, meaning containers and volumes. (It does not remove Docker images, however.) The dialogue will ask if you want to delete all files in the tmp directory, log directory, and sqlite files.
 
 ```shell
 $ ./destroy.sh
@@ -172,7 +172,7 @@ $ ./destroy.sh
 ## Helpful hints
 
 * Software versions are controlled in `.env`, as are a few other important environment variables.
-* Blacklight-core metadata and config are stored in the `app/solr/conf` directory, which is mounted into the Solr container.
+* Blacklight-core metadata and config are stored in the `solr/conf` directory, which is mounted into the Solr container.
 
 ## Rails Console
 
