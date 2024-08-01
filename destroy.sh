@@ -2,20 +2,13 @@
 
 docker compose down -v
 
-FILES=`git clean -fdxn`
-if [ -n "${FILES}" ]; then
-    echo -e "\n\nThe following files have untracked changes since the last commit, \nusually meaning they are ignored and/or code-generated dependencies. \n\n"
-    echo "${FILES}"
-    echo -e "\nDo you want to remove them? (y|n)"
-    read option
-    if [ "$option" == "y" ]; then
-        git clean -fdx
-    elif [ "$option" == "n" ]; then
-        echo -e "\n\nNot removing any untracked files. This may have an effect on the next container startup. \n\n"
-    else
-        echo -e "\n\nSorry, I could not understand the input. \n\n"
-    fi
+echo -e "\nDo you want to remove all files in tmp directory, log directory, and sqlite files? (y|n)"
+read option
+if [ "$option" == "y" ]; then
+    rm -rf log/* tmp/cache tmp/sockets tmp/pids/* tmp/miniprofiler db/*.sqlite3 db/*.sqlite3-*
+    rm tmp/* 2> /dev/null
+elif [ "$option" == "n" ]; then
+    echo -e "\n\nNot removing any untracked files. This may have an effect on the next container startup. \n\n"
 else
-    echo -e "\n\nNo untracked files were found. \n\n"
-    exit 0
+    echo -e "\n\nSorry, I could not understand the input. \n\n"
 fi

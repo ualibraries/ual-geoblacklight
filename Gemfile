@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.2.2'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '6.1.7.8'
 # Use sqlite3 as the database for Active Record
@@ -17,11 +16,14 @@ gem 'webpacker', '5.4.4'
 gem 'turbolinks', '5.2.1'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '2.12.0'
+# Dependencies for ed25519
+gem 'ed25519', '1.3.0'
+gem 'bcrypt_pbkdf', '1.1.0'
+gem 'dotenv', '3.1.2'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -34,6 +36,13 @@ group :development, :test do
 end
 
 group :development do
+  # Capistrano is a deployment automation tool. Version 3.18 is specified here.
+  gem 'capistrano', '3.19.1'
+  gem 'capistrano-bundler', '2.1.0'
+  gem 'capistrano-rvm', '0.1.2'
+  gem 'capistrano-passenger','0.2.1'
+  gem "capistrano-rails", "1.6.3"
+  gem 'slackistrano', '4.0.2'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '4.2.1'
   # Display performance information such as SQL time and flame graphs for each request in your browser.
@@ -42,6 +51,7 @@ group :development do
   gem 'listen', '3.9.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring', '4.2.1'
+
 end
 
 group :test do

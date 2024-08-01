@@ -38,10 +38,12 @@ If you would like to use the Python script, you must first:
 Upon initial completion of this task, we realized we had 32 items that did not find matches within CyVerse. After some [discovery work](https://redmine.library.arizona.edu/issues/15846), we determined that some files had been renamed within CyVerse, while others were located in UAiR, and others in Campus Repository. The script has some specific logic statements to check for these 32 "missing" items and update their links accordingly.
 
   Note that the following 2 items intentionally left out for now, due to filesize (GBs):
+  
     - McCartysLavaFlowField_15cmDTM_2015.zip
     - McCartysLavaFlowField_15cmOrtho_2015.zip
   
   Note that the following 7 items intentionally left out for now, due to not having found matches:
+  
     - Arizona_100kScaleTopoDecollared_1970to1995.tif
     - Arizona_24kScaleTopoDecollared_1970to1995.tif
     - Arizona_250kScaleTopoDecollared_1970to1995.tif

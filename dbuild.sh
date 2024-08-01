@@ -13,6 +13,7 @@ docker build --rm=true -t ual-goblight:latest \
     --build-arg SOLR_PASS=${SOLR_PASS} \
     --build-arg USER_GID=${DGID} \
     --build-arg USER_UID=${DUID} \
+    --build-arg NODE_MAJOR_VERSION=${NODE_MAJOR_VERSION} \
     -f app/Dockerfile .
 
 docker build --rm=true -t ual-solr:latest \
