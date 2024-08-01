@@ -48,6 +48,20 @@
   .facets-collapse .btn {
     text-transform: none;
   }
+
+  .facets-header {
+    align-items: center;
+  }
+}
+#ual_facet_top {
+  .pagination {
+    display: none;
+  }
+}
+#ual_facet_bottom {
+  .sort-options {
+    display: none;
+  }
 }
 
 /**

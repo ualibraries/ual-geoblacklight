@@ -1,19 +1,22 @@
-<div class="prev_next_links btn-group">
-  <%= helpers.link_to_previous_page @facet_field.paginator, raw(t('views.pagination.previous')), params: @facet_field.search_state.to_h, param_name: param_name, class: 'btn btn-link', data: { blacklight_modal: "preserve" } do %>
-    <%= content_tag :span, raw(t('views.pagination.previous')), class: 'disabled btn' %>
-  <% end %>
-
-  <%= helpers.link_to_next_page @facet_field.paginator, raw(t('views.pagination.next')), params: @facet_field.search_state.to_h, param_name: param_name, class: 'btn btn-link',  data: { blacklight_modal: "preserve" } do %>
-    <%= content_tag :span, raw(t('views.pagination.next')), class: 'disabled btn' %>
-  <% end %>
-</div>
+<ul class="prev_next_links pagination">
+  <li class="page-item <%= @facet_field.paginator.first_page? ? 'disabled' : '' %>"> 
+    <%= helpers.link_to_previous_page @facet_field.paginator, raw(t('views.pagination.previous')), params: @facet_field.search_state.to_h, param_name: param_name, class: 'page-link', data: { blacklight_modal: "preserve" } do %>
+      <%= content_tag :span, raw(t('views.pagination.previous')), class: 'page-link' %>
+    <% end %>
+  </li>
+  <li class="page-item <%= @facet_field.paginator.last_page? ? 'disabled' : '' %>"> 
+    <%= helpers.link_to_next_page @facet_field.paginator, raw(t('views.pagination.next')), params: @facet_field.search_state.to_h, param_name: param_name, class: 'page-link',  data: { blacklight_modal: "preserve" } do %>
+      <%= content_tag :span, raw(t('views.pagination.next')), class: 'page-link' %> 
+    <% end %>
+  </li>
+</ul>
 
 <div class="sort-options btn-group">
   <% if @facet_field.paginator.sort == 'index' -%>
-    <span class="active az btn btn-outline-secondary"><%= t('blacklight.search.facets.sort.index') %></span>
-    <%= helpers.link_to(t('blacklight.search.facets.sort.count'), sort_facet_url('count'), class: "sort_change numeric btn btn-outline-secondary", data: { blacklight_modal: "preserve" }) %>
+    <button class="active az btn btn-light" aria-pressed="true"><%= t('blacklight.search.facets.sort.index') %></button>
+    <%= helpers.link_to(t('blacklight.search.facets.sort.count'), sort_facet_url('count'), class: "sort_change numeric btn btn-outline-light", data: { blacklight_modal: "preserve" }) %>
   <% elsif @facet_field.paginator.sort == 'count' -%>
-    <%= helpers.link_to(t('blacklight.search.facets.sort.index'), sort_facet_url('index'), class: "sort_change az btn btn-outline-secondary",  data: { blacklight_modal: "preserve" }) %>
-    <span class="active numeric btn btn-outline-secondary"><%= t('blacklight.search.facets.sort.count') %></span>
+    <%= helpers.link_to(t('blacklight.search.facets.sort.index'), sort_facet_url('index'), class: "sort_change az btn btn-outline-light",  data: { blacklight_modal: "preserve" }) %>
+    <button class="active numeric btn btn-light" aria-pressed="true"><%= t('blacklight.search.facets.sort.count') %></button>
   <% end -%>
 </div>
