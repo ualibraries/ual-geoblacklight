@@ -45,7 +45,7 @@ $ ./dbuild.sh
 $ ./start-me-up.sh
 ```
 
-The GBL app is installed automatically if it does not already exist. This will take a little while and the server is still not started. A list of dependencies should print out as the GBL is installed. All data that matters to the app is statefully preserved on the host machine in the `./app` directory. The GBL RoR app will be in `./app/app` (Yes, two apps for the price of one!)
+The GBL app is installed automatically if it does not already exist. This will take a little while and the server is still not started. A list of dependencies should print out as the GBL is installed.
 
 Build scripts set up Apache ZooKeeper and Solr decoupled to propagate search configuration and data in "cloud mode". Search data is located in Docker volumes on startup.
 
@@ -55,6 +55,38 @@ See the following URLs:
 
 * `localhost:3000` for the GeoBlacklight application
 * `localhost:8984` for the Solr admin (admin is locked down; see the .env file for creds)
+
+## Deployment
+
+We use [Capistrano](https://capistranorb.com/) for deployments. Deployments are easiest to run through the Docker container for local development. You must provide the Slack webhook using the `SLACK_WEB_HOOK` environment variable in the `.env` file in order to deploy. You won't be able to deploy without it. You can find the webhook stored in [Stache](https://stache.arizona.edu) under the "Capistrano Slack App Webhook" entry. You must also provide the path to your SSH key in the `DEPLOY_SSH_KEY_PATH` environment variable in `.env`. **It must be an RSA or ED25519 key**. Lastly, the deployment is executed as the 'deploy' user, so you must have your SSH public key added to the deploy users `authorized_keys` file.
+
+Here are the steps to deploy to production:
+
+0. Make sure you're on the Library network (on site or using VPN)
+1. SSH into the `ual_gob_app` service
+
+    ```shell
+    docker compose exec ual_gob_app bash
+    ```
+
+2. Change directory to `/geoblacklight/app` inside the container
+
+    ```shell
+    cd /geoblacklight/app
+    ```
+
+3. Run the Capistrano deployment command
+
+    ```shell
+    cap production deploy
+    ```
+    This will deploy the `main` branch to production. Alternatively you can provide a branch name to deploy:
+    
+    ```shell
+    cap production deploy BRANCH=some_branch_name
+    ```
+
+You can check the status of the deployment in the `#tess-dev-deployer` Slack channel in the UAL Slack workspace.
 
 ## Optional application container commands
 
@@ -119,7 +151,7 @@ Also see the Solr query screen in the Solr admin: https://solr.apache.org/guide/
 
 **Tear-down**
 
-WARNING: This destroys _all_ data, meaning containers and volumes. (It does not remove Docker images, however.) The dialogue will ask if you want to clean up any untracked files. Usually there are generated files that are ignored by git. However, if you have added something and not committed, those files may be deleted permanently. Please take a good look at the list to avoid this.
+WARNING: This destroys _all_ data, meaning containers and volumes. (It does not remove Docker images, however.) The dialogue will ask if you want to delete all files in the tmp directory, log directory, and sqlite files.
 
 ```shell
 $ ./destroy.sh
@@ -142,7 +174,7 @@ $ ./destroy.sh
 ## Helpful hints
 
 * Software versions are controlled in `.env`, as are a few other important environment variables.
-* Blacklight-core metadata and config are stored in the `app/solr/conf` directory, which is mounted into the Solr container.
+* Blacklight-core metadata and config are stored in the `solr/conf` directory, which is mounted into the Solr container.
 
 ## Rails Console
 
