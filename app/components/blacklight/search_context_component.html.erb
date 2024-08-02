@@ -1,0 +1,15 @@
+<div class="pagination-search-widgets">
+  <ul class="pagination page-links">
+    <% if ual_link_to_previous_document.include? 'span' %>
+      <li class="page-item disabled"><%= ual_link_to_previous_document %></li>
+    <% else %>
+      <li class="page-item"><%= ual_link_to_previous_document %></li>
+    <% end %>
+    <li class="page-item d-flex align-items-center px-3"><span><%= item_page_entry_info %></spam></li>
+    <% if ual_link_to_next_document.include? 'span' %>
+      <li class="page-item disabled"><%= ual_link_to_next_document %></li>
+    <% else %>
+      <li class="page-item"><%= ual_link_to_next_document %></li>
+    <% end %>
+  </ul>
+</div>

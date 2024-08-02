@@ -1,0 +1,12 @@
+<% if current_search_session %>
+  <div id="appliedParams" class="clearfix constraints-container">
+    <%= ual_link_back_to_catalog class: 'btn btn-blue' %>
+    <%= render 'start_over' %>
+  </div>
+<% end %>
+
+<%= render 'show_main_content' %>
+
+<% content_for(:sidebar) do %>
+  <%= render_document_sidebar_partial @document %>
+<% end %>
