@@ -3,3 +3,4 @@
   require valid-user
   ShibRequireSession On
 </IfModule>
+
