@@ -2,4 +2,11 @@
   AuthType shibboleth
   require valid-user
   ShibRequireSession On
+
+  # Turn off shibboleth for the status page
+  <Location /status>
+      AuthType None
+      Require all granted
+  </Location>
 </IfModule>
+

@@ -9,4 +9,12 @@ class ApplicationController < ActionController::Base
           # Blacklight::Parameters will pass these to params.permit
           blacklight_config.search_state_fields.append(Settings.GBL_PARAMS)
         end
+
+  # Status page for Pingdom
+  def status
+    output = {
+      "curr_datetime": DateTime.current
+    }
+    render json: output.to_json
+  end
 end

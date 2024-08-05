@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     concerns :exportable
   end
 
+  # Status page for Pingdom
+  get '/status', to: 'application#status'
+
   # resources :bookmarks do
   #   concerns :exportable
 
