@@ -1,0 +1,5 @@
+<IfModule mod_shib>
+  AuthType shibboleth
+  require valid-user
+  ShibRequireSession On
+</IfModule>
