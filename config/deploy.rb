@@ -16,7 +16,7 @@ slack_webhook = ENV['SLACK_WEB_HOOK']
 raise "SLACK_WEB_HOOK environment variable is not set. This is required for deployment. #{slack_webhook}" unless slack_webhook
 
 set :application, "ual-goblight"
-set :repo_url, "git@github.com:ualibraries/geoblacklight-docker.git"
+set :repo_url, "git@github.com:ualibraries/ual-geoblacklight.git"
 
 # Sets rvm to ~/.rvm
 set :rvm_type, :user
