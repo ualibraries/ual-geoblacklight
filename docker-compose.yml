@@ -19,8 +19,6 @@ services:
       - /run/host-services/ssh-auth.sock:/run/host-services/ssh-auth.sock
       - ~/.ssh:/home/gob/.ssh
       - ~/.gitconfig:/home/gob/.gitconfig
-    depends_on:
-      - ual_zookeeper
     networks:
       - ual-gob
     tty: true
@@ -35,32 +33,12 @@ services:
       - solr1_data:/var/solr
       - ./docker/solr/cloud-secure.sh:/home/solr/docker/cloud-secure.sh
       - ./solr/conf:/blacklight-core
-    depends_on:
-      - ual_zookeeper
     networks:
       - ual-gob
     command: bash -c "/home/solr/docker/cloud-secure.sh"
-
-  ual_zookeeper:
-    image: "zookeeper:${ZK_VERSION:-latest}"
-    container_name: zoo1
-    ports:
-      - "2181:2181"
-      - "2888:2888"
-      - "3888:3888"
-    environment:
-      - ZOO_MY_ID=1
-      - ZOO_SERVERS=server.1=zoo1:2888:3888;2181
-      - ZOO_4LW_COMMANDS_WHITELIST=mntr, conf, ruok
-      - ZOO_CFG_EXTRA="metricsProvider.className=org.apache.zookeeper.metrics.prometheus.PrometheusMetricsProvider metricsProvider.httpPort=7000 metricsProvider.exportJvmInfo=true"
-    volumes:
-      - zoo1_data:/data
-    networks:
-      - ual-gob
 
 networks:
   ual-gob:
 
 volumes:
   solr1_data:
-  zoo1_data:

@@ -18,7 +18,7 @@ ARG SOLR_HOST=solr1
 ARG SOLR_PORT=8983
 ARG SOLR_USER=solr
 ARG SOLR_PASS=SolrRocks
-ENV SOLR_URL="http://${SOLR_USER}:${SOLR_PASS}@${SOLR_HOST}:${SOLR_PORT}/solr/blacklight-core/"
+ENV SOLR_URL="http://${SOLR_HOST}:${SOLR_PORT}/solr/blacklight-core/"
 
 # user and perm args
 # NOTE: host user perms are injected in start-me-up.sh
