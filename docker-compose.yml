@@ -35,7 +35,10 @@ services:
       - ./solr/conf:/blacklight-core
     networks:
       - ual-gob
-    command: bash -c "/home/solr/docker/cloud-secure.sh"
+    command:
+      - solr-precreate
+      - blacklight-core
+      - /blacklight-core
 
 networks:
   ual-gob:
