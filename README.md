@@ -2,23 +2,21 @@
 
 ## Overview
 
-This Docker orchestration runs a fully decoupled GeoBlacklight search service that uses a Blacklight (Ruby on Rails) application querying the Solr & ZooKeeper middleware "ensemble".
+This Docker orchestration runs a fully decoupled GeoBlacklight search service that uses a Blacklight (Ruby on Rails) application querying the Solr.
 
 **How does it work? 30K ft view...**
 
-Here's a little diagram of the GBL and Solr Cloud interaction (Mermaid syntax):
+Here's a little diagram of the GBL and Solr interaction (Mermaid syntax):
 
 ```mermaid
   graph LR;
 
 
-      A[Geoblacklight]==>|QueryRequest|B{CloudSolr};
-      B{CloudSolr}-->D(Zookeeper);
-      D(Zookeeper)-->B{CloudSolr};
-      B{CloudSolr}==>|DataResponse|A[Geoblacklight];
+      A[Geoblacklight]==>|QueryRequest|B{Solr};
+      B{Solr}==>|DataResponse|A[Geoblacklight];
 ```
 
- The GBL app container queries the Solr instance directly. "Sharding" information is managed by the ZooKeeper middleware. Using the "blacklight-core" metadata, Solr sends back its data response in a format that can be ingested by RoR models.
+ The GBL app container queries the Solr instance directly. Using the "blacklight-core" metadata, Solr sends back its data response in a format that can be ingested by RoR models.
 
 ## Setup
 
@@ -47,7 +45,7 @@ $ ./start-me-up.sh
 
 The GBL app is installed automatically if it does not already exist. This will take a little while and the server is still not started. A list of dependencies should print out as the GBL is installed.
 
-Build scripts set up Apache ZooKeeper and Solr decoupled to propagate search configuration and data in "cloud mode". Search data is located in Docker volumes on startup.
+Build scripts set up Solr decoupled to propagate search configuration and data in "user managed mode". Search data is located in Docker volumes on startup.
 
 **3. View the application and Solr admin:**
 
@@ -163,7 +161,6 @@ $ ./destroy.sh
 * https://github.com/geoblacklight/geoblacklight
 * https://github.com/geobtaa/geoportal-solr-config
 * https://github.com/projectblacklight/blacklight
-* https://solr.apache.org/guide/solr/latest/deployment-guide/zookeeper-ensemble.html
 * https://github.com/docker-solr/docker-solr/tree/master/scripts
 * https://github.com/geoblacklight/geoblacklight/tree/main/spec/fixtures/solr_documents
 * https://github.com/OpenGeoMetadata/edu.berkeley/blob/master/ark28722/s7/059k/geoblacklight.json (example geoblacklight.json file in GBL ver.1 schema)
