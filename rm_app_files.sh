@@ -1,7 +1,5 @@
 #!/bin/bash
 
-docker compose down -v
-
 echo -e "\nDo you want to remove all files in tmp directory, log directory, and sqlite files? (y|n)"
 read option
 if [ "$option" == "y" ]; then
