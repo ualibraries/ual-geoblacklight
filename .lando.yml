@@ -1,7 +1,7 @@
 name: ual-geoblacklight
 proxy:
   appserver:
-    - rails.lndo.site:3000
+    - geo.lndo.site:3000
   solr:
     - solr.lndo.site:8983
 services:
