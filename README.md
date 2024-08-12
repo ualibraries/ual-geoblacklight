@@ -26,33 +26,24 @@ Here's a little diagram of the GBL and Solr interaction (Mermaid syntax):
   - Terminal access
   - Git
   - Docker, either Desktop or just the straight engine if deploying on any of the Linux distros
+  - Lando
 
 **Preliminary Steps:**
 
-Start by cloning this repository to pretty much anywhere on most filesystems that the Docker daemon has access to. There may be filesystem permission issues for your user. Either find your user's UID and GID or ask another IT compadre if they know what the heck I'm talking about. Put those ids in the `.env` file at the root of the project, replacing the UID and GID, respectively. Then proceed to ...
+Start by cloning this repository to pretty much anywhere on most filesystems that the Docker daemon has access to.
 
-**1. Build the UAL-GBL Docker images (for GBL and Solr containers):**
-
-```shell
-$ ./dbuild.sh
-```
-
-**2. Start or rebuild the Docker network:**
+**Build the UAL-GBL Docker images (for GBL and Solr containers):**
 
 ```shell
-$ ./start-me-up.sh
+$ lando start
 ```
 
-The GBL app is installed automatically if it does not already exist. This will take a little while and the server is still not started. A list of dependencies should print out as the GBL is installed.
+**Re-build image and containers while preserving volumes**
 
-Build scripts set up Solr decoupled to propagate search configuration and data in "user managed mode". Search data is located in Docker volumes on startup.
+```shell
+$ lando rebuild
+```
 
-**3. View the application and Solr admin:**
-
-See the following URLs:
-
-* `localhost:3000` for the GeoBlacklight application
-* `localhost:8984` for the Solr admin (admin is locked down; see the .env file for creds)
 
 ## Deployment
 
@@ -61,27 +52,15 @@ We use [Capistrano](https://capistranorb.com/) for deployments. Deployments are 
 Here are the steps to deploy to production:
 
 0. Make sure you're on the Library network (on site or using VPN)
-1. SSH into the `ual_gob_app` service
+1. Run the Capistrano deployment command
 
     ```shell
-    docker compose exec ual_gob_app bash
-    ```
-
-2. Change directory to `/geoblacklight/app` inside the container
-
-    ```shell
-    cd /geoblacklight/app
-    ```
-
-3. Run the Capistrano deployment command
-
-    ```shell
-    cap production deploy
+    lando cap production deploy
     ```
     This will deploy the `main` branch to production. Alternatively you can provide a branch name to deploy:
     
     ```shell
-    cap production deploy BRANCH=some_branch_name
+    lando cap production deploy BRANCH=some_branch_name
     ```
 
 You can check the status of the deployment in the `#tess-dev-deployer` Slack channel in the UAL Slack workspace.
@@ -93,22 +72,25 @@ You can check the status of the deployment in the `#tess-dev-deployer` Slack cha
 This is non-destructive. All containers remain stateful, as well as volumes and network.
 
 ```shell
-$ ./start-me-up.sh pause
+$ lando stop
 ```
 
 **Run Rake commands in the containerized application directory:**
 
 ```shell
-$ docker exec -it gob-app bash -c -l './rake_command.sh "<command-to-run>"'
+$ lando rake "<command-to-run>"
+
+# View all available rake tasks
+$ lando rake --tasks
 
 # Populate default Solr test fixtures:
-$ docker exec -it gob-app bash -c -l './rake_command.sh "geoblacklight:index:seed[:remote]"'
+$ lando rake "geoblacklight:index:seed[:remote]"
 
 # Ingest UAL test docs:
-$ docker exec -it gob-app bash -c -l './rake_command.sh "ual_docs:load"'
+$ lando rake "ual_docs:load"
 
 # Ingest all UAL OGM records from Github:
-$ docker exec -it gob-app bash -c -l './rake_command.sh "ual_docs:migrate"'
+$ lando rake "ual_docs:migrate"
 ```
 
 See Geoblacklight tasks [here](https://github.com/geoblacklight/geoblacklight/blob/main/lib/tasks/geoblacklight.rake).
@@ -132,8 +114,8 @@ See Geoblacklight tasks [here](https://github.com/geoblacklight/geoblacklight/bl
 **Inspect GBL application logs for development**
 
 ```shell
-# number of lines to watch can be set, defaults to 10
-$ ./inspect-app-logs.sh 50
+# number of lines to watch can be set
+$ lando logs
 ```
 
 **Run Solr queries for development and testing**
@@ -152,7 +134,7 @@ Also see the Solr query screen in the Solr admin: https://solr.apache.org/guide/
 WARNING: This destroys _all_ data, meaning containers and volumes. (It does not remove Docker images, however.) The dialogue will ask if you want to delete all files in the tmp directory, log directory, and sqlite files.
 
 ```shell
-$ ./destroy.sh
+$ lando destroy
 ```
 
 ## Notes
@@ -170,17 +152,10 @@ $ ./destroy.sh
 
 ## Helpful hints
 
-* Software versions are controlled in `.env`, as are a few other important environment variables.
 * Blacklight-core metadata and config are stored in the `solr/conf` directory, which is mounted into the Solr container.
 
 ## Rails Console
-
-If you need to access the Rails Console, you can do so by attaching the `ual-goblight:latest` container (if you are using VSCode and Docker plugin).
-
-After attaching the container:
-
-1. `cd` into `/geoblacklight/app`
-2. Run `rails c` to fire up the console
+To access rails console run `lando rails c` to fire up the console
 
 ### Helpful Rails Console Commands
 
