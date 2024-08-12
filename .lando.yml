@@ -19,9 +19,6 @@ services:
   solr:
     type: solr:9
     core: blacklight-core
-    build:
-      - "[ -f /var/solr/data/blacklight-core/conf/core.properties ] && mv /var/solr/data/blacklight-core/conf/core.properties /var/solr/data/blacklight-core"
-
     config:
       dir: ./solr/conf
 
