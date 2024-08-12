@@ -24,3 +24,14 @@ services:
 
     config:
       dir: ./solr/conf
+
+tooling:
+  rails:
+    service: appserver
+    cmd: bundle exec rails
+  bundle:
+    service: appserver
+  rake:
+    service: appserver
+  cap:
+    service: appserver
