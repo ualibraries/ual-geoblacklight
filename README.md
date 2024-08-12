@@ -131,10 +131,16 @@ Also see the Solr query screen in the Solr admin: https://solr.apache.org/guide/
 
 **Tear-down**
 
-WARNING: This destroys _all_ data, meaning containers and volumes. (It does not remove Docker images, however.) The dialogue will ask if you want to delete all files in the tmp directory, log directory, and sqlite files.
+WARNING: This destroys _all_ data, meaning containers and volumes. (It does not remove Docker images, however.)
 
 ```shell
 $ lando destroy
+```
+
+To also remove any app related files that are not code (tmp directory files, SQLite file, etc) you can run:
+
+```shell
+./rm_app_files.sh
 ```
 
 ## Notes
