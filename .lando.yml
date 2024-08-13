@@ -32,3 +32,6 @@ tooling:
     service: appserver
   cap:
     service: appserver
+  ual_data_load:
+    service: appserver
+    cmd: rake "ual_docs:load" "ual_docs:migrate"
