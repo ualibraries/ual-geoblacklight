@@ -8,4 +8,4 @@
 source .env
 
 QUERY="${@:-'q=*:*'}"
-curl --data ${QUERY} "http://${SOLR_USER}:${SOLR_PASS}@127.0.0.1:${SOLR_PORT}/solr/blacklight-core/select"
+curl --data ${QUERY} "http://solr.lndo.site/solr/blacklight-core/select"
