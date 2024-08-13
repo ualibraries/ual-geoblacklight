@@ -44,6 +44,13 @@ $ lando start
 $ lando rebuild
 ```
 
+**Ingest test docs and UAL OGM records from Github (runs both "ual_docs:load" and "ual_docs:migrate" rake tasks)**
+
+```shell
+$ lando ual_data_load
+```
+
+**Note**: If you're using Docker Desktop on a Mac, and encounter the following error: `ERROR ==> connect ENOENT /var/run/docker.sock`, try toggling the checkbox for `Allow the default Docker socket to be used (requires password)` and re-running `lando start`.
 
 ## Deployment
 
@@ -136,6 +143,8 @@ WARNING: This destroys _all_ data, meaning containers and volumes. (It does not 
 ```shell
 $ lando destroy
 ```
+
+This does not remove images. If you want to remove images you can run `docker image prune -a` wich will **remove all unused images**. 
 
 To also remove any app related files that are not code (tmp directory files, SQLite file, etc) you can run:
 
