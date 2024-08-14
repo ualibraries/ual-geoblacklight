@@ -1,0 +1,37 @@
+name: ual-geoblacklight
+proxy:
+  appserver:
+    - geo.lndo.site:3000
+  solr:
+    - solr.lndo.site:8983
+services:
+  appserver:
+    type: compose
+    services:
+      build:
+        context: .
+        dockerfile: ./docker/app/Dockerfile
+      command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+      environment:
+        SOLR_URL: "http://solr:8983/solr/blacklight-core/"
+    build:
+      - bin/rails db:migrate RAILS_ENV=development
+  solr:
+    type: solr:9
+    core: blacklight-core
+    config:
+      dir: ./solr/conf
+
+tooling:
+  rails:
+    service: appserver
+    cmd: bundle exec rails
+  bundle:
+    service: appserver
+  rake:
+    service: appserver
+  cap:
+    service: appserver
+  ual_data_load:
+    service: appserver
+    cmd: rake "ual_docs:load" "ual_docs:migrate"
