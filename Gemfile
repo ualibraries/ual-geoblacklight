@@ -10,10 +10,7 @@ gem "sqlite3", "1.7.3"
 gem "puma", "5.6.8"
 ## Use SCSS for stylesheets
 #gem 'sass-rails', '6.0.0'
-# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-#gem 'webpacker', '5.4.4'
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-# gem 'turbolinks', '5.2.1'
+
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
 
