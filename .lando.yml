@@ -15,6 +15,7 @@ services:
       environment:
         SOLR_URL: "http://solr:8983/solr/blacklight-core/"
     build:
+      - bundle install --gemfile=/app/Gemfile
       - bin/rails db:migrate RAILS_ENV=development
   solr:
     type: solr:9
