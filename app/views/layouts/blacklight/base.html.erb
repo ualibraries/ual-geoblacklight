@@ -34,8 +34,8 @@ https://github.com/projectblacklight/blacklight/blob/main/app/views/layouts/blac
   </head>
   <body class="<%= render_body_class %> d-flex flex-column h-100">
     <nav id="skip-link" role="navigation" aria-label="<%= t('blacklight.skip_links.label') %>">
-      <%= link_to t('blacklight.skip_links.search_field'), '#search_field', class: 'element-invisible element-focusable rounded-bottom py-2 px-3', data: { turbolinks: 'false' } %>
-      <%= link_to t('blacklight.skip_links.main_content'), '#main-container', class: 'element-invisible element-focusable rounded-bottom py-2 px-3', data: { turbolinks: 'false' } %>
+      <%= link_to t('blacklight.skip_links.search_field'), '#search_field', class: 'element-invisible element-focusable rounded-bottom py-2 px-3', data: { turbo: 'false' } %>
+      <%= link_to t('blacklight.skip_links.main_content'), '#main-container', class: 'element-invisible element-focusable rounded-bottom py-2 px-3', data: { turbo: 'false' } %>
       <%= content_for(:skip_links) %>
     </nav>
     <%= render partial: 'shared/header_navbar' %>
