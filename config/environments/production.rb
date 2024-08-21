@@ -89,7 +89,7 @@ Rails.application.configure do
 
   # Enable DNS rebinding protection and other `Host` header attacks.
  # config.hosts << "geo.lndo.site"
-  config.hosts = ["geo.lndo.site"]
+  config.hosts = ["geodata.lib.arizona.edu"]
   # config.hosts = [
   #   "example.com",     # Allow requests from example.com
   #   /.*\.example\.com/ # Allow requests from subdomains like `www.example.com`
