@@ -9,19 +9,19 @@ gem "sqlite3", "1.7.3"
 # Use Puma as the app server
 gem "puma", "5.6.8"
 ## Use SCSS for stylesheets
-gem 'sass-rails', '6.0.0'
+gem "sass-rails", "6.0.0"
 
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '5.4.4'
+gem "webpacker", "5.4.4"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails"
+gem "turbo-rails", "2.0.6"
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem "importmap-rails"
+gem "importmap-rails", "2.0.1"
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
-gem "stimulus-rails"
+gem "stimulus-rails", "1.3.3"
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "jbuilder", "2.12.0"
