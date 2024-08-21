@@ -18,6 +18,9 @@ FileUtils.chdir APP_ROOT do
   system! 'bundle config build.nokogiri --use-system-libraries'
   system("bundle check") || system!("bundle install")
 
+  # Install JavaScript dependencies
+  system! 'bin/yarn'
+  
   # puts "\n== Copying sample files =="
   # unless File.exist?("config/database.yml")
   #   FileUtils.cp "config/database.yml.sample", "config/database.yml"
