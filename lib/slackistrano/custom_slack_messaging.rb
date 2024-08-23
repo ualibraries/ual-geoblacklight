@@ -101,4 +101,6 @@ if defined?(Slackistrano::Messaging)
       end
     end
   end
+else
+  puts 'Slackistrano::Messaging is not defined'
 end

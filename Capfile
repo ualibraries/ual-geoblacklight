@@ -33,7 +33,10 @@ require "capistrano/bundler"
 require "capistrano/passenger"
 require 'capistrano/rails'
 
+# Ensure Slackistrano is loaded before custom Slack messaging
 require 'slackistrano/capistrano'
+
+# Now load your custom Slack messaging class
 require_relative 'lib/slackistrano/custom_slack_messaging'
 
 # require "capistrano/rbenv"
