@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+# lib/slackistrano/custom_slack_messaging.rb
 if defined?(Slackistrano::Messaging)
   module Slackistrano
     class CustomSlackMessaging < Messaging::Base
