@@ -39,7 +39,7 @@ gem "dotenv", "3.1.2"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", "1.18.3", require: false
-
+gem 'slackistrano', "4.0.2"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug", "11.1.3", platforms: [:mri, :mingw, :x64_mingw]
@@ -52,7 +52,6 @@ group :development do
   gem "capistrano-rvm", "0.1.2"
   gem "capistrano-passenger","0.2.1"
   gem "capistrano-rails", "1.6.3"
-  gem 'slackistrano', "4.0.2"
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem "web-console", "4.2.1"
   # Display performance information such as SQL time and flame graphs for each request in your browser.
