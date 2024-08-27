@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "csv"
+
 namespace :ual_docs do
     desc "UAL Solr metadata ingest"
     task :load do
@@ -16,7 +18,7 @@ namespace :ual_docs do
 
         ogm_source = "edu.uarizona"
         download_dir = ENV['OGM_PATH'] || "tmp/opengeometadata"
-        match_table = JSON.parse(File.read("lib/tasks/match_table.json"))
+        match_table = Rails.root.join("lib", "tasks", "match_table.csv")
 
         puts "*********** Downloading remote UAL OGM data ***********"
         Rake::Task["geocombine:clone"].invoke(ogm_source)
@@ -37,14 +39,19 @@ namespace :ual_docs do
                 dct_references_s = JSON.parse(record_out['dct_references_s'])
                 
                 # Remove references to geoserver from metadata
+                dct_references_s.delete('http://www.opengis.net/def/serviceType/ogc/wcs')                
+                dct_references_s.delete('http://www.opengis.net/def/serviceType/ogc/wfs')
                 dct_references_s.delete('http://www.opengis.net/def/serviceType/ogc/wms')
-                dct_references_s.delete('http://www.opengis.net/def/serviceType/ogc/wfs')                
                 
-                # Replace Sequoia links with CyVerse links
-                match_table.each do |item, details|
-                    if (dct_references_s['http://schema.org/downloadUrl'].include? details['sequoia']) && (!details['cyverse'].empty?)
-                        dct_references_s['http://schema.org/downloadUrl'] = details['cyverse']
+                # Loop through match_table
+                CSV.foreach(match_table, :headers => true) do |row|
+                    # Replace Sequoia links with CyVerse/Campus Repo/UAir/S3 links
+                    if (dct_references_s['http://schema.org/downloadUrl'].include? row['sequoia']) && (!row['public_link'].empty?)
+                        dct_references_s['http://schema.org/downloadUrl'] = row['public_link']
                     end
+
+                    # Add filesize
+                    record_out['gbl_fileSize_s'] = row['gbl_fileSize_s']
                 end
 
                 # Rewrite the field's value back to JSON
