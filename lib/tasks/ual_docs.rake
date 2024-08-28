@@ -48,10 +48,11 @@ namespace :ual_docs do
                     # Replace Sequoia links with CyVerse/Campus Repo/UAir/S3 links
                     if (dct_references_s['http://schema.org/downloadUrl'].include? row['sequoia']) && (!row['public_link'].empty?)
                         dct_references_s['http://schema.org/downloadUrl'] = row['public_link']
+                        
+                        # Add filesize
+                        record_out['gbl_fileSize_s'] = row['gbl_fileSize_s']
                     end
 
-                    # Add filesize
-                    record_out['gbl_fileSize_s'] = row['gbl_fileSize_s']
                 end
 
                 # Rewrite the field's value back to JSON
