@@ -1,8 +1,6 @@
-require "blacklight/catalog"
-
 class CatalogController < ApplicationController
   include Blacklight::Catalog
-
+  
   configure_blacklight do |config|
     # Ensures that JSON representations of Solr Documents can be retrieved using
     # the path /catalog/:id/raw
