@@ -4,9 +4,34 @@ require "csv"
 
 namespace :ual_docs do
     desc "UAL Solr metadata ingest"
-    task :load do
+    task :load_test_docs do
         puts "*********** Indexing local UAL Solr test fixtures ***********"
         docs = Dir["test/fixtures/files/solr_docs/*.json"].map { |f| JSON.parse File.read(f) }.flatten
+
+        Blacklight.default_index.connection.add docs
+        Blacklight.default_index.connection.commit
+    end
+
+    desc "UAL pull latest metadata from ual-geospatial-metadata repo and reindex in solr"
+    task :reindex do
+        clone_path = "tmp/ual-geospatial-metadata"
+        repo_url = "git@github.com:ualibraries/ual-geospatial-metadata.git"
+
+        puts "*********** Indexing production UAL Solr test fixtures ***********"
+        if !File.directory? clone_path
+            Git.clone(repo_url, nil, path: clone_path, depth: 1)
+            puts "cloned #{repo_url} to #{clone_path}"
+        else
+            Git.open(clone_path).pull
+            puts "updated #{repo_url}"
+        end
+
+        docs = Dir["#{clone_path}/**/*.json"].map { |f| JSON.parse File.read(f) }.flatten
+
+        # Clear current index
+        Blacklight.default_index.connection.delete_by_query('*:*')
+        Blacklight.default_index.connection.commit
+
 
         Blacklight.default_index.connection.add docs
         Blacklight.default_index.connection.commit
