@@ -154,6 +154,24 @@ To also remove any app related files that are not code (tmp directory files, SQL
 ./rm_app_files.sh
 ```
 
+## Re-indexing metadata
+
+We keep all the GeoBlacklight metadata docs in the [ual-geospatial-metadata](https://github.com/ualibraries/ual-geospatial-metadata) repository (private repo currently). We have a rake task for clearing the current core docs and reingesting the docs from the ual-geospatial-metadata repository.
+
+### Reindexing locally
+
+```shell
+lando rake "ual_docs:reindex"
+```
+
+### Reindexing in production
+
+You can use capistrano to run the same rake task in production:
+
+```shell
+lando cap production invoke:rake TASK=ual_docs:reindex
+```
+
 ## Notes
 
 * https://geoblacklight.org/tutorial/2015/02/09/create-your-application.html#install-geoblacklight
