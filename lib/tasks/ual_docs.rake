@@ -14,19 +14,20 @@ namespace :ual_docs do
 
     desc "UAL pull latest metadata from ual-geospatial-metadata repo and reindex in solr"
     task :reindex do
-        clone_path = "tmp/ual-geospatial-metadata"
+        clone_path = "tmp"
+        repo_path = "#{clone_path}/ual-geospatial-metadata"
         repo_url = "git@github.com:ualibraries/ual-geospatial-metadata.git"
 
         puts "*********** Indexing production UAL Solr test fixtures ***********"
-        if !File.directory? clone_path
+        if !File.directory? repo_path
             Git.clone(repo_url, nil, path: clone_path, depth: 1)
-            puts "cloned #{repo_url} to #{clone_path}"
+            puts "cloned #{repo_url} to #{repo_path}"
         else
-            Git.open(clone_path).pull
+            Git.open(repo_path).pull
             puts "updated #{repo_url}"
         end
 
-        docs = Dir["#{clone_path}/**/*.json"].map { |f| JSON.parse File.read(f) }.flatten
+        docs = Dir["#{repo_path}/**/*.json"].map { |f| JSON.parse File.read(f) }.flatten
 
         # Clear current index
         Blacklight.default_index.connection.delete_by_query('*:*')
