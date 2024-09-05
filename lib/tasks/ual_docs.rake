@@ -23,7 +23,9 @@ namespace :ual_docs do
             Git.clone(repo_url, nil, path: clone_path, depth: 1)
             puts "cloned #{repo_url} to #{repo_path}"
         else
-            Git.open(repo_path).pull
+            repo = Git.open(repo_path)
+            repo.fetch('origin')
+            repo.pull
             puts "updated #{repo_url}"
         end
 
