@@ -32,6 +32,7 @@ require "capistrano/rvm"
 require "capistrano/bundler"
 require "capistrano/passenger"
 require 'capistrano/rails'
+require 'capistrano/rake'
 
 # Ensure Slackistrano is loaded before custom Slack messaging
 require 'slackistrano/capistrano'
