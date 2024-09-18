@@ -12,6 +12,13 @@ namespace :ual_docs do
         Blacklight.default_index.connection.commit
     end
 
+    desc "Task to clear the current Solr index"
+    task :clear_index do
+        # Clear current index
+        Blacklight.default_index.connection.delete_by_query('*:*')
+        Blacklight.default_index.connection.commit
+    end
+
     desc "UAL pull latest metadata from ual-geospatial-metadata repo and reindex in solr"
     task :reindex do
         clone_path = "tmp"
