@@ -44,10 +44,10 @@ $ lando start
 $ lando rebuild
 ```
 
-**Ingest test docs and UAL OGM records from Github (runs both "ual_docs:load" and "ual_docs:migrate" rake tasks)**
+**Ingest UAL OGM records from Github**
 
 ```shell
-$ lando ual_data_load
+$ lando rake ual_docs:reindex
 ```
 
 **Note**: If you're using Docker Desktop on a Mac, and encounter the following error: `ERROR ==> connect ENOENT /var/run/docker.sock`, try toggling the checkbox for `Allow the default Docker socket to be used (requires password)` and re-running `lando start`.
@@ -95,11 +95,14 @@ $ lando rake --tasks
 # Populate default Solr test fixtures:
 $ lando rake "geoblacklight:index:seed[:remote]"
 
-# Ingest UAL test docs:
-$ lando rake "ual_docs:load"
+# Clear current Solr index:
+$ lando rake "ual_docs:clear_index"
 
-# Ingest all UAL OGM records from Github:
-$ lando rake "ual_docs:migrate"
+# Ingest UAL test docs:
+$ lando rake "ual_docs:load_test_docs"
+
+# Clear current Solr index and ingest all UAL GeoBlacklight metadata from Github:
+$ lando rake "ual_docs:reindex"
 ```
 
 See Geoblacklight tasks [here](https://github.com/geoblacklight/geoblacklight/blob/main/lib/tasks/geoblacklight.rake).
