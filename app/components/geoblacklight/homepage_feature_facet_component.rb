@@ -1,3 +1,9 @@
+=begin
+Origin: https://github.com/geoblacklight/geoblacklight/blob/v4.4.0/app/components/geoblacklight/homepage_feature_facet_component.rb
+
+Re-defines GeoBlacklight's HomepageFeatureFacetComponent class so we can override its corresponding template. No changes/overrides made to this file other than adding comments.
+=end
+
 # frozen_string_literal: true
 
 module Geoblacklight
