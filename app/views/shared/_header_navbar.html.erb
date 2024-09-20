@@ -1,9 +1,7 @@
-<%#
-This is an override of the GeoBlacklight (GBL) _header_navbar.html.erb file.
-Blacklight (BL) also has this file, but is overridden by GBL, so we are
-overriding based on GBL > BL.
+<%# Origin: https://github.com/geoblacklight/geoblacklight/blob/v4.4.0/app/views/shared/_header_navbar.html.erb
 
-https://github.com/geoblacklight/geoblacklight/blob/main/app/views/shared/_header_navbar.html.erb
+Overrides GeoBlacklight's view partial _header_navbar.html.erb to add UAL and UA branding for the site header/navbar.
+Modified to conditionally display the search bar (we display it less than vanilla GeoBlacklight does).
 %>
 <div class="bg-cool-gray">
   <div class="container">
