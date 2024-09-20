@@ -1,9 +1,13 @@
+<%#  Origin: https://github.com/geoblacklight/geoblacklight/blob/v4.4.0/app/views/catalog/_show_downloads.html.erb
+
+Overrides GeoBlacklight's view partial _show_downloads.html.erb to add AZ Bootstrap classes and appropriate markup for a dropdown component.
+%>
+
 <% document ||= @document %>
 
 <% if document_downloadable? %>
   <% if document.direct_download.present? || document.hgl_download.present? || document.iiif_download.present? || document.download_types.present? %>
     <div class="downloads-sidebar">
-      <%# the dropdown-toggle class gives us the little arrow %>
       <div class="dropdown">
         <button type="button" class="btn btn-blue dropdown-toggle sidebar-btn" id="downloads-button" data-toggle="dropdown" aria-expanded="false">Download</button>
         <div class="dropdown-menu" id="downloads-collapse" aria-labelledby="downloads-button">

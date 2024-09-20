@@ -1,11 +1,6 @@
-<%#
-This is an override of the Blacklight (BL) _search_results_header.html.erb file.
-GeoBlacklight does not override this file, so we override BL directly in this case.
+<%#  Origin: https://github.com/projectblacklight/blacklight/blob/v7.37.0/app/views/catalog/_search_results_header.html.erb
 
-https://github.com/projectblacklight/blacklight/blob/main/app/views/catalog/_search_results_header.html.erb
-
-Removes the visually-hidden class so that visual users can see the headings.
-
+Overrides Blacklight's view partial _search_results_header.html.erb to make the search results' h1 visible instead of hidden.
 %>
 
 <h1 class="top-content-title mt-0"><%= t('blacklight.search.header') %></h1>

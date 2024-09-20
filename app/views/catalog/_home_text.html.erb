@@ -1,15 +1,11 @@
-<%#
-This is an override of the GeoBlacklight (GBL) _home_text.html.erb file.
-Blacklight (BL) also has this file, but is overridden by GBL, so we are
-overriding based on GBL > BL.
+<%# Origin: https://github.com/geoblacklight/geoblacklight/blob/v4.4.0/app/views/catalog/_home_text.html.erb
 
-https://github.com/geoblacklight/geoblacklight/blob/main/app/views/catalog/_home_text.html.erb
+Overrides GeoBlacklight's view partial _home_text.html.erb to modify base appearance to make it easier to use and more mobile friendly, and
+match our branding. View partial renders the home page of the geoportal.
 
-Adjusts the appearance of the home page components layout to be easier
-to navigate, especially on more narrow screen sizes. We are commenting
-out the instutition category, since all of our data is currently all
-UAZ data, which makes it redundant and not useful as a filter. We can
-add this back in once we are further along with data in the project.
+We are commenting out the instutition card for now, since all of our data is currently UA data which makes it redundant and not useful
+as a filter (since it's the only option). We can add this back in once we have other data providers than "University of Arizona". Or, we
+can select a different field to offer as a filter category.
 
 %>
 

@@ -1,4 +1,9 @@
-<%# Renders the options of the downloads dropdown button %>
+<%# Origin: https://github.com/geoblacklight/geoblacklight/blob/v4.4.0/app/views/catalog/_downloads_collapse.html.erb
+
+Overrides GeoBlacklight's view partial _downloads_collapse.html.erb to modify markup and add AZ Bootstrap classes for the dropdown component.
+View partial renders the download links for the downloads dropdown.
+%>
+
 <% document ||= @document %>
 
 <% if document.direct_download.present? %>

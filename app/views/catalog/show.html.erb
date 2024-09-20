@@ -1,3 +1,9 @@
+<%#  Origin: https://github.com/projectblacklight/blacklight/blob/v7.37.0/app/views/catalog/show.html.erb
+
+Overrides Blacklight's view show.html.erb change the ordering and styling of the start over and back buttons.
+Builds the "landing page" (Rails' default "show" behavior) for each document in the Solr index.
+%>
+
 <% if current_search_session %>
   <div id="appliedParams" class="clearfix constraints-container">
     <%= ual_link_back_to_catalog class: 'btn btn-blue' %>
