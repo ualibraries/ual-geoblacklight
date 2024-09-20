@@ -1,7 +1,9 @@
+<%# Origin: https://github.com/projectblacklight/blacklight/blob/v7.37.0/app/components/blacklight/constraints_component.html.erb
+
+Overrides Blacklight's constraints_component.html.erb to add AZ Bootstrap classes.
+%>
+
 <%= content_tag @tag || :div, id: @id, class: @classes do %>
-
-  <%#= render @start_over_component.new if @start_over_component %>
-
   <div class="card w-100">
     <div class="card-body py-2">
       <% if @render_headers %>

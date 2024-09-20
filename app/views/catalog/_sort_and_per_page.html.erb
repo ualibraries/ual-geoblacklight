@@ -1,3 +1,9 @@
+<%#  Origin: https://github.com/projectblacklight/blacklight/blob/v7.37.0/app/views/catalog/_sort_and_per_page.html.erb
+
+Overrides Blacklight's view partial _sort_and_per_page.html.erb to remove redundant compact paginator at top of page in favor of expanded
+paginator at bottom of page.
+%>
+
 <div id="sortAndPerPage" class="sort-pagination d-md-flex justify-content-between" role="navigation" aria-label="<%= t('blacklight.search.per_page.aria_label')%>">
   <%= render_results_collection_tools wrapping_class: "search-widgets" %>
 </div>

@@ -1,3 +1,10 @@
+=begin
+Origin: https://github.com/projectblacklight/blacklight/blob/v7.37.0/app/components/blacklight/search_context_component.rb
+
+Re-defines and overrides Blacklight's SearchContextComponent class to call ual_link_to_previous_document and ual_link_to_next_document, so that we can modify it to use the appropriate markup.
+ual_link_to_previous_document and ual_link_to_next_document are defined in application_helper.rb.
+=end
+
 # frozen_string_literal: true
 
 module Blacklight

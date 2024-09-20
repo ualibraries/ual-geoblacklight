@@ -1,3 +1,9 @@
+<%# Origin: https://github.com/geoblacklight/geoblacklight/blob/v4.4.0/app/components/geoblacklight/homepage_feature_facet_component.html.erb
+
+Overrides GeoBlacklight's homepage_feature_facet_component.html.erb to modify markup and add AZ Bootstrap classes.
+Modifies appearance from 2x2 grid to rows of cards to make it easier to read and interact with.
+%>
+
 <div class="category-block card ual-card mb-5">
   <div class="row no-gutters">
     <div class="col-12 col-md-3 col-lg-4 align-items-center text-center">
@@ -13,7 +19,6 @@
         } %>
         <%- facets_more = facet_catalog_path(@facet_field) %>
         <%= facets.join(" ").html_safe %>
-
       </div>
       <div class="card-body pt-0"><%= link_to "View all", facets_more, class: "btn btn-blue" %></div>
     </div>

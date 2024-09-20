@@ -1,3 +1,8 @@
+<%#  Origin: https://github.com/projectblacklight/blacklight/blob/v7.37.0/app/views/catalog/facet.html.erb
+
+Overrides Blacklight's view facet.html.erb to add an ID to .facet-pagination for CSS overrides.
+%>
+
 <%= render Blacklight::System::ModalComponent.new do |component| %>
   <% component.with_prefix do %>
     <div id="ual_facet_top" class="facet-pagination top row justify-content-between">

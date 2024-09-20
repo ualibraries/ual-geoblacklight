@@ -22,11 +22,11 @@ Here's a little diagram of the GBL and Solr interaction (Mermaid syntax):
 
 ### Necessary tools:
 
-  - Computer (okay, sorry, it's Monday!)
   - Terminal access
   - Git
-  - Docker, either Desktop or just the straight engine if deploying on any of the Linux distros
+  - Docker (either Desktop or just the straight engine if deploying on any of the Linux distros)
   - Lando
+  - Stache access (for deployments)
 
 **Preliminary Steps:**
 
@@ -44,15 +44,13 @@ $ lando start
 $ lando rebuild
 ```
 
-**Ingest UAL OGM records from Github**
+**Ingest UAL metadata records from ual-geospatial-metadata**
 
 ```shell
 $ lando rake ual_docs:reindex
 ```
 
 **Note**: If you're using Docker Desktop on a Mac, and encounter the following error: `ERROR ==> connect ENOENT /var/run/docker.sock`, try toggling the checkbox for `Allow the default Docker socket to be used (requires password)` and re-running `lando start`.
-
-If you need to update the information in `match_table.csv`, be sure to also update the original spreadsheet in Sharepoint (link is available on the project's Redmine Wiki under "Project Resources".)
 
 ## Deployment
 

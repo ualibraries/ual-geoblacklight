@@ -1,3 +1,9 @@
+=begin
+Origin: https://github.com/projectblacklight/blacklight/blob/v7.37.0/app/components/blacklight/start_over_button_component.rb
+
+Re-defines and overrides Blacklight's StartOverButtonComponent class to add AZ Bootstrap classes and add html_safe for use of icons.
+=end
+
 # frozen_string_literal: true
 
 module Blacklight

@@ -1,3 +1,9 @@
+<%#  Origin: https://github.com/projectblacklight/blacklight/blob/v7.37.0/app/views/catalog/_show_tools.html.erb
+
+Overrides Blacklight's view partial _show_tools.html.erb to change AZ Bootstrap classes to look more similar to cards in AZ Bootstrap and less
+like an expanding accordion.
+%>
+
 <% document = @document if local_assigns[:document].nil? %>
 <% if show_doc_actions? document %>
   <div class="card show-tools">

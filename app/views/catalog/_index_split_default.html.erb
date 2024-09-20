@@ -1,16 +1,14 @@
-<%#
-This is an override of the GeoBlacklight (GBL) _index_split_default.html.erb file.
-This file does not exist in Blacklight.
+<%#  Origin: https://github.com/geoblacklight/geoblacklight/blob/v4.4.0/app/views/catalog/_index_split_default.html.erb
 
-We are overriding this file so we can make it more obvious that each search result can be expanded to view a snippet from its metadata description.
-
-https://github.com/geoblacklight/geoblacklight/blob/v4.4.0/app/views/catalog/_index_split_default.html.erb
+Overrides GeoBlacklight's view partial _index_split_default.html.erb to modify markup and add AZ Bootstrap classes for the dropdown component.
+View partial renders individual search result items. Cleans up the UI/UX and makes it more obvious that each search result can be expanded for
+a quick snippet about that item.
 %>
 
 <% # header bar for doc items in index view -%>
 <%= content_tag :div, class: 'documentHeader index-split col-12 pr-0', data: { layer_id: document.id, geom: document.geometry.geojson } do %>
-  <div class="d-flex justify-content-between align-items-center w-100">
-    <div class="d-flex align-items-center w-100">
+  <div class="d-flex align-items-center w-100">
+    <div class="d-flex align-items-center justify-content-between w-100">
       <h3 class="index_title">
         <% counter = document_counter_with_offset(document_counter) %>
         <span class="document-counter">

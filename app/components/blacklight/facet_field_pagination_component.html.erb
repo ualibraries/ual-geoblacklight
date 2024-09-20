@@ -1,3 +1,8 @@
+<%# Origin: https://github.com/projectblacklight/blacklight/blob/v7.37.0/app/components/blacklight/facet_field_pagination_component.html.erb
+
+Overrides Blacklight's facet_field_pagination_component.html.erb to add AZ Bootstrap classes and appropriate pagination styling.
+%>
+
 <ul class="prev_next_links pagination">
   <li class="page-item <%= @facet_field.paginator.first_page? ? 'disabled' : '' %>"> 
     <%= helpers.link_to_previous_page @facet_field.paginator, raw(t('views.pagination.previous')), params: @facet_field.search_state.to_h, param_name: param_name, class: 'page-link', data: { blacklight_modal: "preserve" } do %>
