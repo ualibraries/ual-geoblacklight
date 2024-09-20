@@ -1,3 +1,9 @@
+<%# Origin: https://github.com/projectblacklight/blacklight/blob/v7.37.0/app/components/blacklight/search_context_component.html.erb
+
+Overrides Blacklight's search_context_component.html.erb to add AZ Bootstrap classes and list markup.
+Disables previous/next buttons if none available.
+%>
+
 <div class="pagination-search-widgets">
   <ul class="pagination page-links">
     <% if ual_link_to_previous_document.include? 'span' %>
