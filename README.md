@@ -22,11 +22,11 @@ Here's a little diagram of the GBL and Solr interaction (Mermaid syntax):
 
 ### Necessary tools:
 
-  - Computer (okay, sorry, it's Monday!)
   - Terminal access
   - Git
-  - Docker, either Desktop or just the straight engine if deploying on any of the Linux distros
+  - Docker (either Desktop or just the straight engine if deploying on any of the Linux distros)
   - Lando
+  - Stache access (for deployments)
 
 **Preliminary Steps:**
 
@@ -44,7 +44,7 @@ $ lando start
 $ lando rebuild
 ```
 
-**Ingest UAL OGM records from Github**
+**Ingest UAL metadata records from ual-geospatial-metadata**
 
 ```shell
 $ lando rake ual_docs:reindex
