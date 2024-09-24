@@ -13,7 +13,3 @@ charset = utf-8
 # Defaults that seem fairly common
 indent_style = space
 indent_size = 2
-
-# file-specific overrides
-[CODEOWNERS]
-indent_size = 8
