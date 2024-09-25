@@ -18,7 +18,7 @@ services:
       - bundle install --gemfile=/app/Gemfile
       - bin/rails db:migrate RAILS_ENV=development
   solr:
-    type: solr:9.0
+    type: solr:9.6
     core: blacklight-core
     config:
       dir: ./solr/conf
