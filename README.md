@@ -48,6 +48,9 @@ $ lando rebuild
 
 ```shell
 $ lando rake ual_docs:reindex
+
+# Reindex with a specified branch in ual-geospatial-metadata
+$ lando rake ual_docs:reindex\['branch-name']
 ```
 
 **Note**: If you're using Docker Desktop on a Mac, and encounter the following error: `ERROR ==> connect ENOENT /var/run/docker.sock`, try toggling the checkbox for `Allow the default Docker socket to be used (requires password)` and re-running `lando start`.
@@ -101,6 +104,9 @@ $ lando rake "ual_docs:load_test_docs"
 
 # Clear current Solr index and ingest all UAL GeoBlacklight metadata from Github:
 $ lando rake "ual_docs:reindex"
+
+# Switch branches in ual-geospatial-metadata
+$ lando rake ual_docs:reindex\['branch-name']
 ```
 
 See Geoblacklight tasks [here](https://github.com/geoblacklight/geoblacklight/blob/main/lib/tasks/geoblacklight.rake).

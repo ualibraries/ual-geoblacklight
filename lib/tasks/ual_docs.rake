@@ -19,29 +19,34 @@ namespace :ual_docs do
         Blacklight.default_index.connection.commit
     end
 
-    desc "UAL pull latest metadata from ual-geospatial-metadata repo and reindex in solr"
-    task :reindex do
-        clone_path = "tmp"
-        repo_path = "#{clone_path}/ual-geospatial-metadata"
-        repo_url = "git@github.com:ualibraries/ual-geospatial-metadata.git"
-
+    desc "UAL pull metadata from ual-geospatial-metadata repo and reindex in solr"
+    task :reindex, [:branch] do |task, args|
         puts "*********** Indexing production UAL Solr test fixtures ***********"
+        clone_path = "tmp"
+        repo_name = "ual-geospatial-metadata"
+        repo_path = "#{clone_path}/#{repo_name}"
+        repo_url = "git@github.com:ualibraries/#{repo_name}.git"
+
+        # Set 'main' as default branch, if none provided
+        args.with_defaults(branch: 'main')
+        repo_branch = args[:branch]
+
         if !File.directory? repo_path
             Git.clone(repo_url, nil, path: clone_path, depth: 1)
             puts "cloned #{repo_url} to #{repo_path}"
         else
             repo = Git.open(repo_path)
-            repo.fetch('origin')
-            repo.pull
-            puts "updated #{repo_url}"
+            repo.fetch('origin', {:ref => '+refs/heads/*:refs/remotes/origin/*'} )
+            repo.branch(repo_branch).checkout
+            repo.pull('origin', repo_branch)
+            puts "Updated #{repo_name} on branch '#{repo.current_branch}'"
         end
-
+        
         docs = Dir["#{repo_path}/**/*.json"].map { |f| JSON.parse File.read(f) }.flatten
 
         # Clear current index
         Blacklight.default_index.connection.delete_by_query('*:*')
         Blacklight.default_index.connection.commit
-
 
         Blacklight.default_index.connection.add docs
         Blacklight.default_index.connection.commit
