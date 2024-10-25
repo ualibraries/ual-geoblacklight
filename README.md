@@ -105,7 +105,7 @@ $ lando rake "ual_docs:load_test_docs"
 # Clear current Solr index and ingest all UAL GeoBlacklight metadata from Github:
 $ lando rake "ual_docs:reindex"
 
-# Switch branches in ual-geospatial-metadata
+# Reindex with a specified branch in ual-geospatial-metadata
 $ lando rake ual_docs:reindex\['branch-name']
 ```
 

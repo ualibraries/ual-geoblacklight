@@ -41,7 +41,7 @@ namespace :ual_docs do
             repo.pull('origin', repo_branch)
             puts "Updated #{repo_name} on branch '#{repo.current_branch}'"
         end
-        
+
         docs = Dir["#{repo_path}/**/*.json"].map { |f| JSON.parse File.read(f) }.flatten
 
         # Clear current index
