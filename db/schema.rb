@@ -10,15 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_12_185234) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_09_162142) do
+  create_table "acknowledged_users", force: :cascade do |t|
+    t.string "netid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "acknowledgments", force: :cascade do |t|
+    t.integer "acknowledged_user_id", null: false
+    t.string "acknowledgment_text"
+    t.datetime "timestamp"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["acknowledged_user_id"], name: "index_acknowledgments_on_acknowledged_user_id"
+  end
+
   create_table "bookmarks", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "user_type"
     t.string "document_id"
     t.string "document_type"
     t.binary "title"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["document_id"], name: "index_bookmarks_on_document_id"
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
@@ -27,8 +42,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_12_185234) do
     t.binary "query_params"
     t.integer "user_id"
     t.string "user_type"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_searches_on_user_id"
   end
 
@@ -36,8 +51,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_12_185234) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at", precision: nil
-    t.datetime "remember_created_at", precision: nil
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "guest", default: false
@@ -45,4 +60,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_12_185234) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "acknowledgments", "acknowledged_users"
 end
