@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_09_162142) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_10_184411) do
   create_table "acknowledged_users", force: :cascade do |t|
     t.string "netid"
     t.datetime "created_at", null: false
@@ -19,8 +19,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_09_162142) do
 
   create_table "acknowledgments", force: :cascade do |t|
     t.integer "acknowledged_user_id", null: false
-    t.string "acknowledgment_text"
-    t.datetime "timestamp"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["acknowledged_user_id"], name: "index_acknowledgments_on_acknowledged_user_id"
