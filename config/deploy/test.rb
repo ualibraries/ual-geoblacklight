@@ -15,5 +15,5 @@ set :stage, :test
 # Define the server(s) for deployment
 server '10.130.155.21', user: 'deploy', roles: %w{web app db}
 
-# Link production sqlite file and master key
+# Link test sqlite file and master key
 append :linked_files, "db/test.sqlite3", "config/master.key"
