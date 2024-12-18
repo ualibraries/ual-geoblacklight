@@ -59,6 +59,7 @@ $ lando rake ual_docs:reindex\['branch-name']
 
 We use [Capistrano](https://capistranorb.com/) for deployments. Deployments are easiest to run through the Docker container for local development. You must provide the Slack webhook using the `SLACK_WEB_HOOK` environment variable in the `.env` file in order to deploy. You won't be able to deploy without it. You can find the webhook stored in [Stache](https://stache.arizona.edu) under the "Capistrano Slack App Webhook" entry. You must also provide the path to your SSH key in the `DEPLOY_SSH_KEY_PATH` environment variable in `.env`. **It must be an RSA or ED25519 key**. Lastly, the deployment is executed as the 'deploy' user, so you must have your SSH public key added to the deploy users `authorized_keys` file.
 
+### Deployment in production
 Here are the steps to deploy to production:
 
 0. Make sure you're on the Library network (on site or using VPN)
@@ -71,6 +72,21 @@ Here are the steps to deploy to production:
     
     ```shell
     lando cap production deploy BRANCH=some_branch_name
+    ```
+
+### Deployment in test
+Here are the steps to deploy to test:
+
+0. Make sure you're on the Library network (on site or using VPN)
+1. Run the Capistrano deployment command
+
+    ```shell
+    lando cap test deploy
+    ```
+    This will deploy the `main` branch to test. Alternatively you can provide a branch name to deploy:
+    
+    ```shell
+    lando cap test deploy BRANCH=some_branch_name
     ```
 
 You can check the status of the deployment in the `#tess-dev-deployer` Slack channel in the UAL Slack workspace.
@@ -179,6 +195,14 @@ You can use capistrano to run the same rake task in production:
 lando cap production invoke:rake TASK=ual_docs:reindex
 ```
 
+### Reindexing in test
+
+You can use capistrano to run the same rake task in test:
+
+```shell
+lando cap test invoke:rake TASK=ual_docs:reindex
+```
+
 ## Notes
 
 * https://geoblacklight.org/tutorial/2015/02/09/create-your-application.html#install-geoblacklight
@@ -197,7 +221,9 @@ lando cap production invoke:rake TASK=ual_docs:reindex
 * Blacklight-core metadata and config are stored in the `solr/conf` directory, which is mounted into the Solr container.
 
 ## Rails Console
-To access rails console run `lando rails c` to fire up the console
+To access rails console in default environment run `lando rails c` to fire up the console
+
+To access the Rails console in the test environment run `lando rails c -e test` to fire up the console
 
 ### Helpful Rails Console Commands
 
