@@ -78,7 +78,7 @@ gem "blacklight", "7.37.0"
 gem "geoblacklight", "4.4.0"
 gem "sprockets", "3.7.3"
 
-group :development, :test do
+group :development do
   gem "solr_wrapper", "4.0.2"
 end
 gem "rsolr", "2.6.0"

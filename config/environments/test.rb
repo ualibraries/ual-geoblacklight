@@ -39,6 +39,9 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  # Do not fall back to assets pipeline if a precompiled asset is missed.
+  config.assets.compile = false
+
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.
@@ -61,5 +64,6 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
-  config.hosts << "geo.lndo.site"
+  #config.hosts << "geo.lndo.site"
+  config.hosts = ["geodata-tst.library.arizona.edu"]
 end
