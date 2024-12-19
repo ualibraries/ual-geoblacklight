@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_10_184411) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_19_200631) do
   create_table "acknowledged_users", force: :cascade do |t|
     t.string "netid"
     t.datetime "created_at", null: false
@@ -18,10 +18,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_10_184411) do
   end
 
   create_table "acknowledgments", force: :cascade do |t|
-    t.integer "acknowledged_user_id", null: false
+    t.integer "acknowledged_users_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["acknowledged_user_id"], name: "index_acknowledgments_on_acknowledged_user_id"
+    t.index ["acknowledged_users_id"], name: "index_acknowledgments_on_acknowledged_users_id"
   end
 
   create_table "bookmarks", force: :cascade do |t|
@@ -58,5 +58,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_10_184411) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "acknowledgments", "acknowledged_users"
+  add_foreign_key "acknowledgments", "acknowledged_users", column: "acknowledged_users_id"
 end
