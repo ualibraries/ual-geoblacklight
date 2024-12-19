@@ -1,0 +1,30 @@
+<%# Origin: Custom
+
+This is an custom template, not an override of Blacklight or GeoBlacklight.
+
+Adds a Bootstrap modal to the "show" view if a user tries to download a data item tht requires a usage agreement.
+%>
+<button type="button" class="btn btn-red" data-toggle="modal" data-target="#modalPAGNotice">
+  Launch modal
+</button>
+
+<div id="modalPAGNotice" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="modalPAGNoticeLabel" aria-modal="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalPAGNoticeLabel">Accessing licensed data</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>This data item is restricted to University of Arizona students, faculty, and staff. In order to download this data item, you must authenticate to verify your access, as well as accept the usage agreement.</p>
+        <p>If you wish to proceed, please click "proceed", otherwise please click "cancel".
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-blue" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-red">Proceed</button>
+      </div>
+    </div>
+  </div>
+</div>
