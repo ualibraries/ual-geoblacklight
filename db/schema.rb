@@ -12,9 +12,10 @@
 
 ActiveRecord::Schema[7.1].define(version: 2024_12_19_200631) do
   create_table "acknowledged_users", force: :cascade do |t|
-    t.string "netid"
+    t.string "netid", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["netid"], name: "index_acknowledged_users_on_netid", unique: true
   end
 
   create_table "acknowledgments", force: :cascade do |t|
