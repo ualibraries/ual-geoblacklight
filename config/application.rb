@@ -21,8 +21,9 @@ module App
     #
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
-    #
-    config.time_zone = 'Mountain Time (US & Canada)'
+    
+    # Set the time zone to Arizona (Phoenix)
+    config.time_zone = "America/Phoenix"
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
