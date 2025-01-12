@@ -1,13 +1,16 @@
-<%# Origin: https://github.com/projectblacklight/blacklight/blob/v7.37.0/app/views/shared/_user_util_links.html.erb
-This is an override of the Blacklight (BL) _user_util_links.html.erb file.
-
-Overrides Blacklight's view partial _user_util_links.html.erb to remove links associated with user accounts. These are
-removed for MVP, but will be added in at a stage of the project. 
-
-Remaining links' inclusion are determined by the catalog_controller.rb file, under "Nav actions from Blacklight" (~ L298).
-%>
-
 <ul class="navbar-nav">
+  <% if has_user_authentication_provider? %>
+    <% if current_user %>
+      <li class="nav-item">
+        <%= link_to "#{current_user} , #{t('blacklight.header_links.logout')}", destroy_user_session_path, class: "nav-link", method: :delete %>
+      </li>
+    <% else %>
+      <li class="nav-item">
+        <%= link_to t('blacklight.header_links.login'), user_cas_omniauth_authorize_path, class: "nav-link", method: :post %>
+      </li>
+    <% end %>
+  <% end %>
+
   <%= render_nav_actions do |config, action|%>
     <li class="nav-item"><%= action %></li>
   <% end %>

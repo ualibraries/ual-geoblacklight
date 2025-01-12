@@ -88,3 +88,6 @@ gem "jquery-rails", "4.6.0"
 gem "devise", "4.9.4"
 gem "devise-guests", "0.8.3"
 gem "geo_combine", "0.9.1"
+gem 'omniauth'
+gem 'omniauth-rails_csrf_protection'
+gem 'omniauth-cas'
