@@ -2,3 +2,6 @@ en:
   geoblacklight:
     home:
       placename: 'Place'
+  ual_pag:
+    confirmed: 'Your usage agreement has been successfully recorded.'
+    not_authorized: 'You are not authorized to download this data item. This data is restricted to University of Arizona students, faculty, and staff.'
