@@ -9,8 +9,9 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:shibd]
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+    find_or_create_by(email: auth.info.email) do |user|
       user.email = auth.info.email
+      user.password = Devise.friendly_token[0, 20]
     end
   end
 
