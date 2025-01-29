@@ -1,17 +1,45 @@
+/** AZ Bootstrap Re-Definitions
+ * Re-defining some AZ Bootstrap classes so we can extend them to overcome hard-coded CSS defined by GeoBlacklight
+ */
+
+.btn {
+  text-transform: none !important;   // <-- Temporary fix until we upgrade AZ Bootstrap
+  letter-spacing: 0.5px;
+  border: 2px solid transparent;
+ }
+.btn-blue {
+  color: #ffffff;
+  background-color: #0c234b;
+  border-color: transparent;
+
+  &:hover {
+    background-color: #1e5288;
+  }
+}
+.btn-red {
+  color: #ffffff;
+  background-color: #8b0015;
+  border-color: transparent;
+
+  &:hover {
+    background-color: #ab0520;
+  }
+}
+
+
+
 /**
  * Bootstrap Overrides (to match AZBS)
  */
 .card {
   border-radius: 0;
 }
+.card-header:first-child {
+  border-radius: 0px;
+}
 .show-tools .list-group .list-group-item {
   border: 1px solid rgba(0,0,0,.125);
   border-width: 0 0 1px;
-}
-.btn {
-  // Temporary fix until we upgrade AZ Bootstrap
-  text-transform: none !important;
-  letter-spacing: 0.5px;
 }
 
 // Couldn't get the class directly on the a tag, so this is a workaround
@@ -162,4 +190,11 @@
   .ual-card .category-icon .blacklight-icons {
     height: 4rem;
   }
+}
+
+/**
+ * Reset hard-coded CSS
+ */ 
+.authentication .card-header a, .authentication .list-group .list-group-item a {
+  @extend .btn-blue;
 }
