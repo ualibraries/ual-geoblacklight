@@ -3,7 +3,7 @@ en:
     home:
       placename: 'Place'
     tools:
-      login_to_view: "Login to download"
+      login_to_view: "Log in to download"
   ual_pag:
     confirmed: 'Your usage agreement has been successfully recorded.'
     not_authorized: 'You are not authorized to download this data item. This data is restricted to University of Arizona students, faculty, and staff.'
