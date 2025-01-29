@@ -15,5 +15,4 @@ Builds the "landing page" (Rails' default "show" behavior) for each document in 
 
 <% content_for(:sidebar) do %>
   <%= render_document_sidebar_partial @document %>
-  <%= render partial: 'pag/ual_callout_licensed_data' if not @document.public? %>
 <% end %>
