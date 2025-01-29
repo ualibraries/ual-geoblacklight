@@ -9,13 +9,7 @@ module OmniAuth
       end
 
       def request_phase
-        if authenticated?
-          # If we're already authenticated, proceed to callback phase
-          redirect callback_path
-        else
-          # Redirect to Shibboleth handler
-          redirect '/Shibboleth.sso/Login'
-        end
+        redirect callback_path
       end
 
       def callback_phase
