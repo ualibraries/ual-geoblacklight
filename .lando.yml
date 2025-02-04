@@ -19,7 +19,6 @@ services:
         - ./docker/app/sp/attribute-map.xml:/etc/shibboleth/attribute-map.xml
         - ./docker/app/sp/attribute-policy.xml:/etc/shibboleth/attribute-policy.xml
         - ./docker/app/sp/shibboleth2.xml:/etc/shibboleth/shibboleth2.xml
-        - .:/var/www/app
       environment:
         SOLR_URL: "http://solr:8983/solr/blacklight-core/"
     build:
