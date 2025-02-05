@@ -1,8 +1,6 @@
-=begin
-Origin: https://github.com/projectblacklight/blacklight/blob/v7.37.0/app/components/blacklight/facet_field_pagination_component.rb
-
-Re-defines Blacklight's FacetFieldPaginationComponent class so we can override its corresponding template. No changes/overrides made to this file other than adding comments.
-=end
+# Origin: https://github.com/projectblacklight/blacklight/blob/v7.37.0/app/components/blacklight/facet_field_pagination_component.rb
+#
+# Re-defines Blacklight's FacetFieldPaginationComponent class so we can override its corresponding template. No changes/overrides made to this file other than adding comments.
 
 # frozen_string_literal: true
 
