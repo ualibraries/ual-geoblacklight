@@ -15,4 +15,6 @@ Builds the "landing page" (Rails' default "show" behavior) for each document in 
 
 <% content_for(:sidebar) do %>
   <%= render_document_sidebar_partial @document %>
+  <%#= render partial: 'pag/ual_pag_agreement' %>
+  <%# Uncomment the line above once we have authentication set up. Wrap it in a conditional statement that launches the modal if the user passed the Shibb attribute check. Lastly, delete this line. %>
 <% end %>
