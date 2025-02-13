@@ -8,6 +8,11 @@ Remaining links' inclusion are determined by the catalog_controller.rb file, und
 %>
 
 <ul class="navbar-nav">
+  <% if current_user %>
+    <li class="nav-item"><a class="nav-link" href="/users/sign_out">Sign out</a></li>
+  <% else %>
+    <li class="nav-item"><a class="nav-link" href="/users/sign_in">Sign in</a></li>
+  <% end %>
   <%= render_nav_actions do |config, action|%>
     <li class="nav-item"><%= action %></li>
   <% end %>

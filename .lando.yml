@@ -1,21 +1,27 @@
 name: ual-geoblacklight
 proxy:
   appserver:
-    - geo.lndo.site:3000
+    - local-dev.library.arizona.edu
   solr:
     - solr.lndo.site:8983
 services:
   appserver:
-    type: compose
+    type: lando
+    ssl: true
+    sslExpose: false
     services:
       build:
         context: .
         dockerfile: ./docker/app/Dockerfile
-      command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+      command: bash -c "set -e && shibd -f & exec apache2ctl -DFOREGROUND"
+      volumes:
+        - ./docker/app/conf/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
+        - ./docker/app/sp/attribute-map.xml:/etc/shibboleth/attribute-map.xml
+        - ./docker/app/sp/attribute-policy.xml:/etc/shibboleth/attribute-policy.xml
+        - ./docker/app/sp/shibboleth2.xml:/etc/shibboleth/shibboleth2.xml
       environment:
         SOLR_URL: "http://solr:8983/solr/blacklight-core/"
     build:
-      - bundle install --gemfile=/app/Gemfile
       - bin/rails db:migrate RAILS_ENV=development
   solr:
     type: solr:9.6
