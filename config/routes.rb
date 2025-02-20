@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks'
-  }
+  }, skip: [:sessions, :registrations, :passwords]
 
   concern :exportable, Blacklight::Routes::Exportable.new
 
