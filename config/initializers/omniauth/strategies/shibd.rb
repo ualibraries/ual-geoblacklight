@@ -9,13 +9,11 @@ module OmniAuth
       end
 
       def request_phase
-        Rails.logger.debug "Starting Shibboleth authentication request..."
         redirect callback_path
       end
 
       def callback_phase
         # Fail if we're not authenticated
-        Rails.logger.debug "Shibboleth callback phase started..."
         return fail!(:invalid_credentials) unless authenticated?
 
         # Log headers for debugging

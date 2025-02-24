@@ -8,12 +8,19 @@ Remaining links' inclusion are determined by the catalog_controller.rb file, und
 %>
 
 <ul class="navbar-nav">
+<%= render_nav_actions do |config, action|%>
+  <li class="nav-item"><%= action %></li>
+<% end %>
+
+<% if has_user_authentication_provider? %>
   <% if current_user %>
-    <li class="nav-item"><a class="nav-link" href="/users/sign_out">Sign out</a></li>
+    <li class="nav-item">
+      <%= link_to t('blacklight.header_links.logout'), destroy_user_session_path, method: :delete, class: 'nav-link' %>
+    </li>
   <% else %>
-    <li class="nav-item"><a class="nav-link" href="/users/sign_in">Sign in</a></li>
+    <li class="nav-item">
+      <%= link_to t('blacklight.header_links.login'), user_shibd_omniauth_authorize_path, method: :post, class: 'nav-link' %>
+    </li>
   <% end %>
-  <%= render_nav_actions do |config, action|%>
-    <li class="nav-item"><%= action %></li>
-  <% end %>
+<% end %>
 </ul>
