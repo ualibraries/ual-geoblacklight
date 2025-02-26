@@ -30,6 +30,11 @@ class ApplicationController < ActionController::Base
           stored_location || request.env['omniauth.origin'] || root_path
         end
 
+        # Alias new_session_path as login_path for default devise config
+        def new_user_session_path(*)
+          user_shibd_omniauth_authorize_path
+        end
+
   # Status page for Pingdom
   def status
     output = {

@@ -4,9 +4,7 @@ class User < ApplicationRecord
   include Blacklight::User
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :omniauthable, omniauth_providers: [:shibd]
+  devise :omniauthable, omniauth_providers: [:shibd]
 
   def self.from_omniauth(auth)
     find_or_create_by(email: auth.info.email) do |user|
