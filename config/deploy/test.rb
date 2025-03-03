@@ -16,4 +16,4 @@ set :stage, :test
 server '10.130.155.21', user: 'deploy', roles: %w{web app db}
 
 # Link test sqlite file and master key
-append :linked_files, "db/test.sqlite3", "config/master.key"
+append :linked_files, "config/database.yml", "config/master.key"
