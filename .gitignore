@@ -45,3 +45,4 @@ yarn-debug.log*
 /.env
 .DS_Store
 /.idea
+/config/credentials/test.key

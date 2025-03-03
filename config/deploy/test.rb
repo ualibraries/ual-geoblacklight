@@ -15,5 +15,5 @@ set :stage, :test
 # Define the server(s) for deployment
 server '10.130.155.21', user: 'deploy', roles: %w{web app db}
 
-# Link test sqlite file and master key
-append :linked_files, "config/database.yml", "config/master.key", "config/credentials.yml.enc"
+# Link test PostgreSQL configuration and encryption key
+append :linked_files, "config/database.yml", "config/credentials/test.key", "config/credentials/test.yml.enc"
