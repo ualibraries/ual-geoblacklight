@@ -22,7 +22,7 @@ test:
   encoding: utf8
   database: geodata_tst
   username: geodata
-  password: <%= Rails.application.credentials.dig(:db_password) %>
+  password: <%= Rails.application.credentials.dig(:test, :db_password) %>
   host: 127.0.0.1
   port: 5432
   pool: 10
@@ -33,7 +33,7 @@ production:
   encoding: utf8
   database: geodata_prd
   username: geodata
-  password: <%= Rails.application.credentials.dig(:db_password) %>
+  password: <%= Rails.application.credentials.dig(:production, :db_password) %>
   host: 127.0.0.1
   port: 5432
   pool: 10
