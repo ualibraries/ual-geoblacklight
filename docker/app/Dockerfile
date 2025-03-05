@@ -10,7 +10,7 @@ RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | gpg --dear
 RUN echo "deb [signed-by=/usr/share/keyrings/nodesource-archive-keyring.gpg] https://deb.nodesource.com/node_${NODE_MAJOR_VERSION}.x jammy main" | tee /etc/apt/sources.list.d/nodesource.list
 
 # Update the package list again and install
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client libpq-dev
+RUN apt-get update -qq && apt-get install -y nano nodejs postgresql-client libpq-dev
 
 # Verify Node.js installation
 RUN node -v
