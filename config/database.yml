@@ -20,20 +20,20 @@ test:
   <<: *default
   adapter: postgresql
   encoding: utf8
-  database: geodata_tst
-  username: geodata
-  password: <%= Rails.application.credentials.dig(:test, :db_password) %>
-  host: 127.0.0.1
-  port: 5432
+  database: <%= Rails.application.credentials.dig(:test, :TST_DB_NAME) %>
+  username: <%= Rails.application.credentials.dig(:test, :TST_DB_USER) %>
+  password: <%= Rails.application.credentials.dig(:test, :TST_DB_PASS) %>
+  host: <%= Rails.application.credentials.dig(:test, :TST_DB_HOST) %>
+  port: <%= Rails.application.credentials.dig(:test, :TST_DB_PORT) %>
   pool: 10
 
 production:
   <<: *default
   adapter: postgresql
   encoding: utf8
-  database: geodata_prd
-  username: geodata
-  password: <%= Rails.application.credentials.dig(:production, :db_password) %>
-  host: 127.0.0.1
-  port: 5432
+  database: <%= Rails.application.credentials.dig(:test, :PRD_DB_NAME) %>
+  username: <%= Rails.application.credentials.dig(:test, :PRD_DB_USER) %>
+  password: <%= Rails.application.credentials.dig(:test, :PRD_DB_PASS) %>
+  host: <%= Rails.application.credentials.dig(:test, :PRD_DB_HOST) %>
+  port: <%= Rails.application.credentials.dig(:test, :PRD_DB_PORT) %>
   pool: 10
