@@ -15,5 +15,5 @@ set :stage, :production
 # Define the server(s) for deployment
 server '150.135.174.83', user: 'deploy', roles: %w{web app db}
 
-# Link production environment encryption key
-append :linked_files, "config/credentials/production.key"
+# Link database configuration and production environment encryption key
+append :linked_files, "config/database.yml", "config/credentials/production.key"
