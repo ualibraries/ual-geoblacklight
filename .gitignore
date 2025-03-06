@@ -31,6 +31,7 @@ public/assets
 .byebug_history
 
 # Ignore environment-specific keys for decrypting credentials and more.
+config/*.key
 config/credentials/*.key
 
 # Ignore Webpacker and frontend-related build artifacts.
