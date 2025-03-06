@@ -16,4 +16,4 @@ set :stage, :test
 server '10.130.155.21', user: 'deploy', roles: %w{web app db}
 
 # Link database configuration and test environment encryption key
-append :linked_files, "config/database.yml", "config/credentials/test.key"
+append :linked_files, "config/database.yml", "config/credentials/test.key", "config/credentials/test.yml.enc"
