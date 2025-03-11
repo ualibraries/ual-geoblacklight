@@ -14,6 +14,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def failure
-    redirect_to root_path, alert: "Authentication failed!"
+    reason = request.env["omniauth.error.message"]
+    redirect_to stored_location_for(:user) || root_path, alert: reason
   end
+
 end
