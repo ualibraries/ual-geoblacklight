@@ -25,9 +25,8 @@ module OmniAuth
 
       def callback_phase
         # Fail if we're not authenticated
-        #return fail!(:invalid_credentials) unless authenticated?
         unless authenticated?
-          error_message = "You entered an invalid NetID or password"
+          error_message = I18n.t("devise.failure.invalid_credentials")
           request.env["omniauth.error.message"] = error_message
           return fail!(:invalid_credentials, error_message)
         end
@@ -37,7 +36,7 @@ module OmniAuth
 
         # Check if the user's primary affiliation is allowed
         unless allowed_affiliation?
-          error_message = "Your affiliation does not have access to this application"
+          error_message = I18n.t("devise.failure.invalid_affiliation")
           request.env["omniauth.error.message"] = error_message
           return fail!(:invalid_affiliation, error_message)
         end
