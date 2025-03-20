@@ -1,5 +1,8 @@
-#<IfModule mod_shib>
-#  AuthType shibboleth
-#  require valid-user
-#  ShibRequireSession On
-#</IfModule>
+# Shibboleth Authentication
+<IfModule mod_shib>
+    <If "%{REQUEST_URI} =~ m#^/users/auth/shibd/callback(/.*)?$#">
+        AuthType shibboleth
+        ShibRequestSetting requireSession 1
+        Require valid-user
+    </If>
+</IfModule>
