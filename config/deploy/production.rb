@@ -15,5 +15,5 @@ set :stage, :production
 # Define the server(s) for deployment
 server '150.135.174.83', user: 'deploy', roles: %w{web app db}
 
-# Link production sqlite file and master key
-append :linked_files, "db/production.sqlite3", "config/master.key"
+# Link production environment encryption key
+append :linked_files, "config/credentials/production.key"

@@ -26,12 +26,15 @@ tmp/pids/*
 storage/*
 !storage/.keep
 
+# Ignore compiled assets and debug history.
 public/assets
 .byebug_history
 
-# Ignore master key for decrypting credentials and more.
-config/master.key
+# Ignore environment-specific keys for decrypting credentials and more.
+config/*.key
+config/credentials/*.key
 
+# Ignore Webpacker and frontend-related build artifacts.
 public/packs
 public/packs-test
 node_modules
@@ -39,9 +42,7 @@ yarn-error.log
 yarn-debug.log*
 .yarn-integrity
 
-/config/master.key
-
-# Local development related files and directories to ignore
+# Ignore local development environment configuration files.
 /.env
 .DS_Store
 /.idea

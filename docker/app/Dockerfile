@@ -7,7 +7,10 @@ RUN sh -c 'echo deb https://oss-binaries.phusionpassenger.com/apt/passenger book
 # Update the package list again and install
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y \
+    nano \
     nodejs \
+    postgresql-client \
+    libpq-dev \
     apache2 \
     libapache2-mod-passenger \
     libapache2-mod-shib && \
@@ -19,7 +22,19 @@ RUN mkdir -p /var/run/passenger-instreg
 RUN chown -R www-data:www-data /var/run/passenger-instreg
 RUN chmod 755 /var/run/passenger-instreg
 
+# Verify Node.js installation
+RUN node -v
+
 WORKDIR /app
 COPY Gemfile /app/Gemfile
 COPY Gemfile.lock /app/Gemfile.lock
 RUN bundle install
+
+# Add a script to be executed every time the container starts.
+COPY ./docker/app/entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
+EXPOSE 3000
+
+# Configure the main process to run when running the image
+CMD ["rails", "server", "-b", "0.0.0.0"]
