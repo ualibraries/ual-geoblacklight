@@ -211,6 +211,7 @@ GEM
       sprockets (>= 2.0.0)
       tilt (>= 1.2)
     hashdiff (1.1.1)
+    hashie (5.0.0)
     http (5.2.0)
       addressable (~> 2.8)
       base64 (~> 0.1)
@@ -309,6 +310,13 @@ GEM
       racc (~> 1.4)
     nokogiri (1.16.7-x86_64-linux)
       racc (~> 1.4)
+    omniauth (2.1.2)
+      hashie (>= 3.4.6)
+      rack (>= 2.2.3)
+      rack-protection
+    omniauth-rails_csrf_protection (1.0.2)
+      actionpack (>= 4.2)
+      omniauth (~> 2.0)
     orm_adapter (0.5.0)
     ostruct (0.6.0)
     pg (1.5.9)
@@ -323,6 +331,9 @@ GEM
     rack (2.2.9)
     rack-mini-profiler (2.3.4)
       rack (>= 1.2.0)
+    rack-protection (3.2.0)
+      base64 (>= 0.1.0)
+      rack (~> 2.2, >= 2.2.4)
     rack-proxy (0.7.7)
       rack
     rack-session (1.0.2)
@@ -522,6 +533,8 @@ DEPENDENCIES
   jbuilder (= 2.12.0)
   jquery-rails (= 4.6.0)
   listen (= 3.9.0)
+  omniauth
+  omniauth-rails_csrf_protection
   pg (~> 1.5, >= 1.5.9)
   puma (= 5.6.8)
   rack-mini-profiler (= 2.3.4)

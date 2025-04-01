@@ -18,6 +18,8 @@ en:
       unconfirmed: "You have to confirm your email address before continuing."
       pag_agreed: 'Your usage agreement has been successfully recorded.'
       pag_not_authorized: 'You are not authorized to download this data item. This data is restricted to University of Arizona students, faculty, and staff.'
+      invalid_affiliation: "You are not authorized to access this application."
+      invalid_credentials: "You entered an invalid NetID or password."
     mailer:
       confirmation_instructions:
         subject: "Confirmation instructions"

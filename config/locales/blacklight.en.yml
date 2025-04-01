@@ -2,6 +2,9 @@ en:
   blacklight:
     application_name: 'University of Arizona Libraries | GeoBlacklight'
     back_to_search: '&laquo; Back'
+    header_links:
+      login: 'Sign in'
+      logout: 'Sign out'
     search:
       header: 'Search Results'
       start_over: '&orarr; Start a new search'
