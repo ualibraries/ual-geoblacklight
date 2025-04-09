@@ -1,0 +1,32 @@
+{
+  "geoblacklight_version": "1.0",
+  "dc_identifier_s": "\\mainlibdata1TeamsRSSRSS SharedAZ Geospatial Data MapsMigration to UAiRExported ShapefilesSchoolsSchools.shp",
+  "dc_title_s": "Elementary, Secondary and Unified School Districts in Arizona",
+  "dc_description_s": "These data sets consist of the School Districts in Arizona by county. ",
+  "dc_rights_s": "Restricted",
+  "dct_provenance_s": "",
+  "layer_id_s": "urn:",
+  "layer_slug_s": "-",
+  "layer_modified_dt": "2000-08-01",
+  "dc_creator_sm": [
+    "Arizona State Land Department, Arizona Land Resources Information System "
+  ],
+  "dc_publisher_sm": [
+    "Arizona State Land Department, Arizona Land Resources Information System "
+  ],
+  "dc_format_s": "Shapefile",
+  "dc_language_s": "English",
+  "dc_type_s": "Dataset",
+  "dc_subject_sm": [
+    "School Districts",
+    "administrative boundaries "
+  ],
+  "dc_spatial_sm": [
+    "Arizona "
+  ],
+  "dct_temporal_sm": [
+    "1900"
+  ],
+  "solr_geom": "ENVELOPE(-115.02799, -108.914467, 37.039632, 31.276918)",
+  "solr_year_i": 1900
+}

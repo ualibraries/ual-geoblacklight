@@ -1,0 +1,21 @@
+# scripts/fgdc2json
+
+# Ignore all files
+*
+
+# General
+!.gitignore
+!README.md
+
+# Script
+!run.rb
+
+# Examples
+!fgdc/
+!fgdc/School-Districts.xml
+!fgdc/processed/
+!fgdc/processed/School-Districts.xml
+!gbl1/
+!gbl1/School-Districts.json
+!aardvark/
+!aardvark/School-Districts.json

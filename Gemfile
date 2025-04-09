@@ -88,6 +88,7 @@ gem "bootstrap", "4.6.2"
 gem "twitter-typeahead-rails", "0.11.1.pre.corejavascript"
 gem "jquery-rails", "4.6.0"
 gem "devise", "4.9.4"
-gem "geo_combine", "0.9.1"
 gem 'omniauth'
 gem 'omniauth-rails_csrf_protection'
+gem "geo_combine", "0.9.2"
+gem 'json', '~> 2.10', '>= 2.10.2'

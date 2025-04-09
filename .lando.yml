@@ -39,3 +39,6 @@ tooling:
     service: appserver
   cap:
     service: appserver
+  fgdc2json:
+    service: appserver
+    cmd: bash -c "cd /app/scripts/fgdc2json && ruby run.rb"

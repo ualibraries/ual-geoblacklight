@@ -1,0 +1,11 @@
+# scripts/zip-xml
+
+# Ignore all files
+*
+
+# General
+!.gitignore
+!README.md
+
+# Script
+!run.sh
