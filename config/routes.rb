@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   mount Blacklight::Engine => '/'
   root to: "catalog#index"
   concern :searchable, Blacklight::Routes::Searchable.new
@@ -23,6 +22,9 @@ Rails.application.routes.draw do
 
   # Status page for Pingdom
   get '/status', to: 'application#status'
+
+  # The '*' captures everything after /restricted/pag/, including '/'
+  get '/restricted/pag/*filepath', to: 'download#show', as: 'download_file_by_path'
 
   # resources :bookmarks do
   #   concerns :exportable
