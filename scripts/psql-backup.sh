@@ -1,25 +1,47 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-BACKUP_DIR="/path/to/backup/directory"
-MAX_BACKUPS=35
-export RAILS_ENV=test
+# default rails environment if not set
+RAILS_ENV=${RAILS_ENV:-test}
 
+# path to Rails app root (adjust as needed)
+APP_PATH="/var/www/current"
+cd "$APP_PATH" || { echo "Invalid APP_PATH"; exit 1; }
+
+# load RVM
 export PATH="$PATH:$HOME/.rvm/bin"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-eval "$(bundle exec rake credentials:export)"
+# select proper Ruby version
+rvm use ruby-3.2.2 || { echo "Failed to select Ruby"; exit 1; }
 
+# fetch DB settings via bin/rails runner
+DB_NAME=$(bin/rails runner -e "$RAILS_ENV" "puts Rails.application.credentials.dig(:${RAILS_ENV}, :db_name)")
+DB_USER=$(bin/rails runner -e "$RAILS_ENV" "puts Rails.application.credentials.dig(:${RAILS_ENV}, :db_user)")
+DB_PASSWORD=$(bin/rails runner -e "$RAILS_ENV" "puts Rails.application.credentials.dig(:${RAILS_ENV}, :db_password)")
+
+# ensure password auth over TCP
+export PGPASSWORD="$DB_PASSWORD"  # supply to pg
+export PGHOST="localhost"         # force TCP connection
+
+# manual test settings
+BACKUP_DIR="/home/deploy/tmp/backup"    # test backup directory
+MAX_BACKUPS=3                       # keep 3 dumps
+
+# ensure backup directory exists
 mkdir -p "$BACKUP_DIR"
 
+# build filename with timestamp
 TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
 BACKUP_FILE="${BACKUP_DIR}/${DB_NAME}_${TIMESTAMP}.sql.gz"
 
-pg_dump -U "$DB_USER" "$DB_NAME" | gzip > "$BACKUP_FILE" || exit 1
+# dump and compress database (use TCP for password auth)
+pg_dump -h "$PGHOST" -U "$DB_USER" "$DB_NAME" | gzip > "$BACKUP_FILE" || exit 1
 
-find "${BACKUP_DIR}" -name "${DB_NAME}_*.sql.gz" -type f -printf '%T@ %p\n' \
-    | sort -n \
-    | head -n -"${MAX_BACKUPS}" \
-    | cut -d' ' -f2- \
-    | xargs -r rm
+# prune old backups beyond limit
+find "$BACKUP_DIR" -name "${DB_NAME}_*.sql.gz" -type f -printf '%T@ %p\n' \
+  | sort -n \
+  | head -n -"${MAX_BACKUPS}" \
+  | cut -d' ' -f2- \
+  | xargs -r rm
 
-exit 0
+exit 0  # success
