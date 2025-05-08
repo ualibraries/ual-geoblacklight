@@ -11,8 +11,16 @@ cd "$APP_PATH" || { echo "Invalid APP_PATH"; exit 1; }
 export PATH="$PATH:$HOME/.rvm/bin"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-# select proper Ruby version
-rvm use ruby-3.2.2 || { echo "Failed to select Ruby"; exit 1; }
+# read Ruby version from .ruby-version (error if missing)
+if [[ -f ".ruby-version" ]]; then
+  RUBY_VERSION=$(< .ruby-version)
+else
+  echo "ERROR: .ruby-version not found in $APP_PATH"
+  exit 1
+fi
+
+# select proper Ruby version (do not auto-install)
+rvm use "$RUBY_VERSION" --default || { echo "Failed to select Ruby $RUBY_VERSION"; exit 1; }
 
 # fetch DB settings via bin/rails runner
 DB_NAME=$(bin/rails runner -e "$RAILS_ENV" "puts Rails.application.credentials.dig(:${RAILS_ENV}, :db_name)")
