@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   # Status page for Pingdom
   get '/status', to: 'application#status'
 
-  get 'restricted/pag/*path', to: 'pag_files#download'
+  get 'restricted/pag/*path', to: 'pag_files#download', format: false
 
   # resources :bookmarks do
   #   concerns :exportable
