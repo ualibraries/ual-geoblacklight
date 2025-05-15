@@ -26,14 +26,13 @@ rvm use "$RUBY_VERSION" --default || { echo "Failed to select Ruby $RUBY_VERSION
 DB_NAME=$(bin/rails runner -e "$RAILS_ENV" "puts Rails.application.credentials.dig(:${RAILS_ENV}, :db_name)")
 DB_USER=$(bin/rails runner -e "$RAILS_ENV" "puts Rails.application.credentials.dig(:${RAILS_ENV}, :db_user)")
 DB_PASSWORD=$(bin/rails runner -e "$RAILS_ENV" "puts Rails.application.credentials.dig(:${RAILS_ENV}, :db_password)")
+DB_HOST=$(bin/rails runner -e "$RAILS_ENV" "puts Rails.application.credentials.dig(:${RAILS_ENV}, :db_host)")
+BACKUP_DIR=$(bin/rails runner -e "$RAILS_ENV" "puts Rails.application.credentials.dig(:${RAILS_ENV}, :db_backup_dir)")
+MAX_BACKUPS=$(bin/rails runner -e "$RAILS_ENV" "puts Rails.application.credentials.dig(:${RAILS_ENV}, :db_max_backups)")
 
 # ensure password auth over TCP
 export PGPASSWORD="$DB_PASSWORD"  # supply to pg
-export PGHOST="localhost"         # force TCP connection
-
-# manual test settings
-BACKUP_DIR="/home/deploy/tmp/backup"    # test backup directory
-MAX_BACKUPS=3                       # keep 3 dumps
+export PGHOST="$DB_HOST"         # force TCP connection
 
 # ensure backup directory exists
 mkdir -p "$BACKUP_DIR"
