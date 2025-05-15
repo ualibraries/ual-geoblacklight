@@ -88,7 +88,7 @@ FIELDS:
   :WXS_IDENTIFIER: 'gbl_wxsIdentifier_s'
 
 # Institution deployed at
-INSTITUTION: 'UNIVERSITY OF ARIZONA'
+INSTITUTION: 'University of Arizona'
 
 # Metadata shown in tool panel
 METADATA_SHOWN:

@@ -17,7 +17,7 @@ maps to not render.
     <%= favicon_link_tag %>
     <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload"  %>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.digital.arizona.edu/lib/arizona-bootstrap/2.0.25/css/arizona-bootstrap.min.css" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="https://cdn.digital.arizona.edu/lib/arizona-bootstrap/2.0.27/css/arizona-bootstrap.min.css" crossorigin="anonymous"> 
     <% if defined? ImportmapTags %>
       <%= javascript_importmap_tags %>
     <% elsif defined? Propshaft %>
@@ -55,7 +55,5 @@ maps to not render.
 
     <%= render partial: 'shared/ual_footer' %>
 
-    <!-- Arizona Bootstrap -->
-    <script src="https://cdn.digital.arizona.edu/lib/arizona-bootstrap/main/js/arizona-bootstrap.bundle.min.js"></script>
   </body>
 <% end %>
