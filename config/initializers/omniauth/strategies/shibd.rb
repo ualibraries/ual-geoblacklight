@@ -41,6 +41,14 @@ module OmniAuth
           return fail!(:invalid_affiliation, error_message)
         end
 
+        # request.session[:shib_uid] = shib_field("uid")
+        session[:shib_group_authorized] = Array(shib_field("isMemberOf")).any? do |g|
+           g.include?("arizona.edu:community:functional-dept:IT:1709")
+         end
+
+        # logger.info "User UID: #{ request.session[:shib_uid]}"
+        # logger.info "User Groups: #{ session[:shib_group_authorized]}"
+
         super
       end
 
