@@ -1,5 +1,4 @@
 class PagFilesController < ApplicationController
-    #include Blacklight::Controller 
     before_action :authorize_pag_access
     def download
         #retrieves the :path parameter from the request, converts it to a string.
@@ -26,21 +25,17 @@ class PagFilesController < ApplicationController
 
     def authorize_pag_access
       uid = session[:shib_uid]
-      isMemberOfTess = session[:shib_group_authorized]
-      logger.info "User UID: #{uid}"
-      logger.info "User Groups: #{isMemberOfTess}"
+      isMemberOfTess = session[:has_pag_access]
       authorized = uid == "garrettsmith" || isMemberOfTess
-
       unless authorized
         if uid.blank?
-          logger.info "User UID: blank"
-          #redirect_to "/users/auth/shibd?referrer=#{CGI.escape(request.original_url)}"
-          redirect_to user_shibd_omniauth_authorize_path(referrer: request.original_url)
-        else
-          # Logged in but unauthorized
-          render plain: "Unauthorized", status: :forbidden
-        end
+          logger.info "UID is blanck so redirect to sign in"
+          store_location_for(:user, request.original_url)
+          redirect_to user_shibd_omniauth_callback_path(referrer: request.original_url)
+         else
+           # Logged in but unauthorized
+           render plain: I18n.t("devise.failure.pag_not_authorized"), status: :forbidden
+         end
       end
-    end
-    
+    end  
 end

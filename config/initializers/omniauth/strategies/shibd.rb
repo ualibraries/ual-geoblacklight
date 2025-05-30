@@ -42,7 +42,7 @@ module OmniAuth
         end
 
         # request.session[:shib_uid] = shib_field("uid")
-        session[:shib_group_authorized] = Array(shib_field("isMemberOf")).any? do |g|
+        session[:has_pag_access] = Array(shib_field("isMemberOf")).any? do |g|
            g.include?("arizona.edu:community:functional-dept:IT:1709")
          end
 
