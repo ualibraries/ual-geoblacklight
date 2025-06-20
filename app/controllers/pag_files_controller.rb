@@ -38,4 +38,8 @@ class PagFilesController < ApplicationController
          end
       end
     end  
+
+    # Display the PAG agreement message
+    def pag_agreement
+    end
 end
