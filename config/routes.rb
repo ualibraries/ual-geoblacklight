@@ -25,10 +25,11 @@ Rails.application.routes.draw do
   get '/status', to: 'application#status'
 
   # Restricted PAG files
-  get 'restricted/pag/*path', to: 'pag_files#download', format: false
+  get 'restricted/pag/*path', to: 'pag_files#display_agreement', format: false
 
-  # PAG agreement view
-  get '/pag-agreement', to: 'pag_files#pag_agreement'
+  # PAG agreement views
+  get '/pag-agreement', to: 'pag_files#display_agreement'
+  post '/submit-agreement', to: 'pag_files#submit_agreement'
 
   # resources :bookmarks do
   #   concerns :exportable
