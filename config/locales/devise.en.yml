@@ -6,6 +6,7 @@ en:
       confirmed: "Your email address has been successfully confirmed."
       send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
+      pag_agreed: "Your agreement has been successfully recorded. Your download will start momentarily."
     failure:
       already_authenticated: "You are already signed in."
       inactive: "Your account is not activated yet."
@@ -16,8 +17,9 @@ en:
       timeout: "Your session expired. Please sign in again to continue."
       unauthenticated: "You need to sign in or sign up before continuing."
       unconfirmed: "You have to confirm your email address before continuing."
-      pag_agreed: 'Your usage agreement has been successfully recorded.'
-      pag_not_authorized: 'You are not authorized to download this data item. This data is restricted to University of Arizona students, faculty, and staff.'
+      pag_not_authorized: "You are not authorized to download this data item. This data is restricted to University of Arizona students, faculty, and staff."
+      pag_not_found: "The file you requested couldn't be found."
+      pag_not_agreed: "You must agree to the terms in order to download this data item."
       invalid_affiliation: "You are not authorized to access this application."
       invalid_credentials: "You entered an invalid NetID or password."
     mailer:
