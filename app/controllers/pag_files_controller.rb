@@ -96,12 +96,12 @@ We want to send the user to their previous path/record, if it exists; to the hom
 
     
     # Check if a user has submitted a PAG agreement for the requested file
-    def has_submitted_agreement?(uid, fid)
-      pag_user = User.find(params[:uid])
-      if Agreement.find(pag_user)
+    # def has_submitted_agreement?(uid, fid)
+      # pag_user = User.find(params[:uid])
+      # if Agreement.find(pag_user)
         # Need to finish this
-      end
-    end
+      # end
+    # end
 
     # Check whether a requested PAG file path exists or not
     def is_valid_pag_file
