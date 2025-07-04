@@ -1,35 +1,50 @@
 class PagFilesController < ApplicationController
-  before_action :authorize_pag_access, :set_paths, :is_valid_pag_file
+  before_action :set_paths, :is_valid_pag_file, :set_current_user, :authorize_pag_access
   
   # Display the PAG agreement view
   def display_agreement
   end
   
-  # Submit the PAG agreement
+  # Submit a PAG agreement
   def submit_agreement
-    # User has submitted an agreement; record information to database and initiate #download
+    # User has submitted an agreement; record agreement to database and initiate #download
     if params[:commit] == "Agree"
-      # To do: record the UID in Agreements table record
-      # To do: record the path of the file in Agreements table record
+      PagAgreement.create(path: @requested_path, user_id: @pag_user_id);
       
-      # Initiate download
       download
 
     # User has cancelled the agreement--return them from whence they came!
     else
-      # If user's previous path exists, route to previous path (arrived via discovery)
-      # if <user's previous page exists>
-        # redirect_to <previous page>
-      # Otherwise, route to home page (arrived via direct URL)
-      # else
-        # redirect_to root_path (arrived via direct path)
-      # end
-      # Provide flash notice that they cannot download the data item without agreeing to the terms, using message from devise.failure.pag_not_agreed
+      # To do:
+      # if previous_path exists, redirect_to previous_path
+      # else, redirect_to
+      # Both cases: Provide flash notice that they cannot download the data item without agreeing to the terms, using message from devise.failure.pag_not_agreed
     end
+  end
+
+  # Download a requested PAG file
+  def download
+    if has_submitted_agreement(@current_user_id)
+      send_file @requested_path, disposition: 'attachment'
+      # To-do:
+      # if previous_path exists, redirect_to previous_path
+      # else, redirect_to root_path
+    else
+      redirect_to pag_agreement_path
+    end
+    
   end
   
   private
-  
+
+    # Save current user ID to a variable for reference in other methods
+    def set_current_user
+      @current_user_id = session[:shib_uid]
+      @pag_user = User.find_by(uid: @current_user_id)
+      @pag_user_id = @pag_user.user_id
+    end
+    
+    
     # Define @requested_path and @base_path for use in other methods
     def set_paths
       #retrieves the :path parameter from the request, converts it to a string.
@@ -48,11 +63,10 @@ class PagFilesController < ApplicationController
     
     # Determine whether a user is authorized to access restricted data or not
     def authorize_pag_access
-      uid = session[:shib_uid]
       isMemberOfTess = session[:has_pag_access]
-      authorized = uid == "garrettsmith" || isMemberOfTess
+      authorized = @current_user_id == "garrettsmith" || isMemberOfTess
       unless authorized
-        if uid.blank?
+        if @current_user_id.blank?
           logger.info "UID is blank so redirect to sign in"
           store_location_for(:user, request.original_url)
           redirect_to user_shibd_omniauth_callback_path(referrer: request.original_url)
@@ -62,48 +76,21 @@ class PagFilesController < ApplicationController
         end
       end
     end
-  
-    # Download a requested PAG file
-    def download
 
-=begin
-If statement (L73) for has_submitted_agreement is pseudo-code for now.
-We want to verify that a user has submitted the agreement prior to downloading (extra security step).
-=end
 
-      # Ensure user submit_agreement, then download file
-      # if has_submitted_agreement(shib_uid)
-       send_file @requested_path, disposition: 'attachment'
-      # end
+    # Verify user has submitted a PAG agreement for the requested file, prior to allowing download
+    def has_submitted_agreement(current_user)
+      pag_user = User.find_by(uid: current_user)
+      pag_user_id = pag_user.user_id
 
-=begin
-If statement for routing is pseudo-code for now.
-We want to send the user to their previous path/record, if it exists; to the homepage otherwise.
-=end
-      # If user's previous path exists, route to previous path (arrived via discovery)
-      # if <user's previous page exists>
-        # redirect_to <previous page>
-        # Provide flash notice from devise.confirmations.pag_agreed
-
-      # Otherwise, route to home page (arrived via direct URL)
-      # else
-      #  redirect_to root_path
-      #  Provide flash notice from devise.confirmations.pag_agreed
-      # end
+      if PagAgreement.where(user_id: pag_user_id, path: @requested_path)
+        download
+      else
+        display_agreement
+      end
     end
 
-
-
-    
-    # Check if a user has submitted a PAG agreement for the requested file
-    # def has_submitted_agreement?(uid, fid)
-      # pag_user = User.find(params[:uid])
-      # if Agreement.find(pag_user)
-        # Need to finish this
-      # end
-    # end
-
-    # Check whether a requested PAG file path exists or not
+    # Determine whether a requested PAG file path exists or not
     def is_valid_pag_file
       return (@requested_path&.exist? && @requested_path.file? && @requested_path.to_s.start_with?(@base_path.to_s))
     end
