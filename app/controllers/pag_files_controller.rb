@@ -17,7 +17,7 @@ class PagFilesController < ApplicationController
     else
       # To do:
       # if previous_path exists, redirect_to previous_path
-      # else, redirect_to
+      # else, redirect_to root_path
       # Both cases: Provide flash notice that they cannot download the data item without agreeing to the terms, using message from devise.failure.pag_not_agreed
     end
   end
