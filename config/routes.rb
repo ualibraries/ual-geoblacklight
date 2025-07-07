@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   get 'restricted/pag/*path', to: 'pag_files#download', format: false
 
   # PAG agreement views
-  get '/pag-agreement', to: 'pag_files#display_agreement'
+  get 'restricted/pag/*path/agreement', to: 'pag_files#display_agreement'
   post '/submit-agreement', to: 'pag_files#submit_agreement'
 
   # resources :bookmarks do
