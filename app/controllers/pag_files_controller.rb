@@ -32,7 +32,6 @@ class PagFilesController < ApplicationController
     else
       redirect_to pag_agreement_path
     end
-    
   end
   
   private
@@ -78,16 +77,9 @@ class PagFilesController < ApplicationController
     end
 
 
-    # Verify user has submitted a PAG agreement for the requested file, prior to allowing download
+    # Determine if user has submitted a PAG agreement for the requested file
     def has_submitted_agreement(current_user)
-      pag_user = User.find_by(uid: current_user)
-      pag_user_id = pag_user.user_id
-
-      if PagAgreement.where(user_id: pag_user_id, path: @requested_path)
-        download
-      else
-        display_agreement
-      end
+      return PagAgreement.where(user_id: @pag_user_id, path: @requested_path).exists?
     end
 
     # Determine whether a requested PAG file path exists or not
