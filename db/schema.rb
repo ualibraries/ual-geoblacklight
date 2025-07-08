@@ -10,21 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_01_12_024803) do
-  create_table "acknowledged_users", force: :cascade do |t|
-    t.string "netid", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["netid"], name: "index_acknowledged_users_on_netid", unique: true
-  end
-
-  create_table "acknowledgments", force: :cascade do |t|
-    t.integer "acknowledged_users_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["acknowledged_users_id"], name: "index_acknowledgments_on_acknowledged_users_id"
-  end
-
+ActiveRecord::Schema[7.1].define(version: 2025_06_26_170931) do
   create_table "bookmarks", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "user_type"
@@ -35,6 +21,14 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_12_024803) do
     t.datetime "updated_at", precision: nil, null: false
     t.index ["document_id"], name: "index_bookmarks_on_document_id"
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
+
+  create_table "pag_agreements", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "path"
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_pag_agreements_on_user_id"
   end
 
   create_table "searches", force: :cascade do |t|
@@ -61,5 +55,5 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_12_024803) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "acknowledgments", "acknowledged_users", column: "acknowledged_users_id"
+  add_foreign_key "pag_agreements", "users"
 end

@@ -1,6 +1,6 @@
 require "test_helper"
 
-class AcknowledgmentTest < ActiveSupport::TestCase
+class PagAgreementTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
