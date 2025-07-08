@@ -24,7 +24,7 @@ class PagFilesController < ApplicationController
 
   # Download a requested PAG file
   def download
-    if has_submitted_agreement(@current_user_id)
+    if has_submitted_agreement(@current_user_shib_uid)
       send_file @requested_path, disposition: 'attachment'
       # To-do:
       # if previous_path exists, redirect_to previous_path
@@ -39,9 +39,9 @@ class PagFilesController < ApplicationController
 
     # Save current user ID to a variable for reference in other methods
     def set_current_user
-      @current_user_id = session[:shib_uid]
-      @pag_user = User.find_by(uid: @current_user_id)
-      @pag_user_id = @pag_user.user_id
+      @current_user_shib_uid = session[:shib_uid]
+      @pag_user = User.find_by(uid: @current_user_shib_uid)
+      @pag_user_id = @pag_user.id
     end
     
     
@@ -64,9 +64,9 @@ class PagFilesController < ApplicationController
     # Determine whether a user is authorized to access restricted data or not
     def authorize_pag_access
       isMemberOfTess = session[:has_pag_access]
-      authorized = @current_user_id == "garrettsmith" || isMemberOfTess
+      authorized = @current_user_shib_uid == "garrettsmith" || isMemberOfTess
       unless authorized
-        if @current_user_id.blank?
+        if @current_user_shib_uid.blank?
           logger.info "UID is blank so redirect to sign in"
           store_location_for(:user, request.original_url)
           redirect_to user_shibd_omniauth_callback_path(referrer: request.original_url)
