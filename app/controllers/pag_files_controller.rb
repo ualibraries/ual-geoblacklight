@@ -30,7 +30,9 @@ class PagFilesController < ApplicationController
       # if previous_path exists, redirect_to previous_path
       # else, redirect_to root_path
     else
-      redirect_to pag_agreement_path
+      # Sanitize param: remove trailing /agreement if it's there
+      clean_path = params[:path].to_s.sub(/\/agreement$/, '') # Clean path is correct at the first call of #download
+      redirect_to pag_agreement_path(path: clean_path)
     end
   end
   
@@ -47,7 +49,8 @@ class PagFilesController < ApplicationController
     # Define @requested_path and @base_path for use in other methods
     def set_paths
       #retrieves the :path parameter from the request, converts it to a string.
-      raw_path = params[:path].to_s
+      
+      raw_path = params[:path].to_s.sub(/\/agreement$/, '') # Strip trailing /agreement
       #CGI.unescape decodes percent-encoded characters and strip removes any leading or trailing whitespace.
       decoded_path = CGI.unescape(raw_path).strip
       logger.info("Decoded path: #{decoded_path}")
