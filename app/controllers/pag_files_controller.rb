@@ -86,8 +86,8 @@ class PagFilesController < ApplicationController
     end
 
     # Determine whether a requested PAG file path exists or not
-    def is_valid_pag_file
-      return (@requested_path&.exist? && @requested_path.file? && @requested_path.to_s.start_with?(@base_path.to_s))
+    def is_valid_pag_file?
+      return (@requested_path.exist? && @requested_path.file? && @requested_path.to_s.start_with?(@base_path.to_s))
     end
     
 end
