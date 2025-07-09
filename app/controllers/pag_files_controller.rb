@@ -1,5 +1,7 @@
 class PagFilesController < ApplicationController
-  before_action :set_paths, :is_valid_pag_file, :set_current_user, :authorize_pag_access
+  before_action :set_paths, only: [:download, :submit_agreement]
+  before_action :is_valid_pag_file?, only: [:download]
+  before_action :authorize_pag_access, only: [:download, :submit_agreement]
   
   # Display the PAG agreement view
   def display_agreement
