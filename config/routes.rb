@@ -30,8 +30,7 @@ Rails.application.routes.draw do
   # Restricted PAG files
   get 'restricted/pag/*path', to: 'pag_files#download', as: 'pag_download', format: false
 
-  # PAG agreement views
-  post '/submit-agreement', to: 'pag_files#submit_agreement'
+  post 'restricted/pag/*path/submit-agreement', to: 'pag_files#submit_agreement', as: 'pag_submit_agreement'
 
   # resources :bookmarks do
   #   concerns :exportable
