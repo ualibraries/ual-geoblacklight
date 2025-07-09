@@ -10,7 +10,7 @@ class PagFilesController < ApplicationController
   
   # Submit a PAG agreement
   def submit_agreement
-    # User has submitted an agreement; record agreement to database and initiate #download
+    # User has agreed; record agreement to database and initiate #download
     if params[:commit] == "Agree"
       clean_path = @requested_path.to_s.sub(/\/agreement$/, '')
       PagAgreement.create(path: clean_path, user_id:current_user.id)
@@ -44,14 +44,12 @@ class PagFilesController < ApplicationController
     
     # Define @requested_path and @base_path for use in other methods
     def set_paths
-      #retrieves the :path parameter from the request, converts it to a string.
-      
-      raw_path = params[:path].to_s.sub(/\/agreement$/, '') # Strip trailing /agreement
-      #CGI.unescape decodes percent-encoded characters and strip removes any leading or trailing whitespace.
+      # Retrieves the :path parameter from the request, converts it to a string. Strips trailing /agreement to prevent infinite looping of redirect
+      raw_path = params[:path].to_s.sub(/\/agreement$/, '')
+      # CGI.unescape decodes percent-encoded characters and removes leading or trailing whitespace.
       decoded_path = CGI.unescape(raw_path).strip
-      
       @base_path = Rails.application.credentials.dig(Rails.env.to_sym, :pag_dir)
-      
+      # @requested path becomes the full file path the user is requesting
       @requested_path = if @base_path.present?
         Pathname.new(@base_path).join(decoded_path).cleanpath
       end
@@ -65,10 +63,11 @@ class PagFilesController < ApplicationController
         redirect_to user_shibd_omniauth_callback_path and return
       end
       
+      # Determine if user is authorized to download PAG data
       is_member_of_tess = session[:has_pag_access]
       authorized = current_user.uid == "garrettsmith" || is_member_of_tess
       
-      # Logged in but unauthorized
+      # User is logged in but unauthorized, notify user they're not authorized
       unless authorized
         render plain: I18n.t("devise.failure.pag_not_authorized"), status: :forbidden and return
       end
