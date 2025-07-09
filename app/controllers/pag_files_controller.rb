@@ -26,7 +26,7 @@ class PagFilesController < ApplicationController
 
   # Download a requested PAG file
   def download
-    if has_submitted_agreement(@current_user_shib_uid)
+    if has_submitted_agreement?
       send_file @requested_path, disposition: 'attachment'
       # To-do:
       # if previous_path exists, redirect_to previous_path
