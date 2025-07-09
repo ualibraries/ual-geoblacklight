@@ -9,8 +9,9 @@ class PagFilesController < ApplicationController
   def submit_agreement
     # User has submitted an agreement; record agreement to database and initiate #download
     if params[:commit] == "Agree"
-      PagAgreement.create(path: @requested_path, user_id: @pag_user_id);
-      
+      clean_path = @requested_path.to_s.sub(/\/agreement$/, '')
+      PagAgreement.create(path: clean_path, user_id:current_user.id)
+
       download
 
     # User has cancelled the agreement--return them from whence they came!
