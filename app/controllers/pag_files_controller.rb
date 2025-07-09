@@ -3,6 +3,7 @@ class PagFilesController < ApplicationController
   
   # Display the PAG agreement view
   def display_agreement
+    render template: "pag_files/display_agreement", formats: [:html]
   end
   
   # Submit a PAG agreement
