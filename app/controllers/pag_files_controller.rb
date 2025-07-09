@@ -55,10 +55,8 @@ class PagFilesController < ApplicationController
       raw_path = params[:path].to_s.sub(/\/agreement$/, '') # Strip trailing /agreement
       #CGI.unescape decodes percent-encoded characters and strip removes any leading or trailing whitespace.
       decoded_path = CGI.unescape(raw_path).strip
-      logger.info("Decoded path: #{decoded_path}")
       
       @base_path = Rails.application.credentials.dig(Rails.env.to_sym, :pag_dir)
-      logger.info("Base path: #{@base_path}")
       
       @requested_path = if @base_path.present?
         Pathname.new(@base_path).join(decoded_path).cleanpath
@@ -72,7 +70,6 @@ class PagFilesController < ApplicationController
         redirect_to user_shibd_omniauth_callback_path and return
       unless authorized
         render plain: I18n.t("devise.failure.pag_not_authorized"), status: :forbidden and return
-          logger.info "UID is blank so redirect to sign in"
           store_location_for(:user, request.original_url)
           redirect_to user_shibd_omniauth_callback_path(referrer: request.original_url)
         else
