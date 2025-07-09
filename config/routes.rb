@@ -24,11 +24,13 @@ Rails.application.routes.draw do
   # Status page for Pingdom
   get '/status', to: 'application#status'
 
+  # PAG agreement views
+  get 'restricted/pag/*path/agreement', to: 'pag_files#display_agreement', as: 'pag_agreement', defaults: { format: 'html' }
+
   # Restricted PAG files
   get 'restricted/pag/*path', to: 'pag_files#download', as: 'pag_download', format: false
 
   # PAG agreement views
-  get 'restricted/pag/*path/agreement', to: 'pag_files#display_agreement'
   post '/submit-agreement', to: 'pag_files#submit_agreement'
 
   # resources :bookmarks do
