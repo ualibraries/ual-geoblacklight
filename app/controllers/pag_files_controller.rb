@@ -58,23 +58,22 @@ class PagFilesController < ApplicationController
     end
     
     # Determine whether a user is authorized to access restricted data or not
-    def authorize_pag_access
-      isMemberOfTess = session[:has_pag_access]
+    def authorize_pag_access      
+      # Ensure user is logged in; force login if not
       if current_user.uid.blank?
+        store_location_for(:user, request.original_url)
         redirect_to user_shibd_omniauth_callback_path and return
+      end
+      
+      is_member_of_tess = session[:has_pag_access]
       authorized = current_user.uid == "garrettsmith" || is_member_of_tess
+      
+      # Logged in but unauthorized
       unless authorized
         render plain: I18n.t("devise.failure.pag_not_authorized"), status: :forbidden and return
-          store_location_for(:user, request.original_url)
-          redirect_to user_shibd_omniauth_callback_path(referrer: request.original_url)
-        else
-          # Logged in but unauthorized
-          render plain: I18n.t("devise.failure.pag_not_authorized"), status: :forbidden
-        end
       end
     end
-
-
+    
     # Determine if user has submitted a PAG agreement for the requested file
     def has_submitted_agreement?
       return PagAgreement.exists?(user_id: current_user.id, path: @requested_path.to_s)
