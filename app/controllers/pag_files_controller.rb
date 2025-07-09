@@ -41,14 +41,6 @@ class PagFilesController < ApplicationController
   end
   
   private
-
-    # Save current user ID to a variable for reference in other methods
-    def set_current_user
-      @current_user_shib_uid = session[:shib_uid]
-      @pag_user = User.find_by(uid: @current_user_shib_uid)
-      @pag_user_id = @pag_user.id
-    end
-    
     
     # Define @requested_path and @base_path for use in other methods
     def set_paths
@@ -68,8 +60,9 @@ class PagFilesController < ApplicationController
     # Determine whether a user is authorized to access restricted data or not
     def authorize_pag_access
       isMemberOfTess = session[:has_pag_access]
-      authorized = @current_user_shib_uid == "garrettsmith" || isMemberOfTess
+      if current_user.uid.blank?
         redirect_to user_shibd_omniauth_callback_path and return
+      authorized = current_user.uid == "garrettsmith" || is_member_of_tess
       unless authorized
         render plain: I18n.t("devise.failure.pag_not_authorized"), status: :forbidden and return
           store_location_for(:user, request.original_url)
@@ -84,7 +77,7 @@ class PagFilesController < ApplicationController
 
     # Determine if user has submitted a PAG agreement for the requested file
     def has_submitted_agreement(current_user)
-      return PagAgreement.where(user_id: @pag_user_id, path: @requested_path).exists?
+      return PagAgreement.exists?(user_id: current_user.id, path: @requested_path.to_s)
     end
 
     # Determine whether a requested PAG file path exists or not
