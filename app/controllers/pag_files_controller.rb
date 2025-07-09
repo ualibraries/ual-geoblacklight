@@ -69,8 +69,9 @@ class PagFilesController < ApplicationController
     def authorize_pag_access
       isMemberOfTess = session[:has_pag_access]
       authorized = @current_user_shib_uid == "garrettsmith" || isMemberOfTess
+        redirect_to user_shibd_omniauth_callback_path and return
       unless authorized
-        if @current_user_shib_uid.blank?
+        render plain: I18n.t("devise.failure.pag_not_authorized"), status: :forbidden and return
           logger.info "UID is blank so redirect to sign in"
           store_location_for(:user, request.original_url)
           redirect_to user_shibd_omniauth_callback_path(referrer: request.original_url)
