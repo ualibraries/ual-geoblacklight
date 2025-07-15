@@ -21,8 +21,13 @@ Overrides GeoBlacklight's view partial _show_downloads.html.erb to add AZ Bootst
   <div class="card authentication border-0">
     <div class="callout callout-sky my-2">
       <strong><span class="material-icons-sharp">lock</span> Data notice</strong>
-      <p><small>This data belongs to a collection that is restricted to University of Arizona students, faculty, and staff. If you wish to download this data item, you must log in and agree to the usage agreement.</small></p>
-      <%= link_to t('geoblacklight.tools.login_to_view'), user_shibd_omniauth_authorize_path(referrer: request.original_url), method: :post, class: ['btn', 'btn-blue', 'btn-block'] %>
+      <% if current_user.nil? %>
+        <p><small><%= t('geoblacklight.pag.restricted_notice_sidebar_anonymous') %></small></p>
+        <%= link_to t('geoblacklight.pag.login_and_pag_agree'), pag_download_path(path: document.direct_download[:download].sub(%r{\A/restricted/pag/}, '')), class: ['btn', 'btn-blue', 'btn-block'] %>
+      <% else %>
+        <p><small><%= t('geoblacklight.pag.restricted_notice_sidebar_authenticated') %></small></p>
+        <%= link_to t('geoblacklight.pag.view_pag_agree'), pag_agreement_path(path: document.direct_download[:download].sub(%r{\A/restricted/pag/}, '')), class: ['btn', 'btn-blue', 'btn-block'] %>
+      <% end %>
     </div>
   </div>
 <% end %>
