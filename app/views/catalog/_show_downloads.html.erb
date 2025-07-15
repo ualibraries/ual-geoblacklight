@@ -23,10 +23,14 @@ Overrides GeoBlacklight's view partial _show_downloads.html.erb to add AZ Bootst
       <strong><span class="material-icons-sharp">lock</span> Data notice</strong>
       <% if current_user.nil? %>
         <p><small><%= t('geoblacklight.pag.restricted_notice_sidebar_anonymous') %></small></p>
-        <%= link_to t('geoblacklight.pag.login_and_pag_agree'), pag_download_path(path: document.direct_download[:download].sub(%r{\A/restricted/pag/}, '')), class: ['btn', 'btn-blue', 'btn-block'] %>
+        <% if document.direct_download.present? %>
+          <%= link_to t('geoblacklight.pag.login_and_pag_agree'), pag_download_path(path: document.direct_download[:download].sub(%r{\A/restricted/pag/}, '')), class: ['btn', 'btn-blue', 'btn-block'] %>
+        <% end%>
       <% else %>
         <p><small><%= t('geoblacklight.pag.restricted_notice_sidebar_authenticated') %></small></p>
-        <%= link_to t('geoblacklight.pag.view_pag_agree'), pag_agreement_path(path: document.direct_download[:download].sub(%r{\A/restricted/pag/}, '')), class: ['btn', 'btn-blue', 'btn-block'] %>
+        <% if document.direct_download.present? %>
+          <%= link_to t('geoblacklight.pag.view_pag_agree'), pag_agreement_path(path: document.direct_download[:download].sub(%r{\A/restricted/pag/}, '')), class: ['btn', 'btn-blue', 'btn-block'] %>
+        <% end%>
       <% end %>
     </div>
   </div>
