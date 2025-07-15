@@ -18,7 +18,6 @@ en:
       unconfirmed: "You have to confirm your email address before continuing."
       pag_not_authorized: "You are not authorized to download this data item. This data is restricted to University of Arizona students, faculty, and staff."
       pag_not_found: "The file you requested couldn't be found."
-      pag_not_agreed: "You must agree to the terms in order to download this data item."
       invalid_affiliation: "You are not authorized to access this application."
       invalid_credentials: "You entered an invalid NetID or password."
     mailer:
