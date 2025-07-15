@@ -5,7 +5,7 @@ Overrides GeoBlacklight's view partial _show_downloads.html.erb to add AZ Bootst
 
 <% document ||= @document %>
 
-<% if document_downloadable? %>
+<% if document_downloadable? && has_submitted_pag_agreement %>
   <% if document.direct_download.present? || document.hgl_download.present? || document.iiif_download.present? || document.download_types.present? %>
     <div class="downloads-sidebar">
       <div class="dropdown">
