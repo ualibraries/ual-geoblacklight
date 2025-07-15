@@ -59,7 +59,7 @@ class PagFilesController < ApplicationController
     # Determine whether a user is authorized to access restricted data or not
     def authorize_pag_access      
       # Ensure user is logged in; force login if not
-      if current_user.uid.blank?
+      if current_user.nil? || current_user.uid.blank?
         store_location_for(:user, request.original_url)
         redirect_to user_shibd_omniauth_callback_path and return
       end
