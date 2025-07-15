@@ -15,26 +15,18 @@ class PagFilesController < ApplicationController
     if params[:commit] == "Agree"
       clean_path = @requested_path.to_s.sub(/\/agreement$/, '')
       PagAgreement.create(path: clean_path, user_id:current_user.id)
-
-      download
-
+      redirect_to session[:pag_previous_path], notice: t('geoblacklight.pag.pag_agreed')
     # User has cancelled the agreement--return them from whence they came!
     else
-      # To do:
-      # if previous_path exists, redirect_to previous_path
-      # else, redirect_to root_path
-      # Both cases: Provide flash notice that they cannot download the data item without agreeing to the terms, using message from devise.failure.pag_not_agreed
+      redirect_to session[:pag_previous_path], alert: t('geoblacklight.pag.pag_not_agreed')
     end
   end
-
+  
   # Download a requested PAG file
   def download
     if has_submitted_agreement?
       send_file @requested_path, disposition: 'attachment'
-      # To-do:
-      # if previous_path exists, redirect_to previous_path
-      # else, redirect_to root_path
-    else
+    else 
       # Sanitize param: remove trailing /agreement if it's there
       clean_path = params[:path].to_s.sub(/\/agreement$/, '')
       redirect_to pag_agreement_path(path: clean_path)
