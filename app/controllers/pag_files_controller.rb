@@ -35,7 +35,7 @@ class PagFilesController < ApplicationController
       # else, redirect_to root_path
     else
       # Sanitize param: remove trailing /agreement if it's there
-      clean_path = params[:path].to_s.sub(/\/agreement$/, '') # Clean path is correct at the first call of #download
+      clean_path = params[:path].to_s.sub(/\/agreement$/, '')
       redirect_to pag_agreement_path(path: clean_path)
     end
   end
