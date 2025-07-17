@@ -25,6 +25,8 @@ Overrides GeoBlacklight's view partial _show_downloads.html.erb to add AZ Bootst
         <p><small><%= t('geoblacklight.pag.restricted_notice_sidebar_anonymous') %></small></p>
         <% if document.direct_download.present? %>
           <%= link_to t('geoblacklight.pag.login_and_pag_agree'), pag_download_path(path: document.direct_download[:download].sub(%r{\A/restricted/pag/}, '')), class: ['btn', 'btn-blue', 'btn-block'] %>
+        <% else %>
+          <%= link_to t('geoblacklight.tools.login_to_view'), user_shibd_omniauth_authorize_path(referrer: request.original_url), method: :post, class: ['btn', 'btn-blue', 'btn-block'] %>
         <% end%>
       <% else %>
         <p><small><%= t('geoblacklight.pag.restricted_notice_sidebar_authenticated') %></small></p>
