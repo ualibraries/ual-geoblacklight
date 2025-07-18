@@ -1,6 +1,6 @@
 class PagFilesController < ApplicationController
   before_action :set_paths, only: [:download, :submit_agreement]
-  before_action :is_valid_pag_file?, only: [:download]
+  before_action :validate_pag_file, only: [:download]
   before_action :authorize_pag_access, only: [:download, :submit_agreement]
   
   # Display the PAG agreement view
@@ -30,6 +30,13 @@ class PagFilesController < ApplicationController
       # Sanitize param: remove trailing /agreement if it's there
       clean_path = params[:path].to_s.sub(/\/agreement$/, '')
       redirect_to pag_agreement_path(path: clean_path)
+    end
+  end
+
+  # Ensure valid PAG file, route to not found otherwise
+  def validate_pag_file
+    unless is_valid_pag_file?
+      redirect_to not_found_path and return
     end
   end
   
