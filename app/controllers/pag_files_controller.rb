@@ -1,6 +1,6 @@
 class PagFilesController < ApplicationController
   before_action :set_paths, only: [:download, :submit_agreement]
-  before_action :validate_pag_file, only: [:download]
+  before_action :validate_pag_file_routing, only: [:download]
   before_action :authorize_pag_access, only: [:download, :submit_agreement]
   
   # Display the PAG agreement view
@@ -34,7 +34,7 @@ class PagFilesController < ApplicationController
   end
 
   # Ensure valid PAG file, route to not found otherwise
-  def validate_pag_file
+  def validate_pag_file_routing
     unless is_valid_pag_file?
       redirect_to not_found_path and return
     end
