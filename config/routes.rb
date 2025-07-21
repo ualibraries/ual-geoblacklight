@@ -32,6 +32,9 @@ Rails.application.routes.draw do
 
   post 'restricted/pag/*path/submit-agreement', to: 'pag_files#submit_agreement', as: 'pag_submit_agreement'
 
+  # Not found page
+  get '/not-found', to: 'application#error_not_found', as: :not_found
+
   # resources :bookmarks do
   #   concerns :exportable
 
