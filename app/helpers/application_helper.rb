@@ -56,5 +56,13 @@ module ApplicationHelper
 
     link_to label, link_url, opts
   end
+
+  # Determine whether or not a user has submitted a PAG agreement for the requested file, for use in views. Not valid on index maps.
+  def has_submitted_pag_agreement
+    unless current_user.nil? || @document.direct_download.nil?
+      return PagAgreement.where(user_id: current_user.id).where("path LIKE ?", "%#{@document.direct_download[:download]}").exists?
+    end
+    return false
+  end
   
 end
