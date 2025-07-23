@@ -30,21 +30,26 @@ Here's a little diagram of the GBL and Solr interaction (Mermaid syntax):
 
 **Preliminary Steps:**
 
-Start by cloning this repository to pretty much anywhere on most filesystems that the Docker daemon has access to.
+Start by cloning this repository to pretty much anywhere on most filesystems that the Docker daemon has access to. Then run the steps below in your CLI. _(Step 3 can be skipped if you already have the docs indexed locally)._
 
-**Build the UAL-GBL Docker images (for GBL and Solr containers):**
+## Build locally
+
+**1. Build the UAL-GBL Docker images (for GBL and Solr containers):**
 
 ```shell
 $ lando start
 ```
 
-**Re-build image and containers while preserving volumes**
-
+**2. Check for and run any pending Rails migrations:**
 ```shell
-$ lando rebuild
+# Check migration status
+$ lando rails db:migrate:status
+
+# Run pending migrations
+$ lando rails db:migrate
 ```
 
-**Ingest UAL metadata records from ual-geospatial-metadata**
+**3. Ingest UAL metadata records from ual-geospatial-metadata**
 
 ```shell
 $ lando rake ual_docs:reindex
@@ -54,6 +59,14 @@ $ lando rake ual_docs:reindex\['branch-name']
 ```
 
 **Note**: If you're using Docker Desktop on a Mac, and encounter the following error: `ERROR ==> connect ENOENT /var/run/docker.sock`, try toggling the checkbox for `Allow the default Docker socket to be used (requires password)` and re-running `lando start`.
+
+### Rebuilding
+**Re-build image and containers while preserving volumes**
+
+```shell
+$ lando rebuild
+```
+
 
 ## Deployment
 
