@@ -59,7 +59,7 @@ module ApplicationHelper
 
   # Determine whether or not a user has submitted a PAG agreement for the requested file, for use in views. Not valid on index maps.
   def has_submitted_pag_agreement
-    unless current_user.nil? || @document.direct_download.nil?
+    unless current_user.nil?
       return PagAgreement.where(user_id: current_user.id).exists?
     end
     return false
