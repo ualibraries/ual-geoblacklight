@@ -5,7 +5,7 @@ class PagFilesController < ApplicationController
   
   # Display the PAG agreement view
   def display_agreement
-    session[:pag_previous_path] = request.referer
+    session[:pag_previous_path] = request.referer.present? ? request.referer : root_path
     render template: "pag_files/display_agreement", formats: [:html]
   end
   
