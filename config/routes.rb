@@ -25,12 +25,14 @@ Rails.application.routes.draw do
   get '/status', to: 'application#status'
 
   # PAG agreement views
-  get 'restricted/pag/*path/agreement', to: 'pag_files#display_agreement', as: 'pag_agreement', defaults: { format: 'html' }
+  # get 'restricted/pag/*path/agreement', to: 'pag_files#display_agreement', as: 'pag_agreement', defaults: { format: 'html' }
+  get 'pag-agreement', to: 'pag_files#display_agreement', as: 'pag_agreement'
 
   # Restricted PAG files
   get 'restricted/pag/*path', to: 'pag_files#download', as: 'pag_download', format: false
 
-  post 'restricted/pag/*path/submit-agreement', to: 'pag_files#submit_agreement', as: 'pag_submit_agreement'
+  # post 'restricted/pag/*path/submit-agreement', to: 'pag_files#submit_agreement', as: 'pag_submit_agreement'
+  post 'submit-agreement', to: 'pag_files#submit_agreement', as: 'pag_submit_agreement'
 
   # Not found page
   get '/not-found', to: 'application#error_not_found', as: :not_found
