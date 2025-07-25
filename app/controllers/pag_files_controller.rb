@@ -73,9 +73,9 @@ class PagFilesController < ApplicationController
       end
     end
     
-    # Determine if user has submitted a PAG agreement for the requested file
+    # Determine if user has submitted a PAG agreement
     def has_submitted_agreement?
-      return PagAgreement.exists?(user_id: current_user.id, path: @requested_path.to_s)
+      return PagAgreement.exists?(user_id: current_user.id)
     end
 
     # Determine whether a requested PAG file path exists or not
