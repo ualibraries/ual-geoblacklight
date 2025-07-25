@@ -4,20 +4,10 @@
       <h1>Accessing licensed data</h1>
       <p>In order to download this data item, you must read and agree to the following:</p>
       <p><strong>By clicking "Agree" below, I acknowledge that I will not redistribute any of the Pima Association of Governments (PAG) data contained in this dataset to any other individual or organization.</strong></p>
-      <p><small><em>Your agreement is single-use; you must agree to the terms for each restricted data item that you would like to download.</em></small></p>
     </div>
     <div class="col-12">
-      <%#= form.hidden_field :pag_agreement, value: "true" %>
-
-      <%#= form.hidden_field :pag_uid, value: "placeholder: shibb_uid here" %>
-      <%#= form.hidden_field :pag_file_path, value: @requested_path %>
-      <%# We don't want to do lines 11-12; we want to submit UID from somewhere outside the form for security. We will do this in the controller instead. %>
-
-
       <%= form.submit "Agree", class:"btn btn-red" %>
       <%= form.submit "Cancel", class:"btn btn-outline-blue" %>
-      
-      <%# <button type="button" class="btn btn-outline-blue">Cancel</button> %>
     </div>
   </div>
 <% end %>
