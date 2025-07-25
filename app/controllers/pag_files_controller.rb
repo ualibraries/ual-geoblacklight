@@ -13,8 +13,8 @@ class PagFilesController < ApplicationController
   def submit_agreement
     # User has agreed; record agreement to database and initiate #download
     if params[:commit] == "Agree"
-      clean_path = @requested_path.to_s.sub(/\/agreement$/, '')
-      PagAgreement.create(path: clean_path, user_id:current_user.id)
+      # clean_path = @requested_path.to_s.sub(/\/agreement$/, '')
+      PagAgreement.create(path: "", user_id:current_user.id)
       redirect_to session[:pag_previous_path], notice: t('geoblacklight.pag.pag_agreed')
     # User has cancelled the agreement--return them from whence they came!
     else
