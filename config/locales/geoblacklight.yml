@@ -12,4 +12,5 @@ en:
       pag_not_agreed: "You must agree to the terms in order to download this data item."
       restricted_notice_sidebar_anonymous: "This data belongs to a collection that is restricted to University of Arizona students, faculty, and staff. If you wish to download any data from this record, you must log in and agree to the usage agreement for each file you want to download."
       restricted_notice_sidebar_authenticated: "This data belongs to a collection that is restricted to University of Arizona students, faculty, and staff. If you wish to download any data from this record, you must agree to the usage agreement for each file you want to download."
+      restricted_notice_reminder: "This data belongs to a collection that is restricted to University of Arizona students, faculty, and staff. As a reminder, you are not permitted to redistribute any of the Pima Association of Governments (PAG) data contained in this dataset to any other individual or organization."
 
