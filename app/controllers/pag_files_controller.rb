@@ -64,11 +64,10 @@ class PagFilesController < ApplicationController
       end
       
       # Determine if user is authorized to download PAG data
-      is_member_of_tess = session[:has_pag_access]
-      authorized = current_user.uid == "garrettsmith" || is_member_of_tess
+      authorized_pag_user = session[:has_pag_access]
       
       # User is logged in but unauthorized, notify user they're not authorized
-      unless authorized
+      unless authorized_pag_user
         render plain: I18n.t("devise.failure.pag_not_authorized"), status: :forbidden and return
       end
     end
