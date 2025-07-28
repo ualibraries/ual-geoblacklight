@@ -15,7 +15,6 @@ module OmniAuth
       # Check if the user's primary affiliation is allowed
       def allowed_affiliation?
         affiliation = shib_field("primary-affiliation")
-        # Rails.logger.debug "User affiliation: #{affiliation.inspect}"
         ALLOWED_AFFILIATIONS.include?(affiliation)
       end    
 
@@ -36,9 +35,6 @@ module OmniAuth
           request.env["omniauth.error.message"] = error_message
           return fail!(:invalid_credentials, error_message)
         end
-
-        # Log headers for debugging
-        #Rails.logger.debug "Shibboleth Headers: #{request.env.select { |k,v| k.start_with?('HTTP_SHIB_', 'shibd', 'Shib-') }}"
 
         # Check if the user's primary affiliation is allowed
         unless allowed_affiliation?
