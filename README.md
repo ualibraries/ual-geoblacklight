@@ -40,6 +40,8 @@ Start by cloning this repository to pretty much anywhere on most filesystems tha
 $ lando start
 ```
 
+**Note**: If you're using Docker Desktop on a Mac, and encounter the following error: `ERROR ==> connect ENOENT /var/run/docker.sock`, try toggling the checkbox for `Allow the default Docker socket to be used (requires password)` and re-running `lando start`.
+
 **2. Check for and run any pending Rails migrations:**
 ```shell
 # Check migration status
@@ -58,7 +60,7 @@ $ lando rake ual_docs:reindex
 $ lando rake ual_docs:reindex\['branch-name']
 ```
 
-**Note**: If you're using Docker Desktop on a Mac, and encounter the following error: `ERROR ==> connect ENOENT /var/run/docker.sock`, try toggling the checkbox for `Allow the default Docker socket to be used (requires password)` and re-running `lando start`.
+**Note**: If you encounter the error "You have divergent branches and need to specify how to reconcile them", you need to delete `/tmp/ual-geospatial-metadata` and then re-run the rake command (might need to run it twice, since it will clone on the first run).
 
 ### Rebuilding
 **Re-build image and containers while preserving volumes**
