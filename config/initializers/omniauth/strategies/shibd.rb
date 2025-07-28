@@ -47,9 +47,7 @@ module OmniAuth
           return fail!(:invalid_affiliation, error_message)
         end
 
-        session[:has_pag_access] = Array(shib_field("isMemberOf")).any? do |g|
-           g.include?("arizona.edu:community:functional-dept:IT:1709")
-         end
+        session[:has_pag_access] = pag_allowed_affiliation?
 
         super
       end
