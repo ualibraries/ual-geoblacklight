@@ -67,7 +67,7 @@ class PagFilesController < ApplicationController
       
       # User is logged in but unauthorized, notify user they're not authorized
       unless authorized_pag_user
-        render plain: I18n.t("devise.failure.pag_not_authorized"), status: :forbidden and return
+        redirect_to session[:pag_previous_path], notice: t('devise.failure.pag_not_authorized') 
       end
     end
     
