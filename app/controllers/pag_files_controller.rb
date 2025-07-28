@@ -62,13 +62,13 @@ class PagFilesController < ApplicationController
         redirect_to user_shibd_omniauth_callback_path and return
       end
       
-      # Determine if user is authorized to download PAG data
-      is_member_of_tess = session[:has_pag_access]
-      authorized = current_user.uid == "garrettsmith" || is_member_of_tess
-      
-      # User is logged in but unauthorized, notify user they're not authorized
-      unless authorized
-        render plain: I18n.t("devise.failure.pag_not_authorized"), status: :forbidden and return
+      # User is logged in but not authorized, redirect and notify user they're not authorized
+      unless session[:has_pag_access]
+        if session[:pag_previous_path].nil?
+          redirect_to root_path, notice: t('devise.failure.pag_not_authorized') 
+        else
+          redirect_to session[:pag_previous_path], notice: t('devise.failure.pag_not_authorized') 
+        end
       end
     end
     

@@ -44,6 +44,7 @@ maps to not render.
       <%= content_for(:container_header) %>
 
       <%= render partial: 'shared/flash_msg', layout: 'shared/flash_messages' %>
+      <%= render partial: 'shared/home_search' %>
 
       <div class="row">
         <%= content_for?(:content) ? yield(:content) : yield %>

@@ -4,6 +4,7 @@ module OmniAuth
       include OmniAuth::Strategy
 
       ALLOWED_AFFILIATIONS = %w[faculty staff student dcc retiree emeritus gradasst studentworker].freeze
+      PAG_ALLOWED_AFFILIATIONS = %w[faculty staff student].freeze
 
 
       # This method determines if we're already authenticated via Shibboleth
@@ -11,13 +12,17 @@ module OmniAuth
         request.env['Shib-Session-ID']
       end
 
-     # Check if the user's primary affiliation is allowed
+      # Check if the user's primary affiliation is allowed
       def allowed_affiliation?
         affiliation = shib_field("primary-affiliation")
-        Rails.logger.debug "User affiliation: #{affiliation.inspect}"
         ALLOWED_AFFILIATIONS.include?(affiliation)
       end    
-  
+
+      # Check if user's primary affiliation qualifies them for PAG access
+      def pag_allowed_affiliation?
+        affiliation = shib_field("primary-affiliation")
+        PAG_ALLOWED_AFFILIATIONS.include?(affiliation)
+      end  
 
       def request_phase
         redirect callback_path
@@ -31,9 +36,6 @@ module OmniAuth
           return fail!(:invalid_credentials, error_message)
         end
 
-        # Log headers for debugging
-        #Rails.logger.debug "Shibboleth Headers: #{request.env.select { |k,v| k.start_with?('HTTP_SHIB_', 'shibd', 'Shib-') }}"
-
         # Check if the user's primary affiliation is allowed
         unless allowed_affiliation?
           error_message = I18n.t("devise.failure.invalid_affiliation")
@@ -41,9 +43,7 @@ module OmniAuth
           return fail!(:invalid_affiliation, error_message)
         end
 
-        session[:has_pag_access] = Array(shib_field("isMemberOf")).any? do |g|
-           g.include?("arizona.edu:community:functional-dept:IT:1709")
-         end
+        session[:has_pag_access] = pag_allowed_affiliation?
 
         super
       end
