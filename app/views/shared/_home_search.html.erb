@@ -1,0 +1,30 @@
+<%# Origin: Custom
+
+Separates the home page search block to its own view partial so we can place flash messages above the search box.
+%>
+
+<%- renderable_fields = blacklight_config.search_fields.values.collect { |field_def| [label_for_search_field(field_def.key), field_def.key] if should_render_field?(field_def)}.compact %>
+
+<% if current_page?(root_path) && (not has_search_parameters?) %>
+  <div class="row">
+    <div class="col-12 py-5">
+      <div class="geobl-homepage-masthead bg-gray-300 px-3 py-5 mb-5">
+        <div class="d-flex justify-content-center">
+          <%= content_tag :h1, t("geoblacklight.home.search_heading"), class: "text-center mt-0" %>
+        </div>
+        <div class="row justify-content-md-center">
+          <div class="col-12 col-md-10 col-lg-6">
+            <div class="navbar-search">
+              <%= render((blacklight_config&.view_config(document_index_view_type)&.search_bar_component ||Blacklight::SearchBarComponent).new(
+              url: search_action_url,
+              advanced_search_url: search_action_url(action: "advanced_search"),
+              search_fields: renderable_fields,
+              params: search_state.params_for_search.except(:qt),
+              autocomplete_path: search_action_path(action: :suggest))) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
