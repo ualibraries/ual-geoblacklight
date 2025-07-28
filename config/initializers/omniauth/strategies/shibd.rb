@@ -4,6 +4,7 @@ module OmniAuth
       include OmniAuth::Strategy
 
       ALLOWED_AFFILIATIONS = %w[faculty staff student dcc retiree emeritus gradasst studentworker].freeze
+      PAG_ALLOWED_AFFILIATIONS = %w[faculty staff student].freeze
 
 
       # This method determines if we're already authenticated via Shibboleth
@@ -17,7 +18,12 @@ module OmniAuth
         Rails.logger.debug "User affiliation: #{affiliation.inspect}"
         ALLOWED_AFFILIATIONS.include?(affiliation)
       end    
-  
+
+      # Check if user's primary affiliation qualifies them for PAG access
+      def pag_allowed_affiliation?
+        affiliation = shib_field("primary-affiliation")
+        PAG_ALLOWED_AFFILIATIONS.include?(affiliation)
+      end  
 
       def request_phase
         redirect callback_path
