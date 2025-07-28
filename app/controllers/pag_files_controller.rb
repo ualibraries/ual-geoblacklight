@@ -5,7 +5,7 @@ class PagFilesController < ApplicationController
   
   # Display the PAG agreement view
   def display_agreement
-    session[:pag_previous_path] = request.referer
+    session[:pag_previous_path] = request.referer.present? ? request.referer : root_path
     render template: "pag_files/display_agreement", formats: [:html]
   end
   
@@ -13,8 +13,7 @@ class PagFilesController < ApplicationController
   def submit_agreement
     # User has agreed; record agreement to database and initiate #download
     if params[:commit] == "Agree"
-      clean_path = @requested_path.to_s.sub(/\/agreement$/, '')
-      PagAgreement.create(path: clean_path, user_id:current_user.id)
+      PagAgreement.create(user_id:current_user.id)
       redirect_to session[:pag_previous_path], notice: t('geoblacklight.pag.pag_agreed')
     # User has cancelled the agreement--return them from whence they came!
     else
@@ -72,9 +71,9 @@ class PagFilesController < ApplicationController
       end
     end
     
-    # Determine if user has submitted a PAG agreement for the requested file
+    # Determine if user has submitted a PAG agreement
     def has_submitted_agreement?
-      return PagAgreement.exists?(user_id: current_user.id, path: @requested_path.to_s)
+      return PagAgreement.exists?(user_id: current_user.id)
     end
 
     # Determine whether a requested PAG file path exists or not
