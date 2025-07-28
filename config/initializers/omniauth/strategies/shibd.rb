@@ -12,10 +12,10 @@ module OmniAuth
         request.env['Shib-Session-ID']
       end
 
-     # Check if the user's primary affiliation is allowed
+      # Check if the user's primary affiliation is allowed
       def allowed_affiliation?
         affiliation = shib_field("primary-affiliation")
-        Rails.logger.debug "User affiliation: #{affiliation.inspect}"
+        # Rails.logger.debug "User affiliation: #{affiliation.inspect}"
         ALLOWED_AFFILIATIONS.include?(affiliation)
       end    
 
