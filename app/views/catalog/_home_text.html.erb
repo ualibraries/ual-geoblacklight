@@ -12,12 +12,8 @@ can select a different field to offer as a filter category.
 <div class="row">
   <div class="col-12 col-lg-6">
     <%= content_tag :h2, t('geoblacklight.home.category_heading'), class: 'text-center text-blue' %>
-      <%#= render(Geoblacklight::HomepageFeatureFacetComponent.new(icon: 'home', label: 'geoblacklight.home.institution', facet_field: Settings.FIELDS.PROVIDER, response: @response)) %>
-
       <%= render(Geoblacklight::HomepageFeatureFacetComponent.new(icon: 'mixed', label: 'geoblacklight.home.data_type', facet_field: Settings.FIELDS.RESOURCE_TYPE, response: @response)) %>
-
       <%= render(Geoblacklight::HomepageFeatureFacetComponent.new(icon: 'globe', label: 'geoblacklight.home.placename', facet_field: Settings.FIELDS.SPATIAL_COVERAGE, response: @response)) %>
-
       <%= render(Geoblacklight::HomepageFeatureFacetComponent.new(icon: 'book', label: 'geoblacklight.home.subject', facet_field: Settings.FIELDS.SUBJECT, response: @response)) %>
   </div>
   <div class="col-12 col-lg-6 text-center">

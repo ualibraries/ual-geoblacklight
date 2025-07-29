@@ -41,10 +41,9 @@ maps to not render.
     <%= render partial: 'shared/header_navbar' %>
 
     <main id="main-container" class="<%= container_classes %> mb-5" role="main" aria-label="<%= t('blacklight.main.aria.main_container') %>">
-      <%= content_for(:container_header) %>
-
       <%= render partial: 'shared/flash_msg', layout: 'shared/flash_messages' %>
-      <%= render partial: 'shared/home_search' %>
+      <%= content_for(:container_header) %>
+      <%= render partial: 'shared/ual_home_search' %>
 
       <div class="row">
         <%= content_for?(:content) ? yield(:content) : yield %>
