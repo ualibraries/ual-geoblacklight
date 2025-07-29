@@ -30,7 +30,7 @@ Overrides GeoBlacklight's view partial _show_downloads.html.erb to add AZ Bootst
       <% end %>
     </div>
   </div>
-<% elsif current_user && has_submitted_pag_agreement %>
+<% elsif document.restricted? && current_user && has_submitted_pag_agreement %>
   <div class="card authentication border-0">
     <div class="callout callout-sky my-2">
       <strong><span class="material-icons-sharp">lock</span> Data notice</strong>
