@@ -106,7 +106,29 @@
   .index_title {
     margin: 0;
   }
+}
 
+#document {
+  // Fix index map key alignment
+  .index-map-legend {
+    position: relative;
+    right: initial;
+    top: initial;
+    left: initial;
+
+    .index-map-legend-info:first-of-type {
+      margin-left: 0px;
+    }
+  }
+
+  // Fix index map tile information alignment
+  .viewer-information {
+    .index-map-info {
+      .col-sm-12 {
+        padding: 0px;
+      }
+    }
+  }
 }
 
 #appliedParams {
