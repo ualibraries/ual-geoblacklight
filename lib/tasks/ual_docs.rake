@@ -31,15 +31,26 @@ namespace :ual_docs do
         args.with_defaults(branch: 'main')
         repo_branch = args[:branch]
 
-        if !File.directory? repo_path
+        unless File.directory? repo_path
+          begin
             Git.clone(repo_url, nil, path: clone_path, depth: 1)
-            puts "cloned #{repo_url} to #{repo_path}"
-        else
-            repo = Git.open(repo_path)
-            repo.fetch('origin', {:ref => '+refs/heads/*:refs/remotes/origin/*'} )
-            repo.branch(repo_branch).checkout
-            repo.pull('origin', repo_branch)
-            puts "Updated #{repo_name} on branch '#{repo.current_branch}'"
+            puts "Cloned #{repo_url} to #{repo_path}"
+          rescue => e
+            puts "Failed to clone #{repo_url}: #{e.message}"
+            return
+          end
+        end
+
+        begin
+          origin = "origin"
+          repo = Git.open(repo_path)
+          repo.fetch('origin', {:ref => '+refs/heads/*:refs/remotes/origin/*'} )
+          repo.branch(repo_branch).checkout
+          repo.reset_hard("#{origin}/#{repo_branch}")
+          puts "Updated #{repo_name} on branch '#{repo.current_branch}'"
+        rescue => e
+          puts "Failed to fetch/checkout/pull branch '#{repo_branch}': #{e.message}"
+          return
         end
 
         docs = Dir["#{repo_path}/**/*.json"].map { |f| JSON.parse File.read(f) }.flatten
