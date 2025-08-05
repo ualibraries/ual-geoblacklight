@@ -53,13 +53,13 @@ namespace :ual_docs do
           return
         end
 
-        # docs = Dir["#{repo_path}/**/*.json"].map { |f| JSON.parse File.read(f) }.flatten
-        #
-        # # Clear current index
-        # Blacklight.default_index.connection.delete_by_query('*:*')
-        # Blacklight.default_index.connection.commit
-        #
-        # Blacklight.default_index.connection.add docs
-        # Blacklight.default_index.connection.commit
+        docs = Dir["#{repo_path}/**/*.json"].map { |f| JSON.parse File.read(f) }.flatten
+
+        # Clear current index
+        Blacklight.default_index.connection.delete_by_query('*:*')
+        Blacklight.default_index.connection.commit
+
+        Blacklight.default_index.connection.add docs
+        Blacklight.default_index.connection.commit
     end
 end
