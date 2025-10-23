@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.2.2"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem "rails", "7.2.2.1"
+gem "rails", "7.2.2.2"
 # Use sqlite3 as the database for Active Record (dev)
 gem "sqlite3", "1.7.3"
 # PostgreSQL as the database for Active Record (prd/tst)
