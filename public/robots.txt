@@ -1,1 +1,27 @@
 # See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+
+User-agent: TurnitinBot
+Disallow: /
+
+User-agent: *
+Disallow: /admin
+Disallow: /users
+Disallow: /account
+Disallow: /accounts
+Disallow: /login
+Disallow: /logout
+Disallow: /sign_in
+Disallow: /sign_out
+Disallow: /register
+Disallow: /password
+Disallow: /passwords
+Disallow: /sessions
+Disallow: /rails/
+Disallow: /sidekiq
+Disallow: /jobs
+Disallow: /health
+Disallow: /up
+Disallow: /*?*
+Disallow: /*.json$
+
+Allow: /
