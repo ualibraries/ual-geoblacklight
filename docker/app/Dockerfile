@@ -1,7 +1,7 @@
 # syntax = docker/dockerfile:1
 FROM ruby:3.2.2
 
-RUN curl https://oss-binaries.phusionpassenger.com/auto-software-signing-gpg-key.txt | gpg --dearmor > /etc/apt/trusted.gpg.d/phusion.gpg
+RUN curl https://oss-binaries.phusionpassenger.com/auto-software-signing-gpg-key-2025.txt | gpg --dearmor > /etc/apt/trusted.gpg.d/phusion.gpg
 RUN sh -c 'echo deb https://oss-binaries.phusionpassenger.com/apt/passenger bookworm main > /etc/apt/sources.list.d/passenger.list'
 
 # Update the package list again and install
