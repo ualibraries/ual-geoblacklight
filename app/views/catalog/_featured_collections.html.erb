@@ -1,30 +1,32 @@
 <%# Origin: Custom
 
-Renders homepage featured-collection tiles above the Find By / map row, using the
-same AZ Bootstrap card layout and left-column width as Data type / Place / Subject.
-Uses a Material Icons Sharp icon.
+Renders a single full-width featured-collection card above the Find By / map row.
+Shorter vertically than the Data type / Place cards. Uses a Material Icons Sharp
+icon in the same gray as those GeoBlacklight SVGs.
 %>
 
 <% collections = Array.wrap(Settings.FEATURED_COLLECTIONS) %>
 <% if collections.any? %>
-  <section class="ual-featured-collections mb-5" aria-labelledby="featured-collection-heading">
+  <section class="ual-featured-collections mb-4" aria-labelledby="featured-collection-heading">
     <%= content_tag :h2, t('geoblacklight.home.featured_heading'), id: 'featured-collection-heading', class: 'text-blue mt-3 mb-3' %>
     <div class="row">
-      <div class="col-12 col-lg-6">
-        <% collections.each do |collection| %>
+      <% collections.each do |collection| %>
+        <div class="col-12">
           <div class="category-block card ual-card mb-0">
-            <div class="row no-gutters h-100">
-              <div class="col-12 col-md-3 col-lg-4 align-items-center text-center">
-                <div class="category-icon bg-gray-100 h-100 p-3 d-flex align-items-center justify-content-center">
+            <div class="row no-gutters align-items-center">
+              <div class="col-auto">
+                <div class="category-icon bg-gray-100 h-100 px-4 py-3 d-flex align-items-center justify-content-center">
                   <span class="material-icons-sharp ual-featured-collection-icon" aria-hidden="true"><%= collection.icon.presence || 'layers' %></span>
                 </div>
               </div>
-              <div class="col-12 col-md-9 col-lg-8">
-                <div class="card-body">
-                  <%= content_tag :h3, t("geoblacklight.home.featured.#{collection.name}.title"), class: 'mt-0 text-dark' %>
+              <div class="col">
+                <div class="card-body py-3">
+                  <%= content_tag :h3, t("geoblacklight.home.featured.#{collection.name}.title"), class: 'mt-0 mb-1 text-dark' %>
                   <p class="mb-0"><%= t("geoblacklight.home.featured.#{collection.name}.description") %></p>
                 </div>
-                <div class="card-body pt-0">
+              </div>
+              <div class="col-auto">
+                <div class="card-body py-3">
                   <%= link_to t("geoblacklight.home.featured.#{collection.name}.button"),
                         search_catalog_path("f[#{collection.facet_field}][]": collection.facet_value),
                         class: 'btn btn-blue' %>
@@ -32,8 +34,8 @@ Uses a Material Icons Sharp icon.
               </div>
             </div>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
   </section>
 <% end %>

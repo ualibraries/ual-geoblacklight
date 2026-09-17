@@ -209,12 +209,14 @@
 }
 .ual-featured-collections .ual-card {
   text-align: left;
-  min-height: 12.5rem;
+}
+.ual-featured-collections .category-icon {
+  min-height: 0;
 }
 .ual-featured-collection-icon {
-  font-size: 4rem;
+  font-size: 2.5rem;
   line-height: 1;
-  color: #6c757d; 
+  color: #6c757d; // Same gray as GeoBlacklight Data type / Place / Subject SVGs
 }
 .ual-card .category-icon .blacklight-icons svg {
   top: 0;  
