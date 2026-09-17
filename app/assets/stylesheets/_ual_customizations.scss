@@ -204,6 +204,18 @@
 #main-container .category-block {
    min-height: auto !important;
 }
+.ual-featured-collections {
+  margin-top: 0;
+}
+.ual-featured-collections .ual-card {
+  text-align: left;
+  min-height: 12.5rem;
+}
+.ual-featured-collection-icon {
+  font-size: 4rem;
+  line-height: 1;
+  color: #6c757d; 
+}
 .ual-card .category-icon .blacklight-icons svg {
   top: 0;  
 }

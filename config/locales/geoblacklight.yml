@@ -2,6 +2,12 @@ en:
   geoblacklight:
     home:
       placename: 'Place'
+      featured_heading: 'Featured Collection'
+      featured:
+        pag:
+          title: 'Pima Association of Governments'
+          description: 'Aerial imagery of Pima County, Arizona, collected by the Pima Association of Governments.'
+          button: 'View all'
     tools:
       login_to_view: "Log in to view"
     pag:

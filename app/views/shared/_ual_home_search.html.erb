@@ -7,8 +7,8 @@ Separates the home page search block to its own view partial so we can place fla
 
 <% if current_page?(root_path) && (not has_search_parameters?) %>
   <div class="row">
-    <div class="col-12 py-5">
-      <div class="geobl-homepage-masthead bg-gray-300 px-3 py-5 mb-5">
+    <div class="col-12 pt-5 pb-0">
+      <div class="geobl-homepage-masthead bg-gray-300 px-3 py-5 mb-0">
         <div class="d-flex justify-content-center">
           <%= content_tag :h1, t("geoblacklight.home.search_heading"), class: "text-center mt-0" %>
         </div>

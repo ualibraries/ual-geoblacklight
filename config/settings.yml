@@ -22,6 +22,15 @@ OVERLAP_RATIO_BOOST: '2'
 # HOMEPAGE_MAP_GEOM: null
 HOMEPAGE_MAP_GEOM: '{"type":"Polygon","coordinates":[[[-115.24,37.29],[-115.24, 31.18],[-108.62,37.29],[-108.62,31.18]]]}'
 
+# Homepage featured collections. Each item links to a predefined facet search.
+# Use a Solr field name + value (not a full URL) so search_catalog_path stays
+# on the current host (local, test, or production).
+FEATURED_COLLECTIONS:
+  - name: pag
+    icon: layers
+    facet_field: dct_subject_sm
+    facet_value: PAG
+
 # Non-search-field GeoBlacklight application permitted params
 GBL_PARAMS:
   - :bbox
